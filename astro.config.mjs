@@ -11,7 +11,7 @@ export default defineConfig({
 				// กำหนดให้เป็น 120 วินาที เพื่อให้มีเวลาประมวลผลนานขึ้น
 				watch: {
 					awaitWriteFinish: {
-						stabilityThreshold: 240000, 
+						stabilityThreshold: 120000, 
 						pollInterval: 100
 					}
 				}
@@ -66,7 +66,25 @@ export default defineConfig({
 					lang: 'ln',
 				},
 			},
-			sidebar: sidebar,
+			sidebar: [
+                {
+                    "label": "Tipiṭaka",
+                    "collapsed": true,
+                    "translations": {
+                        "my": "တိပိဋက",
+                        "th": "ติปิฏก",
+                        "si": "තිපිටක",
+                        "en": "Tipiṭaka",
+                        "hi": "तिपिटक",
+                        "kh": "តិបិដក",
+                        "lo": "ຕິປິຏກ",
+                        "ln": "য়ᩥᨶᩥᨭᨠ"
+                    },
+                    "autogenerate": {
+                        "directory": "mula"
+                    }
+                }                
+            ],
 		}),
 	],
 });
