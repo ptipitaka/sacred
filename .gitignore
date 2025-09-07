@@ -25,15 +25,15 @@ pnpm-debug.log*
 src/assets/
 
 # content
-# src/content/docs/deva
-# src/content/docs/khmr
-# src/content/docs/lana
-# src/content/docs/laoo
-# src/content/docs/latn
-# src/content/docs/romn
-# src/content/docs/sinh
-# src/content/docs/thai
-# src/content/docs/mymr
+src/content/docs/deva/
+src/content/docs/khmr/
+src/content/docs/lana/
+src/content/docs/laoo/
+src/content/docs/latn/
+src/content/docs/romn/
+src/content/docs/sinh/
+src/content/docs/thai/
+src/content/docs/mymr/
 
 # other
 # python/
