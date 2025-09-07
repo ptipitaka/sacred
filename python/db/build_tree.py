@@ -1,4 +1,5 @@
 import shutil
+import re
 from pathlib import Path
 from tipitaka_dal import TipitakaDAL
 from aksharamukha import transliterate
@@ -76,19 +77,45 @@ class TipitakaBuilder:
         self.sections = ["mula", "attha", "tika"]
         self.subsections = ["vi", "su", "bi"]
         self.sutta_subdivisions = ["di", "ma", "sa", "an", "ku"]
-        
+
+        # Human-readable names for sections/subsections
+        self.section_names = {
+            'mula': {'romn': 'Tipiṭaka', 'thai': 'พระไตรปิฎก', 'mymr': 'တိပိဋက'},
+            'vi': {'romn': 'Vinayapiṭaka', 'thai': 'วินัยปิฎก', 'mymr': 'ဝိနယပိဋက'},
+            'su': {'romn': 'Suttantapiṭaka', 'thai': 'สุตตันตปิฎก', 'mymr': 'သုတ္တန္တပိဋက'},
+            'bi': {'romn': 'Abhidhammapiṭaka', 'thai': 'อภิธรรมปิฎก', 'mymr': 'အဘိဓမ္မပိဋက'},
+            'di': {'romn': 'Dīghanikāya', 'thai': 'ทีฆนิกาย', 'mymr': 'ဒီဃနိကာယ်'},
+            'ma': {'romn': 'Majjhimanikāya', 'thai': 'มัชฌิมนิกาย', 'mymr': 'မဇ္ဈိမနိကာယ်'},
+            'sa': {'romn': 'Saṁyuttanikāya', 'thai': 'สังยุตตนิกาย', 'mymr': 'သံယုတ္တနိကာယ်'},
+            'an': {'romn': 'Aṅguttaranikāya', 'thai': 'อังคุตตรนิกาย', 'mymr': 'အင်္ဂုတ္တရနိကာယ်'},
+            'ku': {'romn': 'Khuddakanikāya', 'thai': 'ขุททกนิกาย', 'mymr': 'ခုဒ္ဒကနိကာယ်'},
+        }
+
         # Markdown template for content files
         self.content_template = """---
 title: {name}
 sidebar: 
     order: {order}
-parent: {parent}
-page: {page}
 ---
 
 # {name}
 
-หน้า {page}
+{content}
+"""
+
+        # Template for page files
+        self.page_template = """---
+title: "{chapter_name} - Page {page_num}"
+sidebar: 
+    order: {order}
+page: {page_num}
+paranum: {paranum}
+---
+
+# {chapter_name}
+## Page {page_num}
+
+{content}
 """
 
     def _setup_paths(self):
@@ -173,19 +200,102 @@ page: {page}
                         for subdivision in self.sutta_subdivisions:
                             (subsection_dir / subdivision).mkdir(exist_ok=True)
 
-    def get_book_tocs(self, book_id):
+    def _create_top_level_index_files(self):
         """
-        Get table of contents entries for a specific book from tocs table.
+        Create index.md files for top-level directories to control sidebar names.
+        """
+        print("Creating top-level index files...")
+        
+        # The top-level 'Tipiṭaka' directory will be handled by the index.md file at src/content/docs/index.md.
+        # This function will create index files for the script, section, and subsection directories.
+        
+        # Create index.md for each script directory
+        for script_code in self.script_codes:
+            script_dir = self.src_dir / script_code
+            index_file = script_dir / "index.md"
+            with open(index_file, 'w', encoding='utf-8') as f:
+                f.write(f"""---
+title: {script_code.upper()}
+sidebar:
+    order: {self.script_codes.index(script_code) + 1}
+---
+# {script_code.upper()}
+""")
+
+            # Create index.md for sections (mula, attha, tika)
+            for section in self.sections:
+                section_dir = script_dir / section
+                if section_dir.exists():
+                    index_file = section_dir / "index.md"
+                    title = self.section_names.get(section, {}).get('romn', section)
+                    with open(index_file, 'w', encoding='utf-8') as f:
+                         f.write(f"""---
+title: {title}
+sidebar:
+    order: {self.sections.index(section) + 1}
+---
+# {title}
+""")
+
+            # Create index.md for subsections (vi, su, bi)
+            for subsection in self.subsections:
+                subsection_dir = script_dir / "mula" / subsection
+                if subsection_dir.exists():
+                    index_file = subsection_dir / "index.md"
+                    title = self.section_names.get(subsection, {}).get('romn', subsection)
+                    with open(index_file, 'w', encoding='utf-8') as f:
+                         f.write(f"""---
+title: {title}
+sidebar:
+    order: {self.subsections.index(subsection) + 1}
+---
+# {title}
+""")
+
+            # Create index.md for sutta subdivisions (di, ma, sa, an, ku)
+            for subdivision in self.sutta_subdivisions:
+                subdivision_dir = script_dir / "mula" / "su" / subdivision
+                if subdivision_dir.exists():
+                    index_file = subdivision_dir / "index.md"
+                    title = self.section_names.get(subdivision, {}).get('romn', subdivision)
+                    with open(index_file, 'w', encoding='utf-8') as f:
+                        f.write(f"""---
+title: {title}
+sidebar:
+    order: {self.sutta_subdivisions.index(subdivision) + 1}
+---
+# {title}
+""")
+        
+        print("Top-level index files created successfully.")
+
+    def parse_book_chapters(self, book_toc):
+        """
+        Parse table of contents to extract chapter information.
         
         Args:
-            book_id: Book ID to get TOCs for
+            book_toc: Table of contents string from book record
             
         Returns:
-            List of TOC entries ordered by page number
+            List of chapter dictionaries with name and page information
         """
-        return self.db(self.db.tocs.book_id == book_id).select(
-            orderby=self.db.tocs.page_number
-        )
+        chapters = []
+        if not book_toc:
+            return chapters
+            
+        toc_lines = book_toc.split('\n')
+        for line in toc_lines:
+            if line.strip().startswith('chapter->'):
+                parts = line.strip().split('->')
+                if len(parts) >= 3:
+                    chapter_name = parts[1]
+                    page_number = int(parts[2])
+                    chapters.append({
+                        "name": chapter_name,
+                        "page": page_number
+                    })
+        
+        return chapters
 
     def get_transliteration_config(self, script_code):
         """
@@ -248,6 +358,53 @@ page: {page}
         
         return book_name, book_abbr, script_chapters
 
+    def convert_html_content(self, html_content, script_code):
+        """
+        Convert text content within HTML tags while preserving HTML structure.
+        
+        Args:
+            html_content: HTML content string
+            script_code: Target script code
+            
+        Returns:
+            HTML content with converted text
+        """
+        if not html_content or script_code == 'mymr':
+            return html_content
+        
+        # Get transliteration configuration
+        trans_config = self.get_transliteration_config(script_code)
+        if not trans_config:
+            return html_content
+        
+        def convert_text_match(match):
+            """Convert text content between HTML tags."""
+            text_content = match.group(0)
+            
+            # Skip if it's only whitespace or empty
+            if not text_content.strip():
+                return text_content
+            
+            # Convert the text
+            converted = self.convert_text_with_aksharamukha(
+                text_content, trans_config['from'], trans_config['to']
+            )
+            converted = self.apply_text_corrections(converted, trans_config['correction'])
+            
+            return converted
+        
+        # Pattern to match text content between HTML tags
+        # This matches text that is not inside < > brackets
+        pattern = r'(?<=>)[^<]+(?=<)|(?<=>)[^<]+$|^[^<]+(?=<)'
+        
+        try:
+            # Convert text content while preserving HTML structure
+            converted_html = re.sub(pattern, convert_text_match, html_content)
+            return converted_html
+        except Exception as e:
+            print(f"Warning: Could not convert HTML content for {script_code}: {str(e)}")
+            return html_content
+
     def determine_book_path(self, book, book_abbr, script_code):
         """
         Determine the file system path for a book based on its category.
@@ -268,60 +425,6 @@ page: {page}
         else:
             # Other categories (vi, ab, etc.)
             return base_path / book.category / book_abbr
-
-    def build_hierarchical_structure(self, book_tocs, book_abbr, script_code):
-        """
-        Build hierarchical directory structure and files based on TOC types.
-        
-        Args:
-            book_tocs: List of TOC entries for the book
-            book_abbr: Book abbreviation (converted for script)
-            script_code: Target script code
-            
-        Returns:
-            Dictionary representing the hierarchical structure
-        """
-        # Define type hierarchy levels
-        type_hierarchy = ['chapter', 'title', 'subhead', 'subsubhead', 'subsubhead-head']
-        
-        # Track counters for each level (reset when going up a level)
-        level_counters = {level: 0 for level in type_hierarchy}
-        
-        # Build structure
-        structure = []
-        current_path = []
-        
-        for toc in book_tocs:
-            toc_type = toc.type
-            
-            # Find the level of current type
-            if toc_type in type_hierarchy:
-                current_level = type_hierarchy.index(toc_type)
-                
-                # Reset counters for deeper levels
-                for i in range(current_level + 1, len(type_hierarchy)):
-                    level_counters[type_hierarchy[i]] = 0
-                
-                # Increment counter for current level
-                level_counters[toc_type] += 1
-                
-                # Adjust current path to match hierarchy level
-                current_path = current_path[:current_level]
-                current_path.append({
-                    'type': toc_type,
-                    'name': toc.name,
-                    'page': toc.page_number,
-                    'counter': level_counters[toc_type],
-                    'level': current_level
-                })
-                
-                structure.append({
-                    'toc': toc,
-                    'path': current_path.copy(),
-                    'counter': level_counters[toc_type]
-                })
-        
-        return structure
 
     def create_hierarchical_files(self, structure, book_path, book_abbr, script_code):
         """
@@ -383,7 +486,7 @@ page: {page}
                                 name=converted_name,
                                 order=path_part['counter'],
                                 parent=parent_info,
-                                page=path_part['page']
+                                content=f"หน้า {path_part['page']}"
                             ))
                     except Exception as e:
                         print(f"Error creating file {index_file}: {e}")
@@ -393,7 +496,7 @@ page: {page}
                 
                 # Add this name to parent names for next level
                 parent_names.append(converted_name)
-
+    
     def process_mula_books(self):
         """Process all books with basket = 'mula' and generate files for all scripts."""
         mula_books = self.db(self.db.books.basket == 'mula').select()
@@ -436,91 +539,73 @@ page: {page}
         
         print(f"\nAll {total_books} books processed successfully across {total_scripts} scripts!")
 
-    def _build_sidebar_data(self):
-            """
-            Builds the sidebar data structure programmatically from database.
-            """
-            sidebar = []
-
-            # Assuming 'Tipiṭaka' is the main root, we create it first
-            tipitaka_translations = {
-                'my': 'တိပိဋက', 'th': 'ติปิฏก', 'si': 'තිපිටක', 'en': 'Tipiṭaka', 'hi': 'तिपिटक', 'kh': 'តិបិដក', 'lo': 'ຕິປິຏກ', 'ln': 'ᨲᩥᨸᩥᨭᨠ'
-            }
-            tipitaka_item = {
-                'label': 'Tipiṭaka',
-                'collapsed': True,
-                'translations': tipitaka_translations,
-                'items': []
-            }
-
-            # Structure of subsections from Astro config
-            subsection_structure = {
-                'vi': {'label': 'Vinayapiṭaka', 'translations': {'my': 'ဝိနယပိဋက', 'th': 'วินัยปิฎก', 'si': 'විනයපිටක', 'en': 'Vinayapiṭaka', 'hi': 'विनयपिटक', 'kh': 'វិនយបិដក', 'lo': 'ວິນຍປິຏກ', 'ln': 'ᩅᩥᨶᩥᨿᨸᩥᨭᨠ'}},
-                'su': {'label': 'Suttantapiṭaka', 'translations': {'my': 'သုတ္တန္တပိဋက', 'th': 'สุตฺตนฺตปิฏก', 'si': 'සුත්තන්තපිටක', 'en': 'Suttantapiṭaka', 'hi': 'सुत्तन्तपिटक', 'kh': 'សុត្តន្តបិដក', 'lo': 'ສຸຕ຺ຕນ຺ຕປິຏກ', 'ln': 'ᩈᩩᨲ᩠ᨲᨶ᩠ᨲᨸᩥᨭᨠ'}},
-                'bi': {'label': 'Abhidhammapiṭaka', 'translations': {'my': 'အဘိဓမ္မပိဋက', 'th': 'อภิธมฺมปิฏก', 'si': 'අභිධම්මපිටක', 'en': 'Abhidhammapiṭaka', 'hi': 'अभिधम्मपिटक', 'kh': 'អภិធម្មបិដក', 'lo': 'ອຠິຘມ຺ມປິຏກ', 'ln': 'ᩋᨽᩥᨵᨾ᩠ᨾᨸᩥᨭᨠ'}}
-            }
+    def build_hierarchical_structure(self, book_tocs, book_abbr, script_code):
+        """
+        Build hierarchical directory structure and files based on TOC types.
+        
+        Args:
+            book_tocs: List of TOC entries for the book
+            book_abbr: Book abbreviation (converted for script)
+            script_code: Target script code
             
-            # Build structure from database
-            for section_code, section_info in subsection_structure.items():
-                section_item = section_info.copy()
-                section_item['collapsed'] = True
-                section_item['items'] = []
-                
-                # Fetch books for the current section
-                books_in_section = self.db(self.db.books.category == section_code).select()
-                for book in books_in_section:
-                    # Determine book path
-                    book_abbr_romn = self.convert_text_with_aksharamukha(book.abbr, 'Burmese', 'IASTPali')
-                    
-                    # Check for subdivisions for the 'su' section
-                    if section_code == 'su' and book.category in self.sutta_subdivisions:
-                        book_path = f"mula/su/{book.category}/{book_abbr_romn}"
-                    else:
-                        book_path = f"mula/{book.category}/{book_abbr_romn}"
-
-                    book_item = {
-                        'label': book.name,
-                        'collapsed': True,
-                        'translations': {},
-                        'autogenerate': {
-                            'directory': book_path
-                        }
-                    }
-                    
-                    # Get translations for book name
-                    for script_code in self.script_codes:
-                        if script_code == 'mymr':
-                            book_item['translations'][script_code] = book.name
-                        else:
-                            trans_config = self.get_transliteration_config(script_code)
-                            if trans_config:
-                                converted_name = self.convert_text_with_aksharamukha(book.name, trans_config['from'], trans_config['to'])
-                                book_item['translations'][script_code] = self.apply_text_corrections(converted_name, trans_config['correction'])
-
-                    section_item['items'].append(book_item)
-                
-                tipitaka_item['items'].append(section_item)
-
-            sidebar.append(tipitaka_item)
-            return sidebar
-
-    def _write_navigation_file(self, data):
+        Returns:
+            Dictionary representing the hierarchical structure
         """
-        Writes the sidebar data to navigate.js in the correct format.
+        # Define type hierarchy levels
+        type_hierarchy = ['chapter', 'title', 'subhead', 'subsubhead', 'subsubhead-head']
+        
+        # Track counters for each level (reset when going up a level)
+        level_counters = {level: 0 for level in type_hierarchy}
+        
+        # Build structure
+        structure = []
+        current_path = []
+        
+        for toc in book_tocs:
+            toc_type = toc.type
+            
+            # Find the level of current type
+            if toc_type in type_hierarchy:
+                current_level = type_hierarchy.index(toc_type)
+                
+                # Reset counters for deeper levels
+                for i in range(current_level + 1, len(type_hierarchy)):
+                    level_counters[type_hierarchy[i]] = 0
+                
+                # Increment counter for current level
+                level_counters[toc_type] += 1
+                
+                # Adjust current path to match hierarchy level
+                current_path = current_path[:current_level]
+                current_path.append({
+                    'type': toc_type,
+                    'name': toc.name,
+                    'page': toc.page_number,
+                    'counter': level_counters[toc_type],
+                    'level': current_level
+                })
+                
+                structure.append({
+                    'toc': toc,
+                    'path': current_path.copy(),
+                    'counter': level_counters[toc_type]
+                })
+        
+        return structure
+
+    def get_book_tocs(self, book_id):
         """
-        # Ensure the output directory exists
-        output_dir = self.project_root / "python" / "db"
-        output_dir.mkdir(parents=True, exist_ok=True)
+        Get table of contents entries for a specific book from tocs table.
         
-        output_path = output_dir / "navigate.js"
-        
-        # Prepare content as a JavaScript module export
-        js_content = f"export const sidebar = {json.dumps(data, ensure_ascii=False, indent=4)};\n"
-        
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(js_content)
-        
-        print(f"Navigation data successfully written to {output_path}")
+        Args:
+            book_id: Book ID to get TOCs for
+            
+        Returns:
+            List of TOC entries ordered by page number
+        """
+        return self.db(self.db.tocs.book_id == book_id).select(
+            orderby=self.db.tocs.page_number
+        )
 
     def build(self):
         """
@@ -541,15 +626,13 @@ page: {page}
         # Step 2: Create directory structure
         print("Creating directory structure...")
         self.create_directory_structure()
+
+        # Step 3: Create top-level index files for sidebar
+        self._create_top_level_index_files()
         
-        # Step 3: Process books and generate files
+        # Step 4: Process books and generate files
         print("Processing books and generating files...")
         self.process_mula_books()
-        
-        # Step 4: Generate navigation file
-        print("Generating navigation file...")
-        sidebar_data = self._build_sidebar_data()
-        self._write_navigation_file(sidebar_data)
         
         print("Build process completed successfully!")
 
