@@ -30,7 +30,6 @@ export const sidebar = [
                     {
                         "label": "ပါရာဇိကပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပါရာဇိကပါဠိ",
                             "thai": "ปาราชิกปาฬิ",
@@ -48,7 +47,6 @@ export const sidebar = [
                     {
                         "label": "ပါစိတ္တိယပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပါစိတ္တိယပါဠိ",
                             "thai": "ปาจิตฺติยปาฬิ",
@@ -66,7 +64,6 @@ export const sidebar = [
                     {
                         "label": "မဟာဝဂ္ဂပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "မဟာဝဂ္ဂပါဠိ",
                             "thai": "มหาวคฺคปาฬิ",
@@ -84,7 +81,6 @@ export const sidebar = [
                     {
                         "label": "စူဠဝဂ္ဂပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "စူဠဝဂ္ဂပါဠိ",
                             "thai": "จูฬวคฺคปาฬิ",
@@ -102,7 +98,6 @@ export const sidebar = [
                     {
                         "label": "ပရိဝါရပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပရိဝါရပါဠိ",
                             "thai": "ปริวารปาฬิ",
@@ -120,7 +115,6 @@ export const sidebar = [
                     {
                         "label": "ပါရာဇိကကဏ္ဍအဋ္ဌကထာ (ပ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပါရာဇိကကဏ္ဍအဋ္ဌကထာ (ပ)",
                             "thai": "ปาราชิกกณฺฑอฏฺฐกถา (ป)",
@@ -138,7 +132,6 @@ export const sidebar = [
                     {
                         "label": "ပါရာဇိကကဏ္ဍအဋ္ဌကထာ (ဒု)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပါရာဇိကကဏ္ဍအဋ္ဌကထာ (ဒု)",
                             "thai": "ปาราชิกกณฺฑอฏฺฐกถา (ทุ)",
@@ -156,7 +149,6 @@ export const sidebar = [
                     {
                         "label": "ပါစိတ္တိယအဋ္ဌကထာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပါစိတ္တိယအဋ္ဌကထာ",
                             "thai": "ปาจิตฺติยอฏฺฐกถา",
@@ -174,7 +166,6 @@ export const sidebar = [
                     {
                         "label": "မဟာဝဂ္ဂအဋ္ဌကထာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "မဟာဝဂ္ဂအဋ္ဌကထာ",
                             "thai": "มหาวคฺคอฏฺฐกถา",
@@ -192,7 +183,6 @@ export const sidebar = [
                     {
                         "label": "စူဠဝဂ္ဂအဋ္ဌကထာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "စူဠဝဂ္ဂအဋ္ဌကထာ",
                             "thai": "จูฬวคฺคอฏฺฐกถา",
@@ -210,7 +200,6 @@ export const sidebar = [
                     {
                         "label": "ပရိဝါရအဋ္ဌကထာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပရိဝါရအဋ္ဌကထာ",
                             "thai": "ปริวารอฏฺฐกถา",
@@ -228,7 +217,6 @@ export const sidebar = [
                     {
                         "label": "သာရတ္ထဒီပနီဋီကာ (ပ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "သာရတ္ထဒီပနီဋီကာ (ပ)",
                             "thai": "สารตฺถทีปนีฏีกา (ป)",
@@ -246,7 +234,6 @@ export const sidebar = [
                     {
                         "label": "သာရတ္ထဒီပနီဋီကာ (ဒု)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "သာရတ္ထဒီပနီဋီကာ (ဒု)",
                             "thai": "สารตฺถทีปนีฏีกา (ทุ)",
@@ -264,7 +251,6 @@ export const sidebar = [
                     {
                         "label": "သာရတ္ထဒီပနီဋီကာ (တ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "သာရတ္ထဒီပနီဋီကာ (တ)",
                             "thai": "สารตฺถทีปนีฏีกา (ต)",
@@ -282,7 +268,6 @@ export const sidebar = [
                     {
                         "label": "ဝဇိရဗုဒ္ဓိဋီကာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဝဇိရဗုဒ္ဓိဋီကာ",
                             "thai": "วชิรพุทฺธิฏีกา",
@@ -300,7 +285,6 @@ export const sidebar = [
                     {
                         "label": "ဝိမတိဝိနောဒနီဋီကာ (ပ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဝိမတိဝိနောဒနီဋီကာ (ပ)",
                             "thai": "วิมติวิโนทนีฏีกา (ป)",
@@ -318,7 +302,6 @@ export const sidebar = [
                     {
                         "label": "ဝိမတိဝိနောဒနီဋီကာ (ဒု)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဝိမတိဝိနောဒနီဋီကာ (ဒု)",
                             "thai": "วิมติวิโนทนีฏีกา (ทุ)",
@@ -367,7 +350,6 @@ export const sidebar = [
                     {
                         "label": "ဓမ္မသင်္ဂဏီပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဓမ္မသင်္ဂဏီပါဠိ",
                             "thai": "ธมฺมสงฺคณีปาฬิ",
@@ -385,7 +367,6 @@ export const sidebar = [
                     {
                         "label": "ဝိဘင်္ဂပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဝိဘင်္ဂပါဠိ",
                             "thai": "วิภงฺคปาฬิ",
@@ -403,7 +384,6 @@ export const sidebar = [
                     {
                         "label": "ဓာတုကထာပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဓာတုကထာပါဠိ",
                             "thai": "ธาตุกถาปาฬิ",
@@ -421,7 +401,6 @@ export const sidebar = [
                     {
                         "label": "ပုဂ္ဂလပညတ္တိပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပုဂ္ဂလပညတ္တိပါဠိ",
                             "thai": "ปุคฺคลปญฺญตฺติปาฬิ",
@@ -439,7 +418,6 @@ export const sidebar = [
                     {
                         "label": "ကထာဝတ္ထုပါဠိ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ကထာဝတ္ထုပါဠိ",
                             "thai": "กถาวตฺถุปาฬิ",
@@ -457,7 +435,6 @@ export const sidebar = [
                     {
                         "label": "ယမကပါဠိ (ပ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ယမကပါဠိ (ပ)",
                             "thai": "ยมกปาฬิ (ป)",
@@ -475,7 +452,6 @@ export const sidebar = [
                     {
                         "label": "ယမကပါဠိ (ဒု)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ယမကပါဠိ (ဒု)",
                             "thai": "ยมกปาฬิ (ทุ)",
@@ -493,7 +469,6 @@ export const sidebar = [
                     {
                         "label": "ယမကပါဠိ (တ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ယမကပါဠိ (တ)",
                             "thai": "ยมกปาฬิ (ต)",
@@ -511,7 +486,6 @@ export const sidebar = [
                     {
                         "label": "ပဋ္ဌာနပါဠိ (ပ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပဋ္ဌာနပါဠိ (ပ)",
                             "thai": "ปฏฺฐานปาฬิ (ป)",
@@ -529,7 +503,6 @@ export const sidebar = [
                     {
                         "label": "ပဋ္ဌာနပါဠိ (ဒု)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပဋ္ဌာနပါဠိ (ဒု)",
                             "thai": "ปฏฺฐานปาฬิ (ทุ)",
@@ -547,7 +520,6 @@ export const sidebar = [
                     {
                         "label": "ပဋ္ဌာနပါဠိ (တ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပဋ္ဌာနပါဠိ (တ)",
                             "thai": "ปฏฺฐานปาฬิ (ต)",
@@ -565,7 +537,6 @@ export const sidebar = [
                     {
                         "label": "ပဋ္ဌာနပါဠိ (စ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပဋ္ဌာနပါဠိ (စ)",
                             "thai": "ปฏฺฐานปาฬิ (จ)",
@@ -583,7 +554,6 @@ export const sidebar = [
                     {
                         "label": "ပဋ္ဌာနပါဠိ (ပဉ္စ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပဋ္ဌာနပါဠိ (ပဉ္စ)",
                             "thai": "ปฏฺฐานปาฬิ (ปญฺจ)",
@@ -601,7 +571,6 @@ export const sidebar = [
                     {
                         "label": "ဓမ္မသင်္ဂဏီအဋ္ဌကထာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဓမ္မသင်္ဂဏီအဋ္ဌကထာ",
                             "thai": "ธมฺมสงฺคณีอฏฺฐกถา",
@@ -619,7 +588,6 @@ export const sidebar = [
                     {
                         "label": "ဝိဘင်္ဂအဋ္ဌကထာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဝိဘင်္ဂအဋ္ဌကထာ",
                             "thai": "วิภงฺคอฏฺฐกถา",
@@ -637,7 +605,6 @@ export const sidebar = [
                     {
                         "label": "ပဉ္စပကရဏအဋ္ဌကထာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပဉ္စပကရဏအဋ္ဌကထာ",
                             "thai": "ปญฺจปกรณอฏฺฐกถา",
@@ -655,7 +622,6 @@ export const sidebar = [
                     {
                         "label": "ဓမ္မသင်္ဂဏီမူလဋီကာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဓမ္မသင်္ဂဏီမူလဋီကာ",
                             "thai": "ธมฺมสงฺคณีมูลฏีกา",
@@ -673,7 +639,6 @@ export const sidebar = [
                     {
                         "label": "ဝိဘင်္ဂမူလဋီကာ (ပ)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဝိဘင်္ဂမူလဋီကာ (ပ)",
                             "thai": "วิภงฺคมูลฏีกา (ป)",
@@ -691,7 +656,6 @@ export const sidebar = [
                     {
                         "label": "ဝိဘင်္ဂအနုဋီကာ (ဒု)",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဝိဘင်္ဂအနုဋီကာ (ဒု)",
                             "thai": "วิภงฺคอนุฏีกา (ทุ)",
@@ -709,7 +673,6 @@ export const sidebar = [
                     {
                         "label": "ပဉ္စပကရဏမူလဋီကာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပဉ္စပကရဏမူလဋီကာ",
                             "thai": "ปญฺจปกรณมูลฏีกา",
@@ -727,7 +690,6 @@ export const sidebar = [
                     {
                         "label": "ဓမ္မသင်္ဂဏီအနုဋီကာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ဓမ္မသင်္ဂဏီအနုဋီကာ",
                             "thai": "ธมฺมสงฺคณีอนุฏีกา",
@@ -745,7 +707,6 @@ export const sidebar = [
                     {
                         "label": "ပဉ္စပကရဏအနုဋီကာ",
                         "collapsed": true,
-                        "items": [],
                         "translations": {
                             "mymr": "ပဉ္စပကရဏအနုဋီကာ",
                             "thai": "ปญฺจปกรณอนุฏีกา",

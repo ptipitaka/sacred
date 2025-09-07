@@ -4,6 +4,20 @@ import { sidebar } from './python/db/navigate.js';
 
 // https://astro.build/config
 export default defineConfig({
+	vite: {
+		server: {
+			fs: {
+				// เพิ่มเวลา timeout สำหรับการโหลดไฟล์ (หน่วยเป็นมิลลิวินาที)
+				// กำหนดให้เป็น 120 วินาที เพื่อให้มีเวลาประมวลผลนานขึ้น
+				watch: {
+					awaitWriteFinish: {
+						stabilityThreshold: 240000, 
+						pollInterval: 100
+					}
+				}
+			}
+		}
+	},    
 	integrations: [
 		starlight({
 			title: 'SACRED',

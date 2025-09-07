@@ -437,76 +437,72 @@ page: {page}
         print(f"\nAll {total_books} books processed successfully across {total_scripts} scripts!")
 
     def _build_sidebar_data(self):
-        """
-        Builds the sidebar data structure programmatically from database.
-        """
-        sidebar = []
+            """
+            Builds the sidebar data structure programmatically from database.
+            """
+            sidebar = []
 
-        # Assuming 'Tipiṭaka' is the main root, we create it first
-        tipitaka_translations = {
-            'my': 'တိပိဋက', 'th': 'ติปิฏก', 'si': 'තිපිටක', 'en': 'Tipiṭaka', 'hi': 'तिपिटक', 'kh': 'តិបិដក', 'lo': 'ຕິປິຏກ', 'ln': 'ᨲᩥᨸᩥᨭᨠ'
-        }
-        tipitaka_item = {
-            'label': 'Tipiṭaka',
-            'collapsed': True,
-            'translations': tipitaka_translations,
-            'items': []
-        }
+            # Assuming 'Tipiṭaka' is the main root, we create it first
+            tipitaka_translations = {
+                'my': 'တိပိဋက', 'th': 'ติปิฏก', 'si': 'තිපිටක', 'en': 'Tipiṭaka', 'hi': 'तिपिटक', 'kh': 'តិបិដក', 'lo': 'ຕິປິຏກ', 'ln': 'ᨲᩥᨸᩥᨭᨠ'
+            }
+            tipitaka_item = {
+                'label': 'Tipiṭaka',
+                'collapsed': True,
+                'translations': tipitaka_translations,
+                'items': []
+            }
 
-        # Structure of subsections from Astro config
-        subsection_structure = {
-            'vi': {'label': 'Vinayapiṭaka', 'translations': {'my': 'ဝိနယပိဋက', 'th': 'วินัยปิฎก', 'si': 'විනයපිටක', 'en': 'Vinayapiṭaka', 'hi': 'विनयपिटक', 'kh': 'វិនយបិដក', 'lo': 'ວິນຍປິຏກ', 'ln': 'ᩅᩥᨶᩥᨿᨸᩥᨭᨠ'}},
-            'su': {'label': 'Suttantapiṭaka', 'translations': {'my': 'သုတ္တန္တပိဋက', 'th': 'สุตฺตนฺตปิฏก', 'si': 'සුත්තන්තපිටක', 'en': 'Suttantapiṭaka', 'hi': 'सुत्तन्तपिटक', 'kh': 'សុត្តន្តបិដក', 'lo': 'ສຸຕ຺ຕນ຺ຕປິຏກ', 'ln': 'ᩈᩩᨲ᩠ᨲᨶ᩠ᨲᨸᩥᨭᨠ'}},
-            'bi': {'label': 'Abhidhammapiṭaka', 'translations': {'my': 'အဘိဓမ္မပိဋက', 'th': 'อภิธมฺมปิฏก', 'si': 'අභිධම්මපිටක', 'en': 'Abhidhammapiṭaka', 'hi': 'अभिधम्मपिटक', 'kh': 'អភិធម្មបិដក', 'lo': 'ອຠິຘມ຺ມປິຏກ', 'ln': 'ᩋᨽᩥᨵᨾ᩠ᨾᨸᩥᨭᨠ'}}
-        }
-        
-        # Build structure from database
-        for section_code, section_info in subsection_structure.items():
-            section_item = section_info.copy()
-            section_item['collapsed'] = True
-            section_item['items'] = []
+            # Structure of subsections from Astro config
+            subsection_structure = {
+                'vi': {'label': 'Vinayapiṭaka', 'translations': {'my': 'ဝိနယပိဋက', 'th': 'วินัยปิฎก', 'si': 'විනයපිටක', 'en': 'Vinayapiṭaka', 'hi': 'विनयपिटक', 'kh': 'វិនយបិដក', 'lo': 'ວິນຍປິຏກ', 'ln': 'ᩅᩥᨶᩥᨿᨸᩥᨭᨠ'}},
+                'su': {'label': 'Suttantapiṭaka', 'translations': {'my': 'သုတ္တန္တပိဋက', 'th': 'สุตฺตนฺตปิฏก', 'si': 'සුත්තන්තපිටක', 'en': 'Suttantapiṭaka', 'hi': 'सुत्तन्तपिटक', 'kh': 'សុត្តន្តបិដក', 'lo': 'ສຸຕ຺ຕນ຺ຕປິຏກ', 'ln': 'ᩈᩩᨲ᩠ᨲᨶ᩠ᨲᨸᩥᨭᨠ'}},
+                'bi': {'label': 'Abhidhammapiṭaka', 'translations': {'my': 'အဘိဓမ္မပိဋက', 'th': 'อภิธมฺมปิฏก', 'si': 'අභිධම්මපිටක', 'en': 'Abhidhammapiṭaka', 'hi': 'अभिधम्मपिटक', 'kh': 'អภិធម្មបិដក', 'lo': 'ອຠິຘມ຺ມປິຏກ', 'ln': 'ᩋᨽᩥᨵᨾ᩠ᨾᨸᩥᨭᨠ'}}
+            }
             
-            # Fetch books for the current section
-            books_in_section = self.db(self.db.books.category == section_code).select()
-            for book in books_in_section:
-                book_item = {
-                    'label': book.name,
-                    'collapsed': True,
-                    'items': [],
-                    'translations': {}
-                }
+            # Build structure from database
+            for section_code, section_info in subsection_structure.items():
+                section_item = section_info.copy()
+                section_item['collapsed'] = True
+                section_item['items'] = []
                 
-                # Get translations for book name
-                for script_code in self.script_codes:
-                    if script_code == 'mymr':
-                        book_item['translations'][script_code] = book.name
+                # Fetch books for the current section
+                books_in_section = self.db(self.db.books.category == section_code).select()
+                for book in books_in_section:
+                    # Determine book path
+                    book_abbr_romn = self.convert_text_with_aksharamukha(book.abbr, 'Burmese', 'IASTPali')
+                    
+                    # Check for subdivisions for the 'su' section
+                    if section_code == 'su' and book.category in self.sutta_subdivisions:
+                        book_path = f"mula/su/{book.category}/{book_abbr_romn}"
                     else:
-                        trans_config = self.get_transliteration_config(script_code)
-                        if trans_config:
-                            converted_name = self.convert_text_with_aksharamukha(book.name, trans_config['from'], trans_config['to'])
-                            book_item['translations'][script_code] = self.apply_text_corrections(converted_name, trans_config['correction'])
+                        book_path = f"mula/{book.category}/{book_abbr_romn}"
 
-                # Determine book path
-                # Note: This is simplified, as the actual build_tree.py logic is more complex
-                # and uses multiple levels (e.g., mula/su/di/sila)
-                book_abbr_romn = self.convert_text_with_aksharamukha(book.abbr, 'Burmese', 'IASTPali')
+                    book_item = {
+                        'label': book.name,
+                        'collapsed': True,
+                        'translations': {},
+                        'autogenerate': {
+                            'directory': book_path
+                        }
+                    }
+                    
+                    # Get translations for book name
+                    for script_code in self.script_codes:
+                        if script_code == 'mymr':
+                            book_item['translations'][script_code] = book.name
+                        else:
+                            trans_config = self.get_transliteration_config(script_code)
+                            if trans_config:
+                                converted_name = self.convert_text_with_aksharamukha(book.name, trans_config['from'], trans_config['to'])
+                                book_item['translations'][script_code] = self.apply_text_corrections(converted_name, trans_config['correction'])
+
+                    section_item['items'].append(book_item)
                 
-                # Check for subdivisions for the 'su' section
-                if section_code == 'su' and book.category in self.sutta_subdivisions:
-                    book_path = f"mula/su/{book.category}/{book_abbr_romn}"
-                else:
-                    book_path = f"mula/{book.category}/{book_abbr_romn}"
+                tipitaka_item['items'].append(section_item)
 
-                # Handle autogenerate links
-                book_item['autogenerate'] = {'directory': book_path}
-                
-                section_item['items'].append(book_item)
-            
-            tipitaka_item['items'].append(section_item)
-
-        sidebar.append(tipitaka_item)
-        return sidebar
-
+            sidebar.append(tipitaka_item)
+            return sidebar
 
     def _write_navigation_file(self, data):
         """
