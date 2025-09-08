@@ -18,7 +18,6 @@ class TipitakaBuilder:
         """Initialize the builder with configuration and database connection."""
         self.dal = None
         self.db = None
-        self.sidebar_data = {}
         self._setup_configuration()
         self._setup_paths()
         
@@ -94,8 +93,8 @@ class TipitakaBuilder:
         self.sutta_subdivision_info = {
             'di': {'label': 'Dīghanikāya', 'translations': {'my': 'ဒီဃနိကာယ်', 'th': 'ทีฆนิกาย', 'si': 'දීඝනිකාය', 'en': 'Dīghanikāya', 'hi': 'दीघनिकाय', 'kh': 'ទីឃនិកាយ', 'lo': 'ທີຄນິກາຍ', 'ln': 'ᨴᩦᨣᨶᩥᨠᩣᨿ'}},
             'ma': {'label': 'Majjhimanikāya', 'translations': {'my': 'မဇ္ဈိမနိကာယ်', 'th': 'มัชฌิมนิกาย', 'si': 'මජ්ඣිමනිකාය', 'en': 'Majjhimanikāya', 'hi': 'मज्झिमनिकाय', 'kh': 'មជ្ឈិមនិកាយ', 'lo': 'ມັຊຌິມນິກາຍ', 'ln': 'ᨾᨩ᩠ᨩᩥᨾᨶᩥᨠᩣᨿ'}},
-            'sa': {'label': 'Saṃyuttanikāya', 'translations': {'my': 'သံယုတ္တနိကာယ်', 'th': 'สํยุตตนิกาย', 'si': 'සංයුත්තනිකාය', 'en': 'Saṃyuttanikāya', 'hi': 'संयुत्तनिकाय', 'kh': 'សំយុត្តនិកាយ', 'lo': 'ສໍຍຸຕຕນິກາຍ', 'ln': 'ᨈᩘᨿᩩᨲ᩠ᨲᨶᩥᨠᩣᨿ'}},
-            'an': {'label': 'Aṅguttaranikāya', 'translations': {'my': 'အင်္ဂုတ္တရနိကာယ်', 'th': 'อังคุตตรนิกาย', 'si': 'අඞ්ගුත්තරනිකාය', 'en': 'Aṅguttaranikāya', 'hi': 'अङ्गुत्तरनिकाय', 'kh': 'អង្គុត្តរនិកាយ', 'lo': 'ອັງຄຸຕຕຣນິກາຍ', 'ln': 'ᨋᩘᨣᩩᨲ᩠ᨲᩁᨶᩥᨠᩣᨿ'}},
+            'sa': {'label': 'Saṃyuttanikāya', 'translations': {'my': 'သံယုတ္တနိကာယ်', 'th': 'สํยุตตนิกาย', 'si': 'සංයුත්තනිකාය', 'en': 'Saṃyuttanikāya', 'hi': 'संयुत्तनिकाय', 'kh': 'សំយុត្តនិកាយ', 'lo': 'ສໍຍຸຕຕນິກາຍ', 'ln': 'ᩈᩘᨿᩩᨲ᩠ᨲᨶᩥᨠᩣᨿ'}},
+            'an': {'label': 'Aṅguttaranikāya', 'translations': {'my': 'အင်္ဂုတ္တရနိကာယ်', 'th': 'อังคุตตรนิกาย', 'si': 'අඞ්ගුත්තරනිකාය', 'en': 'Aṅguttaranikāya', 'hi': 'अङ्गुत्तरनिकाय', 'kh': 'អង្គុត្តរនិកាយ', 'lo': 'ອັງຄຸຕຕຣນິກາຍ', 'ln': 'ᩋᩘᨣᩩᨲ᩠ᨲᩁᨶᩥᨠᩣᨿ'}},
             'ku': {'label': 'Khuddakanikāya', 'translations': {'my': 'ခုဒ္ဒကနိကာယ်', 'th': 'ขุททกนิกาย', 'si': 'ඛුද්දකනිකාය', 'en': 'Khuddakanikāya', 'hi': 'खुद्दकनिकाय', 'kh': 'ខុទ្ទកនិកាយ', 'lo': 'ຂຸທທກນິກາຍ', 'ln': 'ᨡᩩᨴ᩠ᨴᨠᨶᩥᨠᩣᨿ'}}
         }
         
@@ -104,6 +103,7 @@ class TipitakaBuilder:
 title: {name}
 sidebar: 
     order: {order}
+parent: {parent}
 page: {page}
 ---
 
@@ -116,7 +116,6 @@ page: {page}
         """Setup project paths for file generation."""
         self.project_root = Path(__file__).resolve().parent.parent.parent
         self.src_dir = self.project_root / "src" / "content" / "docs"
-        self.db_path = self.project_root / "python" / "db"
 
     def connect_database(self):
         """Establish database connection and load data."""
@@ -175,6 +174,26 @@ page: {page}
         
         return corrected_text
 
+    def create_directory_structure(self):
+        """Create the basic directory structure for all scripts."""
+        for script in self.script_codes:
+            script_dir = self.src_dir / script
+            
+            # Remove existing directory if it exists
+            if script_dir.exists():
+                shutil.rmtree(script_dir)
+            
+            # Create directory structure based on sections and subsections
+            for section in self.sections:
+                for subsection in self.subsections:
+                    subsection_dir = script_dir / section / subsection
+                    subsection_dir.mkdir(parents=True, exist_ok=True)
+                    
+                    # Create special subdirectories for 'su' (Sutta) section
+                    if subsection == "su":
+                        for subdivision in self.sutta_subdivisions:
+                            (subsection_dir / subdivision).mkdir(exist_ok=True)
+
     def get_book_tocs(self, book_id):
         """
         Get table of contents entries for a specific book from tocs table.
@@ -202,26 +221,74 @@ page: {page}
         return next((config for config in self.transliteration_config 
                     if config['code'] == script_code), None)
 
-    def determine_book_path(self, book_abbr, script_code, category):
+    def convert_book_content(self, book, chapters, script_code):
+        """
+        Convert book and chapter content to target script.
+        
+        Args:
+            book: Book record from database
+            chapters: List of chapter dictionaries
+            script_code: Target script code
+            
+        Returns:
+            Tuple of (converted_book_name, converted_book_abbr, converted_chapters)
+        """
+        # Default values (Myanmar script)
+        book_name = book.name
+        book_abbr = book.abbr
+        script_chapters = [chapter.copy() for chapter in chapters]
+        
+        # Skip conversion for Myanmar script (original)
+        if script_code == 'mymr':
+            return book_name, book_abbr, script_chapters
+        
+        # Get transliteration configuration
+        trans_config = self.get_transliteration_config(script_code)
+        if not trans_config:
+            return book_name, book_abbr, script_chapters
+        
+        # Convert book name
+        book_name = self.convert_text_with_aksharamukha(
+            book.name, trans_config['from'], trans_config['to']
+        )
+        book_name = self.apply_text_corrections(book_name, trans_config['correction'])
+        
+        # Convert book abbreviation
+        book_abbr = self.convert_text_with_aksharamukha(
+            book.abbr, trans_config['from'], trans_config['to']
+        )
+        book_abbr = self.apply_text_corrections(book_abbr, trans_config['correction'])
+        
+        # Convert chapter names
+        for chapter in script_chapters:
+            converted_name = self.convert_text_with_aksharamukha(
+                chapter['name'], trans_config['from'], trans_config['to']
+            )
+            converted_name = self.apply_text_corrections(converted_name, trans_config['correction'])
+            chapter['name'] = converted_name
+        
+        return book_name, book_abbr, script_chapters
+
+    def determine_book_path(self, book, book_abbr, script_code):
         """
         Determine the file system path for a book based on its category.
         
         Args:
+            book: Book record from database
             book_abbr: Book abbreviation (possibly converted)
             script_code: Target script code
-            category: Book category
             
         Returns:
             Path object for the book directory
         """
         base_path = self.src_dir / script_code / 'mula'
         
-        if category in self.sutta_subdivisions:
+        if book.category in self.sutta_subdivisions:
             # Categories under 'su' (Sutta) section
-            return base_path / 'su' / category / book_abbr
+            return base_path / 'su' / book.category / book_abbr
         else:
-            # Other categories (vi, bi, etc.)
-            return base_path / category / book_abbr
+            # Other categories (vi, ab, etc.)
+            return base_path / book.category / book_abbr
 
     def build_hierarchical_structure(self, book_tocs, book_abbr, script_code, max_level=None):
         """
@@ -291,18 +358,13 @@ page: {page}
         Create files and directories based on hierarchical structure.
         Each TOC item becomes a directory with an index.md file inside, except for the final level
         which becomes a .md file directly.
-        Returns the link for the book's root file.
 
         Args:
             structure: Hierarchical structure from build_hierarchical_structure
             book_path: Base path for the book
             book_abbr: Book abbreviation
             script_code: Target script code
-        
-        Returns:
-            str: link to the book's main page
         """
-        book_link = None
         # Ensure book path exists
         book_path.mkdir(parents=True, exist_ok=True)
         
@@ -355,9 +417,6 @@ page: {page}
                             print(f"Directory exists: {current_dir.exists()}")
                             print(f"Parent directory: {current_dir}")
                             raise
-                    
-                    if book_link is None:
-                        book_link = str(Path(book_path.relative_to(self.src_dir) / f"{dir_name}.md"))
                 else:
                     # For non-final levels, create directory and index.md as before
                     current_dir = current_dir / dir_name
@@ -390,51 +449,20 @@ page: {page}
                     
                     # Add this name to parent names for next level
                     parent_names.append(converted_name)
-                    
-                    if book_link is None:
-                        book_link = str(Path(book_path.relative_to(self.src_dir) / f"{dir_name}"))
 
-        return book_link
-
-    def build_content_and_sidebar(self, max_level=None):
-        """
-        Process all books and scripts in one loop to create files and sidebar data.
+    def process_mula_books(self, max_level=None):
+        """Process all books with basket = 'mula' and generate files for all scripts.
+        
+        Args:
+            max_level: Maximum level to include in the hierarchy (0=chapter, 1=title, etc.)
+                     None means include all levels
         """
         mula_books = self.db(self.db.books.basket == 'mula').select()
         total_books = len(mula_books)
+        total_scripts = len(self.script_codes)
         
-        print(f"Processing {total_books} mula books across all scripts...")
+        print(f"Processing {total_books} mula books across {total_scripts} scripts...")
         
-        # Prepare a nested dictionary to hold sidebar data for each script
-        for script_code in self.script_codes:
-            self.sidebar_data[script_code] = {
-                'label': 'Tipiṭaka',
-                'collapsed': True,
-                'translations': {
-                    'my': 'တိပိဋက', 'th': 'ติปิฏก', 'si': 'තිපිටක', 'en': 'Tipiṭaka', 'hi': 'तिपिटक', 'kh': 'តិបិដក', 'lo': 'ຕິປິຕກ', 'ln': 'ᨲᩥᨸᩥᨭᨠ'
-                },
-                'items': []
-            }
-        
-        # Prepare subsection structures for each script
-        subsection_map_by_script = {}
-        for script_code in self.script_codes:
-            subsection_map_by_script[script_code] = {
-                'vi': {'label': 'Vinayapiṭaka', 'translations': {'my': 'ဝိနယပိဋက', 'th': 'วินัยปิฎก', 'si': 'විනයපිටක', 'en': 'Vinayapiṭaka', 'hi': 'विनयपिटक', 'kh': 'វិនយបិដក', 'lo': 'ວິນຍປິຕກ', 'ln': 'ᩅᩥᨶᩥᨿᨸᩥᨭᨠ'}, 'collapsed': True, 'items': []},
-                'su': {'label': 'Suttantapiṭaka', 'translations': {'my': 'သုတ္တန္တပိဋက', 'th': 'สุตฺตนฺตปิฏก', 'si': 'සුත්තන්තපිටක', 'en': 'Suttantapiṭaka', 'hi': 'सुत्तन्तपिटक', 'kh': 'សុត្តន្តបិដក', 'lo': 'ສຸຕ຺ຕນ຺ຕປິຕກ', 'ln': 'ᩈᩩᨲ᩠ᨲᨶ᩠ᨲᨸᩥᨭᨠ'}, 'collapsed': True, 'items': []},
-                'bi': {'label': 'Abhidhammapiṭaka', 'translations': {'my': 'အဘိဓမ္မပိဋက', 'th': 'อภิธมฺมปิฏก', 'si': 'අභිධම්මපිටක', 'en': 'Abhidhammapiṭaka', 'hi': 'अभिधम्मपिटक', 'kh': 'អភិធម្មបិដក', 'lo': 'ອບິທມ຺ມປິຕກ', 'ln': 'ᩋᨽᩥᨵᨾ᩠ᨾᨸᩥᨭᨠ'}, 'collapsed': True, 'items': []},
-            }
-        
-        sutta_subdivision_map_by_script = {}
-        for script_code in self.script_codes:
-            sutta_subdivision_map_by_script[script_code] = {
-                'di': {'label': self.sutta_subdivision_info['di']['label'], 'translations': self.sutta_subdivision_info['di']['translations'], 'collapsed': True, 'items': []},
-                'ma': {'label': self.sutta_subdivision_info['ma']['label'], 'translations': self.sutta_subdivision_info['ma']['translations'], 'collapsed': True, 'items': []},
-                'sa': {'label': self.sutta_subdivision_info['sa']['label'], 'translations': self.sutta_subdivision_info['sa']['translations'], 'collapsed': True, 'items': []},
-                'an': {'label': self.sutta_subdivision_info['an']['label'], 'translations': self.sutta_subdivision_info['an']['translations'], 'collapsed': True, 'items': []},
-                'ku': {'label': self.sutta_subdivision_info['ku']['label'], 'translations': self.sutta_subdivision_info['ku']['translations'], 'collapsed': True, 'items': []},
-            }
-
         for book_idx, book in enumerate(mula_books, 1):
             print(f"\n[{book_idx}/{total_books}] Processing book: {book.name} (ID: {book.id})")
             
@@ -442,106 +470,209 @@ page: {page}
             book_tocs = self.get_book_tocs(book.id)
             toc_count = len(book_tocs)
             print(f"  └─ Found {toc_count} TOC entries")
-
+            
             if toc_count == 0:
                 print(f"  └─ No TOC entries found for book {book.id}, skipping...")
                 continue
-
+            
+            # Process each script
             for script_idx, script_code in enumerate(self.script_codes, 1):
-                # Only create directories and files if there are TOCs to process
-                print(f"    [{script_idx}/{len(self.script_codes)}] Converting to {script_code.upper()} script...", end=" ")
-
+                print(f"  [{script_idx}/{total_scripts}] Converting to {script_code.upper()} script...", end=" ")
+                
                 # Convert book name and abbreviation
-                trans_config = self.get_transliteration_config(script_code)
-                converted_book_name = book.name
-                converted_book_abbr = book.abbr
-                if trans_config:
-                    converted_book_name = self.convert_text_with_aksharamukha(
-                        book.name, trans_config['from'], trans_config['to']
-                    )
-                    converted_book_name = self.apply_text_corrections(converted_book_name, trans_config['correction'])
-                    converted_book_abbr = self.convert_text_with_aksharamukha(
-                        book.abbr, trans_config['from'], trans_config['to']
-                    )
-                    converted_book_abbr = self.apply_text_corrections(converted_book_abbr, trans_config['correction'])
+                book_name, book_abbr, _ = self.convert_book_content(
+                    book, [], script_code
+                )
                 
                 # Determine base book path
-                book_path = self.determine_book_path(converted_book_abbr, script_code, book.category)
-
-                # Remove old files if they exist
-                if book_path.exists():
-                    shutil.rmtree(book_path)
+                book_path = self.determine_book_path(book, book_abbr, script_code)
                 
                 # Build hierarchical structure with max_level
-                structure = self.build_hierarchical_structure(book_tocs, converted_book_abbr, script_code, max_level)
+                structure = self.build_hierarchical_structure(book_tocs, book_abbr, script_code, max_level)
                 
-                # Create files and directories and get the link
-                book_link = self.create_hierarchical_files(structure, book_path, converted_book_abbr, script_code)
-
-                # Append to sidebar data for the current script
-                book_item = {
-                    'label': converted_book_name,
-                    'collapsed': True,
-                    'translations': {},
-                }
-                
-                # Get translations for book name (all scripts for one book_item)
-                for code in self.script_codes:
-                    lang_code = self.language_codes[code]
-                    if code == 'mymr':
-                        book_item['translations'][lang_code] = book.name
-                    else:
-                        trans_config_temp = self.get_transliteration_config(code)
-                        if trans_config_temp:
-                            converted_name = self.convert_text_with_aksharamukha(book.name, trans_config_temp['from'], trans_config_temp['to'])
-                            book_item['translations'][lang_code] = self.apply_text_corrections(converted_name, trans_config_temp['correction'])
-
-                # Use autogenerate instead of link to ensure all files in the directory are included
-                if max_level is not None and max_level >= 0:
-                    # Remove script_code from path to exclude locale (e.g., romn/)
-                    relative_path = book_path.relative_to(self.src_dir / script_code)
-                    book_item['autogenerate'] = { 'directory': str(relative_path).replace("\\", "/") }
-                else:
-                    book_item['items'] = []
-                    
-                if book.category in self.sutta_subdivisions:
-                    sutta_subdivision_map_by_script[script_code][book.category]['items'].append(book_item)
-                else:
-                    subsection_map_by_script[script_code][book.category]['items'].append(book_item)
+                # Create files and directories
+                self.create_hierarchical_files(structure, book_path, book_abbr, script_code)
                 
                 print("✓ Complete")
+        
+        print(f"\nAll {total_books} books processed successfully across {total_scripts} scripts!")
 
-        # Now, assemble the final sidebar structure for all locales
-        for script_code in self.script_codes:
-            for subsection_code in self.subsections:
-                if subsection_code == 'su':
-                    sutta_items = []
+    def _build_sidebar_data(self, max_level=None):
+            """
+            Builds the sidebar data structure programmatically from database.
+            
+            Args:
+                max_level: Maximum level to include in the hierarchy (0=chapter, 1=title, etc.)
+                         None means include all levels
+            """
+            sidebar = []
+
+            # Define type hierarchy levels
+            type_hierarchy = ['chapter', 'title', 'subhead', 'subsubhead', 'subsubhead-head']
+            
+            # If max_level is specified, truncate the hierarchy
+            if max_level is not None and max_level < len(type_hierarchy):
+                type_hierarchy = type_hierarchy[:max_level + 1]
+
+            # Assuming 'Tipiṭaka' is the main root, we create it first
+            tipitaka_translations = {
+                'my': 'တိပိဋက', 'th': 'ติปิฏก', 'si': 'තිපිටක', 'en': 'Tipiṭaka', 'hi': 'तिपिटक', 'kh': 'តិបិដក', 'lo': 'ຕິປິຕກ', 'ln': 'ᨲᩥᨸᩥᨭᨠ'
+            }
+            tipitaka_item = {
+                'label': 'Tipiṭaka',
+                'collapsed': True,
+                'translations': tipitaka_translations,
+                'items': []
+            }
+
+            # Structure of subsections from Astro config
+            subsection_structure = {
+                'vi': {'label': 'Vinayapiṭaka', 'translations': {'my': 'ဝိနယပိဋက', 'th': 'วินัยปิฎก', 'si': 'විනයපිටක', 'en': 'Vinayapiṭaka', 'hi': 'विनयपिटक', 'kh': 'វិនយបិដក', 'lo': 'ວິນຍປິຕກ', 'ln': 'ᩅᩥᨶᩥᨿᨸᩥᨭᨠ'}},
+                'su': {'label': 'Suttantapiṭaka', 'translations': {'my': 'သုတ္တန္တပိဋက', 'th': 'สุตฺตนฺตปิฏก', 'si': 'සුත්තන්තපිටක', 'en': 'Suttantapiṭaka', 'hi': 'सुत्तन्तपिटक', 'kh': 'សុត្តន្តបិដក', 'lo': 'ສຸຕ຺ຕນ຺ຕປິຕກ', 'ln': 'ᩈᩩᨲ᩠ᨲᨶ᩠ᨲᨸᩥᨭᨠ'}},
+                'bi': {'label': 'Abhidhammapiṭaka', 'translations': {'my': 'အဘိဓမ္မပိဋက', 'th': 'อภิธมฺมปิฏก', 'si': 'අභිධම්මපිටක', 'en': 'Abhidhammapiṭaka', 'hi': 'अभिधम्मपिटक', 'kh': 'អភិធម្មបិដក', 'lo': 'ອຠິຘມ຺ມປິຕກ', 'ln': 'ᩋᨽᩥᨵᨾ᩠ᨾᨸᩥᨭᨠ'}}
+            }
+            
+            # Build structure from database
+            for section_code, section_info in subsection_structure.items():
+                section_item = section_info.copy()
+                section_item['collapsed'] = True
+                section_item['items'] = []
+                
+                if section_code == 'su':
+                    # Special handling for Suttantapiṭaka - create subdivision structure
+                    subdivision_items = {}
+                    
+                    # Initialize subdivision items
                     for subdivision_code in self.sutta_subdivisions:
-                        if sutta_subdivision_map_by_script[script_code][subdivision_code]['items']:
-                            sutta_items.append(sutta_subdivision_map_by_script[script_code][subdivision_code])
-                    if sutta_items:
-                        subsection_map_by_script[script_code]['su']['items'] = sutta_items
-                        self.sidebar_data[script_code]['items'].append(subsection_map_by_script[script_code]['su'])
+                        subdivision_info = self.sutta_subdivision_info[subdivision_code]
+                        subdivision_items[subdivision_code] = {
+                            'label': subdivision_info['label'],
+                            'collapsed': True,
+                            'translations': subdivision_info['translations'],
+                            'items': []
+                        }
+                    
+                    # Fetch books for sutta subdivisions
+                    for subdivision_code in self.sutta_subdivisions:
+                        books_in_subdivision = self.db((self.db.books.category == subdivision_code) & (self.db.books.basket == 'mula')).select()
+                        
+                        for book in books_in_subdivision:
+                            # Determine book path
+                            book_abbr_romn = self.convert_text_with_aksharamukha(book.abbr, 'Burmese', 'IASTPali')
+                            book_path = f"mula/su/{book.category}/{book_abbr_romn}"
+
+                            # Create book item with appropriate structure based on max_level
+                            if max_level is not None and max_level == 0:
+                                # If max_level is 0, book is the final level - no autogenerate
+                                book_item = {
+                                    'label': book.name,
+                                    'collapsed': True,
+                                    'translations': {},
+                                    'link': book_path
+                                }
+                            elif max_level is not None and max_level >= 1:
+                                # If max_level is 1 or higher, add autogenerate to the book level
+                                book_item = {
+                                    'label': book.name,
+                                    'collapsed': True,
+                                    'translations': {},
+                                    'autogenerate': {
+                                        'directory': book_path
+                                    }
+                                }
+                            else:
+                                # For no max_level specified, keep the original structure
+                                book_item = {
+                                    'label': book.name,
+                                    'collapsed': True,
+                                    'translations': {},
+                                    'items': []
+                                }
+                            
+                            # Get translations for book name
+                            for script_code in self.script_codes:
+                                language_code = self.language_codes[script_code]
+                                if script_code == 'mymr':
+                                    book_item['translations'][language_code] = book.name
+                                else:
+                                    trans_config = self.get_transliteration_config(script_code)
+                                    if trans_config:
+                                        converted_name = self.convert_text_with_aksharamukha(book.name, trans_config['from'], trans_config['to'])
+                                        book_item['translations'][language_code] = self.apply_text_corrections(converted_name, trans_config['correction'])
+
+                            subdivision_items[subdivision_code]['items'].append(book_item)
+                    
+                    # Add subdivision items to section (only if they have books)
+                    for subdivision_code in self.sutta_subdivisions:
+                        if subdivision_items[subdivision_code]['items']:
+                            section_item['items'].append(subdivision_items[subdivision_code])
+                
                 else:
-                    if subsection_map_by_script[script_code][subsection_code]['items']:
-                        self.sidebar_data[script_code]['items'].append(subsection_map_by_script[script_code][subsection_code])
+                    # Regular handling for vi and bi sections
+                    books_in_section = self.db((self.db.books.category == section_code) & (self.db.books.basket == 'mula')).select()
+                    for book in books_in_section:
+                        # Determine book path
+                        book_abbr_romn = self.convert_text_with_aksharamukha(book.abbr, 'Burmese', 'IASTPali')
+                        book_path = f"mula/{book.category}/{book_abbr_romn}"
 
-        print(f"\nAll {total_books} books processed successfully across {len(self.script_codes)} scripts!")
+                        # Create book item with appropriate structure based on max_level
+                        if max_level is not None and max_level == 0:
+                            # If max_level is 0, book is the final level - no autogenerate
+                            book_item = {
+                                'label': book.name,
+                                'collapsed': True,
+                                'translations': {},
+                                'link': book_path
+                            }
+                        elif max_level is not None and max_level >= 1:
+                            # If max_level is 1 or higher, add autogenerate to the book level
+                            book_item = {
+                                'label': book.name,
+                                'collapsed': True,
+                                'translations': {},
+                                'autogenerate': {
+                                    'directory': book_path
+                                }
+                            }
+                        else:
+                            # For no max_level specified, keep the original structure
+                            book_item = {
+                                'label': book.name,
+                                'collapsed': True,
+                                'translations': {},
+                                'items': []
+                            }
+                        
+                        # Get translations for book name
+                        for script_code in self.script_codes:
+                            language_code = self.language_codes[script_code]
+                            if script_code == 'mymr':
+                                book_item['translations'][language_code] = book.name
+                            else:
+                                trans_config = self.get_transliteration_config(script_code)
+                                if trans_config:
+                                    converted_name = self.convert_text_with_aksharamukha(book.name, trans_config['from'], trans_config['to'])
+                                    book_item['translations'][language_code] = self.apply_text_corrections(converted_name, trans_config['correction'])
 
-    def _write_navigation_file(self):
+                        section_item['items'].append(book_item)
+                
+                tipitaka_item['items'].append(section_item)
+
+            sidebar.append(tipitaka_item)
+            return sidebar
+
+    def _write_navigation_file(self, data):
         """
         Writes the sidebar data to navigate.js in the correct format.
-        This file is for Astro to consume, so it includes all locales.
         """
         # Ensure the output directory exists
-        output_dir = self.db_path
+        output_dir = self.project_root / "python" / "db"
         output_dir.mkdir(parents=True, exist_ok=True)
         
         output_path = output_dir / "navigate.js"
         
-        # Astro expects a single sidebar, so we use the default locale ('romn')
-        sidebar_content = self.sidebar_data['romn']['items']
-        js_content = f"export const sidebar = {json.dumps(sidebar_content, ensure_ascii=False, indent=4)};\n"
+        # Prepare content as a JavaScript module export
+        js_content = f"export const sidebar = {json.dumps(data, ensure_ascii=False, indent=4)};\n"
         
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(js_content)
@@ -554,24 +685,34 @@ page: {page}
         
         This method orchestrates the entire build process:
         1. Connect to database
-        2. Process and convert content, and generate Markdown files
-        3. Generate navigation file
+        2. Create directory structure
+        3. Process and convert content
+        4. Generate Markdown files
         
         Args:
             max_level: Maximum level to include in the hierarchy (0=chapter, 1=title, etc.)
                      None means include all levels
         """
+        # Store max_level as instance variable for _build_sidebar_data
         self.max_level = max_level
         print("Starting Tipitaka documentation build process...")
         
+        # Step 1: Connect to database and load data
         print("Connecting to database...")
         self.connect_database()
         
-        print("Processing books, generating files, and building navigation data...")
-        self.build_content_and_sidebar(max_level)
+        # Step 2: Create directory structure
+        print("Creating directory structure...")
+        self.create_directory_structure()
         
+        # Step 3: Process books and generate files
+        print("Processing books and generating files...")
+        self.process_mula_books(max_level)
+        
+        # Step 4: Generate navigation file
         print("Generating navigation file...")
-        self._write_navigation_file()
+        sidebar_data = self._build_sidebar_data(max_level=self.max_level)
+        self._write_navigation_file(sidebar_data)
         
         print("Build process completed successfully!")
 
