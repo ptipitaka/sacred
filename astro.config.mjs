@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeRapide from 'starlight-theme-rapide'
 import { sidebar } from './python/db/navigate.js';
 
 // https://astro.build/config
@@ -27,6 +28,7 @@ export default defineConfig({
 				label: 'GitHub', 
 				href: 'https://github.com/withastro/starlight' 
 			}],
+            plugins: [starlightThemeRapide()],
 			customCss: [
 				'./src/global.css',
 				'./src/fonts.css',
@@ -66,25 +68,7 @@ export default defineConfig({
 					lang: 'ln',
 				},
 			},
-			sidebar: [
-                {
-                    "label": "Tipiṭaka",
-                    "collapsed": true,
-                    "translations": {
-                        "my": "တိပိဋက",
-                        "th": "ติปิฏก",
-                        "si": "තිපිටක",
-                        "en": "Tipiṭaka",
-                        "hi": "तिपिटक",
-                        "kh": "តិបិដក",
-                        "lo": "ຕິປິຏກ",
-                        "ln": "য়ᩥᨶᩥᨭᨠ"
-                    },
-                    "autogenerate": {
-                        "directory": "mula"
-                    }
-                }
-            ],
+			sidebar: sidebar,
 		}),
 	],
 });
