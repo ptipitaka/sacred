@@ -38,6 +38,7 @@ src/content/docs/mymr/
 # other
 # python/
 python/json
+python/md
 .venv/
 .astro/
 .vscode/

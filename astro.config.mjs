@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeRapide from 'starlight-theme-rapide'
-import { sidebar } from './python/db/navigate.js';
+import { sidebarConfig } from './python/md/navigator.js'
 
 // https://astro.build/config
 export default defineConfig({
@@ -68,7 +68,7 @@ export default defineConfig({
 					lang: 'ln',
 				},
 			},
-			sidebar: sidebar,
+            sidebar: sidebarConfig
 		}),
 	],
 });
