@@ -9,15 +9,15 @@ export default defineConfig({
 		server: {
 			fs: {
 				// เพิ่มเวลา timeout สำหรับการโหลดไฟล์ (หน่วยเป็นมิลลิวินาที)
-				// กำหนดให้เป็น 120 วินาที เพื่อให้มีเวลาประมวลผลนานขึ้น
+				// กำหนดให้เป็น 250 วินาที เพื่อให้มีเวลาประมวลผลนานขึ้น
 				watch: {
 					awaitWriteFinish: {
-						stabilityThreshold: 120000, 
-						pollInterval: 100
+						stabilityThreshold: 300000, // 5 minutes
+						pollInterval: 1000
 					}
 				}
 			}
-		}
+		},
 	},    
 	integrations: [
 		starlight({

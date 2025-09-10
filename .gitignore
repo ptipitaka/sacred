@@ -24,21 +24,23 @@ pnpm-debug.log*
 # mula assets
 src/assets/
 
-# content
+# src
 src/content/docs/deva/
 src/content/docs/khmr/
 src/content/docs/lana/
 src/content/docs/laoo/
 src/content/docs/latn/
 src/content/docs/romn/
+!src/content/docs/romn/tipitaka/v/paraj
 src/content/docs/sinh/
 src/content/docs/thai/
 src/content/docs/mymr/
 
-# other
 # python/
 python/json
 python/md
+
+# other
 .venv/
 .astro/
 .vscode/

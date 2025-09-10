@@ -3,14 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "_comment_dev_original": "astro dev",
-    "dev": "npx --node-options='--max-old-space-size=8192' astro dev",
-    "dev:normal": "astro dev",
-    "_comment_start_original": "astro dev",
-    "start": "npx --node-options='--max-old-space-size=8192' astro dev",
-    "_comment_build_original": "astro build",
-    "build": "npx --node-options='--max-old-space-size=8192' astro build",
-    "build:normal": "astro build",
+    "start": "npx --node-options='--max-old-space-size=16384' astro dev",
+    "dev": "npx --node-options='--max-old-space-size=16384' astro dev",
+    "build": "npx --node-options='--max-old-space-size=16384' astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
