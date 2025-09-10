@@ -38,7 +38,8 @@ src/content/docs/mymr/
 
 # python/
 python/json
-python/md
+# python/md
+python/md/tipitaka
 
 # other
 .venv/
