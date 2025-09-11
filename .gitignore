@@ -42,9 +42,9 @@ python/json
 # python/md
 python/md/tipitaka/*
 # except
-!python/md/tipitaka/1V/
-!python/md/tipitaka/6D/
-!python/md/tipitaka/29Dhs/
+# !python/md/tipitaka/1V/
+# !python/md/tipitaka/6D/
+# !python/md/tipitaka/29Dhs/
 
 # other
 .venv/
