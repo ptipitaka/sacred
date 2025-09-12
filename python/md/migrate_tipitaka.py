@@ -9,6 +9,7 @@ import os
 import re
 import json
 import shutil
+import logging
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 from aksharamukha import transliterate
@@ -18,6 +19,19 @@ class TipitakaMigrator:
         self.source_dir = Path(source_dir)
         self.target_dir = Path(target_dir)
         self.locales = ['romn', 'mymr', 'thai', 'sinh', 'deva', 'khmr', 'laoo', 'lana']
+        
+        # Setup logging (silent by default to preserve existing behavior)
+        self.logger = logging.getLogger(__name__)
+        if not self.logger.handlers:
+            handler = logging.StreamHandler()
+            handler.setLevel(logging.ERROR)  # Only show errors by default
+            formatter = logging.Formatter('%(levelname)s: %(message)s')
+            handler.setFormatter(formatter)
+            self.logger.addHandler(handler)
+            self.logger.setLevel(logging.ERROR)
+        
+        # Cache for transliteration results (performance optimization)
+        self._transliteration_cache = {}
         
         # Transliteration configuration mapping - matches build_tree.py
         self.transliteration_config = {
@@ -207,14 +221,47 @@ class TipitakaMigrator:
         
         self.sidebar_data = {}
     
+    def _safe_read_file(self, file_path: Path) -> Optional[str]:
+        """Safely read file with better error handling"""
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                return f.read()
+        except FileNotFoundError:
+            # Preserve original behavior - silently handle missing files
+            return None
+        except UnicodeDecodeError as e:
+            self.logger.error(f"Unicode decode error in {file_path}: {e}")
+            return None
+        except Exception as e:
+            # Log error but don't break the flow
+            self.logger.error(f"Error reading {file_path}: {e}")
+            return None
+    
+    def _safe_write_file(self, file_path: Path, content: str) -> bool:
+        """Safely write file with better error handling"""
+        try:
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            return True
+        except Exception as e:
+            # Print error to maintain visibility like original code
+            print(f"Error writing {file_path}: {e}")
+            return False
+    
     def convert_text_with_aksharamukha(self, text: str, locale: str) -> str:
-        """Convert text using aksharamukha transliteration, preserving numbers and symbols"""
+        """Convert text using aksharamukha transliteration with caching and improved error handling"""
         if locale == 'romn':
             return text  # No conversion needed for roman (source text is already in roman)
         
+        # Check cache first for performance
+        cache_key = (text, locale)
+        if cache_key in self._transliteration_cache:
+            return self._transliteration_cache[cache_key]
+        
         config = self.transliteration_config.get(locale)
         if not config:
-            return text
+            return text  # Preserve original behavior - return unchanged text
         
         try:
             # Split text into segments, preserving numbers and symbols
@@ -233,15 +280,22 @@ class TipitakaMigrator:
                     try:
                         converted = transliterate.process(config['from'], config['to'], segment)
                         result_segments.append(converted)
-                    except:
-                        # If transliteration fails for this segment, keep original
+                    except Exception as e:
+                        # Log error but preserve original behavior - return unchanged segment
+                        self.logger.error(f"Transliteration failed for segment '{segment}': {e}")
                         result_segments.append(segment)
                 else:
                     result_segments.append(segment)
             
-            return ''.join(result_segments)
+            result = ''.join(result_segments)
+            
+            # Cache the result for performance
+            self._transliteration_cache[cache_key] = result
+            return result
+            
         except Exception as e:
-            # Silently return original text if transliteration fails completely
+            # Preserve original behavior - silently return original text
+            self.logger.error(f"Transliteration failed for locale {locale}: {e}")
             return text
         
     def clean_content(self, content: str, book_code: str = '') -> str:
@@ -253,8 +307,8 @@ class TipitakaMigrator:
         link_pattern = re.compile(r'(\[.*?\]\()(.+?)(\))')
 
         for line in lines:
-            # Skip breadcrumb lines (contains [Home](/) pattern)
-            if '[Home](/)' in line:
+            # Skip breadcrumb lines (contains [Home](/) pattern or breadcrumb-like structure)
+            if '[Home](/)' in line or ('/' in line and line.count('[') >= 2 and line.count(']') >= 2):
                 continue
             # Skip navigation lines (Go to previous/next page)
             if line.startswith('[Go to '):
@@ -276,7 +330,7 @@ class TipitakaMigrator:
         
         return '\n'.join(cleaned_lines).strip()
     
-    def create_frontmatter(self, title: str, sidebar_order: int, references: list = None, basket: str = None, breadcrumb: list = None) -> str:
+    def create_frontmatter(self, title: str, sidebar_order: int, references: list = None, basket: str = None) -> str:
         """Create Astro Starlight frontmatter"""
         frontmatter = f"""---
 title: "{title}"
@@ -296,15 +350,6 @@ type: "tipitaka\""""
         if basket:
             frontmatter += f"""
 basket: "{basket}\""""
-        
-        # Add breadcrumb if provided
-        if breadcrumb:
-            frontmatter += f"""
-breadcrumb:"""
-            for item in breadcrumb:
-                frontmatter += f"""
-  - label: "{item['label']}"
-    link: "{item['link']}\""""
         
         frontmatter += """
 ---
@@ -326,33 +371,31 @@ breadcrumb:"""
         if not zero_file.exists():
             return ""
             
-        try:
-            with open(zero_file, 'r', encoding='utf-8') as f:
-                content = f.read()
+        # Use safe file reading
+        content = self._safe_read_file(zero_file)
+        if content is None:
+            return ""  # Preserve original behavior
                 
-            # Find the Namo formula line
-            lines = content.split('\n')
-            namo_line = ""
-            
-            for line in lines:
-                # Look for the Namo formula pattern
-                if "Namo tassa Bhagavato Arahato Sammāsambuddhassa" in line:
-                    namo_line = line.strip()
-                    break
-                # Also check for numbered version
-                elif line.strip().startswith("1\\. Namo tassa"):
-                    namo_line = line.strip()
-                    break
-                    
-            if namo_line:
-                # Apply transliteration for non-roman locales
-                if locale != 'romn':
-                    namo_line = self.convert_text_with_aksharamukha(namo_line, locale)
-                return namo_line
+        # Find the Namo formula line
+        lines = content.split('\n')
+        namo_line = ""
+        
+        for line in lines:
+            # Look for the Namo formula pattern
+            if "Namo tassa Bhagavato Arahato Sammāsambuddhassa" in line:
+                namo_line = line.strip()
+                break
+            # Also check for numbered version
+            elif line.strip().startswith("1\\. Namo tassa"):
+                namo_line = line.strip()
+                break
                 
-        except Exception as e:
-            print(f"Error reading {zero_file}: {e}")
-            
+        if namo_line:
+            # Apply transliteration for non-roman locales
+            if locale != 'romn':
+                namo_line = self.convert_text_with_aksharamukha(namo_line, locale)
+            return namo_line
+                
         return ""
 
     def get_target_path(self, book_code: str, relative_path: str, locale: str = 'romn') -> Path:
@@ -427,112 +470,6 @@ breadcrumb:"""
         
         return None
     
-    def create_breadcrumb_path(self, book_code: str, relative_path: str = '', locale: str = 'romn', is_book_level_file: bool = False) -> list:
-        """Create breadcrumb path that goes back to the book's index.mdx only"""
-        breadcrumb = []
-        
-        # For files at book level (like 1.mdx, 2.mdx) that are not index.mdx, add breadcrumb to book index
-        if is_book_level_file or (relative_path and relative_path != '.'):
-            # Get book info
-            book_info = self.book_mappings.get(book_code, {})
-            book_name = book_info.get('name', book_code)
-            book_abbrev = book_info.get('abbrev', book_code.lower())
-            
-            # Convert book name to target locale
-            if locale != 'romn':
-                book_name = self.convert_text_with_aksharamukha(book_name, locale)
-            
-            # Create link back to book index
-            book_link = self.get_book_index_link(book_code, locale)
-            
-            breadcrumb.append({
-                'label': book_name,
-                'link': book_link
-            })
-            
-            # Add intermediate directories if any (only for files with relative paths)
-            if relative_path and relative_path != '.':
-                path_parts = relative_path.strip('/').split('/')
-                if len(path_parts) >= 1:  # Changed from > 1 to >= 1 to include single-level paths
-                    current_path = ''
-                    for i, part in enumerate(path_parts[:-1]):  # Exclude the last part (current file)
-                        current_path += f'/{part}' if current_path else part
-                        
-                        # Try to extract title from the corresponding .md file
-                        dir_name = self.get_title_for_path_part(book_code, current_path, part, locale)
-                        
-                        dir_link = f"{book_link.rstrip('/')}/{current_path}/"
-                        
-                        breadcrumb.append({
-                            'label': dir_name,
-                            'link': dir_link
-                        })
-        
-        return breadcrumb
-    
-    def get_title_for_path_part(self, book_code: str, current_path: str, part: str, locale: str = 'romn') -> str:
-        """Extract title from the corresponding .md file for a path part"""
-        # The goal is to find the .md file that contains the title for this path part
-        # For path "1/1-1", we need:
-        # - For part "1": look for book_code/1.md 
-        # - For part "1-1": look for book_code/1/1.1.md (convert 1-1 back to 1.1)
-        
-        # Convert part back to original format (replace dashes with dots)
-        original_part = part.replace('-', '.')
-        
-        # Build the path to the source directory for this part
-        path_parts = current_path.split('/') if current_path else []
-        
-        # Find the position of current part in the path
-        try:
-            part_index = path_parts.index(part)
-        except ValueError:
-            part_index = -1
-        
-        # Build potential file paths to check
-        potential_files = []
-        
-        if part_index == 0:
-            # This is the first level (e.g., "1" in "1/1-1")
-            # Look for book_code/1.md
-            potential_files.append(self.source_dir / book_code / f"{original_part}.md")
-        elif part_index > 0:
-            # This is a nested level (e.g., "1-1" in "1/1-1")
-            # Build the parent path and look for the file there
-            parent_parts = [p.replace('-', '.') for p in path_parts[:part_index]]
-            parent_path = '/'.join(parent_parts)
-            potential_files.append(self.source_dir / book_code / parent_path / f"{original_part}.md")
-        else:
-            # Fallback: try both direct and with parent path
-            potential_files.append(self.source_dir / book_code / f"{original_part}.md")
-            if current_path:
-                # Try in the parent directory structure
-                parent_parts = current_path.split('/')[:-1]  # Remove the last part
-                if parent_parts:
-                    parent_path = '/'.join([p.replace('-', '.') for p in parent_parts])
-                    potential_files.append(self.source_dir / book_code / parent_path / f"{original_part}.md")
-        
-        # Try each potential file location
-        for potential_file in potential_files:
-            if potential_file.exists():
-                try:
-                    with open(potential_file, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                    title = self.extract_title_from_content(content)
-                    if title != "Untitled":
-                        # Apply transliteration for non-roman locales
-                        if locale != 'romn':
-                            title = self.convert_text_with_aksharamukha(title, locale)
-                        return title
-                except Exception:
-                    continue
-        
-        # If we can't find a title, fall back to formatting the part name
-        dir_name = part.replace('-', ' ').title()
-        if locale != 'romn':
-            dir_name = self.convert_text_with_aksharamukha(dir_name, locale)
-        return dir_name
-    
     def get_book_index_link(self, book_code: str, locale: str = 'romn') -> str:
         """Get the link to the book's index.mdx"""
         book_abbrev = self.book_mappings.get(book_code, {}).get('abbrev', book_code.lower())
@@ -567,30 +504,21 @@ breadcrumb:"""
         
         return f"/{locale}/tipitaka/{book_abbrev}/"
     
-    def create_breadcrumb_content(self, breadcrumb: list) -> str:
-        """Create import and breadcrumb component content"""
-        if not breadcrumb:
-            return ""
-        
-        return "import Breadcrumb from '@components/Breadcrumb.astro';\n\n<Breadcrumb items={frontmatter.breadcrumb} />\n\n"
-    
     def migrate_file(self, source_file: Path, book_code: str, relative_path: str = '', locale: str = 'romn', sidebar_order: int = 1):
-        """Migrate a single file"""
+        """Migrate a single file with improved safety"""
         if not source_file.exists():
-            return
+            return  # Preserve original behavior
             
-        # Read source content
-        try:
-            with open(source_file, 'r', encoding='utf-8') as f:
-                content = f.read()
-        except Exception as e:
-            print(f"Error reading {source_file}: {e}")
+        # Use safe file reading
+        content = self._safe_read_file(source_file)
+        if content is None:
+            # Preserve original behavior - silently skip if can't read
             return
             
         # Clean content
         cleaned_content = self.clean_content(content, book_code)
         if not cleaned_content.strip():
-            return
+            return  # Preserve original behavior
             
         # Extract title
         title = self.extract_title_from_content(cleaned_content)
@@ -615,7 +543,7 @@ breadcrumb:"""
         # Create target path
         target_path = self.get_target_path(book_code, relative_path, locale)
         if not target_path:
-            print(f"Could not determine target path for {book_code}")
+            print(f"Could not determine target path for {book_code}")  # Preserve original print
             return
         
         # Determine basket based on book code using the structure mapping
@@ -642,27 +570,13 @@ breadcrumb:"""
             safe_stem = source_file.stem.lower().replace('.', '-')
             target_file = target_path / f"{safe_stem}.mdx"
             book_references = None  # No references for non-index files
-        target_file.parent.mkdir(parents=True, exist_ok=True)
-        
-        # Generate breadcrumb
-        # Check if this is a book-level file (not index.mdx and no relative path)
-        is_book_level_file = (not relative_path and source_file.name != f"{book_code}.md")
-        breadcrumb = self.create_breadcrumb_path(book_code, relative_path, locale, is_book_level_file)
-        
-        # Create breadcrumb content
-        breadcrumb_content = self.create_breadcrumb_content(breadcrumb)
         
         # Create content with frontmatter
-        frontmatter = self.create_frontmatter(title, sidebar_order, book_references, basket, breadcrumb)
-        final_content = frontmatter + breadcrumb_content + cleaned_content
+        frontmatter = self.create_frontmatter(title, sidebar_order, book_references, basket)
+        final_content = frontmatter + cleaned_content
         
-        # Write target file
-        try:
-            with open(target_file, 'w', encoding='utf-8') as f:
-                f.write(final_content)
-            # Reduced verbose output - only show errors
-        except Exception as e:
-            print(f"Error writing {target_file}: {e}")
+        # Use safe file writing
+        self._safe_write_file(target_file, final_content)
     
     def migrate_directory(self, source_dir: Path, book_code: str, relative_path: str = '', locale: str = 'romn'):
         """Recursively migrate a directory"""
@@ -991,29 +905,33 @@ export default sidebarConfig;
         return books
     
     def migrate_all(self, target_locales=None):
-        """Migrate all content for specified locales"""
+        """Migrate all content for specified locales with improved error handling"""
         if target_locales is None:
             target_locales = self.locales
         elif isinstance(target_locales, str):
             target_locales = [target_locales]
         
-        # Validate locales
+        # Validate locales (preserve original validation behavior)
         invalid_locales = [loc for loc in target_locales if loc not in self.locales]
         if invalid_locales:
             print(f"Error: Invalid locale(s): {', '.join(invalid_locales)}")
             print(f"Valid locales: {', '.join(self.locales)}")
-            return
+            return  # Preserve original behavior - return without exception
         
         print("Starting Tipitaka content migration...")
         print(f"Target locales: {', '.join(target_locales)}")
         
-        # Clean and create base directories for specified locales only
-        print("Cleaning target locale directories...")
-        for locale in target_locales:
-            locale_dir = self.target_dir / locale
-            if locale_dir.exists():
-                shutil.rmtree(locale_dir)
-            locale_dir.mkdir(parents=True, exist_ok=True)
+        # Add basic error handling for directory operations
+        try:
+            print("Cleaning target locale directories...")
+            for locale in target_locales:
+                locale_dir = self.target_dir / locale
+                if locale_dir.exists():
+                    shutil.rmtree(locale_dir)
+                locale_dir.mkdir(parents=True, exist_ok=True)
+        except Exception as e:
+            print(f"Error setting up directories: {e}")
+            return  # Exit gracefully like original behavior
         
         # Collect all books and sort them properly
         all_books = self._collect_all_books(self.structure)
@@ -1031,10 +949,18 @@ export default sidebarConfig;
         for locale in target_locales:
             print(f"\nProcessing locale: {locale}")
             for book_code in sorted_books:
-                self.migrate_book(book_code, locale, show_progress=True)
+                # Add basic error handling but continue processing
+                try:
+                    self.migrate_book(book_code, locale, show_progress=True)
+                except Exception as e:
+                    print(f"Error processing book {book_code} for locale {locale}: {e}")
+                    continue  # Continue with next book
         
-        # Create navigator.js (always include all locales for completeness)
-        self.create_navigator_js()
+        # Always try to create navigator.js
+        try:
+            self.create_navigator_js()
+        except Exception as e:
+            print(f"Error creating navigator.js: {e}")
         
         print(f"\nMigration completed for {len(target_locales)} locale(s)!")
 
