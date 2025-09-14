@@ -1,0 +1,93 @@
+---
+// Dynamic Breadcrumb Component for Tipitaka content
+import { buildBreadcrumb, cleanTitle } from '../utils/breadcrumb-builder.js';
+
+interface Props {
+  currentPath?: string;
+  collection?: string;
+}
+
+const { currentPath: propCurrentPath, collection = 'docs' } = Astro.props;
+
+// Use currentPath from props if provided, otherwise derive from Astro.url
+const currentPath = propCurrentPath || Astro.url.pathname.replace(/^\//, '').replace(/\/$/, '');
+
+// Only show breadcrumb for tipitaka pages
+const shouldShowBreadcrumb = currentPath.includes('tipitaka');
+
+// Build breadcrumb dynamically
+const breadcrumbItems = shouldShowBreadcrumb ? await buildBreadcrumb(currentPath, collection) : [];
+---
+
+{breadcrumbItems.length > 0 && (
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    {breadcrumbItems.map((item, index) => (
+      <span class="breadcrumb-item">
+        {index > 0 && <span class="separator" aria-hidden="true">›</span>}
+        <a href={item.link} class="breadcrumb-link">
+          {cleanTitle(item.title)}
+        </a>
+      </span>
+    ))}
+  </nav>
+)}
+
+<style>
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    flex-wrap: wrap;
+  }
+  
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .breadcrumb-link {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .breadcrumb-link:hover {
+    background-color: var(--sl-color-gray-6);
+    text-decoration: underline;
+  }
+  
+  .separator {
+    color: var(--sl-color-gray-3);
+    font-weight: normal;
+    margin: 0 0.25rem;
+    user-select: none;
+  }
+
+  /* Dark mode adjustments */
+  :global([data-theme="dark"]) .breadcrumb {
+    border-bottom-color: var(--sl-color-gray-4);
+  }
+
+  :global([data-theme="dark"]) .breadcrumb-link:hover {
+    background-color: var(--sl-color-gray-5);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 640px) {
+    .breadcrumb {
+      font-size: 0.75rem;
+    }
+    
+    .breadcrumb-link {
+      padding: 0.125rem 0.25rem;
+    }
+  }
+</style>

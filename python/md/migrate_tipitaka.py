@@ -573,7 +573,18 @@ basket: "{basket}\""""
         
         # Create content with frontmatter
         frontmatter = self.create_frontmatter(title, sidebar_order, book_references, basket)
-        final_content = frontmatter + cleaned_content
+        
+        # Add DynamicBreadcrumb for non-index and non-0 files
+        breadcrumb_content = ""
+        file_stem = target_file.stem
+        if file_stem != "index" and file_stem != "0":
+            breadcrumb_content = """import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+"""
+        
+        final_content = frontmatter + breadcrumb_content + cleaned_content
         
         # Use safe file writing
         self._safe_write_file(target_file, final_content)

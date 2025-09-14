@@ -35,7 +35,7 @@ src/content/docs/sinh/*
 src/content/docs/thai/*
 src/content/docs/mymr/*
 # except
-!src/content/docs/romn/tipitaka/v/paraj/
+# !src/content/docs/romn/tipitaka/v/paraj/
 
 # python/
 python/json
