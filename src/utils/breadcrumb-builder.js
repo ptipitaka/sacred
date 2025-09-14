@@ -11,108 +11,34 @@ import { getEntry } from 'astro:content';
 export function cleanTitle(title) {
   if (typeof title !== 'string') return title;
   
-  // Remove surrounding quotes
-  const cleaned = title.replace(/^["']|["']$/g, '');
+  // Remove surrounding quotes and return cleaned title
+  return title.replace(/^["']|["']$/g, '');
+}
+
+/**
+ * Get title from file's frontmatter or fallback to sectionName
+ * @param {string} sectionPath - Path to the file/folder
+ * @param {string} sectionName - Default name from path
+ * @param {string} collection - Content collection
+ * @returns {Promise<string>} Title to use in breadcrumb
+ */
+async function getTitleFromFrontmatter(sectionPath, sectionName, collection) {
+  try {
+    // Try to get entry from content collection
+    const entry = await getEntry(collection, sectionPath);
+    if (entry && entry.data && entry.data.title) {
+      // Remove quotes and clean the title
+      const title = cleanTitle(entry.data.title);
+      console.log(`Found frontmatter title for ${sectionPath}: "${title}"`);
+      return title;
+    }
+  } catch (error) {
+    // Entry not found or error occurred, fall back to sectionName
+    console.log(`No frontmatter title found for ${sectionPath}, using section name`);
+  }
   
-  // Map book codes to proper names
-  const bookNameMap = {
-    // Vinayapiṭaka (vi)
-    'para': 'Pārājikapāḷi',
-    'paci': 'Pācittiyapāḷi',
-    'maha': 'Mahāvaggapāḷi',
-    'cula': 'Cūḷavaggapāḷi',
-    'pari': 'Parivārapāḷi',
-    
-    // Suttantapiṭaka (su) - Main Nikāyas
-    'dn': 'Dīghanikāya',
-    'mn': 'Majjhimanikāya',
-    'sn': 'Saṃyuttanikāya',
-    'an': 'Aṅguttaranikāya',
-    'kn': 'Khuddakanikāya',
-    
-    // Dīghanikāya subsections
-    'sila': 'Sīlakkhandavaggapāḷi',
-    'maha': 'Mahāvaggapāḷi',
-    'pati': 'Pāthikavaggapāḷi',
-    
-    // Majjhimanikāya subsections  
-    'mula': 'Mūlapaṇṇāsapāḷi',
-    'majj': 'Majjhimapaṇṇāsapāḷi',
-    'upar': 'Uparipaṇṇāsapāḷi',
-    
-    // Saṃyuttanikāya subsections
-    'saga': 'Sagāthāvaggapāḷi',
-    'nida': 'Nidānavaggapāḷi',
-    'khan': 'Khandhavaggapāḷi',
-    'sala': 'Saḷāyatanavaggapāḷi',
-    'maha': 'Mahāvaggapāḷi',
-    
-    // Aṅguttaranikāya subsections
-    'eka': 'Ekakanipātapāḷi',
-    'duka': 'Dukanipātapāḷi',
-    'tika': 'Tikanipātapāḷi',
-    'catu': 'Catukkanipātapāḷi',
-    'panc': 'Pañcakanipātapāḷi',
-    'chak': 'Chakkanipātapāḷi',
-    'satt': 'Sattakanipātapāḷi',
-    'atth': 'Aṭṭhakanipātapāḷi',
-    'nava': 'Navakanipātapāḷi',
-    'dasa': 'Dasakanipātapāḷi',
-    'ekad': 'Ekādasakanipātapāḷi',
-    
-    // Abhidhammapiṭaka (ab)
-    'dhs': 'Dhammasaṅganīpāḷi',
-    'vbh': 'Vibhaṅgapāḷi',
-    'dht': 'Dhātukathāpāḷi',
-    'pu': 'Puggalapaññattipāḷi',
-    'kv': 'Kathāvatthupāḷi',
-    'yk': 'Yamaka',
-    'pt': 'Paṭṭhāna',
-    
-    // Yamaka subsections (yk)
-    'yk1': 'Mūlayamakapāḷi',
-    'yk2': 'Khandhayamakapāḷi',
-    'yk3': 'Āyatanayamakapāḷi',
-    'yk4': 'Dhātuyamakapāḷi',
-    'yk5': 'Saccayamakapāḷi',
-    'yk6': 'Saṅkhārayamakapāḷi',
-    'yk7': 'Anusayayamakapāḷi',
-    'yk8': 'Cittayamakapāḷi',
-    'yk9': 'Dhammayamakapāḷi',
-    'yk10': 'Indriyayamakapāḷi',
-    
-    // Paṭṭhāna subsections (pt)
-    'pt1': 'Tikamahāpakaraṇa',
-    'pt2': 'Tikamahāpakaraṇa',
-    'pt3': 'Tikamahāpakaraṇa',
-    'pt4': 'Tikamahāpakaraṇa',
-    'pt5': 'Tikamahāpakaraṇa',
-    'pt6': 'Tikamahāpakaraṇa',
-    
-    // Paṭṭhāna sections (pt deeper structure)
-    'anu': 'Anulomapaccuppannanidānapaṭṭhāna',
-    'pac': 'Paccuppannapaṭṭhāna', 
-    'anupac': 'Anulomapaccuppannapaṭṭhāna',
-    'pacanu': 'Paccuppannānulomāpaṭṭhāna',
-    
-    // Paṭṭhāna subsections 
-    'tikatika': 'Tikatikapaṭṭhāna',
-    'tikaduka': 'Tikadukapaṭṭhāna',
-    'dukatika': 'Dukatikapaṭṭhāna',
-    'dukaduka': 'Dukadukapaṭṭhāna',
-    'tika': 'Tikapaṭṭhāna',
-    'duka': 'Dukapaṭṭhāna',
-    'tika-1': 'Paṭhamatika',
-    'tika-2': 'Dutiyatika',
-    
-    // Baskets
-    'vi': 'Vinayapiṭaka',
-    'su': 'Suttantapiṭaka', 
-    'ab': 'Abhidhammapiṭaka'
-  };
-  
-  // Return mapped name if available, otherwise return cleaned title
-  return bookNameMap[cleaned.toLowerCase()] || cleaned;
+  // Fallback to original section name
+  return sectionName;
 }
 
 /**
@@ -222,8 +148,11 @@ export async function buildBreadcrumb(currentPath, collection = 'docs') {
     const isRootLevel = (i === rootLevel);
     const link = isRootLevel ? `/${sectionPath}/` : `/${sectionPath}`;
     
+    // Try to get title from frontmatter, fallback to section name
+    const title = await getTitleFromFrontmatter(sectionPath, sectionName, collection);
+    
     breadcrumb.push({
-      title: cleanTitle(sectionName),
+      title: title,
       link: link
     });
   }
