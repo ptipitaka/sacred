@@ -299,12 +299,15 @@ class TipitakaMigrator:
             return text
         
     def clean_content(self, content: str, book_code: str = '') -> str:
-        """Remove breadcrumb navigation, go to previous/next links, and fix internal links."""
+        """Remove breadcrumb navigation, go to previous/next links, title-only list items, and fix internal links."""
         lines = content.split('\n')
         cleaned_lines = []
         
         # Pattern to find markdown links like [text](link)
         link_pattern = re.compile(r'(\[.*?\]\()(.+?)(\))')
+        
+        # Pattern to find title-only list items (not links)
+        title_list_pattern = re.compile(r'^[ \t]*\*[ \t]+[A-Za-zāīūēōṅñṭḍṇḷṃṅḍṭṇḷṃāīūēōĀĪŪĒŌ, ]+[ \t]*$')
 
         for line in lines:
             # Skip breadcrumb lines (contains [Home](/) pattern or breadcrumb-like structure)
@@ -312,6 +315,9 @@ class TipitakaMigrator:
                 continue
             # Skip navigation lines (Go to previous/next page)
             if line.startswith('[Go to '):
+                continue
+            # Skip title-only list items (e.g., * Brahmajālasutta, * Sīla)
+            if title_list_pattern.match(line):
                 continue
 
             def fix_link(match):
