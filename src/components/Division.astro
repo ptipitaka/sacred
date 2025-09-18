@@ -1,0 +1,85 @@
+---
+/**
+ * Division Component for Tipitaka sections
+ * Represents a division/section with a number (e.g., (24.), (25.))
+ */
+
+export interface Props {
+  number: string;
+  bookId?: string; // Optional book identifier for PageFind metadata
+}
+
+const { number, bookId = '' } = Astro.props;
+
+// Generate PageFind metadata
+const metadataValue = bookId ? `div:${bookId}-${number}` : `div:${number}`;
+---
+
+<div 
+  data-pagefind-meta={metadataValue} 
+  class="division-section"
+  data-division={number}
+>
+  <span class="division-number">{number}.</span>
+  <div class="division-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .division-section {
+    margin: 1.5rem 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .division-number {
+    font-weight: semi-bold;
+    color: var(--sl-color-text-accent, #007acc);
+    font-size: 1em;
+    padding: 0;
+    line-height: 1.8;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  .division-content {
+    padding: 0;
+    line-height: 1.8;
+    margin-top: 0;
+    position: relative;
+    /* ไม่ใช้ flexbox layout เพื่อไม่ให้ส่งผลต่อ paragraph positioning */
+  }
+
+  /* Dark mode support */
+  :global([data-theme="dark"]) .division-number {
+    color: var(--sl-color-white);
+  }
+
+  /* Responsive design */
+  @media (max-width: 640px) {
+    .division-section {
+      margin: 1rem 0;
+    }
+    
+    .division-number {
+      font-size: 1em;
+      padding: 0; /* ลบ padding ใน responsive */
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .division-section {
+      break-inside: avoid;
+      margin: 1rem 0;
+    }
+    
+    .division-number {
+      color: #000;
+    }
+  }
+</style>

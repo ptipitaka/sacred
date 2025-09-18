@@ -1,0 +1,170 @@
+---
+/**
+ * Paragraph Component for Tipitaka paragraphs
+ * Represents a numbered paragraph (e.g., 41., 42., 43.)
+ */
+
+export interface Props {
+    number: string;
+    bookId?: string; // Optional book identifier for PageFind metadata
+    type?: 'normal' | 'center' | 'verses';
+}
+
+const { number, bookId = "", type = "normal" } = Astro.props;
+
+// Generate PageFind metadata
+const metadataValue = bookId ? `para:${bookId}-${number}` : `para:${number}`;
+const typeMetadata = `type:${type}`;
+---
+
+<div
+    data-pagefind-meta={metadataValue}
+    data-pagefind-meta-type={typeMetadata}
+    class={`paragraph-section paragraph-${type}`}
+    data-paragraph={number}
+    data-type={type}
+>
+    <span class="paragraph-number">{number}</span>
+    <div class="paragraph-content">
+        <slot />
+    </div>
+</div>
+
+
+
+<style>
+    /* ===== BASE STYLES ===== */
+    .paragraph-section {
+        margin: 1rem 0;
+        line-height: 1.8;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .paragraph-number {
+        font-style: italic;
+        color: #6b7280;
+        font-size: 0.5em;
+        opacity: 0.8;
+        margin-top: 1.2rem;
+        width: 2rem;
+        text-align: right;
+        flex-shrink: 0;
+        vertical-align: sub;
+        position: relative;
+        transform: translateX(1em);
+    }
+
+    .paragraph-content {
+        flex: 1;
+        color: var(--sl-color-text, #383838);
+        font-size: var(--sl-text-body, 1rem);
+        line-height: inherit;
+    }
+
+    .paragraph-content :global(p) {
+        margin: 0.5rem 0;
+    }
+
+    .paragraph-content :global(p:first-child) {
+        margin-top: 0;
+    }
+
+    .paragraph-content :global(p:last-child) {
+        margin-bottom: 0;
+    }
+
+    /* ===== PARAGRAPH TYPE STYLES ===== */
+    
+    /* Normal type - default justify */
+    .paragraph-normal .paragraph-content,
+    .paragraph-content {
+        text-align: justify;
+        text-indent: 2.8em;
+        margin-left: -2.5rem;
+    }
+
+    .paragraph-normal .paragraph-content :global(p) {
+        text-align: justify;
+    }
+
+    /* Center type */
+    .paragraph-center .paragraph-content {
+        text-align: center;
+    }
+
+    /* Verses type */
+    .paragraph-verses .paragraph-content {
+        text-align: left;
+        font-style: italic;
+        line-height: 1.6;
+        padding-left: 1em;
+    }
+
+    .paragraph-verses .paragraph-number {
+        transform: translateX(1em);
+    }
+
+    .paragraph-verses .paragraph-content :global(p) {
+        margin: 0.25rem 0;
+    }
+
+    /* ===== RESPONSIVE STYLES ===== */
+    
+    /* Mobile */
+    @media (max-width: 640px) {
+        .paragraph-section {
+            margin: 0.75rem 0;
+            gap: 0.25rem;
+        }
+
+        .paragraph-number {
+            font-size: 0.7em;
+        }
+
+        .paragraph-content {
+            font-size: var(--sl-text-sm, 0.875rem);
+        }
+
+        .paragraph-verses .paragraph-content {
+            padding-left: 0.75em;
+        }
+
+        .paragraph-verses .paragraph-number {
+            transform: translateX(0.75em);
+        }
+    }
+
+    /* Print */
+    @media print {
+        .paragraph-section {
+            margin: 0.5rem 0;
+            break-inside: avoid;
+        }
+
+        .paragraph-number,
+        .paragraph-content {
+            color: #000;
+        }
+    }
+
+    /* ===== THEME STYLES ===== */
+    
+    /* Dark mode */
+    :global([data-theme="dark"]) .paragraph-number {
+        color: #9ca3af;
+    }
+
+    :global([data-theme="dark"]) .paragraph-content {
+        color: var(--sl-color-text, #e5e7eb);
+    }
+
+    /* ===== INTERACTION STYLES ===== */
+    
+    /* Focus */
+    .paragraph-section:focus-within {
+        outline: 2px solid var(--sl-color-accent, #007acc);
+        outline-offset: 2px;
+        border-radius: 0.25rem;
+    }
+</style>

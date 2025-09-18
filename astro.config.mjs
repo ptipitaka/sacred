@@ -35,8 +35,8 @@ export default defineConfig({
 			}],
             plugins: [starlightThemeRapide()],
 			customCss: [
-				'./src/global.css',
-				'./src/fonts.css',
+				'./src/assets/css/global.css',
+				'./src/assets/css/fonts.css',
 			],
 			defaultLocale: 'romn',
 			locales: {

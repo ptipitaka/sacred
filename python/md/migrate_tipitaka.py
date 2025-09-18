@@ -49,127 +49,127 @@ class TipitakaMigrator:
         self.book_mappings = {
             # Vinayapiṭaka (vi)
             # parent directory is 'tipitaka/vi'
-            '1V': {'abbrev': 'para', 'name': 'Pārājikapāḷi', 'references': ['1V', 'vi-para']},
-            '2V': {'abbrev': 'paci', 'name': 'Pācittiyapāḷi', 'references': ['2V', 'vi-paci']},
-            '3V': {'abbrev': 'maha', 'name': 'Mahāvaggapāḷi', 'references': ['3V', 'vi-maha']},
-            '4V': {'abbrev': 'cula', 'name': 'Cūḷavaggapāḷi', 'references': ['4V', 'vi-cula']},
-            '5V': {'abbrev': 'pari', 'name': 'Parivārapāḷi', 'references': ['5V', 'vi-pari']},
+            '1V': {'abbrev': 'para', 'name': 'Pārājikapāḷi', 'references': ['1V', 'vi-para', 'para']},
+            '2V': {'abbrev': 'paci', 'name': 'Pācittiyapāḷi', 'references': ['2V', 'vi-paci', 'paci']},
+            '3V': {'abbrev': 'maha', 'name': 'Mahāvaggapāḷi', 'references': ['3V', 'vi-maha', 'maha']},
+            '4V': {'abbrev': 'cula', 'name': 'Cūḷavaggapāḷi', 'references': ['4V', 'vi-cula', 'cula']},
+            '5V': {'abbrev': 'pari', 'name': 'Parivārapāḷi', 'references': ['5V', 'vi-pari', 'pari']},
             
             # Dīghanikāya (dn)
             # parent directory is 'tipitaka/su/dn'
-            '6D': {'abbrev': 'sila', 'name': 'Sīlakkhandhavaggapāḷi', 'references': ['6D', 'dn-sila']},
-            '7D': {'abbrev': 'maha', 'name': 'Mahāvaggapāḷi', 'references': ['7D', 'dn-maha']},
-            '8D': {'abbrev': 'pthi', 'name': 'Pāthikavaggapāḷi', 'references': ['8D', 'dn-pthi']},
+            '6D': {'abbrev': 'sila', 'name': 'Sīlakkhandhavaggapāḷi', 'references': ['6D', 'dn-sila', 'sila']},
+            '7D': {'abbrev': 'maha', 'name': 'Mahāvaggapāḷi', 'references': ['7D', 'dn-maha', 'maha']},
+            '8D': {'abbrev': 'pthi', 'name': 'Pāthikavaggapāḷi', 'references': ['8D', 'dn-pthi', 'pthi']},
             
             # Majjhimanikāya (mn)
             # parent directory is 'tipitaka/su/mn'
-            '9M': {'abbrev': 'mula', 'name': 'Mūlapaṇṇāsapāḷi', 'references': ['9M', 'mn-mula']},
-            '10M': {'abbrev': 'majj', 'name': 'Majjhimapaṇṇāsapāḷi', 'references': ['10M', 'mn-majj']},
-            '11M': {'abbrev': 'upar', 'name': 'Uparipaṇṇāsapāḷi', 'references': ['11M', 'mn-upar']},
+            '9M': {'abbrev': 'mula', 'name': 'Mūlapaṇṇāsapāḷi', 'references': ['9M', 'mn-mula', 'mula']},
+            '10M': {'abbrev': 'majj', 'name': 'Majjhimapaṇṇāsapāḷi', 'references': ['10M', 'mn-majj', 'majj']},
+            '11M': {'abbrev': 'upar', 'name': 'Uparipaṇṇāsapāḷi', 'references': ['11M', 'mn-upar', 'upar']},
             
             # Saṃyuttanikāya (sn)
             # parent directory is 'tipitaka/su/sn'
-            '12S1': {'abbrev': 'saga', 'name': 'Sagāthāvaggasaṃyuttapāḷi', 'references': ['12S1', 'sn-saga']},
-            '12S2': {'abbrev': 'nida', 'name': 'Nidānavaggasaṃyuttapāḷi', 'references': ['12S2', 'sn-nida']},
-            '13S3': {'abbrev': 'khan', 'name': 'Khandhavaggasaṃyuttapāḷi', 'references': ['13S3', 'sn-khan']},
-            '13S4': {'abbrev': 'sala', 'name': 'Saḷāyatanavaggasaṃyuttapāḷi', 'references': ['13S4', 'sn-sala']},
-            '14S5': {'abbrev': 'maha', 'name': 'Mahāvaggasaṃyuttapāḷi', 'references': ['14S5', 'sn-maha']},
+            '12S1': {'abbrev': 'saga', 'name': 'Sagāthāvaggasaṃyuttapāḷi', 'references': ['12S1', 'sn-saga', 'saga']},
+            '12S2': {'abbrev': 'nida', 'name': 'Nidānavaggasaṃyuttapāḷi', 'references': ['12S2', 'sn-nida', 'nida']},
+            '13S3': {'abbrev': 'khan', 'name': 'Khandhavaggasaṃyuttapāḷi', 'references': ['13S3', 'sn-khan', 'khan']},
+            '13S4': {'abbrev': 'sala', 'name': 'Saḷāyatanavaggasaṃyuttapāḷi', 'references': ['13S4', 'sn-sala', 'sala']},
+            '14S5': {'abbrev': 'maha', 'name': 'Mahāvaggasaṃyuttapāḷi', 'references': ['14S5', 'sn-maha', 'maha']},
             
             # Aṅguttaranikāya (an)
             # parent directory is 'tipitaka/su/an'
-            '15A1': {'abbrev': 'eka', 'name': 'Ekakanipātapāḷi', 'references': ['15A1', 'an-eka']},
-            '15A2': {'abbrev': 'duka', 'name': 'Dukanipātapāḷi', 'references': ['15A2', 'an-duka']},
-            '15A3': {'abbrev': 'tika', 'name': 'Tikanipātapāḷi', 'references': ['15A3', 'an-tika']},
-            '15A4': {'abbrev': 'catu', 'name': 'Catukkanipātapāḷi', 'references': ['15A4', 'an-catu']},
-            '16A5': {'abbrev': 'panc', 'name': 'Pañcakanipātapāḷi', 'references': ['16A5', 'an-panc']},
-            '16A6': {'abbrev': 'chak', 'name': 'Chakkanipātapāḷi', 'references': ['16A6', 'an-chak']},
-            '16A7': {'abbrev': 'satt', 'name': 'Sattakanipātapāḷi', 'references': ['16A7', 'an-satt']},
-            '17A8': {'abbrev': 'atth', 'name': 'Aṭṭhakanipātapāḷi', 'references': ['17A8', 'an-atth']},
-            '17A9': {'abbrev': 'nava', 'name': 'Navakanipātapāḷi', 'references': ['17A9', 'an-nava']},
-            '17A10': {'abbrev': 'dasa', 'name': 'Dasakanipātapāḷi', 'references': ['17A10', 'an-dasa']},
-            '17A11': {'abbrev': 'ekad', 'name': 'Ekādasakanipātapāḷi', 'references': ['17A11', 'an-ekad']},
+            '15A1': {'abbrev': 'a1', 'name': 'Ekakanipātapāḷi', 'references': ['15A1', 'an-eka', 'a1']},
+            '15A2': {'abbrev': 'a2', 'name': 'Dukanipātapāḷi', 'references': ['15A2', 'an-duka', 'a2']},
+            '15A3': {'abbrev': 'a3', 'name': 'Tikanipātapāḷi', 'references': ['15A3', 'an-tika', 'a3']},
+            '15A4': {'abbrev': 'a4', 'name': 'Catukkanipātapāḷi', 'references': ['15A4', 'an-catu', 'a4']},
+            '16A5': {'abbrev': 'a5', 'name': 'Pañcakanipātapāḷi', 'references': ['16A5', 'an-panc', 'a5']},
+            '16A6': {'abbrev': 'a6', 'name': 'Chakkanipātapāḷi', 'references': ['16A6', 'an-chak', 'a6']},
+            '16A7': {'abbrev': 'a7', 'name': 'Sattakanipātapāḷi', 'references': ['16A7', 'an-satt', 'a7']},
+            '17A8': {'abbrev': 'a8', 'name': 'Aṭṭhakanipātapāḷi', 'references': ['17A8', 'an-atth', 'a8']},
+            '17A9': {'abbrev': 'a9', 'name': 'Navakanipātapāḷi', 'references': ['17A9', 'an-nava', 'a9']},
+            '17A10': {'abbrev': 'a10', 'name': 'Dasakanipātapāḷi', 'references': ['17A10', 'an-dasa', 'a10']},
+            '17A11': {'abbrev': 'a11', 'name': 'Ekādasakanipātapāḷi', 'references': ['17A11', 'an-ekad', 'a11']},
             
             # Khuddakanikāya (kn)
             # parent directory is 'tipitaka/su/kn'
-            '18Kh': {'abbrev': 'kh', 'name': 'Khuddakapāṭhapāḷi', 'references': ['18Kh', 'kn-kh']},
-            '18Dh': {'abbrev': 'dh', 'name': 'Dhammapadapāḷi', 'references': ['18Dh', 'kn-dh']},
-            '18Ud': {'abbrev': 'ud', 'name': 'Udānapāḷi', 'references': ['18Ud', 'kn-ud']},
-            '18It': {'abbrev': 'it', 'name': 'Itivuttakapāḷi', 'references': ['18It', 'kn-it']},
-            '18Sn': {'abbrev': 'sn', 'name': 'Suttanipātapāḷi', 'references': ['18Sn', 'kn-sn']},
-            '19Vv': {'abbrev': 'vv', 'name': 'Vimānavatthupāḷi', 'references': ['19Vv', 'kn-vv']},
-            '19Pv': {'abbrev': 'pv', 'name': 'Petavatthupāḷi', 'references': ['19Pv', 'kn-pv']},
-            '19Th1': {'abbrev': 'thrag', 'name': 'Theragāthāpāḷi', 'references': ['19Th1', 'kn-thrag']},
-            '19Th2': {'abbrev': 'thrig', 'name': 'Therīgāthāpāḷi', 'references': ['19Th2', 'kn-thrig']},
-            '20Ap1': {'abbrev': 'thraa', 'name': 'Therāpadānapāḷi', 'references': ['20Ap1', 'kn-thraa']},
-            '20Ap2': {'abbrev': 'thria', 'name': 'Therīapadānapāḷi', 'references': ['20Ap2', 'kn-thria']},
-            '21Bu': {'abbrev': 'bu', 'name': 'Buddhavaṃsapāḷi', 'references': ['21Bu', 'kn-bu']},
-            '21Cp': {'abbrev': 'cp', 'name': 'Cariyāpiṭakapāḷi', 'references': ['21Cp', 'kn-cp']},
-            '22J': {'abbrev': 'ja-1', 'name': 'Jātakapāḷi 1', 'references': ['22J', 'kn-ja-1']},
-            '23J': {'abbrev': 'ja-2', 'name': 'Jātakapāḷi 2', 'references': ['23J', 'kn-ja-2']},
-            '24Mn': {'abbrev': 'mn', 'name': 'Mahāniddesapāḷi', 'references': ['24Mn', 'kn-mn']},
-            '25Cn': {'abbrev': 'cn', 'name': 'Cūḷaniddesapāḷi', 'references': ['25Cn', 'kn-cn']},
-            '26Ps': {'abbrev': 'ps', 'name': 'Paṭisambhidāmaggapāḷi', 'references': ['26Ps', 'kn-ps']},
-            '27Ne': {'abbrev': 'ne', 'name': 'Nettipāḷi', 'references': ['27Ne', 'kn-ne']},
-            '27Pe': {'abbrev': 'pe', 'name': 'Peṭakopadesapāḷi', 'references': ['27Pe', 'kn-pe']},
-            '28Mi': {'abbrev': 'mi', 'name': 'Milindapañhapāḷi', 'references': ['28Mi', 'kn-mi']},
+            '18Kh': {'abbrev': 'kh', 'name': 'Khuddakapāṭhapāḷi', 'references': ['18Kh', 'kn-kh', 'kh']},
+            '18Dh': {'abbrev': 'dh', 'name': 'Dhammapadapāḷi', 'references': ['18Dh', 'kn-dh', 'dh']},
+            '18Ud': {'abbrev': 'ud', 'name': 'Udānapāḷi', 'references': ['18Ud', 'kn-ud', 'ud']},
+            '18It': {'abbrev': 'it', 'name': 'Itivuttakapāḷi', 'references': ['18It', 'kn-it', 'it']},
+            '18Sn': {'abbrev': 'sn', 'name': 'Suttanipātapāḷi', 'references': ['18Sn', 'kn-sn', 'sn']},
+            '19Vv': {'abbrev': 'vv', 'name': 'Vimānavatthupāḷi', 'references': ['19Vv', 'kn-vv', 'vv']},
+            '19Pv': {'abbrev': 'pv', 'name': 'Petavatthupāḷi', 'references': ['19Pv', 'kn-pv', 'pv']},
+            '19Th1': {'abbrev': 'thrag', 'name': 'Theragāthāpāḷi', 'references': ['19Th1', 'kn-thrag', 'thrag']},
+            '19Th2': {'abbrev': 'thrig', 'name': 'Therīgāthāpāḷi', 'references': ['19Th2', 'kn-thrig', 'thrig']},
+            '20Ap1': {'abbrev': 'thraa', 'name': 'Therāpadānapāḷi', 'references': ['20Ap1', 'kn-thraa', 'thraa']},
+            '20Ap2': {'abbrev': 'thria', 'name': 'Therīapadānapāḷi', 'references': ['20Ap2', 'kn-thria', 'thria']},
+            '21Bu': {'abbrev': 'bu', 'name': 'Buddhavaṃsapāḷi', 'references': ['21Bu', 'kn-bu', 'bu']},
+            '21Cp': {'abbrev': 'cp', 'name': 'Cariyāpiṭakapāḷi', 'references': ['21Cp', 'kn-cp', 'cp']},
+            '22J': {'abbrev': 'ja-1', 'name': 'Jātakapāḷi 1', 'references': ['22J', 'kn-ja-1', 'ja-1']},
+            '23J': {'abbrev': 'ja-2', 'name': 'Jātakapāḷi 2', 'references': ['23J', 'kn-ja-2', 'ja-2']},
+            '24Mn': {'abbrev': 'mn', 'name': 'Mahāniddesapāḷi', 'references': ['24Mn', 'kn-mn', 'mn']},
+            '25Cn': {'abbrev': 'cn', 'name': 'Cūḷaniddesapāḷi', 'references': ['25Cn', 'kn-cn', 'cn']},
+            '26Ps': {'abbrev': 'ps', 'name': 'Paṭisambhidāmaggapāḷi', 'references': ['26Ps', 'kn-ps', 'ps']},
+            '27Ne': {'abbrev': 'ne', 'name': 'Nettipāḷi', 'references': ['27Ne', 'kn-ne', 'ne']},
+            '27Pe': {'abbrev': 'pe', 'name': 'Peṭakopadesapāḷi', 'references': ['27Pe', 'kn-pe', 'pe']},
+            '28Mi': {'abbrev': 'mi', 'name': 'Milindapañhapāḷi', 'references': ['28Mi', 'kn-mi', 'mi']},
             
             # Abhidhammapiṭaka (ab)
             # parent directory is 'tipitaka/ab'
-            '29Dhs': {'abbrev': 'dhs', 'name': 'Dhammasaṅgaṇīpāḷi', 'references': ['29Dhs', 'ab-dhs']},
-            '30Vbh': {'abbrev': 'vbh', 'name': 'Vibhaṅgapāḷi', 'references': ['30Vbh', 'ab-vbh']},
-            '31Dht': {'abbrev': 'dht', 'name': 'Dhātukathāpāḷi', 'references': ['31Dht', 'ab-dht']},
-            '31Pu': {'abbrev': 'pu', 'name': 'Puggalapaññattipāḷi', 'references': ['31Pu', 'ab-pu']},
-            '32Kv': {'abbrev': 'kv', 'name': 'Kathāvatthupāḷi', 'references': ['32Kv', 'ab-kv']},
+            '29Dhs': {'abbrev': 'dhs', 'name': 'Dhammasaṅgaṇīpāḷi', 'references': ['29Dhs', 'ab-dhs', 'dhs']},
+            '30Vbh': {'abbrev': 'vbh', 'name': 'Vibhaṅgapāḷi', 'references': ['30Vbh', 'ab-vbh', 'vbh']},
+            '31Dht': {'abbrev': 'dht', 'name': 'Dhātukathāpāḷi', 'references': ['31Dht', 'ab-dht', 'dht']},
+            '31Pu': {'abbrev': 'pu', 'name': 'Puggalapaññattipāḷi', 'references': ['31Pu', 'ab-pu', 'pu']},
+            '32Kv': {'abbrev': 'kv', 'name': 'Kathāvatthupāḷi', 'references': ['32Kv', 'ab-kv', 'kv']},
             
             # Yamaka (ab/yk)
             # parent directory is 'tipitaka/ab/yk'
-            '33Y1': {'abbrev': 'yk1', 'name': 'Mūlayamakapāḷi', 'references': ['33Y1', 'yk1']},
-            '33Y2': {'abbrev': 'yk2', 'name': 'Khandhayamakapāḷi', 'references': ['33Y2', 'yk2']},
-            '33Y3': {'abbrev': 'yk3', 'name': 'Āyatanayamakapāḷi', 'references': ['33Y3', 'yk3']},
-            '33Y4': {'abbrev': 'yk4', 'name': 'Dhātuyamakapāḷi', 'references': ['33Y4', 'yk4']},
-            '33Y5': {'abbrev': 'yk5', 'name': 'Saccayamakapāḷi', 'references': ['33Y5', 'yk5']},
-            '34Y6': {'abbrev': 'yk6', 'name': 'Saṅkhārayamakapāḷi', 'references': ['34Y6', 'yk6']},
-            '34Y7': {'abbrev': 'yk7', 'name': 'Anusayayamakapāḷi', 'references': ['34Y7', 'yk7']},
-            '34Y8': {'abbrev': 'yk8', 'name': 'Cittayamakapāḷi', 'references': ['34Y8', 'yk8']},
-            '35Y9': {'abbrev': 'yk9', 'name': 'Dhammayamakapāḷi', 'references': ['35Y9', 'yk9']},
-            '35Y10': {'abbrev': 'yk10', 'name': 'Indriyayamakapāḷi', 'references': ['35Y10', 'yk10']},
+            '33Y1': {'abbrev': 'y1', 'name': 'Mūlayamakapāḷi', 'references': ['33Y1', 'y1']},
+            '33Y2': {'abbrev': 'y2', 'name': 'Khandhayamakapāḷi', 'references': ['33Y2', 'y2']},
+            '33Y3': {'abbrev': 'y3', 'name': 'Āyatanayamakapāḷi', 'references': ['33Y3', 'y3']},
+            '33Y4': {'abbrev': 'y4', 'name': 'Dhātuyamakapāḷi', 'references': ['33Y4', 'y4']},
+            '33Y5': {'abbrev': 'y5', 'name': 'Saccayamakapāḷi', 'references': ['33Y5', 'y5']},
+            '34Y6': {'abbrev': 'y6', 'name': 'Saṅkhārayamakapāḷi', 'references': ['34Y6', 'y6']},
+            '34Y7': {'abbrev': 'y7', 'name': 'Anusayayamakapāḷi', 'references': ['34Y7', 'y7']},
+            '34Y8': {'abbrev': 'y8', 'name': 'Cittayamakapāḷi', 'references': ['34Y8', 'y8']},
+            '35Y9': {'abbrev': 'y9', 'name': 'Dhammayamakapāḷi', 'references': ['35Y9', 'y9']},
+            '35Y10': {'abbrev': 'y10', 'name': 'Indriyayamakapāḷi', 'references': ['35Y10', 'y10']},
             
             # Paṭṭhāna (ab/pt) - Dhammānuloma
             # parent directory is 'tipitaka/ab/pt/anu'
-            '36P1': {'abbrev': 'tika-1', 'name': 'Tikapaṭṭhānapāḷi 1', 'references': ['36P1', 'pt-anu-tika-1', 'pt1.1']},
-            '37P1': {'abbrev': 'tika-2', 'name': 'Tikapaṭṭhānapāḷi 2', 'references': ['37P1', 'pt-anu-tika-2', 'pt1.2']},
-            '38P2': {'abbrev': 'duka', 'name': 'Dukapaṭṭhānapāḷi', 'references': ['38P2', 'pt-anu-duka', 'pt2']},
-            '39P3': {'abbrev': 'dukatika', 'name': 'Dukatikapaṭṭhānapāḷi', 'references': ['39P3', 'pt-anu-dukatika', 'pt3']},
-            '39P4': {'abbrev': 'tikaduka', 'name': 'Tikadukapaṭṭhānapāḷi', 'references': ['39P4', 'pt-anu-tikaduka', 'pt4']},
-            '39P5': {'abbrev': 'tikatika', 'name': 'Tikatikapaṭṭhānapāḷi', 'references': ['39P5', 'pt-anu-tikatika', 'pt5']},
-            '39P6': {'abbrev': 'dukaduka', 'name': 'Dukadukapaṭṭhānapāḷi', 'references': ['39P6', 'pt-anu-dukaduka', 'pt6']},
+            '36P1': {'abbrev': 'p1-1', 'name': 'Tikapaṭṭhānapāḷi 1', 'references': ['36P1', 'pt-anu-tika-1', 'p1.1']},
+            '37P1': {'abbrev': 'p1-2', 'name': 'Tikapaṭṭhānapāḷi 2', 'references': ['37P1', 'pt-anu-tika-2', 'p1.2']},
+            '38P2': {'abbrev': 'p2', 'name': 'Dukapaṭṭhānapāḷi', 'references': ['38P2', 'pt-anu-duka', 'p2']},
+            '39P3': {'abbrev': 'p3', 'name': 'Dukatikapaṭṭhānapāḷi', 'references': ['39P3', 'pt-anu-dukatika', 'p3']},
+            '39P4': {'abbrev': 'p4', 'name': 'Tikadukapaṭṭhānapāḷi', 'references': ['39P4', 'pt-anu-tikaduka', 'p4']},
+            '39P5': {'abbrev': 'p5', 'name': 'Tikatikapaṭṭhānapāḷi', 'references': ['39P5', 'pt-anu-tikatika', 'p5']},
+            '39P6': {'abbrev': 'p6', 'name': 'Dukadukapaṭṭhānapāḷi', 'references': ['39P6', 'pt-anu-dukaduka', 'p6']},
             
             # Paṭṭhāna - Dhammapaccanīya
             # parent directory is 'tipitaka/ab/pt/pac'
-            '40P7': {'abbrev': 'tika', 'name': 'Tikapaṭṭhānapāḷi', 'references': ['40P7', 'pt-pac-tika', 'pt7']},
-            '40P8': {'abbrev': 'duka', 'name': 'Dukapaṭṭhānapāḷi', 'references': ['40P8', 'pt-pac-duka', 'pt8']},
-            '40P9': {'abbrev': 'dukatika', 'name': 'Dukatikapaṭṭhānapāḷi', 'references': ['40P9', 'pt-pac-dukatika', 'pt9']},
-            '40P10': {'abbrev': 'tikaduka', 'name': 'Tikadukapaṭṭhānapāḷi', 'references': ['40P10', 'pt-pac-tikaduka', 'pt10']},
-            '40P11': {'abbrev': 'tikatika', 'name': 'Tikatikapaṭṭhānapāḷi', 'references': ['40P11', 'pt-pac-tikatika', 'pt11']},
-            '40P12': {'abbrev': 'dukaduka', 'name': 'Dukadukapaṭṭhānapāḷi', 'references': ['40P12', 'pt-pac-dukaduka', 'pt12']},
+            '40P7': {'abbrev': 'p7', 'name': 'Tikapaṭṭhānapāḷi', 'references': ['40P7', 'pt-pac-tika', 'p7']},
+            '40P8': {'abbrev': 'p8', 'name': 'Dukapaṭṭhānapāḷi', 'references': ['40P8', 'pt-pac-duka', 'p8']},
+            '40P9': {'abbrev': 'p9', 'name': 'Dukatikapaṭṭhānapāḷi', 'references': ['40P9', 'pt-pac-dukatika', 'p9']},
+            '40P10': {'abbrev': 'p10', 'name': 'Tikadukapaṭṭhānapāḷi', 'references': ['40P10', 'pt-pac-tikaduka', 'p10']},
+            '40P11': {'abbrev': 'p11', 'name': 'Tikatikapaṭṭhānapāḷi', 'references': ['40P11', 'pt-pac-tikatika', 'p11']},
+            '40P12': {'abbrev': 'p12', 'name': 'Dukadukapaṭṭhānapāḷi', 'references': ['40P12', 'pt-pac-dukaduka', 'p12']},
             
             # Paṭṭhāna - Dhammānulomapaccanīya
             # parent directory is 'tipitaka/ab/pt/anupac'
-            '40P13': {'abbrev': 'tika', 'name': 'Tikapaṭṭhānapāḷi', 'references': ['40P13', 'pt-anupac-tika', 'pt13']},
-            '40P14': {'abbrev': 'duka', 'name': 'Dukapaṭṭhānapāḷi', 'references': ['40P14', 'pt-anupac-duka', 'pt14']},
-            '40P15': {'abbrev': 'dukatika', 'name': 'Dukatikapaṭṭhānapāḷi', 'references': ['40P15', 'pt-anupac-dukatika', 'pt15']},
-            '40P16': {'abbrev': 'tikaduka', 'name': 'Tikadukapaṭṭhānapāḷi', 'references': ['40P16', 'pt-anupac-tikaduka', 'pt16']},
-            '40P17': {'abbrev': 'tikatika', 'name': 'Tikatikapaṭṭhānapāḷi', 'references': ['40P17', 'pt-anupac-tikatika', 'pt17']},
-            '40P18': {'abbrev': 'dukaduka', 'name': 'Dukadukapaṭṭhānapāḷi', 'references': ['40P18', 'pt-anupac-dukaduka', 'pt18']},
+            '40P13': {'abbrev': 'p13', 'name': 'Tikapaṭṭhānapāḷi', 'references': ['40P13', 'pt-anupac-tika', 'p13']},
+            '40P14': {'abbrev': 'p14', 'name': 'Dukapaṭṭhānapāḷi', 'references': ['40P14', 'pt-anupac-duka', 'p14']},
+            '40P15': {'abbrev': 'p15', 'name': 'Dukatikapaṭṭhānapāḷi', 'references': ['40P15', 'pt-anupac-dukatika', 'p15']},
+            '40P16': {'abbrev': 'p16', 'name': 'Tikadukapaṭṭhānapāḷi', 'references': ['40P16', 'pt-anupac-tikaduka', 'p16']},
+            '40P17': {'abbrev': 'p17', 'name': 'Tikatikapaṭṭhānapāḷi', 'references': ['40P17', 'pt-anupac-tikatika', 'p17']},
+            '40P18': {'abbrev': 'p18', 'name': 'Dukadukapaṭṭhānapāḷi', 'references': ['40P18', 'pt-anupac-dukaduka', 'p18']},
             
             # Paṭṭhāna - Dhammapaccanīyānuloma
             # parent directory is 'tipitaka/ab/pt/pacanu'
-            '40P19': {'abbrev': 'tika', 'name': 'Tikapaṭṭhānapāḷi', 'references': ['40P19', 'pt-pacanu-tika', 'pt19']},
-            '40P20': {'abbrev': 'duka', 'name': 'Dukapaṭṭhānapāḷi', 'references': ['40P20', 'pt-pacanu-duka', 'pt20']},
-            '40P21': {'abbrev': 'dukatika', 'name': 'Dukatikapaṭṭhānapāḷi', 'references': ['40P21', 'pt-pacanu-dukatika', 'pt21']},
-            '40P22': {'abbrev': 'tikaduka', 'name': 'Tikadukapaṭṭhānapāḷi', 'references': ['40P22', 'pt-pacanu-tikaduka', 'pt22']},
-            '40P23': {'abbrev': 'tikatika', 'name': 'Tikatikapaṭṭhānapāḷi', 'references': ['40P23', 'pt-pacanu-tikatika', 'pt23']},
-            '40P24': {'abbrev': 'dukaduka', 'name': 'Dukadukapaṭṭhānapāḷi', 'references': ['40P24', 'pt-pacanu-dukaduka', 'pt24']},
+            '40P19': {'abbrev': 'p19', 'name': 'Tikapaṭṭhānapāḷi', 'references': ['40P19', 'pt-pacanu-tika', 'p19']},
+            '40P20': {'abbrev': 'p20', 'name': 'Dukapaṭṭhānapāḷi', 'references': ['40P20', 'pt-pacanu-duka', 'p20']},
+            '40P21': {'abbrev': 'p21', 'name': 'Dukatikapaṭṭhānapāḷi', 'references': ['40P21', 'pt-pacanu-dukatika', 'p21']},
+            '40P22': {'abbrev': 'p22', 'name': 'Tikadukapaṭṭhānapāḷi', 'references': ['40P22', 'pt-pacanu-tikaduka', 'p22']},
+            '40P23': {'abbrev': 'p23', 'name': 'Tikatikapaṭṭhānapāḷi', 'references': ['40P23', 'pt-pacanu-tikatika', 'p23']},
+            '40P24': {'abbrev': 'p24', 'name': 'Dukadukapaṭṭhānapāḷi', 'references': ['40P24', 'pt-pacanu-dukaduka', 'p24']},
         }
         
         # Hierarchical structure mapping
@@ -336,6 +336,148 @@ class TipitakaMigrator:
         
         return '\n'.join(cleaned_lines).strip()
     
+    def extract_book_id_from_path(self, file_path: Path) -> str:
+        """Extract book identifier from file path for PageFind metadata"""
+        # Get book code from path - this should be the directory name after tipitaka
+        path_parts = file_path.parts
+        if 'tipitaka' in path_parts:
+            tipitaka_index = path_parts.index('tipitaka')
+            # Structure: tipitaka/basket/book or tipitaka/basket/nikaya/book
+            if tipitaka_index + 2 < len(path_parts):  # has basket/book or basket/nikaya/book structure
+                # Try basket/nikaya/book first
+                if tipitaka_index + 3 < len(path_parts) and path_parts[tipitaka_index + 2] in ['sn', 'an', 'kn', 'mn', 'dn']:
+                    return path_parts[tipitaka_index + 3]  # book abbreviation (e.g., kh)
+                else:
+                    return path_parts[tipitaka_index + 2]  # book abbreviation (e.g., para)
+        return ''
+    
+    def convert_to_mdx_with_components(self, content: str, book_id: str = '') -> tuple[str, str]:
+        """Convert markdown content to MDX with Astro components
+        Returns tuple of (imports_content, converted_content)
+        """
+        # Add component imports
+        imports = """import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+
+"""
+        
+        lines = content.split('\n')
+        converted_lines = []
+        current_division = None
+        after_separator = False
+        in_paragraph = False
+        
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            
+            # Check for content separator --- (skip it from output)
+            if line.strip() == '---':
+                after_separator = True
+                # Close any open paragraph before separator
+                if in_paragraph:
+                    converted_lines.append('</Paragraph>')
+                    in_paragraph = False
+                # Close current division before separator
+                if current_division is not None:
+                    converted_lines.append('</Division>')
+                    current_division = None
+                
+                # Skip adding the --- separator to output
+                i += 1
+                continue
+            
+            # Check for division pattern (24.), (25.), etc.
+            division_match = re.match(r'^\((\d+)\.\)$', line.strip())
+            if division_match:
+                division_num = division_match.group(1)
+                
+                # Close any open paragraph
+                if in_paragraph:
+                    converted_lines.append('</Paragraph>')
+                    in_paragraph = False
+                
+                # Close previous division if exists
+                if current_division is not None:
+                    converted_lines.append('</Division>')
+                
+                # Start new division
+                if book_id:
+                    converted_lines.append(f'<Division number="{division_num}" bookId="{book_id}">')
+                else:
+                    converted_lines.append(f'<Division number="{division_num}">')
+                
+                current_division = division_num
+                i += 1
+                continue
+            
+            # Check for paragraph pattern 41\., 42\., etc.
+            paragraph_match = re.match(r'^(\d+)\\?\.\s+(.*)$', line)
+            if paragraph_match:
+                para_num = paragraph_match.group(1)
+                para_content = paragraph_match.group(2)
+                
+                # Close any previous open paragraph
+                if in_paragraph:
+                    converted_lines.append('</Paragraph>')
+                
+                # Start new paragraph
+                if book_id:
+                    converted_lines.append(f'<Paragraph number="{para_num}" bookId="{book_id}">')
+                else:
+                    converted_lines.append(f'<Paragraph number="{para_num}">')
+                
+                converted_lines.append(para_content)
+                in_paragraph = True
+                
+                # Look ahead to collect multi-line paragraph content
+                j = i + 1
+                while j < len(lines):
+                    next_line = lines[j]
+                    
+                    # Stop if we hit another paragraph number or division
+                    if re.match(r'^\d+\\?\.\s+', next_line) or re.match(r'^\(\d+\.\)$', next_line.strip()):
+                        break
+                    
+                    # Stop if we hit separator
+                    if next_line.strip() == '---':
+                        break
+                    
+                    # Stop if we hit markdown links (close paragraph before links)
+                    if re.match(r'^\s*\*\s+\[.*\]\(.*\)', next_line):
+                        break
+                    
+                    # Stop if we hit empty line followed by something that should close paragraph
+                    if next_line.strip() == '' and j + 1 < len(lines):
+                        peek_line = lines[j + 1]
+                        if (re.match(r'^\s*\*\s+\[.*\]\(.*\)', peek_line) or 
+                            re.match(r'^\(\d+\.\)$', peek_line.strip()) or
+                            re.match(r'^\d+\\?\.\s+', peek_line)):
+                            break
+                    
+                    converted_lines.append(next_line)
+                    j += 1
+                
+                converted_lines.append('</Paragraph>')
+                in_paragraph = False
+                i = j
+                continue
+            
+            # Regular line - add as is
+            converted_lines.append(line)
+            i += 1
+        
+        # Close any remaining open paragraph
+        if in_paragraph:
+            converted_lines.append('</Paragraph>')
+        
+        # Close any remaining open division
+        if current_division is not None:
+            converted_lines.append('</Division>')
+        
+        final_content = '\n'.join(converted_lines)
+        return imports, final_content
+    
     def create_frontmatter(self, title: str, sidebar_order: int, references: list = None, basket: str = None) -> str:
         """Create Astro Starlight frontmatter"""
         frontmatter = f"""---
@@ -359,7 +501,6 @@ basket: "{basket}\""""
         
         frontmatter += """
 ---
-
 """
         return frontmatter
     
@@ -511,7 +652,7 @@ basket: "{basket}\""""
         return f"/{locale}/tipitaka/{book_abbrev}/"
     
     def migrate_file(self, source_file: Path, book_code: str, relative_path: str = '', locale: str = 'romn', sidebar_order: int = 1):
-        """Migrate a single file with improved safety"""
+        """Migrate a single file with improved safety and MDX component conversion"""
         if not source_file.exists():
             return  # Preserve original behavior
             
@@ -577,6 +718,17 @@ basket: "{basket}\""""
             target_file = target_path / f"{safe_stem}.mdx"
             book_references = None  # No references for non-index files
         
+        # Convert to MDX with components if content has divisions/paragraphs
+        book_id = self.extract_book_id_from_path(target_file)
+        component_imports = ""
+        
+        # Check if content needs component conversion (has division or paragraph patterns)
+        has_divisions = re.search(r'^\(\d+\.\)$', cleaned_content, re.MULTILINE)
+        has_paragraphs = re.search(r'^\d+\\?\.\s+', cleaned_content, re.MULTILINE)
+        
+        if has_divisions or has_paragraphs:
+            component_imports, cleaned_content = self.convert_to_mdx_with_components(cleaned_content, book_id)
+        
         # Create content with frontmatter
         frontmatter = self.create_frontmatter(title, sidebar_order, book_references, basket)
         
@@ -590,7 +742,8 @@ basket: "{basket}\""""
 
 """
         
-        final_content = frontmatter + breadcrumb_content + cleaned_content
+        # Combine all content parts
+        final_content = frontmatter + component_imports + breadcrumb_content + cleaned_content
         
         # Use safe file writing
         self._safe_write_file(target_file, final_content)
