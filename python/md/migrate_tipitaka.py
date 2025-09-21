@@ -344,24 +344,137 @@ class TipitakaMigrator:
             tipitaka_index = path_parts.index('tipitaka')
             # Structure: tipitaka/basket/book or tipitaka/basket/nikaya/book
             if tipitaka_index + 2 < len(path_parts):  # has basket/book or basket/nikaya/book structure
+                book_dir = None
                 # Try basket/nikaya/book first
                 if tipitaka_index + 3 < len(path_parts) and path_parts[tipitaka_index + 2] in ['sn', 'an', 'kn', 'mn', 'dn']:
-                    return path_parts[tipitaka_index + 3]  # book abbreviation (e.g., kh)
+                    book_dir = path_parts[tipitaka_index + 3]  # book abbreviation (e.g., kh)
                 else:
-                    return path_parts[tipitaka_index + 2]  # book abbreviation (e.g., para)
+                    book_dir = path_parts[tipitaka_index + 2]  # book abbreviation (e.g., para, paci)
+                
+                # Find the corresponding book key in book_mappings
+                for book_key, book_info in self.book_mappings.items():
+                    if book_info['abbrev'] == book_dir or book_dir in book_info.get('references', []):
+                        return book_key
+                
+                # If not found in mappings, return the directory name as fallback
+                return book_dir
         return ''
     
-    def convert_to_mdx_with_components(self, content: str, book_id: str = '') -> tuple[str, str]:
+    def is_verses_content(self, content: str) -> bool:
+        """Check if content appears to be verses based on italic markdown formatting"""
+        lines = content.split('\n')
+        
+        # Count lines that are not empty
+        non_empty_lines = [line for line in lines if line.strip()]
+        
+        if len(non_empty_lines) == 0:
+            return False
+        
+        # Count lines that contain italic markdown formatting (_text_)
+        italic_lines = 0
+        for line in non_empty_lines:
+            line = line.strip()
+            # Check if line contains italic formatting with underscore
+            if '_' in line and line.count('_') >= 2:
+                # Simple check: if line starts and ends with _, or contains _text_
+                if (line.startswith('_') and line.endswith('_')) or \
+                   re.search(r'_[^_]+_', line):
+                    italic_lines += 1
+        
+        # If most lines (>= 70%) have italic formatting, consider it verses
+        return italic_lines / len(non_empty_lines) >= 0.7
+    
+    def detect_table_of_contents(self, content: str) -> tuple[bool, list, str]:
+        """Detect if content contains a table of contents list
+        Returns tuple of (has_toc, toc_lines, remaining_content)
+        """
+        lines = content.split('\n')
+        toc_lines = []
+        non_toc_lines = []
+        in_toc_section = False
+        toc_found = False
+        
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            
+            # Check if this is a markdown list item with a link pattern like:
+            # * [1.1.1 Paṭhamapārājikasikkhāpada](1-1/1-1-1)
+            toc_pattern = re.match(r'^\s*\*\s+\[([^\]]+)\]\(([^)]+)\)', line)
+            
+            if toc_pattern:
+                if not in_toc_section:
+                    # Start of TOC section
+                    in_toc_section = True
+                    toc_found = True
+                
+                toc_lines.append(line)
+                i += 1
+                continue
+            
+            # If we were in TOC section and hit non-TOC line
+            if in_toc_section and line.strip() != '':
+                # End of TOC section
+                in_toc_section = False
+            
+            # If not in TOC section, add to non-TOC lines
+            if not in_toc_section:
+                non_toc_lines.append(line)
+            
+            i += 1
+        
+        remaining_content = '\n'.join(non_toc_lines)
+        return toc_found, toc_lines, remaining_content
+    
+    def wrap_toc_with_component(self, toc_lines: list, book_id: str = '', section_title: str = '') -> str:
+        """Wrap table of contents lines with TableOfContents component"""
+        if not toc_lines:
+            return ""
+        
+        # Extract section from title if available (e.g., "1.1" from "1.1 Pārājikakaṇḍa")
+        section = ""
+        if section_title:
+            # Try to extract number pattern like "1.1", "1.2.3", etc.
+            section_match = re.match(r'^(\d+(?:\.\d+)*)', section_title)
+            if section_match:
+                section = section_match.group(1)
+        
+        # Build component opening tag
+        if book_id and section:
+            component_open = f'<TableOfContents book="{book_id}" section="{section}">'
+        elif book_id:
+            component_open = f'<TableOfContents book="{book_id}">'
+        else:
+            component_open = '<TableOfContents>'
+        
+        # Combine lines
+        result = [component_open]
+        result.extend(toc_lines)
+        result.append('</TableOfContents>')
+        
+        return '\n'.join(result)
+    
+    def convert_to_mdx_with_components(self, content: str, book_id: str = '', title: str = '') -> tuple[str, str]:
         """Convert markdown content to MDX with Astro components
         Returns tuple of (imports_content, converted_content)
         """
-        # Add component imports
+        # Check for table of contents first
+        has_toc, toc_lines, remaining_content = self.detect_table_of_contents(content)
+        
+        # Add component imports (include TableOfContents if needed)
         imports = """import Division from '@components/Division.astro';
-import Paragraph from '@components/Paragraph.astro';
+import Paragraph from '@components/Paragraph.astro';"""
+        
+        if has_toc:
+            imports += """
+import TableOfContents from '@components/TableOfContents.astro';"""
+        
+        imports += """
 
 """
         
-        lines = content.split('\n')
+        # Use remaining content (without TOC) for component processing
+        lines = remaining_content.split('\n')
         converted_lines = []
         current_division = None
         after_separator = False
@@ -403,7 +516,7 @@ import Paragraph from '@components/Paragraph.astro';
                 
                 # Start new division
                 if book_id:
-                    converted_lines.append(f'<Division number="{division_num}" bookId="{book_id}">')
+                    converted_lines.append(f'<Division number="{division_num}" book="{book_id}">')
                 else:
                     converted_lines.append(f'<Division number="{division_num}">')
                 
@@ -421,17 +534,12 @@ import Paragraph from '@components/Paragraph.astro';
                 if in_paragraph:
                     converted_lines.append('</Paragraph>')
                 
-                # Start new paragraph
-                if book_id:
-                    converted_lines.append(f'<Paragraph number="{para_num}" bookId="{book_id}">')
-                else:
-                    converted_lines.append(f'<Paragraph number="{para_num}">')
+                # Collect full paragraph content for analysis
+                full_para_content = para_content
                 
-                converted_lines.append(para_content)
-                in_paragraph = True
-                
-                # Look ahead to collect multi-line paragraph content
+                # Look ahead to collect multi-line paragraph content for verse detection
                 j = i + 1
+                temp_lines = [para_content]
                 while j < len(lines):
                     next_line = lines[j]
                     
@@ -455,13 +563,100 @@ import Paragraph from '@components/Paragraph.astro';
                             re.match(r'^\d+\\?\.\s+', peek_line)):
                             break
                     
-                    converted_lines.append(next_line)
+                    temp_lines.append(next_line)
                     j += 1
+                
+                full_para_content = '\n'.join(temp_lines)
+                
+                # Check if this paragraph contains niṭṭhito/niṭṭhitā/niṭṭhitaṃ or Namo formula or Tassuddānaṃ or ...pe... for center alignment
+                # Only apply center alignment for paragraphs OUTSIDE of divisions
+                should_center = False
+                
+                # Check if this paragraph content appears to be verses
+                is_verses = self.is_verses_content(full_para_content)
+                
+                if current_division is None:
+                    has_nitthita = re.search(r'\bniṭṭhito\b|\bniṭṭhitā\b|\bniṭṭhitaṃ\b', line)  # Check full line for Unicode characters
+                    has_namo = line.strip() == "Namo tassa Bhagavato Arahato Sammāsambuddhassa." or \
+                              para_content.strip() == "Namo tassa Bhagavato Arahato Sammāsambuddhassa."
+                    has_tassuddana = re.search(r'\bTassuddānaṃ\b', line)
+                    # Check for ...pe... pattern (ellipsis indicating omitted text)
+                    has_pe = full_para_content.strip() == "…pe…" or full_para_content.strip() == "...pe..."
+                    
+                    # NEW CONDITIONS: Add additional criteria for centering
+                    # 1. Not under division (already checked above)
+                    # 2. Not verses content  
+                    # 3. Content length not exceeding 80 characters
+                    content_length = len(full_para_content.strip())
+                    meets_new_criteria = not is_verses and content_length <= 80
+                    
+                    should_center = (has_nitthita or has_namo or has_tassuddana or has_pe) or meets_new_criteria
+
+                # Start new paragraph with appropriate type
+                paragraph_type = "normal"
+                if should_center:
+                    paragraph_type = "center"
+                elif is_verses:
+                    paragraph_type = "verses"
+                
+                if book_id:
+                    if paragraph_type != "normal":
+                        converted_lines.append(f'<Paragraph number="{para_num}" type="{paragraph_type}" book="{book_id}">')
+                    else:
+                        converted_lines.append(f'<Paragraph number="{para_num}" book="{book_id}">')
+                else:
+                    if paragraph_type != "normal":
+                        converted_lines.append(f'<Paragraph number="{para_num}" type="{paragraph_type}">')
+                    else:
+                        converted_lines.append(f'<Paragraph number="{para_num}">')
+                
+                converted_lines.append(para_content)
+                in_paragraph = True
+                
+                # Add the collected multi-line content
+                k = i + 1
+                while k < j:
+                    converted_lines.append(lines[k])
+                    k += 1
                 
                 converted_lines.append('</Paragraph>')
                 in_paragraph = False
                 i = j
                 continue
+            
+            # Check for lines outside Division that should be centered
+            # Original conditions: niṭṭhito/niṭṭhitā/niṭṭhitaṃ or Namo formula or Tassuddānaṃ or ...pe...
+            # New conditions: not verses content AND content length <= 80 characters
+            if (current_division is None and line.strip()):
+                # Check original centering conditions
+                has_original_conditions = (
+                    re.search(r'\bniṭṭhito\b|\bniṭṭhitā\b|\bniṭṭhitaṃ\b', line) or 
+                    line.strip() == "Namo tassa Bhagavato Arahato Sammāsambuddhassa." or
+                    re.search(r'\bTassuddānaṃ\b', line) or
+                    line.strip() == "…pe…" or line.strip() == "...pe..."
+                )
+                
+                # Check new centering conditions
+                line_content = line.strip()
+                is_single_line_verses = self.is_verses_content(line_content)
+                content_length = len(line_content)
+                has_new_conditions = not is_single_line_verses and content_length <= 80
+                
+                if has_original_conditions or has_new_conditions:
+                    # Close any open paragraph first
+                    if in_paragraph:
+                        converted_lines.append('</Paragraph>')
+                        in_paragraph = False
+                    
+                    # Wrap in Paragraph component with type="center"
+                    if book_id:
+                        converted_lines.append(f'<Paragraph type="center" book="{book_id}">')
+                    else:
+                        converted_lines.append('<Paragraph type="center">')
+                    converted_lines.append(line)
+                    converted_lines.append('</Paragraph>')
+                    i += 1
+                    continue
             
             # Regular line - add as is
             converted_lines.append(line)
@@ -476,20 +671,51 @@ import Paragraph from '@components/Paragraph.astro';
             converted_lines.append('</Division>')
         
         final_content = '\n'.join(converted_lines)
+        
+        # If we found TOC, position it after Namo tassa... (maintaining traditional order)
+        if has_toc:
+            toc_component = self.wrap_toc_with_component(toc_lines, book_id, title)
+            
+            # Split content to find insertion point
+            content_lines = final_content.split('\n')
+            toc_inserted = False
+            
+            # Look for Namo tassa paragraph and insert TOC after it
+            for i in range(len(content_lines)):
+                line = content_lines[i].strip()
+                
+                # Look for line containing "Namo tassa"
+                if 'Namo tassa' in line:
+                    # Find the end of this paragraph component
+                    j = i
+                    while j < len(content_lines):
+                        if content_lines[j].strip().endswith('</Paragraph>'):
+                            # Insert TOC after this paragraph
+                            content_lines.insert(j + 1, '')
+                            content_lines.insert(j + 2, toc_component)
+                            content_lines.insert(j + 3, '')
+                            toc_inserted = True
+                            break
+                        j += 1
+                    
+                    if toc_inserted:
+                        break
+            
+            if toc_inserted:
+                final_content = '\n'.join(content_lines)
+            else:
+                # If no Namo tassa found, append TOC at the end
+                final_content = final_content + '\n\n' + toc_component
+        
         return imports, final_content
     
-    def create_frontmatter(self, title: str, sidebar_order: int, references: list = None, basket: str = None) -> str:
+    def create_frontmatter(self, title: str, sidebar_order: int, references: list = None, basket: str = None, book_id: str = None) -> str:
         """Create Astro Starlight frontmatter"""
         frontmatter = f"""---
 title: "{title}"
 tableOfContents: false
 sidebar:
   order: {sidebar_order}"""
-        
-        if references:
-            # Format references as YAML array
-            frontmatter += f"""
-references: {json.dumps(references)}"""
         
         # Add type and basket before closing ---
         frontmatter += f"""
@@ -498,6 +724,10 @@ type: "tipitaka\""""
         if basket:
             frontmatter += f"""
 basket: "{basket}\""""
+        
+        if book_id:
+            frontmatter += f"""
+book: "{book_id}\""""
         
         frontmatter += """
 ---
@@ -700,8 +930,6 @@ basket: "{basket}\""""
         # If it's a main book file (e.g. 1V.md), name it index.mdx
         if not relative_path and source_file.name == f"{book_code}.md":
             target_file = target_path / "index.mdx"
-            # Get references for main book files (index.mdx only)
-            book_references = self.book_mappings.get(book_code, {}).get('references', [])
             
             # Check for 0.md file in the book directory and extract Namo formula
             namo_content = self.get_namo_formula(book_code, locale)
@@ -716,21 +944,26 @@ basket: "{basket}\""""
             # Replace dots with dashes in filenames
             safe_stem = source_file.stem.lower().replace('.', '-')
             target_file = target_path / f"{safe_stem}.mdx"
-            book_references = None  # No references for non-index files
         
         # Convert to MDX with components if content has divisions/paragraphs
         book_id = self.extract_book_id_from_path(target_file)
         component_imports = ""
         
-        # Check if content needs component conversion (has division or paragraph patterns)
+        # Get book abbreviation for frontmatter
+        book_abbreviation = None
+        if book_id and book_id in self.book_mappings:
+            book_abbreviation = self.book_mappings[book_id]['abbrev']
+        
+        # Check if content needs component conversion (has division/paragraph patterns or TOC)
         has_divisions = re.search(r'^\(\d+\.\)$', cleaned_content, re.MULTILINE)
         has_paragraphs = re.search(r'^\d+\\?\.\s+', cleaned_content, re.MULTILINE)
+        has_toc, _, _ = self.detect_table_of_contents(cleaned_content)
         
-        if has_divisions or has_paragraphs:
-            component_imports, cleaned_content = self.convert_to_mdx_with_components(cleaned_content, book_id)
+        if has_divisions or has_paragraphs or has_toc:
+            component_imports, cleaned_content = self.convert_to_mdx_with_components(cleaned_content, book_abbreviation, title)
         
         # Create content with frontmatter
-        frontmatter = self.create_frontmatter(title, sidebar_order, book_references, basket)
+        frontmatter = self.create_frontmatter(title, sidebar_order, None, basket, book_abbreviation)
         
         # Add DynamicBreadcrumb for non-index and non-0 files
         breadcrumb_content = ""

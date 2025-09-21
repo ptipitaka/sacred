@@ -1,0 +1,62 @@
+---
+/**
+ * Table of Contents Component for Tipitaka sub-sections
+ * Simple design for displaying table of contents with PageFind metadata
+ */
+
+export interface Props {
+    book?: string; // abbreviation เช่น "para", "paci"
+    section?: string; // อาจเป็นตัวเลข เช่น "1.1" หรือชื่อ เช่น "Pārājikakaṇḍa"
+}
+
+const { book = "", section = "" } = Astro.props;
+
+// Generate PageFind metadata
+const metadataValue =
+    book && section
+        ? `toc:${book}-${section}`
+        : book
+          ? `toc:${book}`
+          : section
+            ? `toc:${section}`
+            : "toc:contents";
+---
+
+<nav
+    data-pagefind-meta={metadataValue}
+    data-pagefind-meta-type="table-of-contents"
+    class="table-of-contents"
+    aria-label="สารบัญ"
+>
+    <ul class="toc-list">
+        <slot />
+    </ul>
+</nav>
+
+<style>
+    .table-of-contents {
+        margin: 1.5rem 0;
+    }
+
+    .toc-list {
+        list-style: none !important;
+        list-style-type: none !important;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list :global(li) {
+        margin: 0.5rem 0;
+        list-style: none !important;
+        list-style-type: none !important;
+    }
+
+    .toc-list :global(a) {
+        color: var(--sl-color-text-accent, #007acc);
+        text-decoration: none;
+    }
+
+    .toc-list :global(a:hover) {
+        text-decoration: underline;
+    }
+</style>

@@ -6,13 +6,13 @@
 
 export interface Props {
   number: string;
-  bookId?: string; // Optional book identifier for PageFind metadata
+  book?: string; // Optional book identifier for PageFind metadata
 }
 
-const { number, bookId = '' } = Astro.props;
+const { number, book = '' } = Astro.props;
 
 // Generate PageFind metadata
-const metadataValue = bookId ? `div:${bookId}-${number}` : `div:${number}`;
+const metadataValue = book ? `div:${book}-${number}` : `div:${number}`;
 ---
 
 <div 
@@ -34,7 +34,7 @@ const metadataValue = bookId ? `div:${bookId}-${number}` : `div:${number}`;
   }
 
   .division-number {
-    font-weight: semi-bold;
+    font-weight: bold;
     color: var(--sl-color-text-accent, #007acc);
     font-size: 1em;
     padding: 0;

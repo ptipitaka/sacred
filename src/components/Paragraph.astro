@@ -6,14 +6,14 @@
 
 export interface Props {
     number: string;
-    bookId?: string; // Optional book identifier for PageFind metadata
+    book?: string; // Optional book identifier for PageFind metadata
     type?: 'normal' | 'center' | 'verses';
 }
 
-const { number, bookId = "", type = "normal" } = Astro.props;
+const { number, book = "", type = "normal" } = Astro.props;
 
 // Generate PageFind metadata
-const metadataValue = bookId ? `para:${bookId}-${number}` : `para:${number}`;
+const metadataValue = book ? `para:${book}-${number}` : `para:${number}`;
 const typeMetadata = `type:${type}`;
 ---
 
@@ -24,10 +24,7 @@ const typeMetadata = `type:${type}`;
     data-paragraph={number}
     data-type={type}
 >
-    <span class="paragraph-number">{number}</span>
-    <div class="paragraph-content">
-        <slot />
-    </div>
+    <span class="paragraph-number">{number}</span><span class="paragraph-content"><slot /></span>
 </div>
 
 
@@ -37,8 +34,7 @@ const typeMetadata = `type:${type}`;
     .paragraph-section {
         margin: 1rem 0;
         line-height: 1.8;
-        display: flex;
-        gap: 0.5rem;
+        text-align: justify;
     }
 
     .paragraph-number {
@@ -46,24 +42,20 @@ const typeMetadata = `type:${type}`;
         color: #6b7280;
         font-size: 0.5em;
         opacity: 0.8;
-        margin-top: 1.2rem;
-        width: 2rem;
-        text-align: right;
-        flex-shrink: 0;
         vertical-align: sub;
-        position: relative;
-        transform: translateX(1em);
+        margin-right: 0.2em;
     }
 
     .paragraph-content {
-        flex: 1;
         color: var(--sl-color-text, #383838);
         font-size: var(--sl-text-body, 1rem);
         line-height: inherit;
+        display: inline;
     }
 
     .paragraph-content :global(p) {
-        margin: 0.5rem 0;
+        margin: 0;
+        display: inline;
     }
 
     .paragraph-content :global(p:first-child) {
@@ -77,36 +69,37 @@ const typeMetadata = `type:${type}`;
     /* ===== PARAGRAPH TYPE STYLES ===== */
     
     /* Normal type - default justify */
-    .paragraph-normal .paragraph-content,
-    .paragraph-content {
+    .paragraph-normal,
+    .paragraph-section {
         text-align: justify;
-        text-indent: 2.8em;
-        margin-left: -2.5rem;
+        text-indent: 2em;
     }
 
     .paragraph-normal .paragraph-content :global(p) {
         text-align: justify;
+        margin: 0;
+        display: inline;
     }
 
     /* Center type */
-    .paragraph-center .paragraph-content {
+    .paragraph-center {
         text-align: center;
+        line-height: 1.2em;
+        text-indent: 0;
     }
 
     /* Verses type */
-    .paragraph-verses .paragraph-content {
+    .paragraph-verses {
         text-align: left;
         font-style: italic;
         line-height: 1.6;
-        padding-left: 1em;
-    }
-
-    .paragraph-verses .paragraph-number {
-        transform: translateX(1em);
+        margin-left: 35%;
+        text-indent: 2em;
     }
 
     .paragraph-verses .paragraph-content :global(p) {
         margin: 0.25rem 0;
+        display: inline;
     }
 
     /* ===== RESPONSIVE STYLES ===== */
@@ -126,12 +119,8 @@ const typeMetadata = `type:${type}`;
             font-size: var(--sl-text-sm, 0.875rem);
         }
 
-        .paragraph-verses .paragraph-content {
-            padding-left: 0.75em;
-        }
-
-        .paragraph-verses .paragraph-number {
-            transform: translateX(0.75em);
+        .paragraph-verses {
+            margin-left: 25%;
         }
     }
 
@@ -145,6 +134,10 @@ const typeMetadata = `type:${type}`;
         .paragraph-number,
         .paragraph-content {
             color: #000;
+        }
+
+        .paragraph-verses {
+            margin-left: 30%;
         }
     }
 
