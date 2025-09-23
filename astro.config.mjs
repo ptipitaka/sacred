@@ -11,16 +11,22 @@ export default defineConfig({
             rollupOptions: {
                 output: {
                     manualChunks: {
-                        'sidebar': ['./python/md/navigator.js']
+                        'sidebar': ['./python/md/navigator.js'],
+                        'starlight': ['@astrojs/starlight'],
+                        'theme': ['starlight-theme-rapide']
                     }
                 }
-            }
+            },
+            chunkSizeWarningLimit: 1000
         },
         resolve: {
             alias: {
                 '@components': new URL('./src/components', import.meta.url).pathname,
             }
-        },              
+        },
+        optimizeDeps: {
+            include: ['@astrojs/starlight', 'starlight-theme-rapide']
+        }              
     },
     integrations: [
         starlight({

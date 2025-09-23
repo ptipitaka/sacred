@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=61440\" astro build",
+    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=81920\" astro build",
+    "build:clean": "rimraf dist .astro && cross-env NODE_OPTIONS=\"--max-old-space-size=81920\" astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -16,6 +17,7 @@
     "starlight-theme-rapide": "^0.5.1"
   },
   "devDependencies": {
-    "cross-env": "^10.0.0"
+    "cross-env": "^10.0.0",
+    "rimraf": "^5.0.5"
   }
 }
