@@ -7,27 +7,19 @@ import { sidebarConfig } from './python/md/navigator.js'
 export default defineConfig({
     vite: {
         assetsInclude: ['**/*.jsonc'],
-        plugins: [
-            {
-                name: 'jsonc-loader',
-                load(id) {
-                    if (id.endsWith('.jsonc?raw')) {
-                        // Handle raw JSONC imports (like from Starlight themes)
-                        const fs = require('fs');
-                        const path = require('path');
-                        const actualPath = id.replace('?raw', '');
-                        try {
-                            const content = fs.readFileSync(actualPath, 'utf-8');
-                            return `export default ${JSON.stringify(content)}`;
-                        } catch (error) {
-                            console.warn(`Failed to load JSONC file: ${actualPath}`);
-                            return `export default ""`;
-                        }
-                    }
-                    return null;
+        optimizeDeps: {
+            include: ['@astrojs/starlight', 'starlight-theme-rapide'],
+            esbuildOptions: {
+                loader: {
+                    '.jsonc': 'text'
                 }
             }
-        ],
+        },
+        esbuild: {
+            loader: {
+                '.jsonc': 'text'
+            }
+        },
         define: {
             // Handle raw JSONC imports from node_modules
             __RAW_JSONC__: 'true'
