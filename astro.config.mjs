@@ -1,36 +1,16 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightThemeRapide from 'starlight-theme-rapide'
 import { sidebarConfig } from './python/md/navigator.js'
 
 // https://astro.build/config
 export default defineConfig({
     vite: {
-        assetsInclude: ['**/*.jsonc'],
-        optimizeDeps: {
-            include: ['@astrojs/starlight', 'starlight-theme-rapide'],
-            esbuildOptions: {
-                loader: {
-                    '.jsonc': 'text'
-                }
-            }
-        },
-        esbuild: {
-            loader: {
-                '.jsonc': 'text'
-            }
-        },
-        define: {
-            // Handle raw JSONC imports from node_modules
-            __RAW_JSONC__: 'true'
-        },
         build: {
             rollupOptions: {
                 output: {
                     manualChunks: {
                         'sidebar': ['./python/md/navigator.js'],
-                        'starlight': ['@astrojs/starlight'],
-                        'theme': ['starlight-theme-rapide']
+                        'starlight': ['@astrojs/starlight']
                     }
                 }
             },
@@ -42,7 +22,7 @@ export default defineConfig({
             }
         },
         optimizeDeps: {
-            include: ['@astrojs/starlight', 'starlight-theme-rapide']
+            include: ['@astrojs/starlight']
         }              
     },
     integrations: [
@@ -54,7 +34,6 @@ export default defineConfig({
                 label: 'GitHub', 
                 href: 'https://github.com/withastro/starlight' 
             }],
-            plugins: [starlightThemeRapide()],
             expressiveCode: false,
             customCss: [
                 './src/assets/css/global.css',
