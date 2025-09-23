@@ -2,18 +2,10 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeRapide from 'starlight-theme-rapide'
 import { sidebarConfig } from './python/md/navigator.js'
-import json from '@rollup/plugin-json';
 
 // https://astro.build/config
 export default defineConfig({
     vite: {
-        assetsInclude: ['**/*.jsonc'],
-        plugins: [
-            json({
-                include: ['**/*.json', '**/*.jsonc'],
-                compact: true
-            })
-        ],
         build: {
             rollupOptions: {
                 output: {
