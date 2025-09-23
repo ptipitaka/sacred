@@ -40,7 +40,7 @@ src/content/docs/thai/*
 # python/
 python/db
 python/json
-python/md
+python/md/tipitaka
 
 # other
 .venv/
