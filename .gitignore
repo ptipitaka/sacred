@@ -31,19 +31,14 @@ src/content/docs/lana/*
 src/content/docs/laoo/*
 src/content/docs/latn/*
 src/content/docs/romn/*
-src/content/docs/romn_bk/*
 src/content/docs/sinh/*
 src/content/docs/thai/*
 src/content/docs/mymr/*
 
 # python/
+python/db
 python/json
-# python/md
-python/md/tipitaka/*
-# except
-# !python/md/tipitaka/1V/
-# !python/md/tipitaka/6D/
-# !python/md/tipitaka/29Dhs/
+# python/md/tipitaka/*
 
 # other
 .venv/

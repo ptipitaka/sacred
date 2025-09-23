@@ -114,7 +114,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
     output: 'static',
     build: {
-        concurrency: 1,
+        concurrency: 4,
         inlineStylesheets: 'never',
         split: false,
         assets: '_astro'
@@ -127,7 +127,7 @@ export default defineConfig({
             rollupOptions: {
                 output: {
                     manualChunks: undefined, // ปิด manual chunks
-                    maxParallelFileOps: 1,
+                    maxParallelFileOps: 4,
                 }
             },
             target: 'esnext'

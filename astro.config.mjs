@@ -7,7 +7,7 @@ import { sidebarConfig } from './python/md/navigator.js'
 export default defineConfig({
 	output: 'static',
 	build: {
-		concurrency: 1, // ลด concurrency เพื่อประหยัด memory
+		concurrency: 4, // เพิ่มเป็น 4 เพื่อความเร็ว
 		assets: '_astro',
 		inlineStylesheets: 'never',
 		split: true,
@@ -42,7 +42,7 @@ export default defineConfig({
 							return 'content-other';
 						}
 					},
-					maxParallelFileOps: 2,
+					maxParallelFileOps: 4,
 				}
 			},
 			minify: false, // ปิด minify ช่วงแรกเพื่อประหยัด memory
