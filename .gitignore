@@ -33,7 +33,7 @@ src/content/docs/latn/*
 # src/content/docs/romn/*
 src/content/docs/sinh/*
 src/content/docs/thai/*
-src/content/docs/mymr/*
+# src/content/docs/mymr/*
 
 # python/
 python/db

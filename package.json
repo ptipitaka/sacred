@@ -4,8 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "node build-locale.js",
-    "build:locale": "node build-locale.js",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

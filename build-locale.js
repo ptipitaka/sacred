@@ -62,14 +62,25 @@ async function buildByLocale() {
             const endTime = Date.now();
             const duration = Math.round((endTime - startTime) / 1000);
             
-            // ย้าย dist ไปยัง folder ของ locale
+            // ย้าย dist ไปยัง folder ของ locale  
             if (fs.existsSync('dist')) {
-                const distDir = `dist-${locale}`;
-                if (fs.existsSync(distDir)) {
-                    fs.rmSync(distDir, { recursive: true });
+                // สร้าง dist หลักถ้ายังไม่มี
+                const mainDistDir = 'dist-final';
+                const localeDistDir = `${mainDistDir}/${locale}`;
+                
+                // สร้างโฟลเดอร์ dist หลักถ้ายังไม่มี
+                if (!fs.existsSync(mainDistDir)) {
+                    fs.mkdirSync(mainDistDir, { recursive: true });
                 }
-                fs.renameSync('dist', distDir);
-                console.log(`📁 ย้าย output ไป: ${distDir}`);
+                
+                // ลบโฟลเดอร์ locale เก่าถ้ามี
+                if (fs.existsSync(localeDistDir)) {
+                    fs.rmSync(localeDistDir, { recursive: true });
+                }
+                
+                // ย้าย dist ชั่วคราวไปยัง dist-final/locale
+                fs.renameSync('dist', localeDistDir);
+                console.log(`📁 ย้าย output ไป: ${localeDistDir}`);
             }
             
             // ลบ temp config
@@ -99,10 +110,25 @@ async function buildByLocale() {
     if (successCount > 0) {
         console.log('\n📁 โฟลเดอร์ที่สร้างสำเร็จ:');
         locales.forEach(locale => {
-            if (fs.existsSync(`dist-${locale}`)) {
-                console.log(`   📂 dist-${locale}/`);
+            if (fs.existsSync(`dist-final/${locale}`)) {
+                console.log(`   📂 dist-final/${locale}/`);
             }
         });
+        
+        // เปลี่ยนชื่อ dist-final เป็น dist หลังจากเสร็จ
+        if (fs.existsSync('dist-final')) {
+            if (fs.existsSync('dist')) {
+                fs.rmSync('dist', { recursive: true });
+            }
+            fs.renameSync('dist-final', 'dist');
+            console.log('\n✨ เปลี่ยนชื่อ dist-final → dist');
+            console.log('📁 โครงสร้างสุดท้าย:');
+            locales.forEach(locale => {
+                if (fs.existsSync(`dist/${locale}`)) {
+                    console.log(`   📂 dist/${locale}/`);
+                }
+            });
+        }
     }
 }
 
