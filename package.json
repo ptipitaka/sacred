@@ -4,11 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-<<<<<<< HEAD
     "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=61440\" astro build",
-=======
-    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=20480\" astro build",
->>>>>>> parent of 14430c192 (max-old-space-size=30720)
     "preview": "astro preview",
     "astro": "astro"
   },

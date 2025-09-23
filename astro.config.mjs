@@ -7,6 +7,15 @@ import { sidebarConfig } from './python/md/navigator.js'
 export default defineConfig({
     vite: {
         assetsInclude: ['**/*.jsonc'],
+        build: {
+            rollupOptions: {
+                output: {
+                    manualChunks: {
+                        'sidebar': ['./python/md/navigator.js']
+                    }
+                }
+            }
+        },
         resolve: {
             alias: {
                 '@components': new URL('./src/components', import.meta.url).pathname,

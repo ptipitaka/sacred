@@ -1,0 +1,26 @@
+name: sacred
+services:
+- name: web
+  source_dir: /
+  github:
+    repo: ptipitaka/sacred
+    branch: main
+    deploy_on_push: true
+  build_command: npm run build
+  output_dir: dist
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: professional-xs
+  http_port: 8080
+  routes:
+  - path: /
+  envs:
+  - key: NODE_OPTIONS
+    value: "--max-old-space-size=61440"
+  - key: NPM_CONFIG_CACHE
+    value: ".npm"
+  - key: NODE_ENV
+    value: "production"
+  run_command: |
+    npm ci --prefer-offline --no-audit --progress=false --cache .npm
+    npm run build
