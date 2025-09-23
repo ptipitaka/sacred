@@ -1,5 +1,5 @@
 # build output
-dist/
+# dist/
 # generated types
 .astro/
 
@@ -21,6 +21,8 @@ pnpm-debug.log*
 .DS_Store
 
 # database files
+*.db
+
 # mula assets
 src/assets/
 
@@ -38,11 +40,9 @@ src/content/docs/thai/*
 # python/
 python/db
 python/json
-# python/md/tipitaka/*
+python/md
 
 # other
 .venv/
-.astro/
 .vscode/
-*.db
 
