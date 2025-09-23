@@ -3,9 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "start": "npx --node-options='--max-old-space-size=16384' astro dev",
-    "dev": "npx --node-options='--max-old-space-size=16384' astro dev",
-    "build": "npx --node-options='--max-old-space-size=16384' astro build",
+    "dev": "astro dev",
+    "build": "node build-locale.js",
+    "build:locale": "node build-locale.js",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -15,5 +15,8 @@
     "sharp": "^0.34.2",
     "sqlite3": "^5.1.7",
     "starlight-theme-rapide": "^0.5.1"
+  },
+  "devDependencies": {
+    "cross-env": "^10.0.0"
   }
 }

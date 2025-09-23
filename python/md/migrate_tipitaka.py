@@ -51,14 +51,14 @@ class TipitakaMigrator:
             # parent directory is 'tipitaka/vi'
             '1V': {'abbrev': 'para', 'name': 'Pārājikapāḷi', 'references': ['1V', 'vi-para', 'para']},
             '2V': {'abbrev': 'paci', 'name': 'Pācittiyapāḷi', 'references': ['2V', 'vi-paci', 'paci']},
-            '3V': {'abbrev': 'maha', 'name': 'Mahāvaggapāḷi', 'references': ['3V', 'vi-maha', 'maha']},
+            '3V': {'abbrev': 'vi-maha', 'name': 'Mahāvaggapāḷi', 'references': ['3V', 'vi-maha', 'maha']},
             '4V': {'abbrev': 'cula', 'name': 'Cūḷavaggapāḷi', 'references': ['4V', 'vi-cula', 'cula']},
             '5V': {'abbrev': 'pari', 'name': 'Parivārapāḷi', 'references': ['5V', 'vi-pari', 'pari']},
             
             # Dīghanikāya (dn)
             # parent directory is 'tipitaka/su/dn'
             '6D': {'abbrev': 'sila', 'name': 'Sīlakkhandhavaggapāḷi', 'references': ['6D', 'dn-sila', 'sila']},
-            '7D': {'abbrev': 'maha', 'name': 'Mahāvaggapāḷi', 'references': ['7D', 'dn-maha', 'maha']},
+            '7D': {'abbrev': 'dn-maha', 'name': 'Mahāvaggapāḷi', 'references': ['7D', 'dn-maha', 'maha']},
             '8D': {'abbrev': 'pthi', 'name': 'Pāthikavaggapāḷi', 'references': ['8D', 'dn-pthi', 'pthi']},
             
             # Majjhimanikāya (mn)
@@ -73,7 +73,7 @@ class TipitakaMigrator:
             '12S2': {'abbrev': 'nida', 'name': 'Nidānavaggasaṃyuttapāḷi', 'references': ['12S2', 'sn-nida', 'nida']},
             '13S3': {'abbrev': 'khan', 'name': 'Khandhavaggasaṃyuttapāḷi', 'references': ['13S3', 'sn-khan', 'khan']},
             '13S4': {'abbrev': 'sala', 'name': 'Saḷāyatanavaggasaṃyuttapāḷi', 'references': ['13S4', 'sn-sala', 'sala']},
-            '14S5': {'abbrev': 'maha', 'name': 'Mahāvaggasaṃyuttapāḷi', 'references': ['14S5', 'sn-maha', 'maha']},
+            '14S5': {'abbrev': 'sn-maha', 'name': 'Mahāvaggasaṃyuttapāḷi', 'references': ['14S5', 'sn-maha', 'maha']},
             
             # Aṅguttaranikāya (an)
             # parent directory is 'tipitaka/su/an'
@@ -98,14 +98,14 @@ class TipitakaMigrator:
             '18Sn': {'abbrev': 'sn', 'name': 'Suttanipātapāḷi', 'references': ['18Sn', 'kn-sn', 'sn']},
             '19Vv': {'abbrev': 'vv', 'name': 'Vimānavatthupāḷi', 'references': ['19Vv', 'kn-vv', 'vv']},
             '19Pv': {'abbrev': 'pv', 'name': 'Petavatthupāḷi', 'references': ['19Pv', 'kn-pv', 'pv']},
-            '19Th1': {'abbrev': 'thrag', 'name': 'Theragāthāpāḷi', 'references': ['19Th1', 'kn-thrag', 'thrag']},
-            '19Th2': {'abbrev': 'thrig', 'name': 'Therīgāthāpāḷi', 'references': ['19Th2', 'kn-thrig', 'thrig']},
-            '20Ap1': {'abbrev': 'thraa', 'name': 'Therāpadānapāḷi', 'references': ['20Ap1', 'kn-thraa', 'thraa']},
-            '20Ap2': {'abbrev': 'thria', 'name': 'Therīapadānapāḷi', 'references': ['20Ap2', 'kn-thria', 'thria']},
+            '19Th1': {'abbrev': 'th1', 'name': 'Theragāthāpāḷi', 'references': ['19Th1', 'kn-thrag', 'thrag']},
+            '19Th2': {'abbrev': 'th2', 'name': 'Therīgāthāpāḷi', 'references': ['19Th2', 'kn-thrig', 'thrig']},
+            '20Ap1': {'abbrev': 'ap1', 'name': 'Therāpadānapāḷi', 'references': ['20Ap1', 'kn-thraa', 'thraa']},
+            '20Ap2': {'abbrev': 'ap2', 'name': 'Therīapadānapāḷi', 'references': ['20Ap2', 'kn-thria', 'thria']},
             '21Bu': {'abbrev': 'bu', 'name': 'Buddhavaṃsapāḷi', 'references': ['21Bu', 'kn-bu', 'bu']},
             '21Cp': {'abbrev': 'cp', 'name': 'Cariyāpiṭakapāḷi', 'references': ['21Cp', 'kn-cp', 'cp']},
-            '22J': {'abbrev': 'ja-1', 'name': 'Jātakapāḷi 1', 'references': ['22J', 'kn-ja-1', 'ja-1']},
-            '23J': {'abbrev': 'ja-2', 'name': 'Jātakapāḷi 2', 'references': ['23J', 'kn-ja-2', 'ja-2']},
+            '22J': {'abbrev': 'ja1', 'name': 'Jātakapāḷi 1', 'references': ['22J', 'kn-ja-1', 'ja-1']},
+            '23J': {'abbrev': 'ja2', 'name': 'Jātakapāḷi 2', 'references': ['23J', 'kn-ja-2', 'ja-2']},
             '24Mn': {'abbrev': 'mn', 'name': 'Mahāniddesapāḷi', 'references': ['24Mn', 'kn-mn', 'mn']},
             '25Cn': {'abbrev': 'cn', 'name': 'Cūḷaniddesapāḷi', 'references': ['25Cn', 'kn-cn', 'cn']},
             '26Ps': {'abbrev': 'ps', 'name': 'Paṭisambhidāmaggapāḷi', 'references': ['26Ps', 'kn-ps', 'ps']},
@@ -221,11 +221,114 @@ class TipitakaMigrator:
         
         self.sidebar_data = {}
     
+    def get_available_books(self) -> List[str]:
+        """Get all available book codes"""
+        return list(self.book_mappings.keys())
+    
+    def get_available_sections(self) -> List[str]:
+        """Get all available section codes (vi, su, ab)"""
+        return ['vi', 'su', 'ab']
+    
+    def validate_books(self, book_codes: List[str]) -> Tuple[List[str], List[str]]:
+        """Validate book codes and return (valid_books, invalid_books)"""
+        valid_books = []
+        invalid_books = []
+        available_books = self.get_available_books()
+        
+        for book in book_codes:
+            if book in available_books:
+                valid_books.append(book)
+            else:
+                invalid_books.append(book)
+        
+        return valid_books, invalid_books
+    
+    def filter_books_by_section(self, section: str) -> List[str]:
+        """Get all books in a specific section (vi, su, ab)"""
+        books = []
+        
+        # Look inside tipitaka structure
+        if 'tipitaka' in self.structure:
+            tipitaka_structure = self.structure['tipitaka']
+            
+            if section in tipitaka_structure:
+                section_data = tipitaka_structure[section]
+                
+                if isinstance(section_data, dict):
+                    # If section has direct books
+                    if 'books' in section_data:
+                        books.extend(section_data['books'])
+                    
+                    # If section has subsections with books
+                    for sub_section, sub_data in section_data.items():
+                        if sub_section != 'books' and isinstance(sub_data, dict):
+                            if 'books' in sub_data:
+                                books.extend(sub_data['books'])
+                            else:
+                                # For nested structures like pt -> anu -> books
+                                for sub_sub_section, sub_sub_data in sub_data.items():
+                                    if isinstance(sub_sub_data, dict) and 'books' in sub_sub_data:
+                                        books.extend(sub_sub_data['books'])
+        
+        return books
+    
+    def should_process_book(self, book_code: str, target_books: Optional[List[str]] = None) -> bool:
+        """Check if a book should be processed based on target_books filter"""
+        if target_books is None:
+            return True
+        return book_code in target_books
+    
     def _safe_read_file(self, file_path: Path) -> Optional[str]:
-        """Safely read file with better error handling"""
+        """Safely read file with better error handling and normalize all patterns"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
-                return f.read()
+                content = f.read()
+            
+            # ========== ทำการ normalize ทั้งหมดตั้งแต่อ่านไฟล์ ==========
+            
+            # 1. แปลง -- เป็น – สำหรับตัวเลข (normalize number ranges)
+            content = re.sub(r'(\d+)--(\d+)', r'\1–\2', content)
+            
+            # 2. ทำการ clean content พื้นฐาน
+            lines = content.split('\n')
+            cleaned_lines = []
+            
+            # Pattern สำหรับตรวจสอบ
+            link_pattern = re.compile(r'(\[.*?\]\()(.+?)(\))')
+            title_list_pattern = re.compile(r'^[ \t]*\*[ \t]+[A-Za-zāīūēōṅñṭḍṇḷṃṅḍṭṇḷṃāīūēōĀĪŪĒŌ, ]+[ \t]*$')
+            
+            for line in lines:
+                # 3. Skip breadcrumb lines
+                if '[Home](/)' in line or ('/' in line and line.count('[') >= 2 and line.count(']') >= 2):
+                    continue
+                    
+                # 4. Skip navigation lines
+                if line.startswith('[Go to '):
+                    continue
+                    
+                # 5. Skip title-only list items
+                if title_list_pattern.match(line):
+                    continue
+                
+                # 6. Fix internal links (remove .md, lowercase, dots to dashes)
+                def fix_link(match):
+                    pre, link, post = match.groups()
+                    # For internal links, remove .md extension, convert to lowercase, and replace dots with dashes
+                    if not link.startswith('http'):
+                        link = link.removesuffix('.md').lower().replace('.', '-')
+                    return f"{pre}{link}{post}"
+                
+                line = link_pattern.sub(fix_link, line)
+                
+                # 7. Normalize PE spacing
+                line = self._normalize_pe_spacing(line)
+                
+                cleaned_lines.append(line)
+            
+            content = '\n'.join(cleaned_lines).strip()
+            
+            return content
+            
         except FileNotFoundError:
             # Preserve original behavior - silently handle missing files
             return None
@@ -264,11 +367,26 @@ class TipitakaMigrator:
             return text  # Preserve original behavior - return unchanged text
         
         try:
-            # Split text into segments, preserving numbers and symbols
+            # Extract and protect markdown links from transliteration
             import re
             
-            # For non-roman text, apply transliteration only to Pali text segments
-            segments = re.split(r'(\d+|[^\w\u0100-\u017F\u1E00-\u1EFF]+)', text)
+            # Find all markdown links [text](url)
+            link_pattern = re.compile(r'(\[.*?\]\()(.+?)(\))')
+            links = []
+            
+            def replace_link(match):
+                nonlocal links
+                pre, url, post = match.groups()
+                # Store the original URL and replace with placeholder
+                placeholder = f"__LINK_PLACEHOLDER_{len(links)}__"
+                links.append(url)
+                return f"{pre}{placeholder}{post}"
+            
+            # Replace links with placeholders
+            protected_text = link_pattern.sub(replace_link, text)
+            
+            # Split text into segments, preserving numbers and symbols
+            segments = re.split(r'(\d+|[^\w\u0100-\u017F\u1E00-\u1EFF]+)', protected_text)
             result_segments = []
             
             for segment in segments:
@@ -276,18 +394,28 @@ class TipitakaMigrator:
                     # Keep numbers and non-Pali characters as is
                     result_segments.append(segment)
                 elif segment.strip():
-                    # Transliterate only non-empty Pali word segments
-                    try:
-                        converted = transliterate.process(config['from'], config['to'], segment)
-                        result_segments.append(converted)
-                    except Exception as e:
-                        # Log error but preserve original behavior - return unchanged segment
-                        self.logger.error(f"Transliteration failed for segment '{segment}': {e}")
+                    # Check if this segment contains a link placeholder
+                    if '__LINK_PLACEHOLDER_' in segment:
+                        # Don't transliterate link placeholders
                         result_segments.append(segment)
+                    else:
+                        # Transliterate only non-empty Pali word segments
+                        try:
+                            converted = transliterate.process(config['from'], config['to'], segment)
+                            result_segments.append(converted)
+                        except Exception as e:
+                            # Log error but preserve original behavior - return unchanged segment
+                            self.logger.error(f"Transliteration failed for segment '{segment}': {e}")
+                            result_segments.append(segment)
                 else:
                     result_segments.append(segment)
             
             result = ''.join(result_segments)
+            
+            # Restore original URLs in links
+            for i, original_url in enumerate(links):
+                placeholder = f"__LINK_PLACEHOLDER_{i}__"
+                result = result.replace(placeholder, original_url)
             
             # Cache the result for performance
             self._transliteration_cache[cache_key] = result
@@ -297,44 +425,84 @@ class TipitakaMigrator:
             # Preserve original behavior - silently return original text
             self.logger.error(f"Transliteration failed for locale {locale}: {e}")
             return text
+    
+    def convert_emphasis_to_component(self, text: str) -> tuple[str, bool]:
+        """Convert **text** to <Emphasis>text</Emphasis> and return whether Emphasis import is needed
+        Returns tuple of (converted_text, needs_emphasis_import)
+        """
+        import re
+        
+        # Check if text contains **text** patterns
+        emphasis_pattern = r'\*\*([^*]+)\*\*'
+        
+        if not re.search(emphasis_pattern, text):
+            return text, False
+        
+        # Convert **text** to <Emphasis>text</Emphasis>
+        converted_text = re.sub(emphasis_pattern, r'<Emphasis>\1</Emphasis>', text)
+        
+        return converted_text, True
+    
+    def _normalize_pe_spacing(self, text: str) -> str:
+        """Normalize spacing around ...pe... patterns
+        Ensures there's exactly one space before and after ...pe... if not at line boundaries
+        """
+        import re
+        
+        # Pattern to match ...pe... with various ellipsis formats
+        # Matches: ...pe..., …pe…, . . . pe . . ., etc.
+        pe_patterns = [
+            r'(\.{3}pe\.{3})',      # ...pe...
+            r'(…pe…)',              # …pe… (Unicode ellipsis)
+            r'(\.\.\.pe\.\.\.)',    # ...pe... (explicit dots)
+            r'(\.\s*\.\s*\.\s*pe\s*\.\s*\.\s*\.)', # . . . pe . . .
+        ]
+        
+        for pattern in pe_patterns:
+            # Find all matches with their positions
+            matches = list(re.finditer(pattern, text, re.IGNORECASE))
+            
+            # Process matches from right to left to preserve positions
+            for match in reversed(matches):
+                start, end = match.span()
+                pe_text = match.group(1)
+                
+                # Check if there's space before and after
+                has_space_before = start == 0 or text[start - 1].isspace()
+                has_space_after = end == len(text) or text[end].isspace()
+                
+                # Build replacement with proper spacing
+                replacement = pe_text
+                
+                # Add space before if needed (not at start of line)
+                if start > 0 and not has_space_before:
+                    replacement = ' ' + replacement
+                
+                # Add space after if needed (not at end of line)  
+                if end < len(text) and not has_space_after:
+                    replacement = replacement + ' '
+                
+                # Replace in text
+                text = text[:start] + replacement + text[end:]
+        
+        return text
         
     def clean_content(self, content: str, book_code: str = '') -> str:
-        """Remove breadcrumb navigation, go to previous/next links, title-only list items, and fix internal links."""
-        lines = content.split('\n')
-        cleaned_lines = []
+        """Remove book_code prefix from links only (other cleaning moved to _safe_read_file)"""
+        if not book_code:
+            return content  # No need to process if no book_code
         
         # Pattern to find markdown links like [text](link)
         link_pattern = re.compile(r'(\[.*?\]\()(.+?)(\))')
         
-        # Pattern to find title-only list items (not links)
-        title_list_pattern = re.compile(r'^[ \t]*\*[ \t]+[A-Za-zāīūēōṅñṭḍṇḷṃṅḍṭṇḷṃāīūēōĀĪŪĒŌ, ]+[ \t]*$')
-
-        for line in lines:
-            # Skip breadcrumb lines (contains [Home](/) pattern or breadcrumb-like structure)
-            if '[Home](/)' in line or ('/' in line and line.count('[') >= 2 and line.count(']') >= 2):
-                continue
-            # Skip navigation lines (Go to previous/next page)
-            if line.startswith('[Go to '):
-                continue
-            # Skip title-only list items (e.g., * Brahmajālasutta, * Sīla)
-            if title_list_pattern.match(line):
-                continue
-
-            def fix_link(match):
-                pre, link, post = match.groups()
-                # Remove book_code prefix
-                if book_code:
-                    link = link.replace(f'{book_code}/', '')
-                # For internal links, remove .md extension, convert to lowercase, and replace dots with dashes
-                if not link.startswith('http'):
-                    link = link.removesuffix('.md').lower().replace('.', '-')
-                return f"{pre}{link}{post}"
-
-            line = link_pattern.sub(fix_link, line)
-
-            cleaned_lines.append(line)
+        def fix_link(match):
+            pre, link, post = match.groups()
+            # Remove book_code prefix only
+            if book_code:
+                link = link.replace(f'{book_code}/', '')
+            return f"{pre}{link}{post}"
         
-        return '\n'.join(cleaned_lines).strip()
+        return link_pattern.sub(fix_link, content)
     
     def extract_book_id_from_path(self, file_path: Path) -> str:
         """Extract book identifier from file path for PageFind metadata"""
@@ -454,6 +622,17 @@ class TipitakaMigrator:
         
         return '\n'.join(result)
     
+    def convert_emphasis_markdown(self, text: str) -> str:
+        """Convert **text** to <Emphasis>text</Emphasis> component"""
+        # Pattern to match **text** where text doesn't contain ** inside
+        pattern = r'\*\*([^*]+)\*\*'
+        
+        def replace_emphasis(match):
+            content = match.group(1)
+            return f'<Emphasis>{content}</Emphasis>'
+        
+        return re.sub(pattern, replace_emphasis, text)
+    
     def convert_to_mdx_with_components(self, content: str, book_id: str = '', title: str = '') -> tuple[str, str]:
         """Convert markdown content to MDX with Astro components
         Returns tuple of (imports_content, converted_content)
@@ -463,7 +642,8 @@ class TipitakaMigrator:
         
         # Add component imports (include TableOfContents if needed)
         imports = """import Division from '@components/Division.astro';
-import Paragraph from '@components/Paragraph.astro';"""
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';"""
         
         if has_toc:
             imports += """
@@ -500,8 +680,8 @@ import TableOfContents from '@components/TableOfContents.astro';"""
                 i += 1
                 continue
             
-            # Check for division pattern (24.), (25.), etc.
-            division_match = re.match(r'^\((\d+)\.\)$', line.strip())
+            # Check for division pattern (24.), (25.), (504--512.), etc.
+            division_match = re.match(r'^\((\d+(?:--\d+)?)\.\)$', line.strip())
             if division_match:
                 division_num = division_match.group(1)
                 
@@ -610,13 +790,16 @@ import TableOfContents from '@components/TableOfContents.astro';"""
                     else:
                         converted_lines.append(f'<Paragraph number="{para_num}">')
                 
-                converted_lines.append(para_content)
+                # Convert emphasis markdown in paragraph content
+                converted_para_content = self.convert_emphasis_markdown(para_content)
+                converted_lines.append(converted_para_content)
                 in_paragraph = True
                 
-                # Add the collected multi-line content
+                # Add the collected multi-line content (also convert emphasis)
                 k = i + 1
                 while k < j:
-                    converted_lines.append(lines[k])
+                    line_content = self.convert_emphasis_markdown(lines[k])
+                    converted_lines.append(line_content)
                     k += 1
                 
                 converted_lines.append('</Paragraph>')
@@ -653,13 +836,16 @@ import TableOfContents from '@components/TableOfContents.astro';"""
                         converted_lines.append(f'<Paragraph type="center" book="{book_id}">')
                     else:
                         converted_lines.append('<Paragraph type="center">')
-                    converted_lines.append(line)
+                    # Convert emphasis markdown in center paragraph content
+                    converted_line = self.convert_emphasis_markdown(line)
+                    converted_lines.append(converted_line)
                     converted_lines.append('</Paragraph>')
                     i += 1
                     continue
             
-            # Regular line - add as is
-            converted_lines.append(line)
+            # Regular line - convert emphasis and add as is
+            converted_line = self.convert_emphasis_markdown(line)
+            converted_lines.append(converted_line)
             i += 1
         
         # Close any remaining open paragraph
@@ -941,8 +1127,9 @@ book: "{book_id}\""""
                     cleaned_content = namo_content
                     
         else:
-            # Replace dots with dashes in filenames
+            # Replace dots with dashes in filenames และแปลง -- เป็น –
             safe_stem = source_file.stem.lower().replace('.', '-')
+            safe_stem = re.sub(r'(\d+)--(\d+)', r'\1–\2', safe_stem)
             target_file = target_path / f"{safe_stem}.mdx"
         
         # Convert to MDX with components if content has divisions/paragraphs
@@ -1307,8 +1494,13 @@ export default sidebarConfig;
                 books.extend(self._collect_all_books(item))
         return books
     
-    def migrate_all(self, target_locales=None):
-        """Migrate all content for specified locales with improved error handling"""
+    def migrate_all(self, target_locales=None, target_books=None):
+        """Migrate all content for specified locales with improved error handling
+        
+        Args:
+            target_locales: List of locale codes to migrate (default: all locales)
+            target_books: List of book codes to migrate (default: all books)
+        """
         if target_locales is None:
             target_locales = self.locales
         elif isinstance(target_locales, str):
@@ -1321,8 +1513,23 @@ export default sidebarConfig;
             print(f"Valid locales: {', '.join(self.locales)}")
             return  # Preserve original behavior - return without exception
         
+        # Validate books if specified
+        if target_books is not None:
+            if isinstance(target_books, str):
+                target_books = [target_books]
+            
+            valid_books, invalid_books = self.validate_books(target_books)
+            if invalid_books:
+                print(f"Error: Invalid book(s): {', '.join(invalid_books)}")
+                print(f"Valid books: {', '.join(self.get_available_books())}")
+                return
+            
+            target_books = valid_books
+        
         print("Starting Tipitaka content migration...")
         print(f"Target locales: {', '.join(target_locales)}")
+        if target_books:
+            print(f"Target books: {', '.join(target_books)}")
         
         # Add basic error handling for directory operations
         try:
@@ -1338,6 +1545,10 @@ export default sidebarConfig;
         
         # Collect all books and sort them properly
         all_books = self._collect_all_books(self.structure)
+        
+        # Filter books if target_books is specified
+        if target_books:
+            all_books = [book for book in all_books if book in target_books]
         
         # Sort books by their numeric order for proper processing sequence
         def sort_key(book_code):
@@ -1368,8 +1579,9 @@ export default sidebarConfig;
         print(f"\nMigration completed for {len(target_locales)} locale(s)!")
 
 def main():
-    """Main function"""
+    """Main function with improved argument parsing"""
     import sys
+    import argparse
     
     # Set up paths
     script_dir = Path(__file__).parent
@@ -1379,26 +1591,88 @@ def main():
     # Create migrator
     migrator = TipitakaMigrator(str(source_dir), str(target_dir))
     
-    # Check command line arguments for locale selection
-    if len(sys.argv) > 1:
-        # Get specified locales from command line
-        target_locales = sys.argv[1:]
+    # Check if arguments contain --book or --section (new format)
+    has_new_format = any(arg.startswith('--') for arg in sys.argv[1:])
+    
+    if has_new_format:
+        # Use argparse for new format
+        parser = argparse.ArgumentParser(
+            description='Migrate Tipitaka content to Starlight structure',
+            epilog=f"""
+Examples:
+  python {sys.argv[0]} romn                    # Migrate romn locale (all books)
+  python {sys.argv[0]} romn --book 1V         # Migrate romn locale, book 1V only
+  python {sys.argv[0]} romn --book 1V,2V      # Migrate romn locale, books 1V and 2V
+  python {sys.argv[0]} romn --section vi      # Migrate romn locale, Vinaya section only
+  python {sys.argv[0]} thai sinh              # Migrate thai and sinh locales (all books)
+  python {sys.argv[0]}                        # Migrate all locales (all books)
+
+Available locales: {', '.join(migrator.locales)}
+Available books: {', '.join(migrator.get_available_books())}
+Available sections: {', '.join(migrator.get_available_sections())}
+            """,
+            formatter_class=argparse.RawDescriptionHelpFormatter
+        )
         
-        # Validate all provided locales
-        invalid_locales = [loc for loc in target_locales if loc not in migrator.locales]
-        if invalid_locales:
-            print(f"Error: Invalid locale(s): {', '.join(invalid_locales)}")
-            print(f"Valid locales: {', '.join(migrator.locales)}")
-            print(f"Usage: python {sys.argv[0]} [locale1] [locale2] ...")
-            print(f"Example: python {sys.argv[0]} mymr")
-            print(f"Example: python {sys.argv[0]} thai sinh")
-            print(f"Example: python {sys.argv[0]}  # (migrates all locales)")
-            return
+        parser.add_argument('locales', nargs='*', 
+                          help='Locale codes to migrate (default: all locales)')
+        parser.add_argument('--book', '--books', 
+                          help='Comma-separated list of book codes to migrate (e.g., 1V,2V)')
+        parser.add_argument('--section', 
+                          help='Section to migrate: vi (Vinaya), su (Sutta), or ab (Abhidhamma)')
         
-        migrator.migrate_all(target_locales)
+        args = parser.parse_args()
+        
+        # Process arguments
+        target_locales = args.locales if args.locales else None
+        target_books = None
+        
+        # Handle book selection
+        if args.book:
+            target_books = [book.strip() for book in args.book.split(',')]
+        elif args.section:
+            if args.section not in migrator.get_available_sections():
+                print(f"Error: Invalid section '{args.section}'")
+                print(f"Valid sections: {', '.join(migrator.get_available_sections())}")
+                return
+            target_books = migrator.filter_books_by_section(args.section)
+        
+        # Validate locales if provided
+        if target_locales:
+            invalid_locales = [loc for loc in target_locales if loc not in migrator.locales]
+            if invalid_locales:
+                print(f"Error: Invalid locale(s): {', '.join(invalid_locales)}")
+                print(f"Valid locales: {', '.join(migrator.locales)}")
+                return
+        
+        # Run migration
+        migrator.migrate_all(target_locales, target_books)
+        
     else:
-        # No arguments provided, migrate all locales
-        migrator.migrate_all()
+        # Backward compatibility: old format (locales only)
+        if len(sys.argv) > 1:
+            # Get specified locales from command line
+            target_locales = sys.argv[1:]
+            
+            # Validate all provided locales
+            invalid_locales = [loc for loc in target_locales if loc not in migrator.locales]
+            if invalid_locales:
+                print(f"Error: Invalid locale(s): {', '.join(invalid_locales)}")
+                print(f"Valid locales: {', '.join(migrator.locales)}")
+                print(f"Usage: python {sys.argv[0]} [locale1] [locale2] ...")
+                print(f"       python {sys.argv[0]} [locale] --book [book1,book2] ...")
+                print(f"       python {sys.argv[0]} [locale] --section [vi|su|ab]")
+                print(f"Example: python {sys.argv[0]} mymr")
+                print(f"Example: python {sys.argv[0]} thai sinh")
+                print(f"Example: python {sys.argv[0]} romn --book 1V,2V")
+                print(f"Example: python {sys.argv[0]} romn --section vi")
+                print(f"Example: python {sys.argv[0]}  # (migrates all locales)")
+                return
+            
+            migrator.migrate_all(target_locales)
+        else:
+            # No arguments provided, migrate all locales
+            migrator.migrate_all()
 
 if __name__ == "__main__":
     main()

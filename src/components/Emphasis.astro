@@ -1,0 +1,24 @@
+---
+export interface Props {
+  type?: 'rule' | 'teaching' | 'name' | 'place' | 'quote' | 'term' | 'default';
+  class?: string;
+}
+
+const { type = 'default', class: className = '' } = Astro.props;
+
+const styles = {
+  rule: 'font-bold text-red-700 bg-red-50 px-1 py-0.5 rounded border-l-2 border-red-400',
+  teaching: 'font-semibold text-blue-700 italic',
+  name: 'font-medium text-green-700',
+  place: 'font-medium text-purple-700',
+  quote: 'font-medium text-orange-700 bg-orange-50 px-1 rounded',
+  term: 'font-medium text-indigo-700 underline decoration-dotted',
+  default: 'font-bold'
+};
+
+const finalClass = `${styles[type]} ${className}`.trim();
+---
+
+<em class={finalClass} data-emphasis-type={type}>
+  <slot />
+</em>

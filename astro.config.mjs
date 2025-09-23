@@ -5,24 +5,59 @@ import { sidebarConfig } from './python/md/navigator.js'
 
 // https://astro.build/config
 export default defineConfig({
+	output: 'static',
+	build: {
+		concurrency: 1, // ลด concurrency เพื่อประหยัด memory
+		assets: '_astro',
+		inlineStylesheets: 'never',
+		split: true,
+	},
 	vite: {
+		assetsInclude: ['**/*.jsonc'],
+		build: {
+			target: 'esnext',
+			chunkSizeWarningLimit: 5000,
+			rollupOptions: {
+				output: {
+					manualChunks: (id) => {
+						if (id.includes('node_modules/@astrojs/starlight')) {
+							return 'starlight';
+						}
+						if (id.includes('node_modules')) {
+							return 'vendor';
+						}
+						if (id.includes('src/components')) {
+							return 'components';
+						}
+						if (id.includes('src/content/docs/thai')) {
+							return 'content-thai';
+						}
+						if (id.includes('src/content/docs/mymr')) {
+							return 'content-mymr';
+						}
+						if (id.includes('src/content/docs/sinh')) {
+							return 'content-sinh';
+						}
+						if (id.includes('src/content/docs')) {
+							return 'content-other';
+						}
+					},
+					maxParallelFileOps: 2,
+				}
+			},
+			minify: false, // ปิด minify ช่วงแรกเพื่อประหยัด memory
+		},
 		resolve: {
 			alias: {
 				'@components': new URL('./src/components', import.meta.url).pathname,
 			}
 		},
-		server: {
-			fs: {
-				// เพิ่มเวลา timeout สำหรับการโหลดไฟล์ (หน่วยเป็นมิลลิวินาที)
-				// กำหนดให้เป็น 250 วินาที เพื่อให้มีเวลาประมวลผลนานขึ้น
-				watch: {
-					awaitWriteFinish: {
-						stabilityThreshold: 300000, // 5 minutes
-						pollInterval: 1000
-					}
-				}
-			}
+		optimizeDeps: {
+			include: ['@astrojs/starlight']
 		},
+		ssr: {
+			noExternal: ['@astrojs/starlight']
+		}
 	},    
 	integrations: [
 		starlight({
@@ -38,6 +73,7 @@ export default defineConfig({
 				'./src/assets/css/global.css',
 				'./src/assets/css/fonts.css',
 			],
+			expressiveCode: false, // ปิด expressive code เพื่อหลีกเลี่ยง jsonc error
 			defaultLocale: 'romn',
 			locales: {
 				mymr: {
