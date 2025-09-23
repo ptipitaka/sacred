@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=14336\" astro build",
+    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=20480\" astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
