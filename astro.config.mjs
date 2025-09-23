@@ -6,6 +6,7 @@ import { sidebarConfig } from './python/md/navigator.js'
 // https://astro.build/config
 export default defineConfig({
     vite: {
+        assetsInclude: ['**/*.jsonc'],
         resolve: {
             alias: {
                 '@components': new URL('./src/components', import.meta.url).pathname,
