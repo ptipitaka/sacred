@@ -1,0 +1,47 @@
+:root {
+    --sl-content-width: 50rem;
+    --sl-text-5xl: 2rem;
+}
+
+.large {
+    font-size: var(--sl-text-sm);
+    /* font-weight: 400; */
+    /* color: var(--sl-color-white); */
+}
+
+/* Fix sidebar font size inconsistency on mobile */
+@media (max-width: 640px) {
+    /* Target all navigation elements in sidebar */
+    nav ul li,
+    nav ul li a,
+    nav ul li span,
+    nav details summary,
+    .sidebar *,
+    [data-pagefind-ignore] *,
+    aside *,
+    .sl-sidebar * {
+        font-size: 0.875rem !important;
+    }
+    
+    /* Specific targeting for Starlight sidebar */
+    .starlight-sidebar nav ul li a,
+    .starlight-sidebar nav ul li span,
+    .starlight-sidebar nav details summary {
+        font-size: 0.875rem !important;
+    }
+    
+    /* General navigation text */
+    nav[aria-label] ul li,
+    nav[aria-label] ul li a,
+    nav[aria-label] ul li span,
+    nav[aria-label] details summary {
+        font-size: 0.875rem !important;
+    }
+    
+    /* Reset any larger text in navigation */
+    nav * {
+        font-size: inherit !important;
+    }
+}
+
+

@@ -24,7 +24,7 @@ pnpm-debug.log*
 *.db
 
 # mula assets
-src/assets/
+src/assets/mula/*
 
 # src
 src/content/docs/deva/*
