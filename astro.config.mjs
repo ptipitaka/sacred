@@ -11,10 +11,7 @@ export default defineConfig({
             alias: {
                 '@components': new URL('./src/components', import.meta.url).pathname,
             }
-        }, 
-        optimizeDeps: {
-            include: ['@astrojs/starlight']
-        },               
+        },              
     },
     integrations: [
         starlight({
@@ -26,6 +23,7 @@ export default defineConfig({
                 href: 'https://github.com/withastro/starlight' 
             }],
             plugins: [starlightThemeRapide()],
+            expressiveCode: false,
             customCss: [
                 './src/assets/css/global.css',
                 './src/assets/css/fonts.css',
