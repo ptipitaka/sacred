@@ -6,6 +6,32 @@ import { sidebarConfig } from './python/md/navigator.js'
 // https://astro.build/config
 export default defineConfig({
     vite: {
+        assetsInclude: ['**/*.jsonc'],
+        plugins: [
+            {
+                name: 'jsonc-loader',
+                load(id) {
+                    if (id.endsWith('.jsonc?raw')) {
+                        // Handle raw JSONC imports (like from Starlight themes)
+                        const fs = require('fs');
+                        const path = require('path');
+                        const actualPath = id.replace('?raw', '');
+                        try {
+                            const content = fs.readFileSync(actualPath, 'utf-8');
+                            return `export default ${JSON.stringify(content)}`;
+                        } catch (error) {
+                            console.warn(`Failed to load JSONC file: ${actualPath}`);
+                            return `export default ""`;
+                        }
+                    }
+                    return null;
+                }
+            }
+        ],
+        define: {
+            // Handle raw JSONC imports from node_modules
+            __RAW_JSONC__: 'true'
+        },
         build: {
             rollupOptions: {
                 output: {
