@@ -4,13 +4,18 @@ import { sidebarConfig } from './python/md/navigator.js';
 
 // https://astro.build/config
 export default defineConfig({
-  // ย้ายการตั้งค่า 'esbuild' มาไว้ที่นี่
   esbuild: {
     loader: {
       '.jsonc': 'json',
     },
   },
   vite: {
+    // Add the alias for @components here
+    resolve: {
+      alias: {
+        '@components': '/workspace/src/components',
+      },
+    },
     optimizeDeps: {
       exclude: ['@astrojs/starlight'],
     },
