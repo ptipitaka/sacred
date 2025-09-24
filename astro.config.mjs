@@ -5,6 +5,31 @@ import { sidebarConfig } from './python/md/navigator.js'
 // https://astro.build/config
 export default defineConfig({
     vite: {
+        plugins: [
+            {
+                name: 'jsonc-loader',
+                transform(code, id) {
+                    if (id.includes('.jsonc?raw')) {
+                        return `export default ${JSON.stringify(code)};`;
+                    }
+                    return null;
+                },
+                load(id) {
+                    if (id.includes('.jsonc?raw')) {
+                        const fs = require('fs');
+                        const actualPath = id.replace('?raw', '');
+                        try {
+                            const content = fs.readFileSync(actualPath, 'utf-8');
+                            return `export default ${JSON.stringify(content)};`;
+                        } catch (error) {
+                            console.warn(`Could not load JSONC file: ${actualPath}`);
+                            return `export default "";`;
+                        }
+                    }
+                    return null;
+                }
+            }
+        ],
         build: {
             rollupOptions: {
                 output: {
