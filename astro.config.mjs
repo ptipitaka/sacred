@@ -4,16 +4,13 @@ import { sidebarConfig } from './python/md/navigator.js';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    // กำหนดให้ Esbuild ใช้ 'json' loader สำหรับไฟล์ '.jsonc'
-    // ซึ่งจะทำให้ Astro สามารถอ่านไฟล์ธีมของ Starlight ได้อย่างถูกต้อง
-    esbuild: {
-      loader: {
-        '.jsonc': 'json',
-      },
+  // ย้ายการตั้งค่า 'esbuild' มาไว้ที่นี่
+  esbuild: {
+    loader: {
+      '.jsonc': 'json',
     },
-    // ส่วนนี้ช่วยให้ Vite จัดการ dependency ของ Starlight ได้ดีขึ้น
-    // และลดโอกาสเกิดปัญหาในการ build บน DigitalOcean
+  },
+  vite: {
     optimizeDeps: {
       exclude: ['@astrojs/starlight'],
     },
