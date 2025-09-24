@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { sidebarConfig } from './python/md/navigator.js';
 
+import netlify from '@astrojs/netlify';
+
 // https://astro.build/config
 export default defineConfig({
   esbuild: {
@@ -9,6 +11,7 @@ export default defineConfig({
       '.jsonc': 'json',
     },
   },
+
   vite: {
     // Add the alias for @components here
     resolve: {
@@ -20,6 +23,7 @@ export default defineConfig({
       exclude: ['@astrojs/starlight'],
     },
   },
+
   integrations: [
     starlight({
       title: 'SACRED',
@@ -76,4 +80,6 @@ export default defineConfig({
       sidebar: sidebarConfig
     }),
   ],
+
+  adapter: netlify(),
 });
