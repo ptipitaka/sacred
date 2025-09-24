@@ -1,113 +1,77 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import { sidebarConfig } from './python/md/navigator.js'
+import { sidebarConfig } from './python/md/navigator.js';
 
 // https://astro.build/config
 export default defineConfig({
-    vite: {
-        plugins: [
-            {
-                name: 'jsonc-loader',
-                configureServer() {
-                    // This ensures the plugin runs during dev mode
-                },
-                buildStart() {
-                    // Initialize plugin for build
-                },
-                resolveId(id) {
-                    if (id.endsWith('.jsonc?raw')) {
-                        return id;
-                    }
-                    return null;
-                },
-                load(id) {
-                    if (id.endsWith('.jsonc?raw')) {
-                        // Return empty string for all JSONC files to prevent build errors
-                        return 'export default "";';
-                    }
-                    return null;
-                }
-            }
-        ],
-        esbuild: {
-            loader: {
-                '.jsonc': 'text'
-            }
-        },
-        build: {
-            rollupOptions: {
-                output: {
-                    manualChunks: {
-                        'sidebar': ['./python/md/navigator.js'],
-                        'starlight': ['@astrojs/starlight']
-                    }
-                }
-            },
-            chunkSizeWarningLimit: 1000
-        },
-        resolve: {
-            alias: {
-                '@components': new URL('./src/components', import.meta.url).pathname,
-            }
-        },
-        optimizeDeps: {
-            include: ['@astrojs/starlight']
-        }              
+  vite: {
+    // กำหนดให้ Esbuild ใช้ 'json' loader สำหรับไฟล์ '.jsonc'
+    // ซึ่งจะทำให้ Astro สามารถอ่านไฟล์ธีมของ Starlight ได้อย่างถูกต้อง
+    esbuild: {
+      loader: {
+        '.jsonc': 'json',
+      },
     },
-    integrations: [
-        starlight({
-            title: 'SACRED',
-            description: 'Scripture Archive of Canonical References, Editions, Digital corpus',
-            social: [{ 
-                icon: 'github', 
-                label: 'GitHub', 
-                href: 'https://github.com/withastro/starlight' 
-            }],
-            expressiveCode: {
-                themes: [],
-                useThemedScrollbars: false,
-                useThemedSelectionColors: false,
-            },
-            customCss: [
-                './src/assets/css/global.css',
-                './src/assets/css/fonts.css',
-            ],
-            defaultLocale: 'romn',
-            locales: {
-                mymr: {
-                    label: 'မြန်မာ',
-                    lang: 'my',
-                },
-                thai: {
-                    label: 'ไทย',
-                    lang: 'th',
-                },
-                sinh: {
-                    label: 'සිංහල',
-                    lang: 'si',
-                },
-                romn: {
-                    label: 'Roman',
-                    lang: 'en',
-                },
-                deva: {
-                    label: 'देवनागरी',
-                    lang: 'hi',
-                },
-                khmr: {
-                    label: 'ខ្មែរ',
-                    lang: 'kh',
-                },
-                laoo: {
-                    label: 'ລາວ',
-                    lang: 'lo',
-                },
-                lana: {
-                    label: 'ᩃᨶ᩠ᨶ',
-                    lang: 'ln',
-                },
-            },
-            sidebar: sidebarConfig
-        }),
-    ],
+    // ส่วนนี้ช่วยให้ Vite จัดการ dependency ของ Starlight ได้ดีขึ้น
+    // และลดโอกาสเกิดปัญหาในการ build บน DigitalOcean
+    optimizeDeps: {
+      exclude: ['@astrojs/starlight'],
+    },
+  },
+  integrations: [
+    starlight({
+      title: 'SACRED',
+      description: 'Scripture Archive of Canonical References, Editions, Digital corpus',
+      social: [{
+        icon: 'github',
+        label: 'GitHub',
+        href: 'https://github.com/withastro/starlight'
+      }],
+      expressiveCode: {
+        themes: [],
+        useThemedScrollbars: false,
+        useThemedSelectionColors: false,
+      },
+      customCss: [
+        './src/assets/css/global.css',
+        './src/assets/css/fonts.css',
+      ],
+      defaultLocale: 'romn',
+      locales: {
+        mymr: {
+          label: 'မြန်မာ',
+          lang: 'my',
+        },
+        thai: {
+          label: 'ไทย',
+          lang: 'th',
+        },
+        sinh: {
+          label: 'සිංහල',
+          lang: 'si',
+        },
+        romn: {
+          label: 'Roman',
+          lang: 'en',
+        },
+        deva: {
+          label: 'देवनागरी',
+          lang: 'hi',
+        },
+        khmr: {
+          label: 'ខ្មែរ',
+          lang: 'kh',
+        },
+        laoo: {
+          label: 'ລາວ',
+          lang: 'lo',
+        },
+        lana: {
+          label: 'ᩃᨶ᩠ᨶ',
+          lang: 'ln',
+        },
+      },
+      sidebar: sidebarConfig
+    }),
+  ],
 });
