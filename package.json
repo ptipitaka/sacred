@@ -2,21 +2,19 @@
   "name": "tptk",
   "type": "module",
   "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/starlight": "^0.35.2",
-    "astro": "^5.13.5",
-    "sharp": "^0.34.2",
-    "sqlite3": "^5.1.7",
-    "starlight-theme-rapide": "^0.5.1"
-  },
-  "devDependencies": {
-    "cross-env": "^10.0.0",
-    "rimraf": "^5.0.5"
-  }
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/starlight": "^0.36.0",
+        "astro": "^5.6.1",
+        "sharp": "^0.34.2"
+    },
+    "engines": {
+        "node": ">=18.20.8"
+    }  
 }
