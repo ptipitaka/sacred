@@ -8,21 +8,15 @@ export default defineConfig({
         plugins: [
             {
                 name: 'jsonc-loader',
-                transform(code, id) {
+                async load(id) {
                     if (id.includes('.jsonc?raw')) {
-                        return `export default ${JSON.stringify(code)};`;
-                    }
-                    return null;
-                },
-                load(id) {
-                    if (id.includes('.jsonc?raw')) {
-                        const fs = require('fs');
-                        const actualPath = id.replace('?raw', '');
                         try {
+                            const fs = await import('fs');
+                            const actualPath = id.replace('?raw', '');
                             const content = fs.readFileSync(actualPath, 'utf-8');
                             return `export default ${JSON.stringify(content)};`;
                         } catch (error) {
-                            console.warn(`Could not load JSONC file: ${actualPath}`);
+                            console.warn(`Could not load JSONC file: ${id}`, error);
                             return `export default "";`;
                         }
                     }
