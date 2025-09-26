@@ -1,0 +1,30 @@
+---
+title: "1 ມຫາວິຠງ຺ຄ"
+tableOfContents: false
+sidebar:
+  order: 1
+type: "tipitaka"
+basket: "vi"
+book: "para"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Paragraph number="1" type="center" book="para">
+ນໂມ ຕສ຺ສ ຠຄວໂຕ ອຣຫໂຕ ສມ຺ມາສມ຺ພຸທ຺ຘສ຺ສ.
+
+</Paragraph>
+
+<TableOfContents book="para" section="1">
+* [ເວຣຎ຺ຊກຓ຺ຑ](1/veranjakanda)
+* [1.1 ປາຣາຊິກກຓ຺ຑ](1/1-1)
+* [1.2 ສໍຆາທິເສສກຓ຺ຑ](1/1-2)
+* [1.3 ອນິຍຕກຓ຺ຑ](1/1-3)
+* [1.4 ນິສ຺ສຄ຺ຄິຍກຓ຺ຑ](1/1-4)
+</TableOfContents>

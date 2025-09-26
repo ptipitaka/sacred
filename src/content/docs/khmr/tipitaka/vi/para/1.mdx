@@ -1,0 +1,30 @@
+---
+title: "1 មហាវិភង្គ"
+tableOfContents: false
+sidebar:
+  order: 1
+type: "tipitaka"
+basket: "vi"
+book: "para"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Paragraph number="1" type="center" book="para">
+នមោ តស្ស ភគវតោ អរហតោ សម្មាសម្ពុទ្ធស្ស.
+
+</Paragraph>
+
+<TableOfContents book="para" section="1">
+* [វេរញ្ជកណ្ឌ](1/veranjakanda)
+* [1.1 បារាជិកកណ្ឌ](1/1-1)
+* [1.2 សំឃាទិសេសកណ្ឌ](1/1-2)
+* [1.3 អនិយតកណ្ឌ](1/1-3)
+* [1.4 និស្សគ្គិយកណ្ឌ](1/1-4)
+</TableOfContents>
