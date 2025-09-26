@@ -1,0 +1,29 @@
+---
+title: "1 មហាវិភង្គ"
+tableOfContents: false
+sidebar:
+  order: 1
+type: "tipitaka"
+basket: "vi"
+book: "paci"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Paragraph number="1" type="center" book="paci">
+នមោ តស្ស ភគវតោ អរហតោ សម្មាសម្ពុទ្ធស្ស.
+
+</Paragraph>
+
+<TableOfContents book="paci" section="1">
+* [1.5 បាចិត្តិយកណ្ឌ](1/1-5)
+* [1.6 បាដិទេសនីយកណ្ឌ](1/1-6)
+* [1.7 សេខិយកណ្ឌ](1/1-7)
+* [1.8 អធិករណសមថ](1/1-8)
+</TableOfContents>

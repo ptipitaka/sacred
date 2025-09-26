@@ -1,0 +1,29 @@
+---
+title: "1 ᨾᩉᩣᩅᩥᨽᩘᨣ"
+tableOfContents: false
+sidebar:
+  order: 1
+type: "tipitaka"
+basket: "vi"
+book: "paci"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Paragraph number="1" type="center" book="paci">
+ᨶᨾᩮᩣ ᨲᩔ ᨽᨣᩅᨲᩮᩣ ᩋᩁᩉᨲᩮᩣ ᩈᨾ᩠ᨾᩣᩈᨾ᩠ᨻᩩᨴ᩠ᨵᩔ.
+
+</Paragraph>
+
+<TableOfContents book="paci" section="1">
+* [1.5 ᨸᩣᨧᩥᨲ᩠ᨲᩥᨿᨠᨱ᩠ᨯ](1/1-5)
+* [1.6 ᨸᩣᨭᩥᨴᩮᩈᨶᩦᨿᨠᨱ᩠ᨯ](1/1-6)
+* [1.7 ᩈᩮᨡᩥᨿᨠᨱ᩠ᨯ](1/1-7)
+* [1.8 ᩋᨵᩥᨠᩁᨱᩈᨾᨳ](1/1-8)
+</TableOfContents>

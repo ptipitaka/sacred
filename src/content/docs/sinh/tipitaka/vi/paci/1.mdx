@@ -1,0 +1,29 @@
+---
+title: "1 මහාවිභඞ්ග"
+tableOfContents: false
+sidebar:
+  order: 1
+type: "tipitaka"
+basket: "vi"
+book: "paci"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Paragraph number="1" type="center" book="paci">
+නමෝ තස්ස භගවතෝ අරහතෝ සම්මාසම්බුද්ධස්ස.
+
+</Paragraph>
+
+<TableOfContents book="paci" section="1">
+* [1.5 පාචිත්තියකණ්ඩ](1/1-5)
+* [1.6 පාටිදේසනීයකණ්ඩ](1/1-6)
+* [1.7 සේඛියකණ්ඩ](1/1-7)
+* [1.8 අධිකරණසමථ](1/1-8)
+</TableOfContents>
