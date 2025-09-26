@@ -27,12 +27,9 @@ pnpm-debug.log*
 src/assets/mula/*
 
 # python/
-python/db
-python/json
-python/md/tipitaka
+python/*
 
 # other
-venv/
 .venv/
 .vscode/
 
