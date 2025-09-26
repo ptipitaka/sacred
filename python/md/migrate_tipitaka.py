@@ -1852,11 +1852,10 @@ export default sidebarConfig;
         
         # Add basic error handling for directory operations
         try:
-            print("Cleaning target locale directories...")
+            print("Setting up target locale directories...")
             for locale in target_locales:
                 locale_dir = self.target_dir / locale
-                if locale_dir.exists():
-                    shutil.rmtree(locale_dir)
+                # Create directory only if it doesn't exist (preserve existing content)
                 locale_dir.mkdir(parents=True, exist_ok=True)
         except Exception as e:
             print(f"Error setting up directories: {e}")
@@ -1975,20 +1974,22 @@ def main():
     migrator = TipitakaMigrator(str(source_dir), str(target_dir))
     
     # Check if arguments contain --book or --section (new format)
+    # OR if first argument starts with -- (no locale specified)
     has_new_format = any(arg.startswith('--') for arg in sys.argv[1:])
     
-    if has_new_format:
+    if has_new_format or (len(sys.argv) > 1 and sys.argv[1].startswith('--')):
         # Use argparse for new format
         parser = argparse.ArgumentParser(
             description='Migrate Tipitaka content to Starlight structure',
             epilog=f"""
 Examples:
-  python {sys.argv[0]} romn                    # Migrate romn locale (all books)
-  python {sys.argv[0]} romn --book 1V         # Migrate romn locale, book 1V only
-  python {sys.argv[0]} romn --book 1V,2V      # Migrate romn locale, books 1V and 2V
-  python {sys.argv[0]} romn --section vi      # Migrate romn locale, Vinaya section only
-  python {sys.argv[0]} thai sinh              # Migrate thai and sinh locales (all books)
   python {sys.argv[0]}                        # Migrate all locales (all books)
+  python {sys.argv[0]} --book 1V              # Migrate all locales, book 1V only
+  python {sys.argv[0]} --book 1V,2V           # Migrate all locales, books 1V and 2V  
+  python {sys.argv[0]} --section vi           # Migrate all locales, Vinaya section only
+  python {sys.argv[0]} romn                   # Migrate romn locale (all books)
+  python {sys.argv[0]} romn --book 1V         # Migrate romn locale, book 1V only
+  python {sys.argv[0]} thai sinh              # Migrate thai and sinh locales (all books)
 
 Available locales: {', '.join(migrator.locales)}
 Available books: {', '.join(migrator.get_available_books())}
