@@ -10,8 +10,13 @@ import re
 import json
 import shutil
 import logging
+import multiprocessing
+import concurrent.futures
+import time
+import threading
+import hashlib
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple, Optional, Set
 from aksharamukha import transliterate
 
 class TipitakaMigrator:
@@ -30,8 +35,26 @@ class TipitakaMigrator:
             self.logger.addHandler(handler)
             self.logger.setLevel(logging.ERROR)
         
+        # Thread-safe locks
+        self._cache_lock = threading.RLock()
+        self._batch_lock = threading.RLock()
+        self._progress_lock = threading.RLock()
+        
         # Cache for transliteration results (performance optimization)
         self._transliteration_cache = {}
+        
+        # File content cache to reduce I/O operations
+        self._file_content_cache = {}
+        self._batch_write_buffer = {}  # Per-locale buffer
+        self._batch_size = 100  # Files to buffer before batch write
+        
+        # Progress tracking
+        self._progress_stats = {}
+        self._completed_files = set()
+        
+        # Memory management
+        self._cache_max_size = 10000  # Maximum cache entries
+        self._cache_cleanup_threshold = 8000  # Start cleanup when reaching this
         
         # Transliteration configuration mapping - matches build_tree.py
         self.transliteration_config = {
@@ -220,6 +243,15 @@ class TipitakaMigrator:
         }
         
         self.sidebar_data = {}
+        
+        # Performance configurations
+        self.max_workers = min(32, (os.cpu_count() or 1) * 2)  # Optimal worker count
+        self.chunk_size = 50  # Files to process in one chunk
+        
+        # Progress tracking
+        self._start_time = None
+        self._processed_files = 0
+        self._total_files = 0
     
     def get_available_books(self) -> List[str]:
         """Get all available book codes"""
@@ -279,10 +311,19 @@ class TipitakaMigrator:
         return book_code in target_books
     
     def _safe_read_file(self, file_path: Path) -> Optional[str]:
-        """Safely read file with better error handling and normalize all patterns"""
+        """Safely read file with caching and better error handling"""
+        cache_key = str(file_path)
+        
+        # Check cache first
+        if cache_key in self._file_content_cache:
+            return self._file_content_cache[cache_key]
+        
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
+            
+            # Cache the raw content
+            self._file_content_cache[cache_key] = content
             
             # ========== ทำการ normalize ทั้งหมดตั้งแต่อ่านไฟล์ ==========
             
@@ -310,12 +351,30 @@ class TipitakaMigrator:
                 if title_list_pattern.match(line):
                     continue
                 
-                # 6. Fix internal links (remove .md, lowercase, dots to dashes)
+                # 6. Fix internal links (remove .md, lowercase, dots to dashes, remove book_code prefix)
                 def fix_link(match):
                     pre, link, post = match.groups()
                     # For internal links, remove .md extension, convert to lowercase, and replace dots with dashes
                     if not link.startswith('http'):
                         link = link.removesuffix('.md').lower().replace('.', '-')
+                        
+                        # Remove book_code prefix from internal links
+                        # Pattern: bookcode/path -> path
+                        # Examples: 29Dhs/1 -> 1, 6D/1 -> 1, 12S1/2-3 -> 2-3
+                        book_code_patterns = [
+                            r'^(\d+[A-Za-z]+\d*)\/',  # Matches: 29Dhs/, 12S1/, 15A1/, 40P7/, etc.
+                            r'^(\d+[A-Za-z]+)\/',     # Matches: 6D/, 7D/, 9M/, 10M/, etc.
+                            r'^([A-Za-z]+\d*)\/',     # Matches: Para/, Paci/, Dhs/, etc.
+                        ]
+                        
+                        for pattern in book_code_patterns:
+                            if re.match(pattern, link):
+                                # Remove the book_code prefix (everything before first slash)
+                                parts = link.split('/', 1)
+                                if len(parts) > 1:
+                                    link = parts[1]
+                                break
+                                
                     return f"{pre}{link}{post}"
                 
                 line = link_pattern.sub(fix_link, line)
@@ -352,15 +411,140 @@ class TipitakaMigrator:
             print(f"Error writing {file_path}: {e}")
             return False
     
+    def _batch_write_file(self, file_path: Path, content: str, locale: str):
+        """Add file to batch write buffer (thread-safe, per-locale)"""
+        with self._batch_lock:
+            if locale not in self._batch_write_buffer:
+                self._batch_write_buffer[locale] = []
+            
+            self._batch_write_buffer[locale].append((file_path, content))
+            
+            # Flush if buffer is full
+            if len(self._batch_write_buffer[locale]) >= self._batch_size:
+                self._flush_batch_writes(locale)
+    
+    def _flush_batch_writes(self, locale: str = None):
+        """Write all buffered files to disk (thread-safe)"""
+        with self._batch_lock:
+            locales_to_flush = [locale] if locale else list(self._batch_write_buffer.keys())
+            
+            for loc in locales_to_flush:
+                if loc not in self._batch_write_buffer or not self._batch_write_buffer[loc]:
+                    continue
+                    
+                for file_path, content in self._batch_write_buffer[loc]:
+                    try:
+                        # Ensure parent directory exists
+                        file_path.parent.mkdir(parents=True, exist_ok=True)
+                        
+                        # Write file
+                        with open(file_path, 'w', encoding='utf-8') as f:
+                            f.write(content)
+                            
+                    except Exception as e:
+                        self.logger.error(f"Failed to write {file_path}: {e}")
+                
+                # Clear buffer for this locale
+                self._batch_write_buffer[loc].clear()
+    
+    def _clear_caches(self):
+        """Clear all caches to free memory"""
+        self._file_content_cache.clear()
+        self._transliteration_cache.clear()
+        self._flush_batch_writes()
+    
+    def _update_progress(self, increment: int = 1, locale: str = None):
+        """Update progress counter thread-safely"""
+        with self._progress_lock:
+            self._processed_files += increment
+            
+            # Update per-locale stats if provided
+            if locale and locale in self._progress_stats:
+                self._progress_stats[locale]['processed'] += increment
+            
+            if self._total_files > 0 and self._processed_files % 10 == 0:
+                progress = (self._processed_files / self._total_files) * 100
+                elapsed = time.time() - self._start_time if self._start_time else 0
+                
+                if elapsed > 0:
+                    rate = self._processed_files / elapsed
+                    eta = (self._total_files - self._processed_files) / rate if rate > 0 else 0
+                    print(f"Progress: {progress:.1f}% ({self._processed_files}/{self._total_files}) "
+                          f"Rate: {rate:.1f} files/s ETA: {eta:.0f}s", end='\r')
+    
+    def _estimate_total_files(self, books: List[str]) -> int:
+        """Estimate total number of files to process"""
+        total = 0
+        for book_code in books:
+            book_dir = self.source_dir / book_code
+            if book_dir.exists():
+                # Count .md files recursively
+                for item in book_dir.rglob('*.md'):
+                    total += 1
+                # Add main book file
+                main_file = self.source_dir / f"{book_code}.md"
+                if main_file.exists():
+                    total += 1
+        return total
+    
+    def _calculate_content_checksum(self, content: str) -> str:
+        """Calculate SHA-256 checksum of content for validation"""
+        return hashlib.sha256(content.encode('utf-8')).hexdigest()
+    
+    def _validate_migration_result(self, original_path: Path, migrated_path: Path, 
+                                   original_content: str, migrated_content: str, 
+                                   locale: str) -> bool:
+        """Validate that migration preserved content integrity"""
+        try:
+            # For romn locale, content should be identical (except for formatting)
+            if locale == 'romn':
+                # Normalize whitespace for comparison
+                orig_normalized = re.sub(r'\s+', ' ', original_content.strip())
+                migrated_normalized = re.sub(r'\s+', ' ', migrated_content.strip())
+                
+                if orig_normalized != migrated_normalized:
+                    self.logger.warning(f"Content mismatch for {original_path} -> {migrated_path}")
+                    return False
+            
+            # Check basic structure is preserved
+            orig_lines = len(original_content.split('\n'))
+            migrated_lines = len(migrated_content.split('\n'))
+            
+            # Allow some flexibility in line count (due to formatting changes)
+            if abs(orig_lines - migrated_lines) > 5:
+                self.logger.warning(f"Significant line count difference: {orig_lines} -> {migrated_lines}")
+                return False
+            
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Validation failed for {original_path}: {e}")
+            return False
+    
+    def _cleanup_cache_if_needed(self):
+        """Clean up caches if they get too large"""
+        with self._cache_lock:
+            if len(self._transliteration_cache) > self._cache_max_size:
+                # Remove oldest half of entries
+                items = list(self._transliteration_cache.items())
+                keep_count = self._cache_cleanup_threshold
+                self._transliteration_cache = dict(items[-keep_count:])
+            
+            if len(self._file_content_cache) > self._cache_max_size:
+                items = list(self._file_content_cache.items())
+                keep_count = self._cache_cleanup_threshold
+                self._file_content_cache = dict(items[-keep_count:])
+    
     def convert_text_with_aksharamukha(self, text: str, locale: str) -> str:
         """Convert text using aksharamukha transliteration with caching and improved error handling"""
         if locale == 'romn':
             return text  # No conversion needed for roman (source text is already in roman)
         
-        # Check cache first for performance
+        # Check cache first for performance (thread-safe)
         cache_key = (text, locale)
-        if cache_key in self._transliteration_cache:
-            return self._transliteration_cache[cache_key]
+        with self._cache_lock:
+            if cache_key in self._transliteration_cache:
+                return self._transliteration_cache[cache_key]
         
         config = self.transliteration_config.get(locale)
         if not config:
@@ -377,8 +561,9 @@ class TipitakaMigrator:
             def replace_link(match):
                 nonlocal links
                 pre, url, post = match.groups()
-                # Store the original URL and replace with placeholder
+                # Store the URL and replace with placeholder
                 placeholder = f"__LINK_PLACEHOLDER_{len(links)}__"
+                # Keep the URL as-is since it was already processed in _safe_read_file
                 links.append(url)
                 return f"{pre}{placeholder}{post}"
             
@@ -417,14 +602,49 @@ class TipitakaMigrator:
                 placeholder = f"__LINK_PLACEHOLDER_{i}__"
                 result = result.replace(placeholder, original_url)
             
-            # Cache the result for performance
-            self._transliteration_cache[cache_key] = result
+            # Cache the result for performance (thread-safe)
+            with self._cache_lock:
+                self._transliteration_cache[cache_key] = result
+                # Cleanup cache if needed
+                self._cleanup_cache_if_needed()
             return result
             
         except Exception as e:
             # Preserve original behavior - silently return original text
             self.logger.error(f"Transliteration failed for locale {locale}: {e}")
             return text
+    
+    def _bulk_transliterate(self, texts: List[str], locale: str) -> Dict[str, str]:
+        """Bulk transliterate multiple texts for better performance"""
+        if locale == 'romn':
+            return {text: text for text in texts}
+        
+        config = self.transliteration_config.get(locale)
+        if not config:
+            return {text: text for text in texts}
+        
+        results = {}
+        uncached_texts = []
+        
+        # Check cache for existing translations (thread-safe)
+        with self._cache_lock:
+            for text in texts:
+                cache_key = (text, locale)
+                if cache_key in self._transliteration_cache:
+                    results[text] = self._transliteration_cache[cache_key]
+                else:
+                    uncached_texts.append(text)
+        
+        # Bulk process uncached texts
+        for text in uncached_texts:
+            try:
+                converted = self.convert_text_with_aksharamukha(text, locale)
+                results[text] = converted
+            except Exception as e:
+                self.logger.error(f"Bulk transliteration failed for '{text}': {e}")
+                results[text] = text
+        
+        return results
     
     def convert_emphasis_to_component(self, text: str) -> tuple[str, bool]:
         """Convert **text** to <Emphasis>text</Emphasis> and return whether Emphasis import is needed
@@ -488,21 +708,8 @@ class TipitakaMigrator:
         return text
         
     def clean_content(self, content: str, book_code: str = '') -> str:
-        """Remove book_code prefix from links only (other cleaning moved to _safe_read_file)"""
-        if not book_code:
-            return content  # No need to process if no book_code
-        
-        # Pattern to find markdown links like [text](link)
-        link_pattern = re.compile(r'(\[.*?\]\()(.+?)(\))')
-        
-        def fix_link(match):
-            pre, link, post = match.groups()
-            # Remove book_code prefix only
-            if book_code:
-                link = link.replace(f'{book_code}/', '')
-            return f"{pre}{link}{post}"
-        
-        return link_pattern.sub(fix_link, content)
+        """Link cleaning is now handled in _safe_read_file, so this function does minimal processing"""
+        return content  # All link processing moved to _safe_read_file for consistency
     
     def extract_book_id_from_path(self, file_path: Path) -> str:
         """Extract book identifier from file path for PageFind metadata"""
@@ -961,6 +1168,107 @@ book: "{book_id}\""""
                 
         return ""
 
+    def migrate_book_parallel(self, book_code: str, locale: str, show_progress: bool = False) -> tuple:
+        """Thread-safe version of migrate_book that returns result"""
+        try:
+            start_time = time.time()
+            
+            # Source directory for this book
+            source_book_dir = self.source_dir / book_code
+            if not source_book_dir.exists():
+                return (book_code, locale, False, f"Directory not found: {source_book_dir}")
+            
+            # Migrate the main .md file first
+            main_file = self.source_dir / f"{book_code}.md"
+            if main_file.exists():
+                self.migrate_file(main_file, book_code, '', locale, 1)
+            
+            # Migrate the book directory
+            self.migrate_directory(source_book_dir, book_code, '', locale)
+            
+            elapsed = time.time() - start_time
+            return (book_code, locale, True, f"Completed in {elapsed:.2f}s")
+            
+        except Exception as e:
+            return (book_code, locale, False, f"Error: {str(e)}")
+    
+    def migrate_locale_parallel(self, locale: str, target_books: Optional[List[str]] = None, 
+                               show_progress: bool = False) -> dict:
+        """Process all books for a locale using threading"""
+        print(f"\nProcessing locale: {locale}")
+        
+        # Get books to process
+        if target_books is None:
+            all_books = self.get_available_books()
+        else:
+            all_books = target_books
+        
+        # Initialize progress tracking
+        with self._progress_lock:
+            self._start_time = time.time()
+            self._processed_files = 0
+            self._total_files = self._estimate_total_files(all_books)
+            self._progress_stats[locale] = {
+                'started': time.time(),
+                'total_files': self._total_files,
+                'processed': 0
+            }
+            
+        # Sort books for consistent processing order
+        def sort_key(book_code):
+            import re
+            match = re.match(r'(\d+)', book_code)
+            return int(match.group(1)) if match else 999
+        
+        sorted_books = sorted(list(set(all_books)), key=sort_key)
+        
+        results = {
+            'locale': locale,
+            'total_books': len(sorted_books),
+            'successful': 0,
+            'failed': 0,
+            'errors': [],
+            'start_time': time.time()
+        }
+        
+        # Use ThreadPoolExecutor for books within a locale
+        max_threads = min(self.max_workers // 2, len(sorted_books))  # Leave resources for other locales
+        
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
+            # Submit all book migration tasks
+            future_to_book = {
+                executor.submit(self.migrate_book_parallel, book_code, locale, show_progress): book_code 
+                for book_code in sorted_books
+            }
+            
+            # Process completed tasks
+            for future in concurrent.futures.as_completed(future_to_book):
+                book_code, locale_result, success, message = future.result()
+                
+                if success:
+                    results['successful'] += 1
+                    if show_progress:
+                        print(f"  ✓ {book_code}: {message}")
+                else:
+                    results['failed'] += 1
+                    results['errors'].append(f"{book_code}: {message}")
+                    if show_progress:
+                        print(f"  ✗ {book_code}: {message}")
+        
+        results['end_time'] = time.time()
+        results['total_time'] = results['end_time'] - results['start_time']
+        
+        # Flush any remaining batch writes for this locale
+        self._flush_batch_writes(locale)
+        
+        # Update progress stats
+        with self._progress_lock:
+            if locale in self._progress_stats:
+                self._progress_stats[locale]['completed'] = time.time()
+                print(f"Completed {locale}: {self._progress_stats[locale]['processed']}/{self._progress_stats[locale]['total_files']} files")
+        
+        return results
+
     def get_target_path(self, book_code: str, relative_path: str, locale: str = 'romn') -> Path:
         """Generate target path based on hierarchical structure"""
         if book_code not in self.book_mappings:
@@ -1165,8 +1473,19 @@ book: "{book_id}\""""
         # Combine all content parts
         final_content = frontmatter + component_imports + breadcrumb_content + cleaned_content
         
-        # Use safe file writing
-        self._safe_write_file(target_file, final_content)
+        # Store original content for validation
+        original_content = content
+        
+        # Validate migration result  
+        if not self._validate_migration_result(source_file, target_file, original_content, 
+                                               final_content, locale):
+            self.logger.warning(f"Migration validation failed for {source_file}")
+        
+        # Use batch file writing for better performance
+        self._batch_write_file(target_file, final_content, locale)
+        
+        # Update progress
+        self._update_progress()
     
     def migrate_directory(self, source_dir: Path, book_code: str, relative_path: str = '', locale: str = 'romn'):
         """Recursively migrate a directory"""
@@ -1559,24 +1878,88 @@ export default sidebarConfig;
         
         sorted_books = sorted(list(set(all_books)), key=sort_key)
         
-        # Migrate content for specified locales
-        for locale in target_locales:
-            print(f"\nProcessing locale: {locale}")
-            for book_code in sorted_books:
-                # Add basic error handling but continue processing
+        # Start parallel migration
+        start_time = time.time()
+        
+        print(f"\n🚀 Parallel Migration Starting")
+        print(f"📚 Books: {len(sorted_books)} ({', '.join(sorted_books)})")
+        print(f"🌍 Locales: {len(target_locales)} ({', '.join(target_locales)})")
+        print(f"⚡ CPU cores: {os.cpu_count()}, Workers: {self.max_workers}")
+        print(f"{'='*60}")
+        
+        # Use ProcessPoolExecutor for locales (true parallelism)
+        max_processes = min(len(target_locales), os.cpu_count() or 1)
+        
+        all_results = []
+        
+        with concurrent.futures.ProcessPoolExecutor(max_workers=max_processes) as executor:
+            # Submit locale processing tasks
+            future_to_locale = {
+                executor.submit(migrate_locale_worker, str(self.source_dir), str(self.target_dir), 
+                               locale, sorted_books, self.locales, self.max_workers): locale 
+                for locale in target_locales
+            }
+            
+            # Process completed locales
+            for future in concurrent.futures.as_completed(future_to_locale):
                 try:
-                    self.migrate_book(book_code, locale, show_progress=True)
+                    result = future.result()
+                    all_results.append(result)
+                    
+                    # Print summary for this locale
+                    locale = result['locale']
+                    print(f"✅ {locale}: {result['successful']}/{result['total_books']} books "
+                          f"({result['total_time']:.1f}s)")
+                    
+                    if result['errors']:
+                        print(f"   ⚠️  {len(result['errors'])} errors:")
+                        for error in result['errors'][:3]:  # Show first 3 errors
+                            print(f"      • {error}")
+                        if len(result['errors']) > 3:
+                            print(f"      ... and {len(result['errors']) - 3} more")
+                            
                 except Exception as e:
-                    print(f"Error processing book {book_code} for locale {locale}: {e}")
-                    continue  # Continue with next book
+                    locale = future_to_locale[future]
+                    print(f"❌ {locale}: Process failed - {e}")
         
         # Always try to create navigator.js
         try:
+            print("\n📋 Creating navigator.js...")
             self.create_navigator_js()
+            print("✅ Navigator.js created successfully")
         except Exception as e:
-            print(f"Error creating navigator.js: {e}")
+            print(f"❌ Error creating navigator.js: {e}")
         
-        print(f"\nMigration completed for {len(target_locales)} locale(s)!")
+        # Final summary
+        total_time = time.time() - start_time
+        total_books_processed = sum(r['successful'] for r in all_results)
+        total_books_failed = sum(r['failed'] for r in all_results)
+        
+        print(f"\n{'='*60}")
+        print(f"🎉 Migration Complete!")
+        print(f"📊 Summary:")
+        print(f"   • Total time: {total_time:.1f}s")
+        print(f"   • Locales processed: {len(all_results)}")
+        print(f"   • Books successful: {total_books_processed}")
+        print(f"   • Books failed: {total_books_failed}")
+        
+        if total_books_processed > 0:
+            avg_time = total_time / total_books_processed
+            print(f"   • Average time per book: {avg_time:.2f}s")
+            books_per_minute = (total_books_processed / total_time) * 60
+            print(f"   • Processing rate: {books_per_minute:.1f} books/minute")
+        
+        print(f"{'='*60}")
+
+# Worker function for multiprocessing (must be at module level)
+def migrate_locale_worker(source_dir, target_dir, locale, target_books, available_locales, max_workers):
+    """Worker function to migrate a locale - must be at module level for multiprocessing"""
+    # Create a new migrator instance for this process
+    migrator = TipitakaMigrator(str(source_dir), str(target_dir))
+    migrator.max_workers = max_workers
+    
+    # Process this locale
+    return migrator.migrate_locale_parallel(locale, target_books, show_progress=True)
 
 def main():
     """Main function with improved argument parsing"""
@@ -1673,6 +2056,25 @@ Available sections: {', '.join(migrator.get_available_sections())}
         else:
             # No arguments provided, migrate all locales
             migrator.migrate_all()
+
+"""
+CHANGELOG - URL Fix Updates
+
+2025-09-26: Fixed internal link URL generation issue
+- Problem: Book code prefixes (like 29dhs/, 6d/, 12s1/) were appearing in internal links,
+  creating incorrect URLs like /romn/tipitaka/ab/dhs/29dhs/1 instead of /romn/tipitaka/ab/dhs/1
+- Solution: Enhanced fix_link() function in _safe_read_file() to remove book_code prefixes
+- Changes made:
+  1. Updated regex patterns in fix_link() to handle case-insensitive book codes:
+     - r'^(\d+[A-Za-z]+\d*)\/' for patterns like 29Dhs/, 12S1/
+     - r'^(\d+[A-Za-z]+)\/' for patterns like 6D/, 29Dhs/  
+     - r'^([A-Za-z]+\d*)\/' for patterns like Dhs/, S1/
+  2. Disabled clean_content() function call to prevent double processing of links
+  3. Ensured link processing occurs before transliteration to preserve fixed URLs
+- Testing: Verified with DHS book - URLs now generate as (1), (2) instead of (29dhs/1), (29dhs/2)
+- Backup: Code saved as migrate_tipitaka_bk.py before modifications
+- Impact: All internal links now generate correct nested URLs without book code prefixes
+"""
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,5 @@
 # build output
-# dist/
+dist/
 # generated types
 .astro/
 
@@ -15,7 +15,7 @@ pnpm-debug.log*
 
 # environment variables
 .env
-.env.production
+.env.*
 
 # macOS-specific files
 .DS_Store
@@ -26,23 +26,13 @@ pnpm-debug.log*
 # mula assets
 src/assets/mula/*
 
-# src
-src/content/docs/deva/*
-src/content/docs/khmr/*
-src/content/docs/lana/*
-src/content/docs/laoo/*
-src/content/docs/latn/*
-# src/content/docs/romn/*
-src/content/docs/sinh/*
-src/content/docs/thai/*
-# src/content/docs/mymr/*
-
 # python/
 python/db
 python/json
 python/md/tipitaka
 
 # other
+venv/
 .venv/
 .vscode/
 

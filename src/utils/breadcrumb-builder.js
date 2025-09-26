@@ -29,12 +29,12 @@ async function getTitleFromFrontmatter(sectionPath, sectionName, collection) {
     if (entry && entry.data && entry.data.title) {
       // Remove quotes and clean the title
       const title = cleanTitle(entry.data.title);
-      console.log(`Found frontmatter title for ${sectionPath}: "${title}"`);
+      // console.log(`Found frontmatter title for ${sectionPath}: "${title}"`);
       return title;
     }
   } catch (error) {
     // Entry not found or error occurred, fall back to sectionName
-    console.log(`No frontmatter title found for ${sectionPath}, using section name`);
+    // console.log(`No frontmatter title found for ${sectionPath}, using section name`);
   }
   
   // Fallback to original section name
@@ -63,7 +63,7 @@ async function findRootLevel(pathParts, collection) {
   // Check common patterns where index.mdx typically exists
   
   const fullPath = pathParts.join('/');
-  console.log(`Finding root level for path: ${fullPath}`);
+  // console.log(`Finding root level for path: ${fullPath}`);
   
   // Known patterns that have index.mdx:
   // 1. Book subsections: su/dn/sila, su/mn/mula, ab/yk/yk1, etc.
@@ -78,7 +78,7 @@ async function findRootLevel(pathParts, collection) {
     
     // Special case for Paṭṭhāna (ab/pt) - has deeper structure
     if (basket === 'ab' && book === 'pt') {
-      console.log(`Using subsection level (index 5) for ${basket}/${book}/${section}/${subsection}`);
+      // console.log(`Using subsection level (index 5) for ${basket}/${book}/${section}/${subsection}`);
       return 5; // Return subsection level (tikatika, tikaduka, etc.)
     }
   }
@@ -91,25 +91,25 @@ async function findRootLevel(pathParts, collection) {
     // Check if this looks like a book subsection pattern
     if (basket === 'su' && ['dn', 'mn', 'sn', 'an'].includes(book)) {
       // For Suttanta books, subsections like 'sila', 'maha', 'pati' have index.mdx
-      console.log(`Using subsection level (index 4) for ${basket}/${book}/${section}`);
+      // console.log(`Using subsection level (index 4) for ${basket}/${book}/${section}`);
       return 4; // Return section level (sila, maha, etc.)
     }
     
     if (basket === 'ab' && ['yk'].includes(book)) {
       // For Abhidhamma books like Yamaka, subsections like 'yk1', 'yk2' have index.mdx
-      console.log(`Using subsection level (index 4) for ${basket}/${book}/${section}`);
+      // console.log(`Using subsection level (index 4) for ${basket}/${book}/${section}`);
       return 4; // Return section level (yk1, yk2, etc.)
     }
   }
   
   if (pathParts.length >= 4) { // e.g., romn/tipitaka/vi/para/1
     // For books that don't have subsections, use book level
-    console.log(`Using book level (index 3) for direct book`);
+    // console.log(`Using book level (index 3) for direct book`);
     return 3; // Return book level (para, dhs, etc.)
   }
   
   // Default: return basket level
-  console.log('Using basket level (index 2) as fallback');
+  // console.log('Using basket level (index 2) as fallback');
   return 2;
 }
 
