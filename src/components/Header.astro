@@ -1,0 +1,55 @@
+---
+// Custom Header Component พร้อม Logo
+// วิธีนี้ใช้เมื่อต้องการปรับแต่งมากขึ้น
+import Logo from './Logo.astro';
+---
+
+<header class="custom-header">
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/" class="brand-link">
+                <Logo size="md" />
+            </a>
+        </div>
+        <div class="nav-menu">
+            <!-- เพิ่ม menu items ตรงนี้ถ้าต้องการ -->
+        </div>
+    </nav>
+</header>
+
+<style>
+    .custom-header {
+        background: var(--sl-color-bg);
+        border-bottom: 1px solid var(--sl-color-gray-5);
+        padding: 1rem 0;
+    }
+    
+    .navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .brand-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .brand-link:hover {
+        text-decoration: none;
+    }
+    
+    .nav-menu {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 0 0.5rem;
+        }
+    }
+</style>

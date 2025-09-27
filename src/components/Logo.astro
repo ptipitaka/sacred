@@ -1,0 +1,52 @@
+---
+// Logo component สำหรับเว็บไซต์ SACRED
+export interface Props {
+    size?: 'sm' | 'md' | 'lg';
+    class?: string;
+}
+
+const { size = 'md', class: className = '' } = Astro.props;
+
+const sizeClasses = {
+    sm: 'w-8 h-8',
+    md: 'w-12 h-12', 
+    lg: 'w-16 h-16'
+};
+---
+
+<div class={`logo-container ${className}`}>
+    <img 
+        src="/favicon.svg" 
+        alt="SACRED Logo" 
+        class={`logo ${sizeClasses[size]}`}
+    />
+    <span class="logo-text">SACRED</span>
+</div>
+
+<style>
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .logo {
+        transition: transform 0.2s ease;
+    }
+    
+    .logo:hover {
+        transform: scale(1.05);
+    }
+    
+    .logo-text {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: var(--sl-color-text);
+        text-decoration: none;
+    }
+    
+    /* Dark mode support */
+    :global([data-theme="dark"]) .logo-text {
+        color: var(--sl-color-white);
+    }
+</style>

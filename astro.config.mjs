@@ -21,6 +21,11 @@ export default defineConfig({
       starlight({
           title: 'SACRED',
           description: 'Scripture Archive of Canonical References, Editions, Digital corpus',
+          logo: {
+              src: './src/assets/logo.svg',
+              // หรือถ้าต้องการใช้ favicon ที่มีอยู่
+              // src: './public/favicon.svg',
+          },
           social: [
               {
                   label: 'GitHub',
