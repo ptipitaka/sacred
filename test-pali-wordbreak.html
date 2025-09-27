@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การแก้ปัญหาการตัดคำกลางคำบาลี - Flexbox Solution</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Sarabun', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 28px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+
+        .comparison-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 5px solid #007bff;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title .emoji {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .text-content {
+            padding: 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            margin: 15px 0;
+            background: white;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* ปัญหาเดิม - การตัดคำกลางคำ */
+        .problem-text {
+            word-break: break-all;
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* วิธีที่ 4: Flexbox approach พื้นฐาน */
+        .method4-basic {
+            display: flex;
+            flex-wrap: wrap;
+            border-color: #fd7e14;
+            background-color: #fff3cd;
+        }
+
+        .method4-basic span {
+            white-space: nowrap;
+            margin-right: 0.25em;
+            display: inline-block;
+        }
+
+        /* วิธีที่ 4 ปรับปรุง: Flexbox + Justify + Paragraph */
+        .method4-advanced {
+            border-color: #28a745;
+            background-color: #d4edda;
+        }
+
+        .method4-advanced .paragraph {
+            margin-bottom: 1em;
+            padding-left: 2em; /* ย่อหน้าทุกย่อหน้า */
+            line-height: 1.8;
+            text-align: justify; /* Thai Justify - จัดเฉพาะบรรทัดที่เหมาะสม */
+            text-align-last: left; /* บรรทัดสุดท้ายและบรรทัดสั้นชิดซ้าย */
+            text-justify: inter-word; /* จัดระยะห่างระหว่างคำ ไม่ใช่ตัวอักษร */
+        }
+
+        .method4-advanced .paragraph span {
+            white-space: nowrap !important;
+            word-break: keep-all !important;
+            /* ไม่ใช้ margin-right เพราะให้ browser จัดการเอง */
+        }
+
+        /* วิธีที่ 4 แบบ Pure Thai Justify (เหมือน MS Word) */
+        .method4-thai-justify {
+            border-color: #6f42c1;
+            background-color: #e7e3ff;
+        }
+
+        .method4-thai-justify .paragraph {
+            margin-bottom: 1em;
+            padding-left: 2em;
+            line-height: 1.8;
+            text-align: justify;
+            text-align-last: left;
+            text-justify: inter-word;
+            word-break: keep-all;
+            overflow-wrap: normal;
+            hyphens: none;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ffc107;
+            margin: 30px 0;
+        }
+
+        .highlight h3 {
+            color: #856404;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .code-example {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .method4-advanced .paragraph {
+                padding-left: 1em;
+                justify-content: flex-start !important;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🙏 การแก้ปัญหาการตัดคำกลางคำภาษาบาลี</h1>
+        
+        <!-- ปัญหาเดิม -->
+        <div class="comparison-section">
+            <div class="section-title">
+                <span class="emoji">❌</span>
+                <span>ปัญหาเดิม: การตัดคำกลางคำบาลี</span>
+            </div>
+            
+            <div class="text-content problem-text">
+                เตน สมเยน พุทฺโธ ภควา สาวตฺถิยํ วิหรติ เชตวเน อนาธปิณฺฑิกสฺส อาราเม เตน โข ปน สมเยน ปาริวาสิกา ภิกฺขู สาทิยนฺติ ปกตตฺตานํ ภิกฺขูนํ อภิวาทนํ ปจฺจุฏฺฐานํ อญฺชลิกมฺมํ สามีจิกมฺมํ อาสนาภิหารํ เสยฺยาภิหารํ ปาโททกํ ปาทปีฐํ ปาทกถลิกํ ปตฺตจีวรปฺปฏิคฺคหณํ นหาเน ปิฏฺฐิปริกมฺมํ
+            </div>
+            
+            <div class="description">
+                ด้วยการใช้ <code>word-break: break-all</code> บราวเซอร์จะตัดคำกลางอักขระได้ทุกที่ ทำให้อ่านยาก
+            </div>
+        </div>
+
+        <!-- วิธีที่ 4 พื้นฐาน -->
+        <div class="comparison-section">
+            <div class="section-title">
+                <span class="emoji">🟠</span>
+                <span>วิธีที่ 4 (พื้นฐาน): Flexbox + white-space: nowrap</span>
+            </div>
+            
+            <div class="text-content method4-basic">
+                <span>เตน</span> <span>สมเยน</span> <span>พุทฺโธ</span> <span>ภควา</span> <span>สาวตฺถิยํ</span> <span>วิหรติ</span> <span>เชตวเน</span> <span>อนาธปิณฺฑิกสฺส</span> <span>อาราเม</span> <span>เตน</span> <span>โข</span> <span>ปน</span> <span>สมเยน</span> <span>ปาริวาสิกา</span> <span>ภิกฺขู</span> <span>สาทิยนฺติ</span> <span>ปกตตฺตานํ</span> <span>ภิกฺขูนํ</span> <span>อภิวาทนํ</span> <span>ปจฺจุฏฺฐานํ</span> <span>อญฺชลิกมฺมํ</span> <span>สามีจิกมฺมํ</span> <span>อาสนาภิหารํ</span> <span>เสยฺยาภิหารํ</span> <span>ปาโททกํ</span> <span>ปาทปีฐํ</span> <span>ปาทกถลิกํ</span> <span>ปตฺตจีวรปฺปฏิคฺคหณํ</span> <span>นหาเน</span> <span>ปิฏฺฐิปริกมฺมํ</span>
+            </div>
+            
+            <div class="description">
+                แต่ละคำถูกห่อด้วย <code>&lt;span&gt;</code> และใช้ <code>white-space: nowrap</code> - แน่ใจว่าไม่ตัดกลางคำ แต่ไม่มีย่อหน้าและ justify alignment
+            </div>
+        </div>
+
+        <!-- วิธีที่ 4 ปรับปรุง -->
+        <div class="comparison-section">
+            <div class="section-title">
+                <span class="emoji">✅</span>
+                <span>วิธีที่ 4 (ปรับปรุง): Flexbox + Paragraph + Justify + Last Line Left</span>
+            </div>
+            
+            <div class="text-content method4-advanced">
+                <div class="paragraph">
+                    <span>เตน</span> <span>สมเยน</span> <span>พุทฺโธ</span> <span>ภควา</span> <span>สาวตฺถิยํ</span> <span>วิหรติ</span> <span>เชตวเน</span> <span>อนาธปิณฺฑิกสฺส</span> <span>อาราเม.</span>
+                </div>
+                <div class="paragraph">
+                    <span>เตน</span> <span>โข</span> <span>ปน</span> <span>สมเยน</span> <span>ปาริวาสิกา</span> <span>ภิกฺขู</span> <span>สาทิยนฺติ</span> <span>ปกตตฺตานํ</span> <span>ภิกฺขูนํ</span> <span>อภิวาทนํ</span> <span>ปจฺจุฏฺฐานํ</span> <span>อญฺชลิกมฺมํ</span> <span>สามีจิกมฺมํ</span> <span>อาสนาภิหารํ</span> <span>เสยฺยาภิหารํ</span> <span>ปาโททกํ</span> <span>ปาทปีฐํ</span> <span>ปาทกถลิกํ</span> <span>ปตฺตจีวรปฺปฏิคฺคหณํ</span> <span>นหาเน</span> <span>ปิฏฺฐิปริกมฺมํ.</span>
+                </div>
+                <div class="paragraph">
+                    <span>เย</span> <span>เต</span> <span>ภิกฺขู</span> <span>อปฺปิจฺฉา</span> <span>…เป…</span> <span>เต</span> <span>อุชฺฌายนฺติ</span> <span>ขิยฺยนฺติ</span> <span>วิปาเจนฺติ</span> <span>"กถญฺหิ</span> <span>นาม</span> <span>ปาริวาสิกา</span> <span>ภิกฺขู</span> <span>สาทิยิสฺสนฺติ</span> <span>ปกตตฺตานํ</span> <span>ภิกฺขูนํ</span> <span>อภิวาทนํ</span> <span>ปจฺจุฏฺฐานํ</span> <span>อญฺชลิกมฺมํ</span> <span>สามีจิกมฺมํ</span> <span>อาสนาภิหารํ</span> <span>เสยฺยาภิหารํ</span> <span>ปาโททกํ</span> <span>ปาทปีฐํ</span> <span>ปาทกถลิกํ</span> <span>ปตฺตจีวรปฺปฏิคฺคหณํ</span> <span>นหาเน</span> <span>ปิฏฺฐิปริกมฺมนฺ"ติ.</span>
+                </div>
+                <div class="paragraph">
+                    <span>อถ</span> <span>โข</span> <span>เต</span> <span>ภิกฺขู</span> <span>ภควโต</span> <span>เอตมตฺถํ</span> <span>อาโรเจสุํ.</span>
+                </div>
+            </div>
+            
+            <div class="description">
+                ✨ ใช้ <code>text-align: justify</code> แต่ปรับปรุงแล้ว + ไม่ตัดคำกลางคำ 100%
+            </div>
+        </div>
+
+        <!-- วิธีที่ 4 Thai Justify -->
+        <div class="comparison-section">
+            <div class="section-title">
+                <span class="emoji">🇹🇭</span>
+                <span>วิธีที่ 4 (Thai Justify): เหมือน Microsoft Word</span>
+            </div>
+            
+            <div class="text-content method4-thai-justify">
+                <div class="paragraph">
+                    เตน สมเยน พุทฺโธ ภควา สาวตฺถิยํ วิหรติ เชตวเน อนาธปิณฺฑิกสฺส อาราเม.
+                </div>
+                <div class="paragraph">
+                    เตน โข ปน สมเยน ปาริวาสิกา ภิกฺขู สาทิยนฺติ ปกตตฺตานํ ภิกฺขูนํ อภิวาทนํ ปจฺจุฏฺฐานํ อญฺชลิกมฺมํ สามีจิกมฺมํ อาสนาภิหารํ เสยฺยาภิหารํ ปาโททกํ ปาทปีฐํ ปาทกถลิกํ ปตฺตจีวรปฺปฏิคฺคหณํ นหาเน ปิฏฺฐิปริกมฺมํ.
+                </div>
+                <div class="paragraph">
+                    เย เต ภิกฺขู อปฺปิจฺฉา …เป… เต อุชฺฌายนฺติ ขิยฺยนฺติ วิปาเจนฺติ "กถญฺหิ นาม ปาริวาสิกา ภิกฺขู สาทิยิสฺสนฺติ ปกตตฺตานํ ภิกฺขูนํ อภิวาทนํ ปจฺจุฏฺฐานํ อญฺชลิกมฺมํ สามีจิกมฺมํ อาสนาภิหารํ เสยฺยาภิหารํ ปาโททกํ ปาทปีฐํ ปาทกถลิกํ ปตฺตจีวรปฺปฏิคฺคหณํ นหาเน ปิฏฺฐิปริกมฺมนฺ"ติ.
+                </div>
+                <div class="paragraph">
+                    อถ โข เต ภิกฺขู ภควโต เอตมตฺถํ อาโรเจสุํ.
+                </div>
+            </div>
+            
+            <div class="description">
+                🇹🇭 <strong>Thai Justify</strong> - เหมือน MS Word: จัด justify เฉพาะบรรทัดที่เหมาะสม, บรรทัดสั้นๆ และบรรทัดสุดท้ายชิดซ้าย + ไม่ตัดคำกลางคำ 100%
+            </div>
+        </div>
+
+        <!-- ข้อมูลการนำไปใช้ -->
+        <div class="highlight">
+            <h3>🎯 การนำไปใช้งานจริง</h3>
+            
+            <p><strong>สำหรับ Astro Component:</strong></p>
+            <div class="code-example">
+&lt;PaliText text={paliContent} paragraphIndent={true} justify={true} /&gt;
+            </div>
+            
+            <p><strong>CSS หลักที่แนะนำ (Thai Justify - แบบ MS Word):</strong></p>
+            <div class="code-example">
+/* ✅ แนะนำ: Pure CSS Thai Justify */
+.pali-paragraph {
+    text-align: justify;           /* จัด justify ทั่วไป */
+    text-align-last: left;         /* บรรทัดสุดท้ายชิดซ้าย */
+    text-justify: inter-word;      /* จัดระยะห่างระหว่างคำ */
+    word-break: keep-all;          /* ไม่ตัดคำกลางคำ */
+    overflow-wrap: normal;         /* ไม่ wrap กลางคำ */
+    hyphens: none;                /* ไม่ใส่ขีด */
+    padding-left: 2em;
+    line-height: 1.8;
+    margin-bottom: 1em;
+}
+
+/* 🔄 ทางเลือก: Flexbox + Span wrapping */
+.pali-paragraph-flex {
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    padding-left: 2em;
+    line-height: 1.8;
+}
+
+.pali-word {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+}
+            </div>
+            
+            <p><strong>จุดสำคัญของ Thai Justify:</strong></p>
+            <ul>
+                <li>🇹🇭 <code>text-align: justify</code> - จัด justify เฉพาะบรรทัดที่เหมาะสม</li>
+                <li>🇹🇭 <code>text-align-last: left</code> - บรรทัดสุดท้ายและบรรทัดสั้นชิดซ้าย</li>
+                <li>🇹🇭 <code>text-justify: inter-word</code> - จัดระยะห่างระหว่างคำ ไม่ใช่ตัวอักษร</li>
+                <li>🇹🇭 <code>word-break: keep-all</code> - ไม่ตัดคำกลางคำเด็ดขาด</li>
+                <li>🇹🇭 Browser จัดการระยะห่างอัตโนมัติแบบฉลาด</li>
+            </ul>
+            
+            <p><strong>ข้อดีของ Thai Justify:</strong></p>
+            <ul>
+                <li>✅ <strong>ไม่ตัดคำกลางคำ</strong> - แน่นอน 100%</li>
+                <li>✅ <strong>ระยะห่างระหว่างคำเหมาะสม</strong> - ไม่มากเกินไปในบรรทัดสั้น</li>
+                <li>✅ <strong>บรรทัดสุดท้ายชิดซ้าย</strong> - เหมือน MS Word</li>
+                <li>✅ <strong>ใช้ Pure CSS</strong> - ไม่ต้อง JavaScript</li>
+                <li>✅ <strong>SEO friendly</strong> - ไม่ต้องแก้ HTML</li>
+                <li>✅ <strong>Performance ดี</strong> - browser native</li>
+                <li>✅ <strong>ใช้งานง่าย</strong> - เพียงเพิ่ม CSS class</li>
+            </ul>
+            
+            <div style="background: #d1ecf1; border: 1px solid #bee5eb; border-radius: 5px; padding: 15px; margin: 15px 0;">
+                <strong>🏆 แนะนำ:</strong> ใช้ <strong>Thai Justify</strong> (วิธีสุดท้าย) เพราะง่ายที่สุด ได้ผลดีที่สุด และเหมือน Microsoft Word มากที่สุด
+            </div>
+        </div>
+    </div>
+</body>
+</html>

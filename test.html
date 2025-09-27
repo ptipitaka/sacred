@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การทดสอบการตัดคำภาษาบาลี - หลายวิธี</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+
+        .test-container {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .test-box {
+            width: 400px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #fafafa;
+        }
+
+        /* วิธีที่ 1: word-break: keep-all (ที่คุณลองแล้ว) */
+        .method1 {
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            border-color: #3498db;
+        }
+
+        /* วิธีที่ 2: white-space: pre-wrap */
+        .method2 {
+            white-space: pre-wrap;
+            word-break: normal;
+            border-color: #e74c3c;
+        }
+
+        /* วิธีที่ 3: hyphens: none + word-break: normal */
+        .method3 {
+            hyphens: none;
+            word-break: normal;
+            overflow-wrap: normal;
+            border-color: #2ecc71;
+        }
+
+        /* วิธีที่ 4: CSS Grid/Flexbox approach */
+        .method4 {
+            display: flex;
+            flex-wrap: wrap;
+            border-color: #f39c12;
+        }
+
+        .method4 span {
+            white-space: nowrap;
+            margin-right: 4px;
+        }
+
+        /* วิธีที่ 5: ใช้ word-spacing และ letter-spacing */
+        .method5 {
+            word-spacing: 0.1em;
+            letter-spacing: 0.02em;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+            border-color: #9b59b6;
+        }
+
+        /* วิธีที่ 6: CSS Containment */
+        .method6 {
+            contain: layout;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            text-align: justify;
+            border-color: #1abc9c;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .note {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* ข้อความปัญหา (default behavior) */
+        .problem {
+            border-color: #e74c3c;
+            background-color: #fdf2f2;
+            color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>การแสดงผลข้อความบาลีที่แก้ไขการตัดคำแล้ว</h1>
+    <p>ข้อความในกรอบนี้จะแสดงผลโดยไม่ตัดคำกลางคำบาลี แต่จะขึ้นบรรทัดใหม่ตรงช่องว่างเท่านั้น:</p>
+    
+    <div class="container">
+        <div class="pali-text">
+            เตน สมเยน พุทฺโธ ภควา สาวตฺถิยํ วิหรติ เชตวเน อนาถปิณฺฑิกสฺส อาราเม. เตน โข ปน สมเยน ปาริวาสิกา ภิกฺขู สาทิยนฺติ ปกตตฺตานํ ภิกฺขูนํ อภิวาทนํ, ปจฺจุฏฺฐานํ, อญฺชลิกมฺมํ, สามีจิกมฺมํ, อาสนาภิหารํ, เสยฺยาภิหารํ, ปาโททกํ ปาทปีฐํ, ปาทกถลิกํ, ปตฺตจีวรปฺปฏิคฺคหณํ, นหาเน ปิฏฺฐิปริกมฺมํ. เย เต ภิกฺขู อปฺปิจฺฉา …เป…  เต อุชฺฌายนฺติ ขิยฺยนฺติ วิปาเจนฺติ—  “กถญฺหิ นาม ปาริวาสิกา ภิกฺขู สาทิยิสฺสนฺติ ปกตตฺตานํ ภิกฺขูนํ อภิวาทนํ, ปจฺจุฏฺฐานํ, อญฺชลิกมฺมํ, สามีจิกมฺมํ, อาสนาภิหารํ, เสยฺยาภิหารํ, ปาโททกํ ปาทปีฐํ, ปาทกถลิกํ, ปตฺตจีวรปฺปฏิคฺคหณํ, นหาเน ปิฏฺฐิปริกมฺมนฺ”ติ. อถ โข เต ภิกฺขู ภควโต เอตมตฺถํ อาโรเจสุํ.
+        </div>
+    </div>
+    
+    <hr>
+    
+    <h2>เปรียบเทียบ: ข้อความที่ไม่ได้แก้ไข (พฤติกรรมปกติ)</h2>
+    <p>หากไม่มี CSS ข้างต้น บราวเซอร์จะตัดคำกลางอักขระเพื่อให้ข้อความไม่ล้นกล่อง:</p>
+    
+    <div class="problem-text" style="word-break: break-all; overflow-wrap: break-word;"> 
+        เตน สมเยน พุทฺโธ ภควา สาวตฺถิยํ วิหรติ เชตวเน อนาถปิณฺฑิกสฺส อาราเม. เตน โข ปน สมเยน ปาริวาสิกา ภิกฺขู สาทิยนฺติ ปกตตฺตานํ ภิกฺขูนํ อภิวาทนํ, ปจฺจุฏฺฐานํ, อญฺชลิกมฺมํ, สามีจิกมฺมํ, อาสนาภิหารํ, เสยฺยาภิหารํ, ปาโททกํ ปาทปีฐํ, ปาทกถลิกํ, ปตฺตจีวรปฺปฏิคฺคหณํ, นหาเน ปิฏฺฐิปริกมฺมํ. เย เต ภิกฺขู อปฺปิจฺฉา …เป…  เต อุชฺฌายนฺติ ขิยฺยนฺติ วิปาเจนฺติ—  “กถญฺหิ นาม ปาริวาสิกา ภิกฺขู สาทิยิสฺสนฺติ ปกตตฺตานํ ภิกฺขูนํ อภิวาทนํ, ปจฺจุฏฺฐานํ, อญฺชลิกมฺมํ, สามีจิกมฺมํ, อาสนาภิหารํ, เสยฺยาภิหารํ, ปาโททกํ ปาทปีฐํ, ปาทกถลิกํ, ปตฺตจีวรปฺปฏิคฺคหณํ, นหาเน ปิฏฺฐิปริกมฺมนฺ”ติ. อถ โข เต ภิกฺขู ภควโต เอตมตฺถํ อาโรเจสุํ.
+    </div>
+
+</body>
+</html>

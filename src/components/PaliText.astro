@@ -1,0 +1,117 @@
+---
+/**
+ * PaliText.astro
+ * Astro component สำหรับแสดงข้อความภาษาบาลีที่ไม่ตัดคำกลางคำ
+ * ใช้วิธี Flexbox + white-space: nowrap
+ */
+
+export interface Props {
+  text: string;
+  class?: string;
+  paragraphIndent?: boolean;
+  justify?: boolean;
+  responsive?: boolean;
+}
+
+const { 
+  text, 
+  class: className = '', 
+  paragraphIndent = true,
+  justify = true,
+  responsive = true 
+} = Astro.props;
+
+// แยกย่อหน้า
+const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim());
+
+// ฟังก์ชันแยกคำ
+function splitWords(paragraph: string) {
+  return paragraph.trim().split(/\s+/).filter(word => word);
+}
+---
+
+<div class={`pali-container ${className}`} class:list={[
+  { 'pali-responsive': responsive },
+  { 'pali-justify': justify }
+]}>
+  {paragraphs.map((paragraph, index) => (
+    <div class="pali-paragraph" class:list={[
+      { 'first-paragraph': index === 0 && !paragraphIndent }
+    ]}>
+      {splitWords(paragraph).map((word) => (
+        <span class="pali-word">{word}</span>
+      ))}
+    </div>
+  ))}
+</div>
+
+<style>
+  .pali-container {
+    line-height: 1.8;
+    font-family: inherit;
+  }
+  
+  .pali-paragraph {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+    padding-left: 2em;
+    text-align: justify;
+    text-align-last: left; /* บรรทัดสุดท้ายของแต่ละย่อหน้าชิดซ้าย */
+  }
+  
+  .pali-paragraph.first-paragraph,
+  .pali-container:not(.pali-justify) .pali-paragraph:first-child {
+    padding-left: 0;
+  }
+  
+  .pali-word {
+    white-space: nowrap;
+    margin-right: 0.25em;
+    display: inline-block;
+  }
+  
+  .pali-word:last-child {
+    margin-right: 0;
+  }
+  
+  /* Justify alignment */
+  .pali-justify .pali-paragraph {
+    justify-content: space-between;
+  }
+  
+  .pali-justify .pali-paragraph:last-child {
+    justify-content: flex-start;
+  }
+  
+  /* Responsive design */
+  .pali-responsive {
+    @media (max-width: 768px) {
+      .pali-paragraph {
+        padding-left: 1em;
+        justify-content: flex-start !important;
+      }
+      
+      .pali-word {
+        margin-right: 0.2em;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .pali-paragraph {
+        padding-left: 0.5em;
+      }
+      
+      .pali-word {
+        margin-right: 0.15em;
+      }
+    }
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .pali-container {
+      color: inherit;
+    }
+  }
+</style>
