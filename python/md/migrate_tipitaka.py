@@ -535,6 +535,51 @@ class TipitakaMigrator:
                 keep_count = self._cache_cleanup_threshold
                 self._file_content_cache = dict(items[-keep_count:])
     
+    def post_process_transliteration(self, text: str, locale: str) -> str:
+        """Post-process transliteration results to fix common errors"""
+        if locale == 'romn' or not text:
+            return text
+        
+        # Define correction mappings for each locale
+        corrections = {
+            'thai': {
+                # Fix common Thai transliteration errors
+                'ึ': 'ิํ',  # Fix niggahita representation
+                # Add more Thai corrections as needed
+            },
+            'sinh': {
+                # Fix common Sinhala transliteration errors
+                # Add Sinhala corrections as needed
+            },
+            'mymr': {
+                # Fix common Myanmar transliteration errors
+                # Add Myanmar corrections as needed
+            },
+            'deva': {
+                # Fix common Devanagari transliteration errors
+                # Add Devanagari corrections as needed
+            },
+            'khmr': {
+                # Fix common Khmer transliteration errors
+                # Add Khmer corrections as needed
+            },
+            'laoo': {
+                # Fix common Lao transliteration errors
+                # Add Lao corrections as needed
+            },
+            'lana': {
+                # Fix common Tai Tham transliteration errors
+                # Add Tai Tham corrections as needed
+            }
+        }
+        
+        # Apply corrections for the specific locale
+        if locale in corrections:
+            for wrong, correct in corrections[locale].items():
+                text = text.replace(wrong, correct)
+        
+        return text
+
     def convert_text_with_aksharamukha(self, text: str, locale: str) -> str:
         """Convert text using aksharamukha transliteration with caching and improved error handling"""
         if locale == 'romn':
@@ -601,6 +646,9 @@ class TipitakaMigrator:
             for i, original_url in enumerate(links):
                 placeholder = f"__LINK_PLACEHOLDER_{i}__"
                 result = result.replace(placeholder, original_url)
+            
+            # Apply post-processing corrections
+            result = self.post_process_transliteration(result, locale)
             
             # Cache the result for performance (thread-safe)
             with self._cache_lock:
