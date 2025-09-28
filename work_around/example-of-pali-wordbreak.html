@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การแก้ปัญหาการตัดคำกลางคำบาลี - วิธีที่ 4 (ปรับปรุง)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Sarabun', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 28px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+
+        .comparison-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 5px solid #28a745;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title .emoji {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .text-content {
+            padding: 20px;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            background: #d4edda;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* วิธีที่ 4 ปรับปรุง: Flexbox + Justify + Paragraph */
+        .method4-advanced .paragraph {
+            margin-bottom: 1em;
+            padding-left: 2em; /* ย่อหน้าทุกย่อหน้า */
+            line-height: 1.8;
+            text-align: justify; /* Thai Justify - จัดเฉพาะบรรทัดที่เหมาะสม */
+            text-align-last: left; /* บรรทัดสุดท้ายและบรรทัดสั้นชิดซ้าย */
+            text-justify: inter-word; /* จัดระยะห่างระหว่างคำ ไม่ใช่ตัวอักษร */
+        }
+
+        .method4-advanced .paragraph span {
+            white-space: nowrap !important;
+            word-break: keep-all !important;
+            /* ไม่ใช้ margin-right เพราะให้ browser จัดการเอง */
+        }
+
+        .description {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+
+        .highlight {
+            background-color: #d4edda;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #28a745;
+            margin: 30px 0;
+        }
+
+        .highlight h3 {
+            color: #155724;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .code-example {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .method4-advanced .paragraph {
+                padding-left: 1em;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🙏 วิธีที่ 4 (ปรับปรุง): Flexbox + Paragraph + Justify + Last Line Left</h1>
+        
+        <!-- วิธีที่ 4 ปรับปรุง -->
+        <div class="comparison-section">
+            <div class="section-title">
+                <span class="emoji">✅</span>
+                <span>วิธีที่ 4 (ปรับปรุง): Flexbox + Paragraph + Justify + Last Line Left</span>
+            </div>
+            
+            <div class="text-content method4-advanced">
+                <div class="paragraph">
+                    <span>เตน</span> <span>สมเยน</span> <span>พุทฺโธ</span> <span>ภควา</span> <span>สาวตฺถิยํ</span> <span>วิหรติ</span> <span>เชตวเน</span> <span>อนาธปิณฺฑิกสฺส</span> <span>อาราเม.</span>
+                </div>
+                <div class="paragraph">
+                    <span>เตน</span> <span>โข</span> <span>ปน</span> <span>สมเยน</span> <span>ปาริวาสิกา</span> <span>ภิกฺขู</span> <span>สาทิยนฺติ</span> <span>ปกตตฺตานํ</span> <span>ภิกฺขูนํ</span> <span>อภิวาทนํ</span> <span>ปจฺจุฏฺฐานํ</span> <span>อญฺชลิกมฺมํ</span> <span>สามีจิกมฺมํ</span> <span>อาสนาภิหารํ</span> <span>เสยฺยาภิหารํ</span> <span>ปาโททกํ</span> <span>ปาทปีฐํ</span> <span>ปาทกถลิกํ</span> <span>ปตฺตจีวรปฺปฏิคฺคหณํ</span> <span>นหาเน</span> <span>ปิฏฺฐิปริกมฺมํ.</span>
+                </div>
+                <div class="paragraph">
+                    <span>เย</span> <span>เต</span> <span>ภิกฺขู</span> <span>อปฺปิจฺฉา</span> <span>…เป…</span> <span>เต</span> <span>อุชฺฌายนฺติ</span> <span>ขิยฺยนฺติ</span> <span>วิปาเจนฺติ</span> <span>"กถญฺหิ</span> <span>นาม</span> <span>ปาริวาสิกา</span> <span>ภิกฺขู</span> <span>สาทิยิสฺสนฺติ</span> <span>ปกตตฺตานํ</span> <span>ภิกฺขูนํ</span> <span>อภิวาทนํ</span> <span>ปจฺจุฏฺฐานํ</span> <span>อญฺชลิกมฺมํ</span> <span>สามีจิกมฺมํ</span> <span>อาสนาภิหารํ</span> <span>เสยฺยาภิหารํ</span> <span>ปาโททกํ</span> <span>ปาทปีฐํ</span> <span>ปาทกถลิกํ</span> <span>ปตฺตจีวรปฺปฏิคฺคหณํ</span> <span>นหาเน</span> <span>ปิฏฺฐิปริกมฺมนฺ"ติ.</span>
+                </div>
+                <div class="paragraph">
+                    <span>อถ</span> <span>โข</span> <span>เต</span> <span>ภิกฺขู</span> <span>ภควโต</span> <span>เอตมตฺถํ</span> <span>อาโรเจสุํ.</span>
+                </div>
+            </div>
+            
+            <div class="description">
+                ✨ ใช้ <code>text-align: justify</code> แต่ปรับปรุงแล้ว + ไม่ตัดคำกลางคำ 100%
+            </div>
+        </div>
+
+        <!-- ข้อมูลการนำไปใช้ -->
+        <div class="highlight">
+            <h3>🎯 การนำไปใช้งานจริง</h3>
+            
+            <p><strong>สำหรับ Astro Component:</strong></p>
+            <div class="code-example">
+&lt;PaliText text={paliContent} paragraphIndent={true} justify={true} /&gt;
+            </div>
+            
+            <p><strong>CSS หลักที่ใช้ (Flexbox + Justify):</strong></p>
+            <div class="code-example">
+/* วิธีที่ 4 (ปรับปรุง): Flexbox + Paragraph + Justify + Last Line Left */
+.pali-paragraph {
+    margin-bottom: 1em;
+    padding-left: 2em; /* ย่อหน้าทุกย่อหน้า */
+    line-height: 1.8;
+    text-align: justify; /* Thai Justify - จัดเฉพาะบรรทัดที่เหมาะสม */
+    text-align-last: left; /* บรรทัดสุดท้ายและบรรทัดสั้นชิดซ้าย */
+    text-justify: inter-word; /* จัดระยะห่างระหว่างคำ ไม่ใช่ตัวอักษร */
+}
+
+.pali-word {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    /* ไม่ใช้ margin-right เพราะให้ browser จัดการเอง */
+}
+            </div>
+            
+            <p><strong>จุดสำคัญ:</strong></p>
+            <ul>
+                <li>✅ <code>text-align: justify</code> - จัด justify เฉพาะบรรทัดที่เหมาะสม</li>
+                <li>✅ <code>text-align-last: left</code> - บรรทัดสุดท้ายและบรรทัดสั้นชิดซ้าย</li>
+                <li>✅ <code>text-justify: inter-word</code> - จัดระยะห่างระหว่างคำ ไม่ใช่ตัวอักษร</li>
+                <li>✅ <code>white-space: nowrap</code> - ไม่ตัดคำกลางคำเด็ดขาด</li>
+                <li>✅ <code>word-break: keep-all</code> - รับรองไม่ตัดคำ</li>
+            </ul>
+            
+            <p><strong>ข้อดี:</strong></p>
+            <ul>
+                <li>✅ <strong>ไม่ตัดคำกลางคำ</strong> - แน่นอน 100%</li>
+                <li>✅ <strong>ระยะห่างระหว่างคำเหมาะสม</strong> - ไม่มากเกินไปในบรรทัดสั้น</li>
+                <li>✅ <strong>บรรทัดสุดท้ายชิดซ้าย</strong> - เหมือน Microsoft Word</li>
+                <li>✅ <strong>รองรับย่อหน้า</strong> - มี padding-left</li>
+                <li>✅ <strong>ใช้งานง่าย</strong> - เพียงเพิ่ม CSS class และ span wrapper</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

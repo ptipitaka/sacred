@@ -8,9 +8,10 @@ export interface Props {
     number: string;
     book?: string; // Optional book identifier for PageFind metadata
     type?: 'normal' | 'center' | 'verses';
+    pali?: boolean; // Enable Pali word-break protection (default: true)
 }
 
-const { number, book = "", type = "normal" } = Astro.props;
+const { number, book = "", type = "normal", pali = true } = Astro.props;
 
 // Generate PageFind metadata
 const metadataValue = book ? `para:${book}-${number}` : `para:${number}`;
@@ -20,11 +21,23 @@ const typeMetadata = `type:${type}`;
 <div
     data-pagefind-meta={metadataValue}
     data-pagefind-meta-type={typeMetadata}
-    class={`paragraph-section paragraph-${type}`}
+    class:list={[
+        'paragraph-section',
+        `paragraph-${type}`,
+        { 'pali': pali }
+    ]}
     data-paragraph={number}
     data-type={type}
 >
-    <span class="paragraph-number">{number}</span><span class="paragraph-content"><slot /></span>
+    <span class="paragraph-number">{number}</span><span class="paragraph-content">
+        {pali ? (
+            <div class="pali-wrapper">
+                <slot />
+            </div>
+        ) : (
+            <slot />
+        )}
+    </span>
 </div>
 
 
@@ -51,6 +64,12 @@ const typeMetadata = `type:${type}`;
         font-size: var(--sl-text-body, 1rem);
         line-height: inherit;
         display: inline;
+    }
+
+    /* Pali content should allow normal text wrapping */
+    .paragraph-section.pali .paragraph-content {
+        display: inline; /* Keep inline but with different text flow */
+        white-space: normal; /* Allow normal wrapping */
     }
 
     .paragraph-content :global(p) {
@@ -152,6 +171,25 @@ const typeMetadata = `type:${type}`;
         color: var(--sl-color-text, #e5e7eb);
     }
 
+    /* ===== PALI WORD-BREAK PROTECTION ===== */
+    
+    /* Use JavaScript-based word wrapping for 100% protection */
+    .paragraph-section.pali .pali-wrapper {
+        text-align: justify;
+        text-align-last: left;
+        text-justify: inter-word;
+        line-height: 1.8;
+        word-spacing: normal;
+        margin-top: -1.8em; /* Adjust for inline-block spacing */
+        text-indent: 5.5em;
+    }
+
+    /* Global styles for Pali words (will be applied by JavaScript) */
+    .paragraph-section.pali :global(.pali-word) {
+        white-space: nowrap !important;
+        word-break: keep-all !important;
+    }
+
     /* ===== INTERACTION STYLES ===== */
     
     /* Focus */
@@ -161,3 +199,26 @@ const typeMetadata = `type:${type}`;
         border-radius: 0.25rem;
     }
 </style>
+
+{pali && (
+    <script>
+        // Client-side word wrapping for Pali text
+        document.addEventListener('DOMContentLoaded', function() {
+            const paliWrappers = document.querySelectorAll('.paragraph-section.pali .pali-wrapper');
+            
+            paliWrappers.forEach(wrapper => {
+                const text = wrapper.textContent || '';
+                const words = text.split(/(\s+)/);
+                
+                const wrappedHTML = words.map(part => {
+                    if (part.trim()) {
+                        return `<span class="pali-word">${part}</span>`;
+                    }
+                    return part; // Keep whitespace
+                }).join('');
+                
+                wrapper.innerHTML = wrappedHTML;
+            });
+        });
+    </script>
+)}
