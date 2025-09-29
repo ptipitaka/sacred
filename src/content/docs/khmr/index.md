@@ -1,0 +1,31 @@
+---
+title: S.A.C.R.E.D.
+description: Permanent archive repository of canonical/standard reference editions - Comprehensive digital Tipiṭaka
+template: splash
+hero:
+  title: S.A.C.R.E.D.
+  tagline: <b>S</b>criptural <b>A</b>rchive of <b>C</b>anonical <b>R</b>eferences <b>E</b>ditions <b>D</b>epository<br><span style="font-size:larger;">A collaborative effort by Buddhists worldwide to preserve and transmit the Tipiṭaka</span>
+  image:
+    file: @assets/logo.svg
+    alt: SACRED - Scripture Archive Logo
+---
+
+Welcome to **SACRED**: <u>**S**</u>criptural <u>**A**</u>rchive of <u>**C**</u>anonical <u>**R**</u>eferences <u>**E**</u>ditions <u>**D**</u>epository dedicated to preserving the integrity of the sacred Dhamma, transmitted through the **council system** to serve as a **standard and reference source** for study and transmission to future generations.
+
+From the historical transmission through the long lineage of **memorization by Arahant elders to inscription on palm leaves** up to the use of printing technology, the world has now entered the **era of digital technology and artificial intelligence** to make access to the Dhamma teachings easier and more widespread **while maintaining accuracy and authenticity without distortion, for the stable preservation and continuation of the true Dhamma**.
+
+### Chaṭṭha Saṅgāyana Tipiṭaka
+The latest **Buddhist Council** held in 1954 in Yangon, Myanmar, brought together over 2,500 monks from Theravāda countries to preserve the Pāli Canon (Tipiṭaka).
+
+**Available in Different Scripts:***
+
+- [**မြန်မာ** (Myanmar)](/mymr/tipitaka/vi/para/) - Myanmar Script
+- [**සිංහල** (Sri Lanka)](/sinh/tipitaka/vi/para/) - Sinhala Script  
+- [**ไทย** (Thailand)](/thai/tipitaka/vi/para/) - Thai Script
+- [**Roman**](/romn/tipitaka/vi/para/) - Roman Script
+- [**देवनागरी** (India)](/deva/tipitaka/vi/para/) - Devanagari Script
+- [**ᩃ᩶ᩣᨶ᩶ᩣ** (Lanna)](/lana/tipitaka/vi/para/) - Lanna Dhamma Script
+- [**ລາວ** (Laos)](/laoo/tipitaka/vi/para/) - Lao Dhamma Script
+- [**ខ្មែរ** (Cambodia)](/khmr/tipitaka/vi/para/) - Khmer Script
+
+

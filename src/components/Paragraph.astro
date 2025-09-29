@@ -53,10 +53,11 @@ const typeMetadata = `type:${type}`;
     .paragraph-number {
         font-style: italic;
         color: #6b7280;
-        font-size: 0.5em;
+        font-size: 0.45em;
         opacity: 0.8;
+        vertical-align: baseline;
+        margin-right: 0.3em;
         vertical-align: sub;
-        margin-right: 0.2em;
     }
 
     .paragraph-content {
@@ -113,7 +114,7 @@ const typeMetadata = `type:${type}`;
         font-style: italic;
         line-height: 1.6;
         margin-left: 25%;
-        text-indent: 2em;
+        text-indent: 0;
     }
 
     .paragraph-verses .paragraph-content :global(p) {
@@ -180,8 +181,8 @@ const typeMetadata = `type:${type}`;
         text-justify: inter-word;
         line-height: 1.8;
         word-spacing: normal;
-        margin-top: -1.8em; /* Adjust for inline-block spacing */
-        text-indent: 5.5em;
+        display: inline;
+        text-indent: 6.5em;
     }
 
     /* Global styles for Pali words (will be applied by JavaScript) */

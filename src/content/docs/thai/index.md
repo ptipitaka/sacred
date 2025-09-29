@@ -1,0 +1,25 @@
+---
+title: S.A.C.R.E.D.
+description: Permanent archive repository of canonical/standard reference editions - Comprehensive digital Tipiṭaka
+template: splash
+hero:
+  title: S.A.C.R.E.D.
+  tagline: <b>S</b>criptural <b>A</b>rchive of <b>C</b>anonical <b>R</b>eferences <b>E</b>ditions <b>D</b>epository<br><span style="font-size:larger;">A collaborative effort by Buddhists worldwide to preserve and transmit the Tipiṭaka</span>
+---
+
+ขอต้อนรับสู่ **SACRED** : **คลังข้อมูลอ้างอิงพระไตรปิฎกเถรวาท** ที่มุ่งมั่น**รักษาความสมบูรณ์**ของพระธรรมอันศักดิ์สิทธิ์ ซึ่งได้รับการสืบทอดผ่าน**ระบบการสังคายนา** เพื่อเป็น**มาตรฐานและแหล่งอ้างอิง**สำหรับการศึกษาและส่งต่อสู่อนุชนรุ่นหลัง
+
+จากประวัติศาสตร์ของการสืบทอดอันยาวนานผ่านการ**ทรงจำของพระอรหันตเถระ สู่การจารึกบนใบลาน** จนถึงการใช้เทคโนโลยีการพิมพ์ บัดนี้โลกได้ก้าวเข้าสู่ **ยุคเทคโนโลยีดิจิทัลและปัญญาประดิษฐ์** เพื่อให้การเข้าถึงพระธรรมคำสอนง่ายและแพร่หลายยิ่งขึ้น **โดยยังคงรักษาความถูกต้องเที่ยงตรงไว้ไม่ให้ผิดเพี้ยน เพื่อการธำรงไว้แห่งพระสัทธรรมที่มั่นคงสืบไป**
+
+#### พระไตรปิฎกฉัฏฐสังคายนาในอักษรต่างๆ:
+
+- [**မြန်မာ** (พม่า)](/mymr/tipitaka/vi/para/) - อักษรพม่า
+- [**සිංහල** (ศรีลังกา)](/sinh/tipitaka/vi/para/) - อักษรสิงหล  
+- [**ไทย** (ประเทศไทย)](/thai/tipitaka/vi/para/) - อักษรไทย
+- [**Roman**](/romn/tipitaka/vi/para/) - อักษรโรมัน
+- [**देवनागरी** (อินเดีย)](/deva/tipitaka/vi/para/) - อักษรเทวนาครี
+- [**ᩃ᩶ᩣᨶ᩶ᩣ** (ล้านนา)](/lana/tipitaka/vi/para/) - อักษรธรรมล้านนา
+- [**ລາວ** (ลาว)](/laoo/tipitaka/vi/para/) - อักษรธรรมลาว
+- [**ខ្មែរ** (กัมพูชา)](/khmr/tipitaka/vi/para/) - อักษรเขมร
+
+

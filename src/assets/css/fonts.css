@@ -64,16 +64,6 @@
     src: url("/src/assets/fonts/Noto_Sans_Tai_Tham/static/NotoSansTaiTham-Regular.ttf") format("truetype");
     font-display: swap;
   }
-  @font-face {
-    font-family: "Pali Khomttabun";
-    src: url("/src/assets/fonts/SOV_Tham/Pali_Khottabun.ttf") format("truetype");
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Pali Tilok";
-    src: url("/src/assets/fonts/SOV_Tham/Pali_Tilok.ttf") format("truetype");
-    font-display: swap;
-  }
   /* (ถ้ามีฟอนต์ท้องถิ่นอย่าง Lanna Alif/Hariphunchai ก็เพิ่มเป็น fallback ได้) */
   
   
@@ -123,7 +113,7 @@
     /* --sl-font: "Phetsarath", "Noto Sans Lao","Noto Sans", ui-sans-serif, system-ui, sans-serif; */
 }
 :lang(ln) {
-    --sl-font: "Sarabun", "Noto Sans Thai", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+    --sl-font: "Noto Sans Tai Tham", "Sarabun", "Noto Sans Thai", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
     /* --sl-font: "Noto Sans Tai Tham", "Pali Tilok", "Pali Khomttabun", "Noto Sans", ui-sans-serif, system-ui, sans-serif; */
 } 
   
