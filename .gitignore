@@ -25,8 +25,8 @@ pnpm-debug.log*
 # database files
 *.db
 
-# mula assets
-src/assets/mula/*
+# tipitaka assets
+src/assets/tipitaka/*
 
 # python/
 python/*
