@@ -2,6 +2,11 @@
 // Dynamic Breadcrumb Component for Tipitaka content
 import { buildBreadcrumb, cleanTitle } from '../utils/breadcrumb-builder.js';
 
+interface BreadcrumbItem {
+  title: string;
+  link: string;
+}
+
 interface Props {
   currentPath?: string;
   collection?: string;
@@ -21,7 +26,7 @@ const breadcrumbItems = shouldShowBreadcrumb ? await buildBreadcrumb(currentPath
 
 {breadcrumbItems.length > 0 && (
   <nav class="breadcrumb" aria-label="Breadcrumb">
-    {breadcrumbItems.map((item, index) => (
+    {breadcrumbItems.map((item: BreadcrumbItem, index: number) => (
       <span class="breadcrumb-item">
         {index > 0 && <span class="separator" aria-hidden="true">›</span>}
         <a href={item.link} class="breadcrumb-link">
