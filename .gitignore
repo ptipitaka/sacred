@@ -23,7 +23,9 @@ pnpm-debug.log*
 .DS_Store
 
 # python/
-python/*
+python/db/tipitaka_pali.db
+python/md/tipitaka/
+
 
 # other
 .venv/
