@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import { sidebarConfig } from './python/navigator.js';
+import { sidebarConfig } from './python/md/navigator.js';
 
 import vercel from '@astrojs/vercel';
 
