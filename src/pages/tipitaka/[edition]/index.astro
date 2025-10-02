@@ -1,6 +1,9 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
 
+// Static generation for edition overview pages (low volume)
+export const prerender = true;
+
 interface VolumeInfo {
   number: string;
   path: string;

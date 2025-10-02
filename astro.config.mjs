@@ -2,20 +2,33 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { sidebarConfig } from './python/md/navigator.js';
 
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
+  // Hybrid rendering: static by default, opt-in to SSR per page
+  output: 'hybrid',
+  
   vite: {
-      resolve: {
-          alias: {
-              '@components': '/src/components',
-              '@assets': '/src/assets',
-              '@utils': '/src/utils',
-              '@content': '/src/content',
-              '@types': '/src/types',
-          },
+    resolve: {
+      alias: {
+        '@components': '/src/components',
+        '@assets': '/src/assets',
+        '@utils': '/src/utils',
+        '@content': '/src/content',
+        '@types': '/src/types',
       },
+    },
+    // Production build optimizations
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'starlight': ['@astrojs/starlight'],
+          }
+        }
+      }
+    }
   },
 
   integrations: [
@@ -77,5 +90,18 @@ export default defineConfig({
       }),
   ],
 
-  adapter: vercel(),
+  adapter: vercel({
+    // Vercel best practices for Astro
+    webAnalytics: { enabled: true },
+    speedInsights: { enabled: true },
+    imageService: true,
+    imagesConfig: {
+      sizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+      formats: ['image/webp'],
+      minimumCacheTTL: 86400, // 24 hours
+    },
+    functionPerRoute: false, // Bundle API routes together for better cold starts
+    edgeMiddleware: false, // Use serverless for better compatibility
+    maxDuration: 30, // 30 seconds max for functions
+  }),
 });

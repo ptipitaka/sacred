@@ -1,6 +1,9 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
 
+// Static generation for main tipitaka page (always prerender)
+export const prerender = true;
+
 interface EditionInfo {
   code: string;
   name: string;

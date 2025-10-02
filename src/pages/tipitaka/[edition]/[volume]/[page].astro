@@ -1,139 +1,100 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
 
-interface PageStaticPath {
-  params: {
-    edition: string;
-    volume: string;
-    page: string;
-  };
-  props: {
-    editionCode: string;
-    editionName: string;
-    volumeNumber: string;
-    pageNumber: number;
-    imageSrc: string;
-    totalPages: number;
-    prevPage?: number;
-    nextPage?: number;
-  };
-}
+// เปลี่ยนเป็น SSR - ไม่ต้อง pre-generate ทุกหน้า
+export const prerender = false;
 
-export async function getStaticPaths(): Promise<PageStaticPath[]> {
-  const paths: PageStaticPath[] = [];
-  
+const { edition, volume, page } = Astro.params;
+
+// Load data on-demand
+async function loadPageData() {
   const editionNames: Record<string, string> = {
     'ch': 'ฉัฏฐสังคายนา',
     'mc': 'มหาชน',
     'sy': 'สยาม'
   };
-  
+
+  if (!edition || !volume || !page || !editionNames[edition]) {
+    return null;
+  }
+
   try {
     const fs = await import('fs');
     const path = await import('path');
-    const tipitakaPath = path.join(process.cwd(), 'public', 'tipitaka');
     
-    if (fs.existsSync(tipitakaPath)) {
-      const editionDirs = fs.readdirSync(tipitakaPath, { withFileTypes: true });
-      
-      for (const editionDir of editionDirs) {
-        if (editionDir.isDirectory() && editionNames[editionDir.name]) {
-          const editionPath = path.join(tipitakaPath, editionDir.name);
-          
-          try {
-            const volumeDirs = fs.readdirSync(editionPath, { withFileTypes: true });
-            
-            for (const volumeDir of volumeDirs) {
-              if (volumeDir.isDirectory()) {
-                const volumePath = path.join(editionPath, volumeDir.name);
-                
-                try {
-                  const files = fs.readdirSync(volumePath);
-                  const imageFiles = files
-                    .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
-                    .sort((a, b) => {
-                      const aNum = parseInt(a.match(/\d+/)?.[0] || '0');
-                      const bNum = parseInt(b.match(/\d+/)?.[0] || '0');
-                      return aNum - bNum;
-                    });
-                  
-                  const totalPages = imageFiles.length;
-                  
-                  imageFiles.forEach((file, index) => {
-                    const pageNumber = index + 1;
-                    
-                    paths.push({
-                      params: {
-                        edition: editionDir.name,
-                        volume: volumeDir.name,
-                        page: pageNumber.toString()
-                      },
-                      props: {
-                        editionCode: editionDir.name,
-                        editionName: editionNames[editionDir.name],
-                        volumeNumber: volumeDir.name,
-                        pageNumber,
-                        imageSrc: `/tipitaka/${editionDir.name}/${volumeDir.name}/${file}`,
-                        totalPages,
-                        prevPage: pageNumber > 1 ? pageNumber - 1 : undefined,
-                        nextPage: pageNumber < totalPages ? pageNumber + 1 : undefined
-                      }
-                    });
-                  });
-                } catch (error) {
-                  console.warn(`Cannot read pages in volume ${volumeDir.name}:`, error);
-                }
-              }
-            }
-          } catch (error) {
-            console.warn(`Cannot read volumes for edition ${editionDir.name}:`, error);
-          }
-        }
-      }
+    const volumePath = path.join(process.cwd(), 'public', 'tipitaka', edition, volume);
+    
+    if (!fs.existsSync(volumePath)) {
+      return null;
     }
+
+    const files = fs.readdirSync(volumePath);
+    const imageFiles = files
+      .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+      .sort((a, b) => {
+        const aNum = parseInt(a.match(/\d+/)?.[0] || '0');
+        const bNum = parseInt(b.match(/\d+/)?.[0] || '0');
+        return aNum - bNum;
+      });
+
+    const pageNumber = parseInt(page);
+    const totalPages = imageFiles.length;
+    
+    if (pageNumber < 1 || pageNumber > totalPages) {
+      return null;
+    }
+
+    const imageFile = imageFiles[pageNumber - 1];
+    
+    return {
+      editionCode: edition,
+      editionName: editionNames[edition],
+      volumeNumber: volume,
+      pageNumber,
+      imageSrc: `/tipitaka/${edition}/${volume}/${imageFile}`,
+      totalPages,
+      prevPage: pageNumber > 1 ? pageNumber - 1 : undefined,
+      nextPage: pageNumber < totalPages ? pageNumber + 1 : undefined
+    };
   } catch (error) {
-    console.error('Error reading tipitaka data:', error);
+    console.error('Error loading page data:', error);
+    return null;
   }
-  
-  return paths;
 }
 
-const { edition, volume, page } = Astro.params;
-const { 
-  editionCode, 
-  editionName, 
-  volumeNumber, 
-  pageNumber, 
-  imageSrc, 
-  totalPages, 
-  prevPage, 
-  nextPage 
-} = Astro.props;
+const pageData = await loadPageData();
 
-const prevUrl = prevPage ? `/tipitaka/${editionCode}/${volumeNumber}/${prevPage}` : null;
-const nextUrl = nextPage ? `/tipitaka/${editionCode}/${volumeNumber}/${nextPage}` : null;
+if (!pageData) {
+  return Astro.redirect('/404');
+}
+
+// Generate navigation URLs
+const pageTitle = `เล่ม ${pageData.volumeNumber} หน้า ${pageData.pageNumber}`;
+const prevUrl = pageData.prevPage ? `/tipitaka/${pageData.editionCode}/${pageData.volumeNumber}/${pageData.prevPage}` : null;
+const nextUrl = pageData.nextPage ? `/tipitaka/${pageData.editionCode}/${pageData.volumeNumber}/${pageData.nextPage}` : null;
+
 ---
 
 <StarlightPage
   frontmatter={{
-    title: `หน้า ${pageNumber} - เล่ม ${volumeNumber}`,
-    description: `หน้า ${pageNumber} จาก ${totalPages} หน้า ในเล่ม ${volumeNumber} ฉบับ${editionName}`
+    title: `${pageTitle} - ${pageData.editionName}`,
+    description: `หน้า ${pageData.pageNumber} จาก ${pageData.totalPages} หน้า ในเล่ม ${pageData.volumeNumber} ฉบับ${pageData.editionName}`
   }}
 >
   <nav class="breadcrumb">
     <a href="/tipitaka">พระไตรปิฎก</a> › 
-    <a href={`/tipitaka/${editionCode}`}>{editionName}</a> › 
-    <a href={`/tipitaka/${editionCode}/${volumeNumber}`}>เล่ม {volumeNumber}</a> › 
-    หน้า {pageNumber}
+    <a href={`/tipitaka/${pageData.editionCode}`}>{pageData.editionName}</a> › 
+    <a href={`/tipitaka/${pageData.editionCode}/${pageData.volumeNumber}`}>เล่ม {pageData.volumeNumber}</a> › 
+    หน้า {pageData.pageNumber}
   </nav>
 
   <div class="page-info">
-    <h2>หน้า {pageNumber} จาก {totalPages}</h2>
+    <h2>หน้า {pageData.pageNumber} จาก {pageData.totalPages}</h2>
     <div class="page-navigation">
       {prevUrl && (
         <a href={prevUrl} class="nav-button prev">← หน้าก่อน</a>
       )}
-      <span class="page-counter">{pageNumber} / {totalPages}</span>
+      <span class="page-counter">{pageData.pageNumber} / {pageData.totalPages}</span>
       {nextUrl && (
         <a href={nextUrl} class="nav-button next">หน้าถัดไป →</a>
       )}
@@ -142,9 +103,10 @@ const nextUrl = nextPage ? `/tipitaka/${editionCode}/${volumeNumber}/${nextPage}
 
   <div class="page-viewer">
     <img 
-      src={imageSrc} 
-      alt={`หน้า ${pageNumber}`}
+      src={pageData.imageSrc} 
+      alt={`หน้า ${pageData.pageNumber}`}
       class="page-image"
+      loading="lazy"
     />
   </div>
 
@@ -152,7 +114,7 @@ const nextUrl = nextPage ? `/tipitaka/${editionCode}/${volumeNumber}/${nextPage}
     {prevUrl && (
       <a href={prevUrl} class="nav-button prev">← หน้าก่อน</a>
     )}
-    <a href={`/tipitaka/${editionCode}/${volumeNumber}`} class="nav-button back">กลับไปยังเล่ม</a>
+    <a href={`/tipitaka/${pageData.editionCode}/${pageData.volumeNumber}`} class="nav-button back">กลับไปยังเล่ม</a>
     {nextUrl && (
       <a href={nextUrl} class="nav-button next">หน้าถัดไป →</a>
     )}
