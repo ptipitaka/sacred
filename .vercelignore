@@ -1,5 +1,6 @@
 # Python files
-python/
+python/db
+pychon/md/tipitaka
 __pycache__/
 *.pyc
 *.pyo
