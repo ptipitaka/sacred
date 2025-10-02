@@ -2,12 +2,12 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { sidebarConfig } from './python/md/navigator.js';
 
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  // Hybrid rendering: static by default, opt-in to SSR per page
-  output: 'hybrid',
+  // Server-side rendering with selective prerendering
+  output: 'server',
   
   vite: {
     resolve: {
