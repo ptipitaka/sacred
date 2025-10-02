@@ -49,12 +49,6 @@
       ]
     }
   ],
-  "functions": {
-    "dist/server/pages/tipitaka/[edition]/[volume]/[page].astro.js": {
-      "memory": 512,
-      "maxDuration": 15
-    }
-  },
   "cleanUrls": true,
   "trailingSlash": false
 }
