@@ -1,0 +1,41 @@
+# Python files
+python/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Work around files
+work_around/
+
+# Build artifacts
+.astro/
+dist/
+node_modules/
+
+# Large assets that don't need to be in functions  
+public/tipitaka/**/*.md
+public/tipitaka/**/*.txt  
+public/tipitaka/**/*.log
+# Keep images as static assets, not in functions
+!public/tipitaka/**/*.jpg
+!public/tipitaka/**/*.jpeg
+!public/tipitaka/**/*.png
+!public/tipitaka/**/*.gif
+!public/tipitaka/**/*.webp
+
+# Dev files
+*.log
+.env*
+.DS_Store
+Thumbs.db
+
+# Config files not needed in production
+tsconfig.json
+setup_aliases.sh
+venv.ps1
+requirements.txt

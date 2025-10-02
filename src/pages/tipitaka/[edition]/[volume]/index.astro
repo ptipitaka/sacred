@@ -1,8 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
 
-// Static generation for volume overview pages (moderate volume)
-export const prerender = true;
+// SSR for volume pages to reduce build memory usage
+export const prerender = false;
 
 interface PageInfo {
   number: number;
@@ -23,108 +23,85 @@ interface VolumeStaticPath {
   };
 }
 
-export async function getStaticPaths(): Promise<VolumeStaticPath[]> {
-  const paths: VolumeStaticPath[] = [];
-  
+const { edition, volume } = Astro.params;
+
+// Load data on-demand for SSR
+async function loadVolumeData() {
   const editionNames: Record<string, string> = {
     'ch': 'ฉัฏฐสังคายนา',
     'mc': 'มหาชน',
     'sy': 'สยาม'
   };
+
+  if (!edition || !volume || !editionNames[edition]) {
+    return null;
+  }
   
   try {
     const fs = await import('fs');
     const path = await import('path');
-    const tipitakaPath = path.join(process.cwd(), 'public', 'tipitaka');
     
-    if (fs.existsSync(tipitakaPath)) {
-      const editionDirs = fs.readdirSync(tipitakaPath, { withFileTypes: true });
-      
-      for (const editionDir of editionDirs) {
-        if (editionDir.isDirectory() && editionNames[editionDir.name]) {
-          const editionPath = path.join(tipitakaPath, editionDir.name);
-          
-          try {
-            const volumeDirs = fs.readdirSync(editionPath, { withFileTypes: true });
-            
-            for (const volumeDir of volumeDirs) {
-              if (volumeDir.isDirectory()) {
-                const volumePath = path.join(editionPath, volumeDir.name);
-                const pages: PageInfo[] = [];
-                
-                try {
-                  const files = fs.readdirSync(volumePath);
-                  const imageFiles = files
-                    .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
-                    .sort((a, b) => {
-                      const aNum = parseInt(a.match(/\d+/)?.[0] || '0');
-                      const bNum = parseInt(b.match(/\d+/)?.[0] || '0');
-                      return aNum - bNum;
-                    });
-                  
-                  imageFiles.forEach((file, index) => {
-                    pages.push({
-                      number: index + 1,
-                      filename: file,
-                      src: `/tipitaka/${editionDir.name}/${volumeDir.name}/${file}`
-                    });
-                  });
-                } catch (error) {
-                  console.warn(`Cannot read pages in volume ${volumeDir.name}:`, error);
-                }
-                
-                paths.push({
-                  params: {
-                    edition: editionDir.name,
-                    volume: volumeDir.name
-                  },
-                  props: {
-                    editionCode: editionDir.name,
-                    editionName: editionNames[editionDir.name],
-                    volumeNumber: volumeDir.name,
-                    pages
-                  }
-                });
-              }
-            }
-          } catch (error) {
-            console.warn(`Cannot read volumes for edition ${editionDir.name}:`, error);
-          }
-        }
-      }
+    const volumePath = path.join(process.cwd(), 'public', 'tipitaka', edition, volume);
+    
+    if (!fs.existsSync(volumePath)) {
+      return null;
     }
+
+    const files = fs.readdirSync(volumePath);
+    const imageFiles = files
+      .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+      .sort((a, b) => {
+        const aNum = parseInt(a.match(/\d+/)?.[0] || '0');
+        const bNum = parseInt(b.match(/\d+/)?.[0] || '0');
+        return aNum - bNum;
+      });
+
+    const pages: PageInfo[] = imageFiles.map((file, index) => ({
+      number: index + 1,
+      filename: file,
+      src: `/tipitaka/${edition}/${volume}/${file}`
+    }));
+
+    return {
+      editionCode: edition,
+      editionName: editionNames[edition],
+      volumeNumber: volume,
+      pages
+    };
   } catch (error) {
-    console.error('Error reading tipitaka data:', error);
+    console.error('Error loading volume data:', error);
+    return null;
   }
-  
-  return paths;
 }
 
-const { edition, volume } = Astro.params;
-const { editionCode, editionName, volumeNumber, pages } = Astro.props;
+const volumeData = await loadVolumeData();
+
+if (!volumeData) {
+  return Astro.redirect('/404');
+}
 ---
 
 <StarlightPage
   frontmatter={{
-    title: `เล่ม ${volumeNumber} - ${editionName}`,
-    description: `หน้าทั้งหมดในเล่ม ${volumeNumber} (${pages.length} หน้า)`
+    title: `เล่ม ${volumeData.volumeNumber} - ${volumeData.editionName}`,
+    description: `หน้าทั้งหมดในเล่ม ${volumeData.volumeNumber} (${volumeData.pages.length} หน้า)`
   }}
 >
   <nav class="breadcrumb">
     <a href="/tipitaka">พระไตรปิฎก</a> › 
-    <a href={`/tipitaka/${editionCode}`}>{editionName}</a> › 
-    เล่ม {volumeNumber}
+    <a href={`/tipitaka/${volumeData.editionCode}`}>{volumeData.editionName}</a> › 
+    เล่ม {volumeData.volumeNumber}
   </nav>
 
   <div class="volume-info">
-    <h2>เล่ม {volumeNumber}</h2>
-    <p>จำนวน {pages.length} หน้า</p>
+    <h2>เล่ม {volumeData.volumeNumber}</h2>
+    <p>จำนวน {volumeData.pages.length} หน้า</p>
   </div>
 
   <div class="pages-grid">
-    {pages.map((page) => (
+    {volumeData.pages.map((page: PageInfo) => (
       <div class="page-thumbnail">
-        <a href={`/tipitaka/${editionCode}/${volumeNumber}/${page.number}`}>
+        <a href={`/tipitaka/${volumeData.editionCode}/${volumeData.volumeNumber}/${page.number}`}>
           <img 
             src={page.src} 
             alt={`หน้า ${page.number}`}
@@ -136,7 +113,7 @@ const { editionCode, editionName, volumeNumber, pages } = Astro.props;
     ))}
   </div>
 
-  {pages.length === 0 && (
+  {volumeData.pages.length === 0 && (
     <div class="no-pages">
       <p>ไม่พบหน้าในเล่มนี้</p>
     </div>

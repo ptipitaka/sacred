@@ -6,8 +6,9 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  // Server-side rendering with selective prerendering
+  // Server-side rendering for dynamic content
   output: 'server',
+  site: 'https://sacred.vercel.app',
   
   vite: {
     resolve: {
@@ -19,12 +20,15 @@ export default defineConfig({
         '@types': '/src/types',
       },
     },
-    // Production build optimizations
+    // Production build optimizations - minimize bundle size
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            'starlight': ['@astrojs/starlight'],
+          manualChunks: (id) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('@astrojs/starlight')) return 'starlight';
+              return 'vendor';
+            }
           }
         }
       }
@@ -91,17 +95,17 @@ export default defineConfig({
   ],
 
   adapter: vercel({
-    // Vercel best practices for Astro
+    // Optimized for smaller function size - exclude images from functions
     webAnalytics: { enabled: true },
-    speedInsights: { enabled: true },
-    imageService: true,
-    imagesConfig: {
-      sizes: [640, 750, 828, 1080, 1200, 1920, 2048],
-      formats: ['image/webp'],
-      minimumCacheTTL: 86400, // 24 hours
-    },
-    functionPerRoute: false, // Bundle API routes together for better cold starts
-    edgeMiddleware: false, // Use serverless for better compatibility
-    maxDuration: 30, // 30 seconds max for functions
+    functionPerRoute: true, // Split routes to reduce individual function size
+    edgeMiddleware: false,
+    maxDuration: 15,
+    // Images stay as static assets, not bundled in functions
+    includeFiles: [],
+    excludeFiles: [
+      'python/**/*',
+      'work_around/**/*', 
+      'public/tipitaka/**/*.{md,txt,log,jpg,jpeg,png,gif,webp}'
+    ]
   }),
 });

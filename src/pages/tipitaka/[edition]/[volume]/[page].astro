@@ -6,8 +6,8 @@ export const prerender = false;
 
 const { edition, volume, page } = Astro.params;
 
-// Load data on-demand
-async function loadPageData() {
+// Load data without filesystem access (to avoid bundling images in function)
+function loadPageData() {
   const editionNames: Record<string, string> = {
     'ch': 'ฉัฏฐสังคายนา',
     'mc': 'มหาชน',
@@ -18,51 +18,36 @@ async function loadPageData() {
     return null;
   }
 
-  try {
-    const fs = await import('fs');
-    const path = await import('path');
-    
-    const volumePath = path.join(process.cwd(), 'public', 'tipitaka', edition, volume);
-    
-    if (!fs.existsSync(volumePath)) {
-      return null;
-    }
-
-    const files = fs.readdirSync(volumePath);
-    const imageFiles = files
-      .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
-      .sort((a, b) => {
-        const aNum = parseInt(a.match(/\d+/)?.[0] || '0');
-        const bNum = parseInt(b.match(/\d+/)?.[0] || '0');
-        return aNum - bNum;
-      });
-
-    const pageNumber = parseInt(page);
-    const totalPages = imageFiles.length;
-    
-    if (pageNumber < 1 || pageNumber > totalPages) {
-      return null;
-    }
-
-    const imageFile = imageFiles[pageNumber - 1];
-    
-    return {
-      editionCode: edition,
-      editionName: editionNames[edition],
-      volumeNumber: volume,
-      pageNumber,
-      imageSrc: `/tipitaka/${edition}/${volume}/${imageFile}`,
-      totalPages,
-      prevPage: pageNumber > 1 ? pageNumber - 1 : undefined,
-      nextPage: pageNumber < totalPages ? pageNumber + 1 : undefined
-    };
-  } catch (error) {
-    console.error('Error loading page data:', error);
+  const pageNumber = parseInt(page);
+  if (isNaN(pageNumber) || pageNumber < 1) {
     return null;
   }
+  
+  // Use predictable image naming instead of filesystem scan
+  // This prevents bundling all images into the serverless function
+  const paddedPage = pageNumber.toString().padStart(3, '0');
+  const imageFile = `page${paddedPage}.jpg`;
+  
+  // Basic limits to prevent invalid pages
+  const maxPages = 500; // Adjust based on your typical volume size
+  
+  if (pageNumber > maxPages) {
+    return null;
+  }
+  
+  return {
+    editionCode: edition,
+    editionName: editionNames[edition],
+    volumeNumber: volume,
+    pageNumber,
+    imageSrc: `/tipitaka/${edition}/${volume}/${imageFile}`,
+    totalPages: maxPages,
+    prevPage: pageNumber > 1 ? pageNumber - 1 : undefined,
+    nextPage: pageNumber < maxPages ? pageNumber + 1 : undefined
+  };
 }
 
-const pageData = await loadPageData();
+const pageData = loadPageData();
 
 if (!pageData) {
   return Astro.redirect('/404');

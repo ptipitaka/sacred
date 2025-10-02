@@ -1,8 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
 
-// Static generation for edition overview pages (low volume)
-export const prerender = true;
+// SSR to reduce build memory usage
+export const prerender = false;
 
 interface VolumeInfo {
   number: string;
@@ -21,56 +21,55 @@ interface EditionStaticPath {
   };
 }
 
-export async function getStaticPaths(): Promise<EditionStaticPath[]> {
-  const paths: EditionStaticPath[] = [];
-  
+const { edition } = Astro.params;
+
+// Load data on-demand for SSR
+async function loadEditionData() {
   const editionNames: Record<string, string> = {
     'ch': 'ฉัฏฐสังคายนา',
     'mc': 'มหาชน', 
     'sy': 'สยาม'
   };
+
+  if (!edition || !editionNames[edition]) {
+    return null;
+  }
   
   try {
     const fs = await import('fs');
     const path = await import('path');
-    const tipitakaPath = path.join(process.cwd(), 'public', 'tipitaka');
     
-    if (fs.existsSync(tipitakaPath)) {
-      const editionDirs = fs.readdirSync(tipitakaPath, { withFileTypes: true });
-      
-      for (const editionDir of editionDirs) {
-        if (editionDir.isDirectory() && editionNames[editionDir.name]) {
-          const editionPath = path.join(tipitakaPath, editionDir.name);
-          const volumes: VolumeInfo[] = [];
-          
-          try {
-            const volumeDirs = fs.readdirSync(editionPath, { withFileTypes: true });
-            
-            for (const volumeDir of volumeDirs) {
-              if (volumeDir.isDirectory()) {
-                const volumePath = path.join(editionPath, volumeDir.name);
-                
-                // Count pages in volume
-                let pageCount = 0;
-                try {
-                  const files = fs.readdirSync(volumePath);
-                  pageCount = files.filter(file => 
-                    /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
-                  ).length;
-                } catch (error) {
-                  console.warn(`Cannot count pages in volume ${volumeDir.name}:`, error);
-                }
-                
-                volumes.push({
-                  number: volumeDir.name,
-                  path: `/tipitaka/${editionDir.name}/${volumeDir.name}`,
-                  pageCount
-                });
-              }
-            }
-          } catch (error) {
-            console.warn(`Cannot read volumes for edition ${editionDir.name}:`, error);
-          }
+    const editionPath = path.join(process.cwd(), 'public', 'tipitaka', edition);
+    
+    if (!fs.existsSync(editionPath)) {
+      return null;
+    }
+
+    const volumes: VolumeInfo[] = [];
+    const volumeDirs = fs.readdirSync(editionPath, { withFileTypes: true });
+    
+    for (const volumeDir of volumeDirs) {
+      if (volumeDir.isDirectory()) {
+        const volumePath = path.join(editionPath, volumeDir.name);
+        
+        // Count pages in volume
+        let pageCount = 0;
+        try {
+          const files = fs.readdirSync(volumePath);
+          pageCount = files.filter(file => 
+            /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
+          ).length;
+        } catch (error) {
+          console.warn(`Cannot count pages in volume ${volumeDir.name}:`, error);
+        }
+        
+        volumes.push({
+          number: volumeDir.name,
+          path: `/tipitaka/${edition}/${volumeDir.name}`,
+          pageCount
+        });
+      }
+    }
           
           // Sort volumes numerically
           volumes.sort((a, b) => {
@@ -78,43 +77,43 @@ export async function getStaticPaths(): Promise<EditionStaticPath[]> {
             const bNum = parseInt(b.number) || 0;
             return aNum - bNum;
           });
-          
-          paths.push({
-            params: {
-              edition: editionDir.name
-            },
-            props: {
-              editionCode: editionDir.name,
-              editionName: editionNames[editionDir.name],
-              volumes
-            }
-          });
-        }
-      }
-    }
+    // Sort volumes numerically
+    volumes.sort((a, b) => {
+      const aNum = parseInt(a.number) || 0;
+      const bNum = parseInt(b.number) || 0;
+      return aNum - bNum;
+    });
+
+    return {
+      editionCode: edition,
+      editionName: editionNames[edition],
+      volumes
+    };
   } catch (error) {
-    console.error('Error reading editions:', error);
+    console.error('Error loading edition data:', error);
+    return null;
   }
-  
-  return paths;
 }
 
-const { edition } = Astro.params;
-const { editionCode, editionName, volumes } = Astro.props;
+const editionData = await loadEditionData();
+
+if (!editionData) {
+  return Astro.redirect('/404');
+}
 ---
 
 <StarlightPage
   frontmatter={{
-    title: `พระไตรปิฎก ฉบับ${editionName}`,
-    description: `เลือกเล่มจากพระไตรปิฎก ฉบับ${editionName} (${volumes.length} เล่ม)`
+    title: `พระไตรปิฎก ฉบับ${editionData.editionName}`,
+    description: `เลือกเล่มจากพระไตรปิฎก ฉบับ${editionData.editionName} (${editionData.volumes.length} เล่ม)`
   }}
 >
   <nav class="breadcrumb">
-    <a href="/tipitaka">พระไตรปิฎก</a> › {editionName}
+    <a href="/tipitaka">พระไตรปิฎก</a> › {editionData.editionName}
   </nav>
 
   <div class="volumes-grid">
-    {volumes.map((volume) => (
+    {editionData.volumes.map((volume: VolumeInfo) => (
       <div class="volume-card">
         <h3>
           <a href={volume.path}>
@@ -126,7 +125,7 @@ const { editionCode, editionName, volumes } = Astro.props;
     ))}
   </div>
 
-  {volumes.length === 0 && (
+  {editionData.volumes.length === 0 && (
     <div class="no-volumes">
       <p>ไม่พบข้อมูลเล่มในฉบับนี้</p>
     </div>
