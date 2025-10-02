@@ -1,0 +1,214 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+
+interface PageInfo {
+  number: number;
+  filename: string;
+  src: string;
+}
+
+interface VolumeStaticPath {
+  params: {
+    edition: string;
+    volume: string;
+  };
+  props: {
+    editionCode: string;
+    editionName: string;
+    volumeNumber: string;
+    pages: PageInfo[];
+  };
+}
+
+export async function getStaticPaths(): Promise<VolumeStaticPath[]> {
+  const paths: VolumeStaticPath[] = [];
+  
+  const editionNames: Record<string, string> = {
+    'ch': 'ฉัฏฐสังคายนา',
+    'mc': 'มหาชน',
+    'sy': 'สยาม'
+  };
+  
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    const tipitakaPath = path.join(process.cwd(), 'public', 'tipitaka');
+    
+    if (fs.existsSync(tipitakaPath)) {
+      const editionDirs = fs.readdirSync(tipitakaPath, { withFileTypes: true });
+      
+      for (const editionDir of editionDirs) {
+        if (editionDir.isDirectory() && editionNames[editionDir.name]) {
+          const editionPath = path.join(tipitakaPath, editionDir.name);
+          
+          try {
+            const volumeDirs = fs.readdirSync(editionPath, { withFileTypes: true });
+            
+            for (const volumeDir of volumeDirs) {
+              if (volumeDir.isDirectory()) {
+                const volumePath = path.join(editionPath, volumeDir.name);
+                const pages: PageInfo[] = [];
+                
+                try {
+                  const files = fs.readdirSync(volumePath);
+                  const imageFiles = files
+                    .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+                    .sort((a, b) => {
+                      const aNum = parseInt(a.match(/\d+/)?.[0] || '0');
+                      const bNum = parseInt(b.match(/\d+/)?.[0] || '0');
+                      return aNum - bNum;
+                    });
+                  
+                  imageFiles.forEach((file, index) => {
+                    pages.push({
+                      number: index + 1,
+                      filename: file,
+                      src: `/tipitaka/${editionDir.name}/${volumeDir.name}/${file}`
+                    });
+                  });
+                } catch (error) {
+                  console.warn(`Cannot read pages in volume ${volumeDir.name}:`, error);
+                }
+                
+                paths.push({
+                  params: {
+                    edition: editionDir.name,
+                    volume: volumeDir.name
+                  },
+                  props: {
+                    editionCode: editionDir.name,
+                    editionName: editionNames[editionDir.name],
+                    volumeNumber: volumeDir.name,
+                    pages
+                  }
+                });
+              }
+            }
+          } catch (error) {
+            console.warn(`Cannot read volumes for edition ${editionDir.name}:`, error);
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error reading tipitaka data:', error);
+  }
+  
+  return paths;
+}
+
+const { edition, volume } = Astro.params;
+const { editionCode, editionName, volumeNumber, pages } = Astro.props;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: `เล่ม ${volumeNumber} - ${editionName}`,
+    description: `หน้าทั้งหมดในเล่ม ${volumeNumber} (${pages.length} หน้า)`
+  }}
+>
+  <nav class="breadcrumb">
+    <a href="/tipitaka">พระไตรปิฎก</a> › 
+    <a href={`/tipitaka/${editionCode}`}>{editionName}</a> › 
+    เล่ม {volumeNumber}
+  </nav>
+
+  <div class="volume-info">
+    <h2>เล่ม {volumeNumber}</h2>
+    <p>จำนวน {pages.length} หน้า</p>
+  </div>
+
+  <div class="pages-grid">
+    {pages.map((page) => (
+      <div class="page-thumbnail">
+        <a href={`/tipitaka/${editionCode}/${volumeNumber}/${page.number}`}>
+          <img 
+            src={page.src} 
+            alt={`หน้า ${page.number}`}
+            loading="lazy"
+          />
+          <div class="page-number">หน้า {page.number}</div>
+        </a>
+      </div>
+    ))}
+  </div>
+
+  {pages.length === 0 && (
+    <div class="no-pages">
+      <p>ไม่พบหน้าในเล่มนี้</p>
+    </div>
+  )}
+</StarlightPage>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: var(--sl-color-accent);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .volume-info {
+    margin-bottom: 2rem;
+  }
+
+  .volume-info h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .volume-info p {
+    color: var(--sl-color-text-accent);
+    margin: 0;
+  }
+
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .page-thumbnail {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .page-thumbnail:hover {
+    box-shadow: 0 4px 12px var(--sl-color-gray-2);
+  }
+
+  .page-thumbnail a {
+    display: block;
+    text-decoration: none;
+    color: var(--sl-color-text);
+  }
+
+  .page-thumbnail img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .page-number {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    background: var(--sl-color-bg-nav);
+  }
+
+  .no-pages {
+    text-align: center;
+    padding: 2rem;
+    color: var(--sl-color-text-accent);
+  }
+</style>

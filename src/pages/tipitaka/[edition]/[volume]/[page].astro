@@ -1,0 +1,300 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+
+interface PageStaticPath {
+  params: {
+    edition: string;
+    volume: string;
+    page: string;
+  };
+  props: {
+    editionCode: string;
+    editionName: string;
+    volumeNumber: string;
+    pageNumber: number;
+    imageSrc: string;
+    totalPages: number;
+    prevPage?: number;
+    nextPage?: number;
+  };
+}
+
+export async function getStaticPaths(): Promise<PageStaticPath[]> {
+  const paths: PageStaticPath[] = [];
+  
+  const editionNames: Record<string, string> = {
+    'ch': 'ฉัฏฐสังคายนา',
+    'mc': 'มหาชน',
+    'sy': 'สยาม'
+  };
+  
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    const tipitakaPath = path.join(process.cwd(), 'public', 'tipitaka');
+    
+    if (fs.existsSync(tipitakaPath)) {
+      const editionDirs = fs.readdirSync(tipitakaPath, { withFileTypes: true });
+      
+      for (const editionDir of editionDirs) {
+        if (editionDir.isDirectory() && editionNames[editionDir.name]) {
+          const editionPath = path.join(tipitakaPath, editionDir.name);
+          
+          try {
+            const volumeDirs = fs.readdirSync(editionPath, { withFileTypes: true });
+            
+            for (const volumeDir of volumeDirs) {
+              if (volumeDir.isDirectory()) {
+                const volumePath = path.join(editionPath, volumeDir.name);
+                
+                try {
+                  const files = fs.readdirSync(volumePath);
+                  const imageFiles = files
+                    .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+                    .sort((a, b) => {
+                      const aNum = parseInt(a.match(/\d+/)?.[0] || '0');
+                      const bNum = parseInt(b.match(/\d+/)?.[0] || '0');
+                      return aNum - bNum;
+                    });
+                  
+                  const totalPages = imageFiles.length;
+                  
+                  imageFiles.forEach((file, index) => {
+                    const pageNumber = index + 1;
+                    
+                    paths.push({
+                      params: {
+                        edition: editionDir.name,
+                        volume: volumeDir.name,
+                        page: pageNumber.toString()
+                      },
+                      props: {
+                        editionCode: editionDir.name,
+                        editionName: editionNames[editionDir.name],
+                        volumeNumber: volumeDir.name,
+                        pageNumber,
+                        imageSrc: `/tipitaka/${editionDir.name}/${volumeDir.name}/${file}`,
+                        totalPages,
+                        prevPage: pageNumber > 1 ? pageNumber - 1 : undefined,
+                        nextPage: pageNumber < totalPages ? pageNumber + 1 : undefined
+                      }
+                    });
+                  });
+                } catch (error) {
+                  console.warn(`Cannot read pages in volume ${volumeDir.name}:`, error);
+                }
+              }
+            }
+          } catch (error) {
+            console.warn(`Cannot read volumes for edition ${editionDir.name}:`, error);
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error reading tipitaka data:', error);
+  }
+  
+  return paths;
+}
+
+const { edition, volume, page } = Astro.params;
+const { 
+  editionCode, 
+  editionName, 
+  volumeNumber, 
+  pageNumber, 
+  imageSrc, 
+  totalPages, 
+  prevPage, 
+  nextPage 
+} = Astro.props;
+
+const prevUrl = prevPage ? `/tipitaka/${editionCode}/${volumeNumber}/${prevPage}` : null;
+const nextUrl = nextPage ? `/tipitaka/${editionCode}/${volumeNumber}/${nextPage}` : null;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: `หน้า ${pageNumber} - เล่ม ${volumeNumber}`,
+    description: `หน้า ${pageNumber} จาก ${totalPages} หน้า ในเล่ม ${volumeNumber} ฉบับ${editionName}`
+  }}
+>
+  <nav class="breadcrumb">
+    <a href="/tipitaka">พระไตรปิฎก</a> › 
+    <a href={`/tipitaka/${editionCode}`}>{editionName}</a> › 
+    <a href={`/tipitaka/${editionCode}/${volumeNumber}`}>เล่ม {volumeNumber}</a> › 
+    หน้า {pageNumber}
+  </nav>
+
+  <div class="page-info">
+    <h2>หน้า {pageNumber} จาก {totalPages}</h2>
+    <div class="page-navigation">
+      {prevUrl && (
+        <a href={prevUrl} class="nav-button prev">← หน้าก่อน</a>
+      )}
+      <span class="page-counter">{pageNumber} / {totalPages}</span>
+      {nextUrl && (
+        <a href={nextUrl} class="nav-button next">หน้าถัดไป →</a>
+      )}
+    </div>
+  </div>
+
+  <div class="page-viewer">
+    <img 
+      src={imageSrc} 
+      alt={`หน้า ${pageNumber}`}
+      class="page-image"
+    />
+  </div>
+
+  <div class="bottom-navigation">
+    {prevUrl && (
+      <a href={prevUrl} class="nav-button prev">← หน้าก่อน</a>
+    )}
+    <a href={`/tipitaka/${editionCode}/${volumeNumber}`} class="nav-button back">กลับไปยังเล่ม</a>
+    {nextUrl && (
+      <a href={nextUrl} class="nav-button next">หน้าถัดไป →</a>
+    )}
+  </div>
+</StarlightPage>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: var(--sl-color-accent);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .page-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .page-info h2 {
+    margin: 0;
+  }
+
+  .page-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .page-counter {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    background: var(--sl-color-bg-nav);
+    border-radius: 4px;
+  }
+
+  .page-viewer {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .page-image {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 12px var(--sl-color-gray-2);
+    border-radius: 8px;
+  }
+
+  .bottom-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-button {
+    padding: 0.75rem 1.5rem;
+    background: var(--sl-color-accent);
+    color: var(--sl-color-white);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-button:hover {
+    background: var(--sl-color-accent-high);
+  }
+
+  .nav-button.back {
+    background: var(--sl-color-gray-5);
+    color: var(--sl-color-text);
+  }
+
+  .nav-button.back:hover {
+    background: var(--sl-color-gray-4);
+  }
+
+  @media (max-width: 768px) {
+    .page-info {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .page-navigation {
+      justify-content: center;
+    }
+
+    .bottom-navigation {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-button {
+      width: 100%;
+      max-width: 200px;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // Keyboard navigation
+  document.addEventListener('keydown', (event) => {
+    if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+      return; // Don't interfere with form inputs
+    }
+
+    switch (event.key) {
+      case 'ArrowLeft':
+        event.preventDefault();
+        const prevButton = document.querySelector('.nav-button.prev') as HTMLAnchorElement;
+        if (prevButton) {
+          prevButton.click();
+        }
+        break;
+      case 'ArrowRight':
+        event.preventDefault();
+        const nextButton = document.querySelector('.nav-button.next') as HTMLAnchorElement;
+        if (nextButton) {
+          nextButton.click();
+        }
+        break;
+      case 'Escape':
+        event.preventDefault();
+        const backButton = document.querySelector('.nav-button.back') as HTMLAnchorElement;
+        if (backButton) {
+          backButton.click();
+        }
+        break;
+    }
+  });
+</script>

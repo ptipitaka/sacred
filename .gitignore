@@ -22,12 +22,6 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# database files
-*.db
-
-# tipitaka assets
-src/assets/tipitaka/*
-
 # python/
 python/*
 

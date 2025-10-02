@@ -1,0 +1,191 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+
+interface VolumeInfo {
+  number: string;
+  path: string;
+  pageCount: number;
+}
+
+interface EditionStaticPath {
+  params: {
+    edition: string;
+  };
+  props: {
+    editionCode: string;
+    editionName: string;
+    volumes: VolumeInfo[];
+  };
+}
+
+export async function getStaticPaths(): Promise<EditionStaticPath[]> {
+  const paths: EditionStaticPath[] = [];
+  
+  const editionNames: Record<string, string> = {
+    'ch': 'ฉัฏฐสังคายนา',
+    'mc': 'มหาชน', 
+    'sy': 'สยาม'
+  };
+  
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    const tipitakaPath = path.join(process.cwd(), 'public', 'tipitaka');
+    
+    if (fs.existsSync(tipitakaPath)) {
+      const editionDirs = fs.readdirSync(tipitakaPath, { withFileTypes: true });
+      
+      for (const editionDir of editionDirs) {
+        if (editionDir.isDirectory() && editionNames[editionDir.name]) {
+          const editionPath = path.join(tipitakaPath, editionDir.name);
+          const volumes: VolumeInfo[] = [];
+          
+          try {
+            const volumeDirs = fs.readdirSync(editionPath, { withFileTypes: true });
+            
+            for (const volumeDir of volumeDirs) {
+              if (volumeDir.isDirectory()) {
+                const volumePath = path.join(editionPath, volumeDir.name);
+                
+                // Count pages in volume
+                let pageCount = 0;
+                try {
+                  const files = fs.readdirSync(volumePath);
+                  pageCount = files.filter(file => 
+                    /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
+                  ).length;
+                } catch (error) {
+                  console.warn(`Cannot count pages in volume ${volumeDir.name}:`, error);
+                }
+                
+                volumes.push({
+                  number: volumeDir.name,
+                  path: `/tipitaka/${editionDir.name}/${volumeDir.name}`,
+                  pageCount
+                });
+              }
+            }
+          } catch (error) {
+            console.warn(`Cannot read volumes for edition ${editionDir.name}:`, error);
+          }
+          
+          // Sort volumes numerically
+          volumes.sort((a, b) => {
+            const aNum = parseInt(a.number) || 0;
+            const bNum = parseInt(b.number) || 0;
+            return aNum - bNum;
+          });
+          
+          paths.push({
+            params: {
+              edition: editionDir.name
+            },
+            props: {
+              editionCode: editionDir.name,
+              editionName: editionNames[editionDir.name],
+              volumes
+            }
+          });
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error reading editions:', error);
+  }
+  
+  return paths;
+}
+
+const { edition } = Astro.params;
+const { editionCode, editionName, volumes } = Astro.props;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: `พระไตรปิฎก ฉบับ${editionName}`,
+    description: `เลือกเล่มจากพระไตรปิฎก ฉบับ${editionName} (${volumes.length} เล่ม)`
+  }}
+>
+  <nav class="breadcrumb">
+    <a href="/tipitaka">พระไตรปิฎก</a> › {editionName}
+  </nav>
+
+  <div class="volumes-grid">
+    {volumes.map((volume) => (
+      <div class="volume-card">
+        <h3>
+          <a href={volume.path}>
+            เล่ม {volume.number}
+          </a>
+        </h3>
+        <p class="page-count">{volume.pageCount} หน้า</p>
+      </div>
+    ))}
+  </div>
+
+  {volumes.length === 0 && (
+    <div class="no-volumes">
+      <p>ไม่พบข้อมูลเล่มในฉบับนี้</p>
+    </div>
+  )}
+</StarlightPage>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: var(--sl-color-accent);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .volumes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .volume-card {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .volume-card:hover {
+    box-shadow: 0 4px 12px var(--sl-color-gray-2);
+  }
+
+  .volume-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .volume-card h3 a {
+    text-decoration: none;
+    color: var(--sl-color-text);
+  }
+
+  .volume-card h3 a:hover {
+    color: var(--sl-color-accent);
+  }
+
+  .page-count {
+    color: var(--sl-color-text-accent);
+    margin: 0;
+  }
+
+  .no-volumes {
+    text-align: center;
+    padding: 2rem;
+    color: var(--sl-color-text-accent);
+  }
+</style>
