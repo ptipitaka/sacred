@@ -6,32 +6,16 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  // Server-side rendering for dynamic content
-  output: 'server',
-  
   vite: {
-    resolve: {
-      alias: {
-        '@components': '/src/components',
-        '@assets': '/src/assets',
-        '@utils': '/src/utils',
-        '@content': '/src/content',
-        '@types': '/src/types',
+      resolve: {
+          alias: {
+              '@components': '/src/components',
+              '@assets': '/src/assets',
+              '@utils': '/src/utils',
+              '@content': '/src/content',
+              '@types': '/src/types',
+          },
       },
-    },
-    // Production build optimizations - minimize bundle size
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            if (id.includes('node_modules')) {
-              if (id.includes('@astrojs/starlight')) return 'starlight';
-              return 'vendor';
-            }
-          }
-        }
-      }
-    }
   },
 
   integrations: [
@@ -93,18 +77,5 @@ export default defineConfig({
       }),
   ],
 
-  adapter: vercel({
-    // Optimized for smaller function size - exclude images from functions
-    webAnalytics: { enabled: true },
-    functionPerRoute: true, // Split routes to reduce individual function size
-    edgeMiddleware: false,
-    maxDuration: 15,
-    // Images stay as static assets, not bundled in functions
-    includeFiles: [],
-    excludeFiles: [
-      'python/**/*',
-      'work_around/**/*', 
-      'public/tipitaka/**/*.{md,txt,log,jpg,jpeg,png,gif,webp}'
-    ]
-  }),
+  adapter: vercel(),
 });
