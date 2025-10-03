@@ -862,17 +862,34 @@ class TipitakaMigrator:
             if section_match:
                 section = section_match.group(1)
         
+        # Fix relative links in TOC lines to use absolute paths
+        fixed_toc_lines = []
+        for line in toc_lines:
+            # Pattern to match markdown links [text](link)
+            def fix_link(match):
+                text = match.group(1)
+                link = match.group(2)
+                # Skip if already absolute or fragment
+                if link.startswith('http') or link.startswith('/') or link.startswith('#'):
+                    return match.group(0)
+                # Convert to absolute path
+                return f'[{text}](/{link})'
+            
+            fixed_line = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', fix_link, line)
+            fixed_toc_lines.append(fixed_line)
+        
         # Build component opening tag
         if book_id and section:
             component_open = f'<TableOfContents book="{book_id}" section="{section}">'
         elif book_id:
-            component_open = f'<TableOfContents book="{book_id}">'
+            # For index files without section, use section="/"
+            component_open = f'<TableOfContents book="{book_id}" section="/">'
         else:
             component_open = '<TableOfContents>'
         
         # Combine lines
         result = [component_open]
-        result.extend(toc_lines)
+        result.extend(fixed_toc_lines)
         result.append('</TableOfContents>')
         
         return '\n'.join(result)
