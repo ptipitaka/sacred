@@ -8,7 +8,6 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   // Server-side rendering for dynamic content
   output: 'server',
-  site: 'https://sacred.vercel.app',
   
   vite: {
     resolve: {
