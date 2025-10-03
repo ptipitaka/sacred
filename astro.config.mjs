@@ -76,6 +76,5 @@ export default defineConfig({
           sidebar: sidebarConfig
       }),
   ],
-  trailingSlash: 'always',
   adapter: vercel(),
 });
