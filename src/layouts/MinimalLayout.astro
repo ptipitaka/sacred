@@ -1,0 +1,38 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="th">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="พระไตรปิฎกฉบับฉัฏฐสังคายนา - Flipbook Viewer" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<style>
+			html {
+				font-family: system-ui, sans-serif;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				min-height: 100vh;
+				background: #fcfcfc;
+			}
+			* {
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
