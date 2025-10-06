@@ -545,6 +545,10 @@ class TipitakaMigrator:
             'thai': {
                 # Fix common Thai transliteration errors
                 'ึ': 'ิํ',  # Fix niggahita representation
+                'ปโญฺห': 'ปญฺโห',
+                'ตุเมฺห': 'ตุมฺเห',
+                'อโสฺสสิ': 'อสฺโสสิ',
+                'เทฺว': 'ทฺเว',
                 # Add more Thai corrections as needed
             },
             'sinh': {

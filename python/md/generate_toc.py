@@ -69,7 +69,7 @@ def activate_venv():
 
 
 class TipitakaTOCGenerator:
-    def __init__(self, tipitaka_dir: str = "python/md/tipitaka", output_dir: str = "python/md/toc", locale: str = "romn"):
+    def __init__(self, tipitaka_dir: str = "tipitaka", output_dir: str = "toc", locale: str = "romn"):
         self.tipitaka_dir = Path(tipitaka_dir)
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -336,10 +336,29 @@ class TipitakaTOCGenerator:
         """
         results = []
         
-        # หาไฟล์หลักทั้งหมดที่เป็นตัวเลข (1.md, 2.md, 3.md, ...)
+        # อ่านหัวข้อหลักจาก 0.md (เฉพาะหัวข้อ ไม่เอารายการ TOC)
+        main_title_file = book_dir / '0.md'
+        if main_title_file.exists():
+            try:
+                with open(main_title_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # หาหัวข้อหลักเท่านั้น
+                title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
+                if title_match:
+                    main_title = title_match.group(1).strip()
+                    # Apply transliteration if needed
+                    if self.locale != 'romn':
+                        main_title = self.convert_text_with_transliteration(main_title)
+                    results.append((main_title, 0))  # Level 0
+            except Exception as e:
+                print(f"เกิดข้อผิดพลาดในการอ่านไฟล์หลัก {main_title_file}: {e}")
+
+        # หาไฟล์ sutta ทั้งหมด (1.md, 2.md, 3.md, ...)
+        # ข้าม 0.md เพราะเราเอาแค่หัวข้อหลักแล้ว
         main_files = []
         for item in book_dir.iterdir():
-            if item.is_file() and item.suffix == '.md' and item.stem.isdigit():
+            if item.is_file() and item.suffix == '.md' and item.stem.isdigit() and item.stem != '0':
                 main_files.append(item)
         
         # เรียงตามตัวเลข
@@ -467,8 +486,17 @@ class TipitakaTOCGenerator:
         ]
         
         # สร้างรายการ bullet points
+        # ข้ามหัวข้อ level 0 แรกเพราะมันคือชื่อหนังสือที่แสดงใน ## {book_name} แล้ว
+        first_level_0_skipped = False
         for title, level in all_titles:
-            indent = "  " * level  # 2 spaces per level
+            if level == 0:
+                if not first_level_0_skipped:
+                    # ข้ามหัวข้อ level 0 แรกที่เป็นชื่อหนังสือ
+                    first_level_0_skipped = True
+                    continue
+                # หัวข้อ level 0 อื่นๆ (เช่น sutta) ยังคงเป็น level 0 ใน markdown
+            
+            indent = "  " * level  # ใช้ level ตรงๆ ไม่ปรับ
             markdown_lines.append(f"{indent}- {title}")
         
         return "\n".join(markdown_lines)
@@ -584,10 +612,10 @@ def main():
     parser = argparse.ArgumentParser(description='สร้างสารบัญ (TOC) สำหรับไฟล์ Tipitaka')
     parser.add_argument('book_code', nargs='?', help='รหัสเล่มที่ต้องการสร้าง TOC (เช่น 1V, 10M)')
     parser.add_argument('--all', action='store_true', help='สร้าง TOC สำหรับทุกเล่ม')
-    parser.add_argument('--tipitaka-dir', default='./python/md/tipitaka', 
-                       help='ตำแหน่งโฟลเดอร์ tipitaka (default: ./python/md/tipitaka)')
-    parser.add_argument('--output-dir', default='./python/md/toc',
-                       help='ตำแหน่งโฟลเดอร์สำหรับบันทึกผลลัพธ์ (default: ./python/md/toc)')
+    parser.add_argument('--tipitaka-dir', default='./tipitaka', 
+                       help='ตำแหน่งโฟลเดอร์ tipitaka (default: ./tipitaka)')
+    parser.add_argument('--output-dir', default='./toc',
+                       help='ตำแหน่งโฟลเดอร์สำหรับบันทึกผลลัพธ์ (default: ./toc)')
     parser.add_argument('--locale', '-l', default='romn', 
                        choices=['romn', 'thai', 'mymr', 'sinh', 'deva', 'khmr', 'laoo', 'lana'],
                        help='ภาษาสำหรับปริวรรตอักษร (default: romn - โรมันดั้งเดิม)')
