@@ -428,6 +428,96 @@ def find_first_image(directory: Path) -> Optional[Path]:
     images = find_images(directory)
     return images[0] if images else None
 
+def get_subfolders(tipitaka_dir: Path) -> List[Path]:
+    """
+    Get all sub-folders in tipitaka directory, sorted numerically.
+    
+    Args:
+        tipitaka_dir: Path to tipitaka directory
+    
+    Returns:
+        List of subfolder paths sorted numerically
+    """
+    subfolders = []
+    
+    for item in tipitaka_dir.iterdir():
+        if item.is_dir():
+            subfolders.append(item)
+    
+    # Custom sort function for numerical order
+    def sort_key(path: Path) -> tuple:
+        name = path.name
+        # Extract number from folder name for proper numerical sorting
+        try:
+            import re
+            num_match = re.search(r'\d+', name)
+            if num_match:
+                folder_num = int(num_match.group())
+            else:
+                folder_num = 999999  # Put non-numeric folders at the end
+        except:
+            folder_num = 999999
+        
+        # Return tuple for sorting: (folder_number, folder_name)
+        return (folder_num, name)
+    
+    return sorted(subfolders, key=sort_key)
+
+def select_target_directory(tipitaka_dir: Path) -> Optional[Path]:
+    """
+    Display subfolder options and get user selection.
+    
+    Args:
+        tipitaka_dir: Path to tipitaka directory
+    
+    Returns:
+        Selected directory path or None if cancelled
+    """
+    subfolders = get_subfolders(tipitaka_dir)
+    
+    if not subfolders:
+        print("❌ No sub-folders found in tipitaka directory")
+        return None
+    
+    print(f"\n📁 Available sub-folders in tipitaka:")
+    print("-" * 50)
+    for i, folder in enumerate(subfolders, 1):
+        print(f"{i:2d}. {folder.name}")
+    
+    print("-" * 50)
+    print("📝 Options:")
+    print("   • Press Enter = Process all folders")
+    print("   • Type folder name = Process specific folder only")
+    print("   • Type 'cancel' or 'q' = Cancel operation")
+    
+    while True:
+        selection = input(f"\n❓ Select folder [Enter for all]: ").strip()
+        
+        # Empty input = process all folders
+        if not selection:
+            print("✅ Selected: All folders")
+            return tipitaka_dir
+        
+        # Cancel operation
+        if selection.lower() in ['cancel', 'q', 'quit', 'exit', 'ยกเลิก']:
+            print("❌ Operation cancelled")
+            return None
+        
+        # Check if selection matches any subfolder name
+        matching_folder = None
+        for folder in subfolders:
+            if folder.name.lower() == selection.lower():
+                matching_folder = folder
+                break
+        
+        if matching_folder:
+            print(f"✅ Selected: {matching_folder.name}")
+            return matching_folder
+        else:
+            print(f"❌ Invalid selection: '{selection}'")
+            print("   Please enter a valid folder name from the list above, or press Enter for all folders")
+            continue
+
 def main():
     """Main function"""
     print("=" * 70)
@@ -447,24 +537,39 @@ def main():
     project_root = script_dir.parent.parent
     tipitaka_dir = project_root / "public" / "tipitaka"
     
-    print(f"\n📁 Target directory: {tipitaka_dir}")
+    print(f"\n📁 Base tipitaka directory: {tipitaka_dir}")
     
     if not tipitaka_dir.exists():
         print(f"❌ Directory not found: {tipitaka_dir}")
         sys.exit(1)
     
-    # Find all images
+    # Let user select target directory
+    target_dir = select_target_directory(tipitaka_dir)
+    if target_dir is None:
+        return
+    
+    # Update display based on selection
+    if target_dir == tipitaka_dir:
+        print(f"\n📁 Processing: All sub-folders in tipitaka")
+    else:
+        relative_path = target_dir.relative_to(tipitaka_dir)
+        print(f"\n📁 Processing: {relative_path} only")
+    
+    # Find all images in target directory
     print(f"\n🔍 Scanning for images...")
-    image_files = find_images(tipitaka_dir)
+    image_files = find_images(target_dir)
     
     if not image_files:
-        print("❌ No image files found")
+        if target_dir == tipitaka_dir:
+            print("❌ No image files found in any sub-folders")
+        else:
+            print(f"❌ No image files found in folder: {target_dir.name}")
         return
     
     print(f"📊 Found {len(image_files)} image files")
     
-    # Find the first image (1.png or similar)
-    first_image = find_first_image(tipitaka_dir)
+    # Find the first image (1.png or similar) in target directory
+    first_image = find_first_image(target_dir)
     
     if not first_image:
         print("❌ No reference image found (looking for 1.png or similar)")
@@ -480,6 +585,10 @@ def main():
     
     # Show summary and confirm
     print(f"\n📋 Processing summary:")
+    if target_dir == tipitaka_dir:
+        print(f"   • Target: All sub-folders in tipitaka")
+    else:
+        print(f"   • Target: {target_dir.name} folder only")
     print(f"   • Crop margin: {CROP_MARGIN_MM}mm from each side")
     print(f"   • Resize all to match: {first_image.name}")
     print(f"   • Apply deskew correction")
@@ -529,7 +638,10 @@ def main():
     print(f"📊 Processing complete!")
     print(f"   ✅ Successful: {success_count}/{len(image_files)} files")
     print(f"   📐 Final size: {target_size[0]}×{target_size[1]} pixels")
-    print(f"   📁 Location: {tipitaka_dir}")
+    if target_dir == tipitaka_dir:
+        print(f"   📁 Location: All sub-folders in tipitaka")
+    else:
+        print(f"   📁 Location: {target_dir.name} folder")
     
     if success_count == len(image_files):
         print("\n🎉 All images processed successfully!")
