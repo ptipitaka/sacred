@@ -28,7 +28,7 @@ class BookViewer {
         this.pageCounts = new Map(); // Cache สำหรับจำนวนหน้าของแต่ละ volume
         
         /** @type {Object|null} */
-        this.pageCountsMetadata = null; // Cache สำหรับข้อมูล metadata ทั้งหมด
+        this.bookViewerMetadata = null; // Cache สำหรับข้อมูล book viewer (titles, descriptions, pages)
         
         /** @type {boolean} */
         this.isLoadingFromURL = false; // Flag เพื่อป้องกัน URL update ระหว่างโหลดจาก URL
@@ -52,21 +52,28 @@ class BookViewer {
         const volumes = [];
         
         try {
-            // โหลด metadata ถ้ายังไม่มี
-            if (!this.pageCountsMetadata) {
-                await this.loadPageCountsMetadata();
+            // โหลด book viewer metadata ถ้ายังไม่มี
+            if (!this.bookViewerMetadata) {
+                await this.loadBookViewerMetadata();
             }
             
             // ถ้ามี edition ให้ใช้เฉพาะ edition นั้น
-            if (edition && this.pageCountsMetadata && this.pageCountsMetadata[edition]) {
-                const volumeIds = Object.keys(this.pageCountsMetadata[edition]);
+            if (edition && this.bookViewerMetadata && 
+                this.bookViewerMetadata.editions && 
+                this.bookViewerMetadata.editions[edition] &&
+                this.bookViewerMetadata.editions[edition].volumes) {
+                
+                const volumeIds = Object.keys(this.bookViewerMetadata.editions[edition].volumes);
                 volumeIds.sort((a, b) => parseInt(a) - parseInt(b)); // เรียงตามลำดับ
                 
                 volumeIds.forEach(volumeId => {
+                    const volumeData = this.bookViewerMetadata.editions[edition].volumes[volumeId];
                     volumes.push({
                         id: volumeId,
                         name: `${volumeId}`,
-                        folder: volumeId
+                        folder: volumeId,
+                        volumeName: volumeData.title || `เล่ม ${volumeId}`,
+                        pages: volumeData.pages
                     });
                 });
                 
@@ -75,14 +82,16 @@ class BookViewer {
             }
             
             // ถ้าไม่มี edition หรือไม่มี metadata ให้ใช้ default (CH + MC รวมกัน)
-            if (this.pageCountsMetadata) {
+            if (this.bookViewerMetadata && this.bookViewerMetadata.editions) {
                 const allVolumeIds = new Set();
                 
                 // รวม volume IDs จากทุก edition
-                Object.values(this.pageCountsMetadata).forEach(editionData => {
-                    Object.keys(editionData).forEach(volumeId => {
-                        allVolumeIds.add(volumeId);
-                    });
+                Object.values(this.bookViewerMetadata.editions).forEach(editionData => {
+                    if (editionData.volumes) {
+                        Object.keys(editionData.volumes).forEach(volumeId => {
+                            allVolumeIds.add(volumeId);
+                        });
+                    }
                 });
                 
                 const sortedIds = Array.from(allVolumeIds).sort((a, b) => parseInt(a) - parseInt(b));
@@ -124,11 +133,13 @@ class BookViewer {
         if (isNaN(num) || num < 1) return null;
         
         // ตรวจสอบว่า volume นี้มีอยู่ใน edition ปัจจุบันหรือไม่
-        if (this.currentEdition && this.pageCountsMetadata && 
-            this.pageCountsMetadata[this.currentEdition]) {
+        if (this.currentEdition && this.bookViewerMetadata && 
+            this.bookViewerMetadata.editions &&
+            this.bookViewerMetadata.editions[this.currentEdition] &&
+            this.bookViewerMetadata.editions[this.currentEdition].volumes) {
             
             const volumeId = num.toString();
-            if (this.pageCountsMetadata[this.currentEdition][volumeId]) {
+            if (this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeId]) {
                 return volumeId;
             } else {
                 console.warn(`Volume ${volumeId} not found in ${this.currentEdition.toUpperCase()} edition`);
@@ -265,6 +276,14 @@ class BookViewer {
         // อัปเดต UI เพื่อแสดง edition
         await this.updateEditionDisplay();
         
+        // ตรวจสอบว่า volume ที่ระบุใน URL มีอยู่หรือไม่
+        if (rawVolume && !volume) {
+            alert(`Volume ${rawVolume} not found in ${edition.toUpperCase()} edition\nPlease select an available volume from dropdown`);
+            // เคลียร์ URL parameters ที่ไม่ถูกต้อง
+            history.pushState(null, null, window.location.pathname + `?edition=${edition}`);
+            return;
+        }
+        
         if (volume) {
             // ตั้งค่า flag เพื่อป้องกัน URL update ซ้ำ
             this.isLoadingFromURL = true;
@@ -298,18 +317,104 @@ class BookViewer {
      * Update edition display in UI
      */
     async updateEditionDisplay() {
+        // โหลด book viewer metadata ถ้ายังไม่มี
+        if (!this.bookViewerMetadata) {
+            await this.loadBookViewerMetadata();
+        }
+
         // อัปเดต header title เพื่อแสดง edition
         const headerTitle = document.querySelector('.header h1');
         if (headerTitle) {
-            const editionName = this.currentEdition.toUpperCase();
-            headerTitle.textContent = editionName;
+            let displayTitle = this.currentEdition.toUpperCase();
+            
+            // ใช้ชื่อเต็มจาก metadata ถ้ามี
+            if (this.bookViewerMetadata && 
+                this.bookViewerMetadata.editions && 
+                this.bookViewerMetadata.editions[this.currentEdition]) {
+                displayTitle = this.bookViewerMetadata.editions[this.currentEdition].title;
+            }
+            
+            headerTitle.textContent = displayTitle;
         }
         
         // อัปเดต document title
-        document.title = `${this.currentEdition.toUpperCase()} - Book Viewer`;
+        let docTitle = this.currentEdition.toUpperCase();
+        if (this.bookViewerMetadata && 
+            this.bookViewerMetadata.editions && 
+            this.bookViewerMetadata.editions[this.currentEdition]) {
+            docTitle = this.bookViewerMetadata.editions[this.currentEdition].title;
+        }
+        document.title = `${docTitle} - Book Viewer`;
         
         // อัปเดต volume selector สำหรับ edition นี้
         await this.updateVolumeSelector(this.currentEdition);
+    }
+
+    /**
+     * Update volume title display in UI
+     */
+    async updateVolumeDisplay(volumeId) {
+        // โหลด book viewer metadata ถ้ายังไม่มี
+        if (!this.bookViewerMetadata) {
+            await this.loadBookViewerMetadata();
+        }
+
+        const volumeTitle = document.querySelector('.volume-title');
+        if (!volumeTitle) return;
+
+        if (volumeId && this.bookViewerMetadata && 
+            this.bookViewerMetadata.editions && 
+            this.bookViewerMetadata.editions[this.currentEdition] &&
+            this.bookViewerMetadata.editions[this.currentEdition].volumes &&
+            this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeId]) {
+            
+            const volumeData = this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeId];
+            
+            // Clear cache if data looks wrong (empty pages for volumes that should have them)
+            if (volumeId === '1' && (!volumeData.pages || volumeData.pages === 0)) {
+                console.log('⚠️ Detected missing pages for volume 1, clearing cache...');
+                localStorage.removeItem('tipitaka-book-viewer');
+                localStorage.removeItem('tipitaka-book-viewer-timestamp');
+                // Reload metadata
+                await this.loadBookViewerMetadata();
+                // Get fresh data
+                if (this.bookViewerMetadata && 
+                    this.bookViewerMetadata.editions && 
+                    this.bookViewerMetadata.editions[this.currentEdition] &&
+                    this.bookViewerMetadata.editions[this.currentEdition].volumes &&
+                    this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeId]) {
+                    volumeData = this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeId];
+                    console.log('🔄 Refreshed volume data:', volumeData);
+                }
+            }
+            
+            // สร้างข้อความจาก description และจำนวนหน้า
+            let displayParts = [];
+            if (volumeData.desc && volumeData.desc.trim() !== '') {
+                displayParts.push(volumeData.desc.trim());
+            }
+            if (volumeData.pages) {
+                displayParts.push(`${volumeData.pages} pages`);
+            }
+            
+            // แสดง description : pages หรือ Volume ID เป็น fallback
+            if (displayParts.length > 0) {
+                volumeTitle.textContent = displayParts.join(' : ');
+            } else {
+                volumeTitle.textContent = `Volume ${volumeId}`;
+            }
+            
+            // ไม่ต้องมี tooltip
+            volumeTitle.title = '';
+            
+            volumeTitle.style.display = 'block';
+        } else if (volumeId) {
+            volumeTitle.textContent = `Volume ${volumeId}`;
+            volumeTitle.title = '';
+            volumeTitle.style.display = 'block';
+        } else {
+            volumeTitle.style.display = 'none';
+        }
     }
 
     /**
@@ -404,7 +509,7 @@ class BookViewer {
         // ใส่ placeholder ระหว่างโหลด
         const loadingOption = document.createElement('option');
         loadingOption.value = '';
-        loadingOption.textContent = 'กำลังโหลดรายการเล่ม...';
+        loadingOption.textContent = 'Loading volumes...';
         loadingOption.disabled = true;
         selector.appendChild(loadingOption);
     }
@@ -423,7 +528,21 @@ class BookViewer {
             this.volumes.forEach(volume => {
                 const option = document.createElement('option');
                 option.value = volume.folder;
-                option.textContent = `เล่ม ${volume.name}`;
+                
+                // สร้าง text สำหรับ option โดยใช้ title และ desc ถ้ามี
+                let optionText = `Volume ${volume.name}`;
+                if (volume.volumeName && volume.volumeName !== `เล่ม ${volume.id}`) {
+                    // ถ้ามี volumeName (title) ที่ไม่ใช่ค่า default
+                    optionText = `Volume ${volume.name} - ${volume.volumeName}`;
+                }
+                
+                option.textContent = optionText;
+                
+                // เพิ่ม title attribute สำหรับ tooltip
+                if (volume.pages) {
+                    option.title = `${volume.pages} pages`;
+                }
+                
                 selector.appendChild(option);
             });
             
@@ -433,7 +552,7 @@ class BookViewer {
             console.error('Error updating volume selector:', error);
             
             // Fallback: แสดง error message
-            selector.innerHTML = '<option value="">เกิดข้อผิดพลาดในการโหลดรายการเล่ม</option>';
+            selector.innerHTML = '<option value="">Error loading volume list</option>';
         }
     }
 
@@ -455,7 +574,7 @@ class BookViewer {
                     if (normalizedVolume) {
                         this.loadVolume(normalizedVolume);
                     } else {
-                        alert('เล่มที่เลือกไม่ถูกต้อง');
+                        alert('Invalid volume selected');
                     }
                 } else {
                     this.hideFlipbook();
@@ -521,7 +640,7 @@ class BookViewer {
             this.totalPages = await this.getTotalPages(volumeFolder);
             
             if (this.totalPages === 0) {
-                alert('ไม่พบรูปภาพในเล่มนี้');
+                alert('No images found in this volume');
                 this.hideFlipbook();
                 return;
             }
@@ -530,6 +649,9 @@ class BookViewer {
             this.currentPageIndex = 0;
             this.pages = new Array(this.totalPages); // สร้าง array เปล่าไว้ก่อน
             this.preloadedPages = new Set(); // เก็บหน้าที่โหลดแล้ว
+            
+            // อัปเดตการแสดงชื่อเล่ม
+            await this.updateVolumeDisplay(volumeFolder);
             
             this.showFlipbook();
             await this.preloadCurrentPages(); // โหลดหน้าปัจจุบัน
@@ -542,7 +664,7 @@ class BookViewer {
             
         } catch (error) {
             console.error('Error loading volume:', error);
-            alert('เกิดข้อผิดพลาดในการโหลดเล่ม');
+            alert('Error loading volume');
             this.hideFlipbook();
         }
     }
@@ -554,21 +676,39 @@ class BookViewer {
             return this.pageCounts.get(volumeFolder);
         }
         
-        // โหลดข้อมูล metadata ถ้ายังไม่มี
-        if (!this.pageCountsMetadata) {
-            console.log('Loading page counts metadata...');
-            await this.loadPageCountsMetadata();
+        // โหลดข้อมูล book viewer metadata ถ้ายังไม่มี
+        if (!this.bookViewerMetadata) {
+            console.log('Loading book viewer metadata...');
+            await this.loadBookViewerMetadata();
         }
         
         // ดึงจำนวนหน้าจาก metadata
-        if (this.pageCountsMetadata && 
-            this.pageCountsMetadata[this.currentEdition] && 
-            this.pageCountsMetadata[this.currentEdition][volumeFolder]) {
+        console.log('🔍 Checking metadata for:', {
+            edition: this.currentEdition,
+            volume: volumeFolder,
+            hasMetadata: !!this.bookViewerMetadata,
+            hasEdition: !!(this.bookViewerMetadata?.editions?.[this.currentEdition]),
+            hasVolume: !!(this.bookViewerMetadata?.editions?.[this.currentEdition]?.volumes?.[volumeFolder])
+        });
+        
+        if (this.bookViewerMetadata && 
+            this.bookViewerMetadata.editions &&
+            this.bookViewerMetadata.editions[this.currentEdition] && 
+            this.bookViewerMetadata.editions[this.currentEdition].volumes &&
+            this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeFolder]) {
             
-            const pageCount = this.pageCountsMetadata[this.currentEdition][volumeFolder];
+            const volumeData = this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeFolder];
+            const pageCount = volumeData.pages;
             this.pageCounts.set(volumeFolder, pageCount);
-            console.log(`Volume ${volumeFolder} (${this.currentEdition.toUpperCase()}): ${pageCount} pages (from metadata)`);
+            console.log(`✅ Volume ${volumeFolder} (${this.currentEdition.toUpperCase()}): ${pageCount} pages (from metadata)`);
             return pageCount;
+        } else {
+            console.warn('❌ Volume not found in metadata:', {
+                edition: this.currentEdition,
+                volume: volumeFolder,
+                availableVolumes: this.bookViewerMetadata?.editions?.[this.currentEdition]?.volumes ? 
+                    Object.keys(this.bookViewerMetadata.editions[this.currentEdition].volumes) : 'none'
+            });
         }
         
         // ถ้าไม่พบใน metadata ให้ fallback กลับไปใช้วิธีเดิม
@@ -576,11 +716,13 @@ class BookViewer {
         return await this.fallbackGetTotalPages(volumeFolder);
     }
     
-    async loadPageCountsMetadata() {
+
+
+    async loadBookViewerMetadata() {
         try {
-            // ลองโหลดจาก localStorage ก่อน
-            const cachedData = localStorage.getItem('tipitaka-page-counts');
-            const cachedTimestamp = localStorage.getItem('tipitaka-page-counts-timestamp');
+            // ตรวจสอบ cache ใน localStorage
+            const cachedData = localStorage.getItem('tipitaka-book-viewer');
+            const cachedTimestamp = localStorage.getItem('tipitaka-book-viewer-timestamp');
             
             // ถ้ามี cache และอายุไม่เกิน 24 ชั่วโมง
             if (cachedData && cachedTimestamp) {
@@ -588,33 +730,42 @@ class BookViewer {
                 const maxAge = 24 * 60 * 60 * 1000; // 24 ชั่วโมง
                 
                 if (age < maxAge) {
-                    console.log('Using cached page counts metadata');
-                    this.pageCountsMetadata = JSON.parse(cachedData);
-                    return;
+                    console.log('Using cached book viewer metadata');
+                    const metadata = JSON.parse(cachedData);
+                    
+                    // Validate cache - check if volume 1 has title
+                    if (metadata?.editions?.ch?.volumes?.['1']?.title) {
+                        this.bookViewerMetadata = metadata;
+                        return;
+                    } else {
+                        console.log('⚠️ Cache validation failed - clearing invalid cache');
+                        localStorage.removeItem('tipitaka-book-viewer');
+                        localStorage.removeItem('tipitaka-book-viewer-timestamp');
+                    }
                 }
             }
             
             // โหลดจากไฟล์ JSON
-            console.log('Fetching page counts metadata from server...');
-            const response = await fetch('/tipitaka/page-counts.json', {
+            console.log('Fetching book viewer metadata from server...');
+            const response = await fetch('/tipitaka/book-viewer.json', {
                 cache: 'force-cache'
             });
             
             if (!response.ok) {
-                throw new Error(`Failed to load metadata: ${response.status}`);
+                throw new Error(`Failed to load book viewer metadata: ${response.status}`);
             }
             
-            this.pageCountsMetadata = await response.json();
+            this.bookViewerMetadata = await response.json();
             
             // เก็บไว้ใน localStorage
-            localStorage.setItem('tipitaka-page-counts', JSON.stringify(this.pageCountsMetadata));
-            localStorage.setItem('tipitaka-page-counts-timestamp', Date.now().toString());
+            localStorage.setItem('tipitaka-book-viewer', JSON.stringify(this.bookViewerMetadata));
+            localStorage.setItem('tipitaka-book-viewer-timestamp', Date.now().toString());
             
-            console.log('Page counts metadata loaded successfully');
+            console.log('Book viewer metadata loaded successfully');
             
         } catch (error) {
-            console.error('Error loading page counts metadata:', error);
-            this.pageCountsMetadata = null;
+            console.error('Error loading book viewer metadata:', error);
+            this.bookViewerMetadata = null;
         }
     }
     
@@ -991,6 +1142,9 @@ class BookViewer {
         
         if (container) container.style.display = 'none';
         if (controls) controls.style.display = 'none';
+        
+        // ซ่อนชื่อเล่มเมื่อไม่มีเล่มที่เลือก
+        this.updateVolumeDisplay(null);
     }
 
     showHelp() {

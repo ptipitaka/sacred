@@ -33,8 +33,17 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
         
         .header h1 {
             color: #8B4513;
-            margin: 0 0 10px 0;
-            font-size: 2rem;
+            margin: 0 0 5px 0;
+            font-size: 1.4rem;
+        }
+        
+        .header h2.volume-title {
+            color: #654321;
+            margin: 0 0 15px 0;
+            font-size: 1.2rem;
+            font-weight: normal;
+            font-style: italic;
+            cursor: help;
         }
         
         .volume-selector {
@@ -186,6 +195,7 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
     <div class="container">
         <div class="header">
             <h1>CH</h1>
+            <h2 class="volume-title" style="display: none;">Select Volume</h2>
             <div class="volume-selector">
                 <label for="volumeSelect">Select Volume:</label>
                 <select id="volumeSelect">
@@ -196,7 +206,7 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
         
         <div class="flipbook-container" id="flipbook-container">
             <div class="loading" id="loading">
-                กำลังโหลด...
+                Loading...
             </div>
             <div class="flipbook" id="flipbook">
                 <div class="page" id="leftPage">
@@ -211,16 +221,16 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
         </div>
         
         <div class="controls" id="controls">
-            <button id="firstBtn" title="หน้าแรก">⏮</button>
-            <button id="prevBtn" title="หน้าก่อน">◀</button>
-            <button id="nextBtn" title="หน้าถัดไป">▶</button>
-            <button id="lastBtn" title="หน้าสุดท้าย">⏭</button>
+            <button id="firstBtn" title="First Page">⏮</button>
+            <button id="prevBtn" title="Previous Page">◀</button>
+            <button id="nextBtn" title="Next Page">▶</button>
+            <button id="lastBtn" title="Last Page">⏭</button>
             <div class="page-info">
-                หน้า <span id="currentPage">1</span>-<span id="currentPage2">2</span> จาก <span id="totalPages">0</span>
+                Page <span id="currentPage">1</span>-<span id="currentPage2">2</span> of <span id="totalPages">0</span>
             </div>
         </div>
         
-        <button class="help-btn" id="helpBtn" title="ความช่วยเหลือ">?</button>
+        <button class="help-btn" id="helpBtn" title="Help">?</button>
     </div>
     
     <!-- Vanilla JavaScript Flipbook - Fixed Version -->
