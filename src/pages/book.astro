@@ -40,7 +40,7 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
         .header h2.volume-title {
             color: #654321;
             margin: 0 0 15px 0;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: normal;
             font-style: italic;
             cursor: help;
@@ -50,6 +50,7 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
             margin-bottom: 20px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
         }
         
@@ -196,7 +197,7 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
         <div class="header">
             <h1>CH</h1>
             <h2 class="volume-title" style="display: none;">Select Volume</h2>
-            <div class="volume-selector">
+            <div class="volume-selector" style="text-align: center;">
                 <label for="volumeSelect">Select Volume:</label>
                 <select id="volumeSelect">
                     <option value="">-- Select Volume --</option>
