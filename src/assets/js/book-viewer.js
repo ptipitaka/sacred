@@ -368,7 +368,7 @@ class BookViewer {
             this.bookViewerMetadata.editions[this.currentEdition].volumes &&
             this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeId]) {
             
-            const volumeData = this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeId];
+            let volumeData = this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeId];
             
             // Clear cache if data looks wrong (empty pages for volumes that should have them)
             if (volumeId === '1' && (!volumeData.pages || volumeData.pages === 0)) {

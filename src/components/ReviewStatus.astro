@@ -1,0 +1,346 @@
+---
+/**
+ * TypeScript definitions for Review Status System
+ * Inline types for ReviewStatus component
+ */
+type ReviewState = 
+  | 'draft'      // ฉบับร่าง
+  | 'review'     // กำลังตรวจทาน
+  | 'revision'   // กำลังแก้ไข
+  | 'approved'   // อนุมัติ
+  | 'published'; // เผยแพร่
+
+interface ReviewHistoryEntry {
+  state: ReviewState;
+  date: string; // ISO 8601 format
+  updated_by: string;
+  notes: string;
+  previous_state?: ReviewState | null;
+}
+
+interface ReviewData {
+  current: ReviewState;
+  updated: string; // ISO 8601 format  
+  updated_by: string;
+  notes: string;
+  history: ReviewHistoryEntry[];
+}
+
+interface ReviewStatusProps {
+  review: ReviewData;
+  showDetails?: boolean;
+  showHistory?: boolean;
+  compact?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+type Props = ReviewStatusProps;
+
+const { 
+  review, 
+  showDetails = false, 
+  showHistory = false,
+  compact = true, // Default to compact mode
+  size = 'sm' // Default to small size
+} = Astro.props;
+
+// Status configuration - compact English labels
+const statusConfig = {
+  draft: {
+    color: 'gray',
+    icon: '📝',
+    label: 'Draft',
+    bg: '#f3f4f6',
+    textColor: '#374151'
+  },
+  review: {
+    color: 'yellow',
+    icon: '👁️',
+    label: 'Review',
+    bg: '#fef3c7',
+    textColor: '#92400e'
+  },
+  revision: {
+    color: 'orange',
+    icon: '✏️',
+    label: 'Revision',
+    bg: '#fed7aa',
+    textColor: '#9a3412'
+  },
+  approved: {
+    color: 'green',
+    icon: '✅',
+    label: 'Approved',
+    bg: '#d1fae5',
+    textColor: '#065f46'
+  },
+  published: {
+    color: 'blue',
+    icon: '🌐',
+    label: 'Published',
+    bg: '#dbeafe',
+    textColor: '#1e40af'
+  }
+} as const;
+
+const currentStatus = statusConfig[review.current as keyof typeof statusConfig];
+
+const updatedDate = new Date(review.updated).toLocaleDateString('th-TH', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
+});
+
+// Helper function to format duration between states
+function formatDuration(date1: string, date2: string): string {
+  const diff = new Date(date1).getTime() - new Date(date2).getTime();
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  
+  if (days === 0) return 'Same day';
+  if (days === 1) return '1 day';
+  if (days < 7) return `${days} days`;
+  if (days < 30) return `${Math.floor(days / 7)} weeks`;
+  return `${Math.floor(days / 30)} months`;
+}
+
+// Helper function to get status config for history entry
+function getStatusConfig(state: ReviewHistoryEntry['state']) {
+  return statusConfig[state as keyof typeof statusConfig];
+}
+---
+
+<div class={`review-status review-status--${size} ${compact ? 'review-status--compact' : ''}`}>
+  <!-- Compact Status Badge Only -->
+  <div 
+    class="status-badge" 
+    style={`background-color: ${currentStatus.bg}; color: ${currentStatus.textColor};`}
+    title={`Status: ${currentStatus.label}${review.updated_by ? ` • Updated by: ${review.updated_by}` : ''}${review.notes ? ` • ${review.notes}` : ''}`}
+  >
+    <span class="status-icon">{currentStatus.icon}</span>
+    <span class="status-text">{currentStatus.label}</span>
+  </div>
+
+
+</div>
+
+<style>
+  .review-status {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  .review-status--compact {
+    /* Inherit from parent */
+  }
+
+  .status-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: help;
+  }
+
+  .status-icon {
+    font-size: 0.875em;
+    line-height: 1;
+  }
+
+  .status-meta {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-2);
+    line-height: 1.3;
+  }
+
+  .current-notes {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: var(--sl-color-gray-6);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .review-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--sl-color-gray-6);
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .detail-label {
+    font-weight: 600;
+    color: var(--sl-color-gray-1);
+  }
+
+  .detail-value {
+    color: var(--sl-color-gray-2);
+  }
+
+  .review-history {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--sl-color-gray-6);
+  }
+
+  .history-title {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-1);
+  }
+
+  .history-timeline {
+    position: relative;
+  }
+
+  .history-timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--sl-color-gray-5);
+  }
+
+  .history-entry {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+
+  .history-marker {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .history-dot {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .history-icon {
+    font-size: 0.75rem;
+  }
+
+  .history-content {
+    flex: 1;
+    padding-top: 0.125rem;
+  }
+
+  .history-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .history-state {
+    font-weight: 600;
+    color: var(--sl-color-gray-1);
+  }
+
+  .history-date {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+
+  .history-by,
+  .history-duration,
+  .history-transition {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-2);
+    margin: 0.125rem 0;
+  }
+
+  .history-notes {
+    font-size: 0.85rem;
+    color: var(--sl-color-gray-1);
+    margin: 0.25rem 0;
+    font-style: italic;
+  }
+
+  .history-more {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+    margin-top: 0.75rem;
+    font-style: italic;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .status-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .status-meta {
+      text-align: left;
+    }
+
+    .details-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .history-timeline::before {
+      left: 0.75rem;
+    }
+
+    .history-dot {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  /* Compact mode overrides */
+  .review-status--compact .status-meta,
+  .review-status--compact .current-notes,
+  .review-status--compact .review-details,
+  .review-status--compact .review-history {
+    display: none;
+  }
+
+  .review-status--compact .status-badge {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+  }
+</style>

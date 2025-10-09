@@ -24,9 +24,6 @@
             ],
             "@content/*": [
                 "src/content/*"
-            ],
-            "@types/*": [
-                "src/types/*"
             ]
         }
     }
