@@ -167,8 +167,22 @@ class ReviewStatusManager:
                 new_state, previous_state, updated_by, notes, existing_history
             )
             
-            # เพิ่ม ReviewStatus import หากยังไม่มี
-            if "import ReviewStatus" not in body:
+            # เพิ่ม imports ที่จำเป็นหากยังไม่มี
+            imports_to_add = []
+            components_to_add = []
+            
+            # ตรวจสอบ ReviewStatus import และ component  
+            if "import ReviewStatus" not in body and "<ReviewStatus" not in body:
+                imports_to_add.append("import ReviewStatus from '@components/ReviewStatus.astro';")
+                components_to_add.append("<ReviewStatus review={frontmatter.review} showDetails={true} />")
+            
+            # ตรวจสอบ HypothesisAnnotation import และ component
+            if "import HypothesisAnnotation" not in body and "<HypothesisAnnotation" not in body:
+                imports_to_add.append("import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';")
+                components_to_add.append("<HypothesisAnnotation frontmatter={frontmatter} />")
+            
+            # เพิ่ม imports หากมี
+            if imports_to_add:
                 # หาตำแหน่ง imports
                 import_pattern = r'^(import.*?;)$'
                 existing_imports = re.findall(import_pattern, body, re.MULTILINE)
@@ -176,37 +190,40 @@ class ReviewStatusManager:
                 if existing_imports:
                     # เพิ่มหลังจาก import อื่นๆ
                     last_import = existing_imports[-1]
+                    new_imports = "\n" + "\n".join(imports_to_add)
                     body = body.replace(
                         last_import,
-                        last_import + "\nimport ReviewStatus from '@components/ReviewStatus.astro';",
+                        last_import + new_imports,
                         1
                     )
                     
-                    # เพิ่ม component หลังจาก imports และ components อื่นๆ
-                    # หาตำแหน่งที่เหมาะสมสำหรับเพิ่ม ReviewStatus
-                    lines = body.split('\n')
-                    insert_pos = 0
-                    
-                    # หาตำแหน่งหลังจาก DynamicBreadcrumb หรือหลัง imports
-                    for i, line in enumerate(lines):
-                        if '<DynamicBreadcrumb' in line:
-                            insert_pos = i + 2  # หลังจาก DynamicBreadcrumb และบรรทัดว่าง
-                            break
-                        elif line.strip() == '' and i > 0 and not lines[i-1].strip().startswith('import'):
-                            insert_pos = i
-                            break
-                    
-                    if insert_pos > 0:
-                        component_line = "<ReviewStatus review={frontmatter.review} showDetails={true} />"
-                        lines.insert(insert_pos, "")
-                        lines.insert(insert_pos + 1, component_line)
-                        lines.insert(insert_pos + 2, "")
-                        body = '\n'.join(lines)
+                    # เพิ่ม components หลังจาก imports และ components อื่นๆ
+                    if components_to_add:
+                        lines = body.split('\n')
+                        insert_pos = 0
+                        
+                        # หาตำแหน่งหลังจาก DynamicBreadcrumb หรือหลัง imports
+                        for i, line in enumerate(lines):
+                            if '<DynamicBreadcrumb' in line:
+                                insert_pos = i + 2  # หลังจาก DynamicBreadcrumb และบรรทัดว่าง
+                                break
+                            elif line.strip() == '' and i > 0 and not lines[i-1].strip().startswith('import'):
+                                insert_pos = i
+                                break
+                        
+                        if insert_pos > 0:
+                            # เพิ่ม components ทีละตัว
+                            for j, component_line in enumerate(components_to_add):
+                                lines.insert(insert_pos + j * 2, "")
+                                lines.insert(insert_pos + j * 2 + 1, component_line)
+                            
+                            lines.insert(insert_pos + len(components_to_add) * 2, "")
+                            body = '\n'.join(lines)
                 else:
                     # ไม่มี imports เลย เพิ่มที่ด้านบน
-                    import_line = "import ReviewStatus from '@components/ReviewStatus.astro';\n"
-                    component_line = "\n<ReviewStatus review={frontmatter.review} showDetails={true} />\n\n"
-                    body = import_line + component_line + body
+                    import_lines = "\n".join(imports_to_add) + "\n" if imports_to_add else ""
+                    component_lines = "\n" + "\n".join(components_to_add) + "\n\n" if components_to_add else ""
+                    body = import_lines + component_lines + body
             
             # สร้าง frontmatter ใหม่
             frontmatter_yaml = yaml.dump(
@@ -245,7 +262,12 @@ class ReviewStatusManager:
         }
         
         for file_path in files:
-            print(f"🔄 กำลังอัปเดต: {file_path.relative_to(Path.cwd())}")
+            try:
+                relative_path = file_path.relative_to(Path.cwd())
+                print(f"🔄 กำลังอัปเดต: {relative_path}")
+            except ValueError:
+                # ถ้า relative path ไม่ได้ ให้ใช้ชื่อไฟล์แทน
+                print(f"🔄 กำลังอัปเดต: {file_path}")
             
             try:
                 if self.update_review_status(file_path, new_state, updated_by, notes):
@@ -366,7 +388,10 @@ def main():
     
     # หาไฟล์ที่ต้องทำงาน
     if args.file:
-        files = [Path(args.file)]
+        file_path = Path(args.file)
+        if not file_path.is_absolute():
+            file_path = Path.cwd() / file_path
+        files = [file_path]
         if not files[0].exists():
             print(f"❌ ไม่พบไฟล์: {args.file}")
             return 1

@@ -1,0 +1,197 @@
+---
+/**
+ * Enhanced Hypothes.is Annotation Component for TPTK
+ * เพิ่ม web annotation ให้กับเอกสารพระไตรปิฎก พร้อม advanced configuration
+ * 
+ * Usage: 
+ *         console.log(`🏷️  Group: ${annotationContext.selectedGroup || 'public'}`);
+      console.log(`📊 Review Status: ${annotationContext.reviewStatus || 'none'}`);
+      console.log(`📚 Content: ${annotationContext.basket || 'unknown'} basket`);
+      console.log('🔧 Config:', hypothesisConfig);
+      
+      statusDiv.setAttribute('data-enabled', 'true');esisAnnotation frontmatter={frontmatter} />
+ *   <HypothesisAnnotation frontmatter={frontmatter} environment="tptk_review" />
+ * 
+ * จะโหลด Hypothes.is script เฉพาะเมื่อ:
+ * - หน้าปัจจุบันเป็นเอกสาร tipitaka (type: "tipitaka" ใน frontmatter)
+ * - ผู้ใช้ไม่ได้ปิด annotation system
+ */
+
+import { getHypothesisConfig, type HypothesisAnnotationProps } from '@utils/hypothesis-config';
+import { selectGroupForContent, getGroupIdForSelection } from '@utils/hypothesis-groups';
+
+type Props = HypothesisAnnotationProps;
+
+const {
+  frontmatter = {},
+  enabled,
+  configOverrides = {}
+} = Astro.props;
+
+// ตรวจสอบว่าหน้าปัจจุบันเป็นเอกสาร tipitaka หรือไม่
+const isTipitakaPage = frontmatter.type === 'tipitaka';
+
+// ตรวจสอบ URL pattern เพื่อจำกัดเฉพาะหน้า tipitaka
+const currentUrl = Astro.url.pathname;
+const isTipitakaPath = currentUrl.includes('/tipitaka/');
+
+// ตัดสินใจว่าจะโหลด Hypothes.is หรือไม่ - ต้องเป็นทั้ง tipitaka content และ path
+const shouldLoadHypothesis = enabled !== false && isTipitakaPage && isTipitakaPath;
+
+// Simplified: Use default group selection
+const selectedGroup = selectGroupForContent(frontmatter);
+const groupId = getGroupIdForSelection(selectedGroup);
+
+// Get final configuration with group settings
+const hypothesisConfig = getHypothesisConfig('development', {
+  group: groupId,
+  ...configOverrides
+});
+
+// Additional context for debugging and UI
+const annotationContext = {
+  selectedGroup,
+  groupId,
+  reviewStatus: frontmatter.review?.current,
+  basket: frontmatter.basket
+};
+---
+
+{shouldLoadHypothesis && (
+  <>
+    <!-- Hypothes.is Configuration -->
+    <script type="application/json" class="js-hypothesis-config" set:html={JSON.stringify(hypothesisConfig)} />
+    
+    <!-- Hypothes.is Embed Script -->
+    <script async defer src="https://hypothes.is/embed.js"></script>
+    
+    <!-- Status indicator (hidden by default) -->
+    <div id="hypothesis-status" style="display: none;" data-enabled="true"></div>
+    
+    <!-- Integration Debug & Enhancement Script -->
+    <script define:vars={{ 
+      isTipitakaPage, 
+      isTipitakaPath, 
+      shouldLoadHypothesis, 
+      currentUrl, 
+      selectedGroup, 
+      groupId,
+      hypothesisConfig 
+    }}>
+      console.log('[HypothesisAnnotation] Clean Integration Status:', {
+        isTipitakaPage: isTipitakaPage,
+        isTipitakaPath: isTipitakaPath,
+        shouldLoad: shouldLoadHypothesis,
+        currentUrl: currentUrl,
+        selectedGroup: selectedGroup,
+        groupId: groupId
+      });
+
+      // Enhanced Starlight integration
+      document.addEventListener('DOMContentLoaded', function() {
+        // Wait for Starlight layout to be ready
+        if (typeof window.hypothesisConfig === 'undefined') {
+          window.hypothesisConfig = function() {
+            return hypothesisConfig;
+          };
+        }
+        
+        // Adjust positioning for Starlight sidebar
+        const starlightSidebar = document.querySelector('.sidebar');
+        if (starlightSidebar) {
+          console.log('[HypothesisAnnotation] Starlight sidebar detected, adjusting layout');
+        }
+      });
+    </script>
+  </>
+)}
+
+<style>
+  /* Enhanced Hypothesis UI Customizations for TPTK + Starlight */
+  
+  /* Basic Hypothesis styling */
+  .hypothesis-adder {
+    border-radius: 6px !important;
+  }
+  
+  .hypothesis-highlight {
+    background-color: rgba(79, 70, 229, 0.15) !important;
+    border-bottom: 2px solid #4f46e5 !important;
+  }
+
+  /* Starlight Layout Integration */
+  @media (min-width: 72rem) {
+    /* Desktop: Adjust for Starlight sidebar */
+    .hypothesis-sidebar {
+      right: 0 !important;
+      z-index: 100 !important;
+    }
+    
+    /* Prevent overlap with Starlight right sidebar */
+    .right-sidebar + .hypothesis-sidebar {
+      right: var(--sl-sidebar-width, 18rem) !important;
+    }
+  }
+
+  @media (max-width: 72rem) {
+    /* Mobile/Tablet: Full width sidebar */
+    .hypothesis-sidebar {
+      right: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      z-index: 200 !important;
+    }
+  }
+
+  /* Ensure hypothesis doesn't interfere with Starlight navigation */
+  .hypothesis-sidebar {
+    position: fixed !important;
+  }
+
+  /* Custom TPTK branding for hypothesis */
+  .hypothesis-sidebar .hypothesis-sidebar-header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+    color: white !important;
+  }
+
+  /* Hide hypothesis on non-tipitaka pages */
+  body:not([data-pagefind-ignore]) .hypothesis-adder {
+    display: none !important;
+  }
+</style>
+
+<script define:vars={{ hypothesisConfig, annotationContext }}>
+  // Enhanced TPTK Annotation System with Group Management
+  document.addEventListener('DOMContentLoaded', () => {
+    const statusDiv = document.getElementById('hypothesis-status');
+    
+    if (statusDiv) {
+      console.log(`📝 TPTK Annotation System initialized`);
+      console.log(`🏷️  Group: ${annotationContext.selectedGroup || 'public'} (${annotationContext.environment})`);
+      console.log(`📊 Review Status: ${annotationContext.reviewStatus || 'none'}`);
+      console.log(`� Content: ${annotationContext.basket || 'unknown'} basket`);
+      console.log('🔧 Config:', hypothesisConfig);
+      
+      statusDiv.setAttribute('data-enabled', 'true');
+      statusDiv.setAttribute('data-environment', annotationContext.environment);
+      statusDiv.setAttribute('data-group', hypothesisConfig.group || 'public');
+      statusDiv.setAttribute('data-selected-group', annotationContext.selectedGroup || '');
+      
+      // Store config globally for potential use by other scripts
+      window.tptkHypothesisConfig = hypothesisConfig;
+      window.tptkAnnotationContext = annotationContext;
+    }
+    
+    // Listen for Hypothesis ready event
+    window.addEventListener('hypothesisReady', () => {
+      console.log('🎯 Hypothesis is ready for annotations');
+      
+      // Log group information when ready
+      if (annotationContext.selectedGroup) {
+        console.log(`🔐 Private group selected: ${annotationContext.selectedGroup}`);
+      } else {
+        console.log('🌐 Using public annotations');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,31 @@
+---
+title: "1.1.12 Parittattika"
+tableOfContents: false
+sidebar:
+  order: 4
+type: "tipitaka"
+basket: "ab"
+book: "dhs"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Division number="12" book="dhs" bookNo="29" page="2">
+
+<Paragraph number="35" book="dhs">
+Parittā dhammā. (<Emphasis>1026, 1417</Emphasis>)
+</Paragraph>
+
+<Paragraph number="36" book="dhs">
+Mahaggatā dhammā. (<Emphasis>1027, 1418</Emphasis>)
+</Paragraph>
+
+<Paragraph number="37" book="dhs">
+Appamāṇā dhammā. (<Emphasis>1028, 1419</Emphasis>)
+</Paragraph>
+</Division>

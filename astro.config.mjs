@@ -37,6 +37,7 @@ export default defineConfig({
           customCss: [
               './src/assets/css/global.css',
               './src/assets/css/fonts.css',
+              './src/assets/css/annotations.css',
           ],
           defaultLocale: 'romn',
           locales: {

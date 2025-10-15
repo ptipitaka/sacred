@@ -1,0 +1,26 @@
+---
+title: "2 Niddesa"
+tableOfContents: false
+sidebar:
+  order: 3
+type: "tipitaka"
+basket: "ab"
+book: "dhs"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+
+
+<TableOfContents book="dhs" section="2">
+* [2.1 Cittuppādakaṇḍa](2/2-1)
+* [2.2 Rūpakaṇḍa](2/2-2)
+* [2.3 Nikkhepakaṇḍa](2/2-3)
+* [2.4 Aṭṭhakathākaṇḍa](2/2-4)
+</TableOfContents>

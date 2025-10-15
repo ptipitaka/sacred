@@ -1,0 +1,31 @@
+---
+title: "1.1.1 Kusalattika"
+tableOfContents: false
+sidebar:
+  order: 1
+type: "tipitaka"
+basket: "ab"
+book: "dhs"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Division number="1" book="dhs" bookNo="29" page="1">
+
+<Paragraph number="2" book="dhs">
+Kusalā dhammā. (<Emphasis>1, 363, 985, 1384</Emphasis>)
+</Paragraph>
+
+<Paragraph number="3" book="dhs">
+Akusalā dhammā. (<Emphasis>365, 427, 986, 1385</Emphasis>)
+</Paragraph>
+
+<Paragraph number="4" book="dhs">
+Abyākatā dhammā. (<Emphasis>431, 583, 987, 1386</Emphasis>)
+</Paragraph>
+</Division>

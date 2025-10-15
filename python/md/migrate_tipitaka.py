@@ -15,6 +15,8 @@ import concurrent.futures
 import time
 import threading
 import hashlib
+import sqlite3
+from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Set
 from aksharamukha import transliterate
@@ -242,6 +244,19 @@ class TipitakaMigrator:
             }
         }
         
+        # Precompute abbreviation lookups and prepare page mapping structures
+        self._abbrev_to_book_code = {
+            info['abbrev']: code for code, info in self.book_mappings.items()
+        }
+        self._book_number_cache = {
+            abbrev: self._extract_book_number(code)
+            for abbrev, code in self._abbrev_to_book_code.items()
+        }
+        self._division_page_map: Dict[str, Dict[str, List[int]]] = {}
+        self._division_page_state: Dict[str, Dict[str, int]] = {}
+        self._page_map_loaded = False
+        self._page_map_lock = threading.RLock()
+        
         self.sidebar_data = {}
         
         # Performance configurations
@@ -309,6 +324,114 @@ class TipitakaMigrator:
         if target_books is None:
             return True
         return book_code in target_books
+
+    @staticmethod
+    def _extract_book_number(book_code: str) -> str:
+        """Extract the numeric volume prefix from a book code (e.g. 15A4 -> 15)"""
+        if not book_code:
+            return ''
+        match = re.match(r'(\d+)', book_code)
+        return match.group(1) if match else ''
+
+    @staticmethod
+    def _normalize_division_key(division_number: str) -> Optional[str]:
+        """Normalize division identifiers to match numeric paragraph mapping keys"""
+        if not division_number:
+            return None
+        match = re.match(r'(\d+)', division_number)
+        return match.group(1) if match else None
+
+    def _ensure_paragraph_page_map(self):
+        """Load paragraph -> page mappings from SQLite once per process"""
+        if self._page_map_loaded:
+            return
+        with self._page_map_lock:
+            if self._page_map_loaded:
+                return
+            page_map: Dict[str, Dict[str, List[int]]] = defaultdict(lambda: defaultdict(list))
+            try:
+                db_path = Path(__file__).resolve().parent.parent / 'db' / 'tipitaka_pali.db'
+                if not db_path.exists():
+                    self.logger.warning(f"Paragraph mapping database not found at {db_path}")
+                    self._division_page_map = {}
+                    self._page_map_loaded = True
+                    return
+                with sqlite3.connect(db_path) as conn:
+                    cursor = conn.cursor()
+                    cursor.execute(
+                        """
+                        SELECT book_abbrv, paragraph_number, page_number
+                        FROM paragraphs
+                        WHERE book_abbrv IS NOT NULL
+                          AND paragraph_number IS NOT NULL
+                          AND page_number IS NOT NULL
+                        ORDER BY book_abbrv, page_number, paragraph_number, rowid
+                        """
+                    )
+                    for book_abbrv, paragraph_number, page_number in cursor.fetchall():
+                        book_abbrv = (book_abbrv or '').strip()
+                        if not book_abbrv:
+                            continue
+                        key = str(int(paragraph_number))
+                        page_map[book_abbrv][key].append(int(page_number))
+            except Exception as e:
+                self.logger.error(f"Failed to load paragraph-page mapping: {e}")
+                page_map = defaultdict(lambda: defaultdict(list))
+            # Convert nested defaultdicts to regular dicts for safer iteration later
+            self._division_page_map = {
+                abbr: {para: pages for para, pages in book_map.items()}
+                for abbr, book_map in page_map.items()
+            }
+            self._page_map_loaded = True
+
+    def _reset_page_tracking(self, book_abbrv: str):
+        """Reset sequential mapping state for the specified book abbreviation"""
+        if not book_abbrv:
+            return
+        self._ensure_paragraph_page_map()
+        self._division_page_state[book_abbrv] = {}
+
+    def _get_book_number(self, book_abbrv: str) -> str:
+        """Get book volume number (as string) for a given book abbreviation"""
+        return self._book_number_cache.get(book_abbrv, '')
+
+    @staticmethod
+    def _natural_sort_key(value: str) -> list:
+        """Produce a list key that sorts strings using human-friendly numeric order"""
+        if not value:
+            return [0]
+        parts = re.split(r'(\d+)', value)
+        key = []
+        for part in parts:
+            if not part:
+                continue
+            if part.isdigit():
+                key.append(int(part))
+            else:
+                key.append(part.lower())
+        return key
+
+    def _get_next_division_page(self, book_abbrv: str, division_number: str) -> Optional[int]:
+        """Retrieve the next page reference for a division, consuming sequential duplicates"""
+        if not book_abbrv or not division_number:
+            return None
+        self._ensure_paragraph_page_map()
+        division_key = self._normalize_division_key(division_number)
+        if not division_key:
+            return None
+        book_map = self._division_page_map.get(book_abbrv)
+        if not book_map:
+            return None
+        pages = book_map.get(division_key)
+        if not pages:
+            return None
+        state = self._division_page_state.setdefault(book_abbrv, {})
+        index = state.get(division_key, 0)
+        if index >= len(pages):
+            return pages[-1]
+        page = pages[index]
+        state[division_key] = index + 1
+        return page
     
     def _safe_read_file(self, file_path: Path) -> Optional[str]:
         """Safely read file with caching and better error handling"""
@@ -939,8 +1062,8 @@ import TableOfContents from '@components/TableOfContents.astro';"""
                 i += 1
                 continue
             
-            # Check for division pattern (24.), (25.), (504--512.), etc.
-            division_match = re.match(r'^\((\d+(?:--\d+)?)\.\)$', line.strip())
+            # Check for division pattern (24.), (25.), (504–512.), etc.
+            division_match = re.match(r'^\((\d+(?:(?:--|–)\d+)?)\.\)$', line.strip())
             if division_match:
                 division_num = division_match.group(1)
                 
@@ -954,10 +1077,17 @@ import TableOfContents from '@components/TableOfContents.astro';"""
                     converted_lines.append('</Division>')
                 
                 # Start new division
+                division_attributes = [f'number="{division_num}"']
                 if book_id:
-                    converted_lines.append(f'<Division number="{division_num}" book="{book_id}">')
-                else:
-                    converted_lines.append(f'<Division number="{division_num}">')
+                    division_attributes.append(f'book="{book_id}"')
+                    book_no = self._get_book_number(book_id)
+                    if book_no:
+                        division_attributes.append(f'bookNo="{book_no}"')
+                    page_ref = self._get_next_division_page(book_id, division_num)
+                    if page_ref is not None:
+                        division_attributes.append(f'page="{page_ref}"')
+                division_tag = ' '.join(division_attributes)
+                converted_lines.append(f'<Division {division_tag}>')
                 
                 current_division = division_num
                 i += 1
@@ -1156,28 +1286,30 @@ import TableOfContents from '@components/TableOfContents.astro';"""
     
     def create_frontmatter(self, title: str, sidebar_order: int, references: list = None, basket: str = None, book_id: str = None) -> str:
         """Create Astro Starlight frontmatter"""
-        frontmatter = f"""---
-title: "{title}"
-tableOfContents: false
-sidebar:
-  order: {sidebar_order}"""
-        
-        # Add type and basket before closing ---
-        frontmatter += f"""
-type: "tipitaka\""""
-        
+        lines = [
+            "---",
+            f'title: "{title}"',
+            "tableOfContents: false",
+            "sidebar:",
+            f"  order: {sidebar_order}",
+            'type: "tipitaka"',
+        ]
+
         if basket:
-            frontmatter += f"""
-basket: "{basket}\""""
-        
+            lines.append(f'basket: "{basket}"')
+
         if book_id:
-            frontmatter += f"""
-book: "{book_id}\""""
-        
-        frontmatter += """
----
-"""
-        return frontmatter
+            lines.append(f'book: "{book_id}"')
+
+        if references:
+            lines.append("references:")
+            for ref in references:
+                lines.append(f'  - "{ref}"')
+
+        lines.append("---")
+        lines.append("")
+
+        return "\n".join(lines)
     
     def extract_title_from_content(self, content: str) -> str:
         """Extract title from markdown content"""
@@ -1229,6 +1361,10 @@ book: "{book_id}\""""
             source_book_dir = self.source_dir / book_code
             if not source_book_dir.exists():
                 return (book_code, locale, False, f"Directory not found: {source_book_dir}")
+
+            book_abbreviation = self.book_mappings.get(book_code, {}).get('abbrev')
+            if book_abbreviation:
+                self._reset_page_tracking(book_abbreviation)
             
             # Migrate the main .md file first
             main_file = self.source_dir / f"{book_code}.md"
@@ -1502,7 +1638,7 @@ book: "{book_id}\""""
             book_abbreviation = self.book_mappings[book_id]['abbrev']
         
         # Check if content needs component conversion (has division/paragraph patterns or TOC)
-        has_divisions = re.search(r'^\(\d+\.\)$', cleaned_content, re.MULTILINE)
+        has_divisions = re.search(r'^\(\d+(?:(?:--|–)\d+)?\.\)$', cleaned_content, re.MULTILINE)
         has_paragraphs = re.search(r'^\d+\\?\.\s+', cleaned_content, re.MULTILINE)
         has_toc, _, _ = self.detect_table_of_contents(cleaned_content)
         
@@ -1547,7 +1683,7 @@ book: "{book_id}\""""
         sidebar_order = 1
         
         # Process files in current directory
-        for item in sorted(source_dir.iterdir()):
+        for item in sorted(source_dir.iterdir(), key=lambda p: self._natural_sort_key(p.name)):
             if item.is_file() and item.suffix == '.md':
                 self.migrate_file(item, book_code, relative_path, locale, sidebar_order)
                 sidebar_order += 1
@@ -1562,6 +1698,12 @@ book: "{book_id}\""""
         source_book_dir = self.source_dir / book_code
         if not source_book_dir.exists():
             return
+
+        book_abbreviation = None
+        if book_code in self.book_mappings:
+            book_abbreviation = self.book_mappings[book_code].get('abbrev')
+            if book_abbreviation:
+                self._reset_page_tracking(book_abbreviation)
             
         # Show progress if requested
         if show_progress:

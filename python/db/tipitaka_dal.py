@@ -97,6 +97,7 @@ class TipitakaDAL:
             Field('book_id', 'text'),
             Field('paragraph_number', 'integer'),
             Field('page_number', 'integer'),
+            Field('book_abbrv', 'text'),
             primarykey=['book_id', 'paragraph_number', 'page_number'],
             migrate=False
         )

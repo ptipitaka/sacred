@@ -7,18 +7,43 @@
 export interface Props {
   number: string;
   book?: string; // Optional book identifier for PageFind metadata
+  bookNo?: string; // Optional book number for filtering
+  page?: string | number; // Optional page reference from DB
 }
 
-const { number, book = '' } = Astro.props;
+const {
+  number,
+  book = '',
+  bookNo = '',
+  page = ''
+} = Astro.props;
 
 // Generate PageFind metadata
 const metadataValue = book ? `div:${book}-${number}` : `div:${number}`;
+const pageMetadata = page ? `page:${page}` : undefined;
+const bookNoMetadata = bookNo ? `bookNo:${bookNo}` : undefined;
+const tooltipParts = [];
+
+if (bookNo) {
+  tooltipParts.push(`Volume ${bookNo}`);
+}
+
+if (page !== '' && page !== undefined && page !== null) {
+  tooltipParts.push(`Page ${page}`);
+}
+
+const tooltip = tooltipParts.length ? tooltipParts.join(' · ') : undefined;
 ---
 
 <div 
   data-pagefind-meta={metadataValue} 
+  data-pagefind-meta-page={pageMetadata}
+  data-pagefind-meta-bookno={bookNoMetadata}
   class="division-section"
   data-division={number}
+  data-book={book || undefined}
+  data-page={page || undefined}
+  title={tooltip}
 >
   <span class="division-number">{number}.</span>
   <div class="division-content">

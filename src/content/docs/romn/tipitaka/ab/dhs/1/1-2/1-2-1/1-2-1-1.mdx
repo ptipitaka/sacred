@@ -1,0 +1,27 @@
+---
+title: "1.2.1.1 Hetuduka"
+tableOfContents: false
+sidebar:
+  order: 1
+type: "tipitaka"
+basket: "ab"
+book: "dhs"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Division number="23" book="dhs" bookNo="29" page="6">
+
+<Paragraph number="69" book="dhs">
+Hetū dhammā. (<Emphasis>1059, 1077, 1441</Emphasis>)
+</Paragraph>
+
+<Paragraph number="70" book="dhs">
+Na hetū dhammā. (<Emphasis>1078, 1442</Emphasis>)
+</Paragraph>
+</Division>

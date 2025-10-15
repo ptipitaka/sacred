@@ -1,11 +1,32 @@
 ---
-title: "1 มหาวิภงฺค"
+title: 1 มหาวิภงฺค
 tableOfContents: false
 sidebar:
   order: 1
-type: "tipitaka"
-basket: "vi"
-book: "para"
+type: tipitaka
+basket: vi
+book: para
+review:
+  current: review
+  updated: '2025-10-10T11:25:43.630727'
+  updated_by: TestUser
+  notes: Testing private group selection
+  history:
+  - state: review
+    date: '2025-10-10T11:25:43.630727'
+    updated_by: TestUser
+    notes: Testing private group selection
+    previous_state: approved
+  - state: approved
+    date: '2025-10-09T21:30:03.078936'
+    updated_by: TestUser2
+    notes: Testing no duplicate components
+    previous_state: review
+  - state: review
+    date: '2025-10-09T21:28:45.251024'
+    updated_by: TestUser
+    notes: Testing HypothesisAnnotation integration
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
@@ -13,8 +34,15 @@ import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
 
 <DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <Paragraph number="1" type="center" book="para">
 นโม ตสฺส ภควโต อรหโต สมฺมาสมฺพุทฺธสฺส.

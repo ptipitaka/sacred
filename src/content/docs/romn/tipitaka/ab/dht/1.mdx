@@ -1,0 +1,27 @@
+---
+title: "1 Uddesa"
+tableOfContents: false
+sidebar:
+  order: 2
+type: "tipitaka"
+basket: "ab"
+book: "dht"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+
+
+<TableOfContents book="dht" section="1">
+* [1.1 Nayamātikā](1/1-1)
+* [1.2 Abbhantaramātikā](1/1-2)
+* [1.3 Nayamukhamātikā](1/1-3)
+* [1.4 Lakkhaṇamātikā](1/1-4)
+* [1.5 Bāhiramātikā](1/1-5)
+</TableOfContents>
