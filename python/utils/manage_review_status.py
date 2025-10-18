@@ -12,6 +12,7 @@ Requirements:
 Usage:
     python python/utils/manage_review_status.py --state draft --updated-by "admin"
     python python/utils/manage_review_status.py --state review --basket vi --updated-by "reviewer1"
+    python python/utils/manage_review_status.py --state draft --basket vi --book para --locale romn --locale thai
 """
 
 import os
@@ -23,11 +24,29 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Dict, Any
 
+
+def parse_locale_args(locale_args: Optional[List[str]]) -> Optional[List[str]]:
+    """แปลงค่า locale จาก arguments ให้เป็นรายการ locale"""
+    if not locale_args:
+        return ["romn"]  # ค่าดั้งเดิมเพื่อความเข้ากันได้ย้อนหลัง
+
+    locales: List[str] = []
+    for value in locale_args:
+        parts = [part.strip() for part in value.split(',') if part.strip()]
+        for part in parts:
+            lowered = part.lower()
+            if lowered in {"all", "*"}:
+                return None  # None แทนการเลือกทั้ง src/content/docs
+            locales.append(part)
+
+    return locales if locales else None
+
 class ReviewStatusManager:
     """จัดการสถานะการตรวจทานเอกสาร"""
     
     def __init__(self, content_dir: str = "src/content/docs"):
-        self.content_dir = Path(content_dir)
+        self.project_root = Path(__file__).resolve().parents[2]
+        self.content_dir = self._resolve_content_dir(Path(content_dir))
         self.valid_states = ["draft", "review", "revision", "approved", "published"]
         
         # ตรวจสอบว่าอยู่ใน virtual environment หรือไม่
@@ -40,26 +59,102 @@ class ReviewStatusManager:
         return (hasattr(sys, 'real_prefix') or 
                 (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix) or
                 'VIRTUAL_ENV' in os.environ)
+
+    def _resolve_content_dir(self, content_path: Path) -> Path:
+        """แปลง content_dir ให้เป็น path ที่ถูกต้องเสมอ"""
+        candidates = []
+
+        if content_path.is_absolute():
+            candidates.append(content_path)
+        else:
+            candidates.append((Path.cwd() / content_path).resolve())
+            candidates.append((self.project_root / content_path).resolve())
+
+        for candidate in candidates:
+            if candidate.exists():
+                return candidate
+
+        # ถ้ายังไม่พบ ให้ใช้ path ภายใต้ project_root เป็นค่า default
+        fallback = (self.project_root / content_path).resolve()
+        if not fallback.exists():
+            print(f"⚠️ ไม่พบ content_dir {fallback}, ใช้ path นี้เป็นค่า default")
+        return fallback
     
-    def find_files(self, 
-                   basket: Optional[str] = None, 
+    def find_files(self,
+                   locales: Optional[List[str]] = None,
+                   basket: Optional[str] = None,
                    book: Optional[str] = None,
                    file_pattern: str = "*.mdx") -> List[Path]:
-        """หาไฟล์เอกสารตามเงื่อนไข"""
+        """หาไฟล์เอกสารตามเงื่อนไข ภายใต้ src/content/docs"""
         try:
-            if basket and book:
-                # เฉพาะคัมภีร์ เช่น vi/para
-                search_path = self.content_dir / "romn" / "tipitaka" / basket / book
-            elif basket:
-                # เฉพาะพิธีก เช่น vi (vinaya)  
-                search_path = self.content_dir / "romn" / "tipitaka" / basket
+            files: List[Path] = []
+            base_paths: List[Path] = []
+            content_root = self.content_dir.resolve()
+
+            if locales is None:
+                base_paths = [self.content_dir]
             else:
-                # ทั้งหมด
-                search_path = self.content_dir / "romn" / "tipitaka"
-            
-            if search_path.exists():
-                return list(search_path.rglob(file_pattern))
-            return []
+                for locale in locales:
+                    locale_stripped = locale.strip()
+                    if not locale_stripped or locale_stripped.lower() == "root":
+                        base_paths.append(self.content_dir)
+                        continue
+                    relative_path = Path(locale_stripped)
+                    target_path = (self.content_dir / relative_path).resolve()
+                    try:
+                        common_root = os.path.commonpath([str(content_root), str(target_path)])
+                    except ValueError:
+                        print(f"⚠️ เส้นทาง {locale} อยู่นอก {self.content_dir}, ข้าม")
+                        continue
+                    if Path(common_root) != content_root:
+                        print(f"⚠️ เส้นทาง {locale} อยู่นอก {self.content_dir}, ข้าม")
+                        continue
+                    if not target_path.exists():
+                        print(f"⚠️ ไม่พบ locale/เส้นทาง: {locale}")
+                        continue
+                    base_paths.append(target_path)
+
+            if not base_paths:
+                default_path = self.content_dir / "romn"
+                base_paths.append(default_path if default_path.exists() else self.content_dir)
+
+            for base_path in base_paths:
+                if not base_path.exists():
+                    continue
+                for candidate in base_path.rglob(file_pattern):
+                    if not candidate.is_file():
+                        continue
+                    try:
+                        relative_parts = candidate.relative_to(self.content_dir).parts
+                    except ValueError:
+                        # อยู่นอก content_dir ไม่ต้องใช้งาน
+                        continue
+
+                    # ป้องกันการเลือกนอกขอบเขต locale ที่ระบุ (เมื่อเจาะจง locale)
+                    if locales is not None and base_path != self.content_dir:
+                        base_parts = base_path.relative_to(self.content_dir).parts
+                        if base_parts:
+                            if tuple(relative_parts[:len(base_parts)]) != base_parts:
+                                continue
+
+                    parts_lower = [part.lower() for part in relative_parts]
+
+                    if basket and basket.lower() not in parts_lower:
+                        continue
+                    if book and book.lower() not in parts_lower:
+                        continue
+
+                    files.append(candidate)
+
+            # ลบรายการซ้ำโดยคงลำดับเดิม
+            unique_files: List[Path] = []
+            seen = set()
+            for path in files:
+                if path not in seen:
+                    unique_files.append(path)
+                    seen.add(path)
+
+            return unique_files
         except Exception as e:
             print(f"❌ ข้อผิดพลาดในการค้นหาไฟล์: {e}")
             return []
@@ -334,6 +429,12 @@ def main():
   
   # อัปเดตเฉพาะปาราชิก
   python python/utils/manage_review_status.py --state approved --basket vi --book para --updated-by "validator"
+
+    # อัปเดตหลาย locale (romn, thai, mymr)
+    python python/utils/manage_review_status.py --state draft --basket vi --book para --locale romn --locale thai --locale mymr
+
+    # อัปเดตทุก locale ภายใต้ src/content/docs
+    python python/utils/manage_review_status.py --state review --basket vi --book para --locale all
   
   # อัปเดตไฟล์เดียว
   python python/utils/manage_review_status.py --state published --file "src/content/docs/romn/tipitaka/vi/para/1.mdx"
@@ -353,11 +454,14 @@ def main():
                        choices=["draft", "review", "revision", "approved", "published"],
                        help="สถานะใหม่ที่ต้องการอัปเดต")
     parser.add_argument("--basket", 
-                       help="พิธีก (vi=วินัย, su=สูตร, ab=อภิธรรม)")
+                       help="ปิฎก (vi=วินัย, su=สูตร, ab=อภิธรรม)")
     parser.add_argument("--book", 
                        help="คัมภีร์ (para, paci, maha, culla, pari, etc.)")
     parser.add_argument("--file", 
                        help="ไฟล์เฉพาะ (path จาก root)")
+    parser.add_argument("--locale",
+                       action="append",
+                       help="เลือก locale/path ภายใต้ src/content/docs (ระบุหลายครั้งหรือคั่นด้วย comma, ใช้ all/* เพื่อเลือกทั้งหมด)")
     parser.add_argument("--updated-by", 
                        default="", 
                        help="ชื่อผู้อัปเดต")
@@ -375,6 +479,7 @@ def main():
                        help="โฟลเดอร์เนื้อหา (default: src/content/docs)")
     
     args = parser.parse_args()
+    selected_locales = parse_locale_args(args.locale)
     
     # ตรวจสอบ arguments
     if not args.show_status and not args.state:
@@ -396,18 +501,28 @@ def main():
             print(f"❌ ไม่พบไฟล์: {args.file}")
             return 1
     else:
-        files = manager.find_files(args.basket, args.book)
+        files = manager.find_files(
+            locales=selected_locales,
+            basket=args.basket,
+            book=args.book
+        )
     
     if not files:
         print("❌ ไม่พบไฟล์ที่ตรงกับเงื่อนไข")
         return 1
     
+    if not args.file:
+        if selected_locales is None:
+            print("🌐 ขอบเขต: ทุก locale ภายใต้ src/content/docs")
+        elif selected_locales:
+            print("🌐 Locale/เส้นทาง: " + ", ".join(selected_locales))
+
     print(f"📁 พบไฟล์ {len(files)} ไฟล์")
     
     # แสดงข้อมูลตาม filters
     if args.basket:
         basket_names = {"vi": "พระวินัย", "su": "พระสูตร", "ab": "อภิธรรม"}
-        print(f"🗂️  พิธีก: {basket_names.get(args.basket, args.basket)}")
+        print(f"🗂️  ปิฎก: {basket_names.get(args.basket, args.basket)}")
     if args.book:
         print(f"📖 คัมภีร์: {args.book}")
     
