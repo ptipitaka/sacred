@@ -252,6 +252,15 @@ class TipitakaMigrator:
             abbrev: self._extract_book_number(code)
             for abbrev, code in self._abbrev_to_book_code.items()
         }
+        self._book_reference_lookup = {}
+        for code, info in self.book_mappings.items():
+            references = set(info.get('references', []))
+            references.add(info.get('abbrev', ''))
+            references.add(code)
+            for ref in references:
+                normalized = (ref or '').strip().lower()
+                if normalized:
+                    self._book_reference_lookup[normalized] = code
         self._division_page_map: Dict[str, Dict[str, List[int]]] = {}
         self._division_page_state: Dict[str, Dict[str, int]] = {}
         self._page_map_loaded = False
@@ -411,6 +420,136 @@ class TipitakaMigrator:
                 key.append(part.lower())
         return key
 
+    def _generate_lookup_keys(self, target: str) -> List[str]:
+        """Generate prioritized lookup keys for a markdown link target"""
+        if not target:
+            return []
+        value = target.split('#', 1)[0].strip()
+        if not value or value.startswith('http'):
+            return []
+        while value.startswith('./'):
+            value = value[2:]
+        while value.startswith('../'):
+            value = value[3:]
+        value = value.lstrip('/')
+
+        keys: List[str] = []
+        def _append(key: str):
+            if key and key not in keys:
+                keys.append(key)
+
+        _append(value)
+        _append(value.lower())
+
+        if value.endswith('.md'):
+            stem = value[:-3]
+            _append(stem)
+            _append(stem.lower())
+
+        if value.endswith('/'):
+            trimmed = value.rstrip('/')
+            _append(trimmed)
+            _append(trimmed.lower())
+
+        return keys
+
+    def _build_entry_lookup(self, entries: List[Path], source_dir: Path, book_root: Path) -> Dict[str, Path]:
+        """Build lookup table mapping link targets to actual filesystem entries"""
+        lookup: Dict[str, Path] = {}
+        try:
+            relative_parts = source_dir.relative_to(book_root).parts
+        except ValueError:
+            relative_parts = ()
+
+        for entry in entries:
+            name = entry.name
+            entry_keys = {name, name.lower()}
+            if entry.is_dir():
+                entry_keys.update({f"{name}/", f"{name.lower()}/"})
+            if name.endswith('.md'):
+                stem = name[:-3]
+                entry_keys.update({stem, stem.lower()})
+
+            if relative_parts:
+                rel_path = '/'.join((*relative_parts, name))
+            else:
+                rel_path = name
+            entry_keys.update({rel_path, rel_path.lower()})
+            if entry.is_dir():
+                entry_keys.update({f"{rel_path}/", f"{rel_path.lower()}/"})
+            if rel_path.endswith('.md'):
+                rel_stem = rel_path[:-3]
+                entry_keys.update({rel_stem, rel_stem.lower()})
+
+            # Include hyphenated variants for targets that already replaced dots
+            hyphenated = name.replace('.', '-')
+            entry_keys.add(hyphenated)
+            entry_keys.add(hyphenated.lower())
+
+            for key in entry_keys:
+                if key not in lookup:
+                    lookup[key] = entry
+        return lookup
+
+    def _order_entries_from_parent(self, source_dir: Path, entries: List[Path], book_code: str) -> Optional[List[Path]]:
+        """Use parent markdown file to determine ordering when natural sort fails"""
+        if not entries:
+            return []
+
+        parent_md = source_dir.parent / f"{source_dir.name}.md"
+        book_root = self.source_dir / book_code
+
+        if not parent_md.exists():
+            if source_dir == book_root:
+                parent_md = self.source_dir / f"{book_code}.md"
+                if not parent_md.exists():
+                    return None
+            else:
+                return None
+
+        content = self._read_raw_file(parent_md)
+        if content is None:
+            return None
+
+        entry_lookup = self._build_entry_lookup(entries, source_dir, book_root)
+        pattern = re.compile(r'\[[^\]]+\]\(([^)]+)\)')
+        ordered_entries: List[Path] = []
+        seen: Set[Path] = set()
+
+        for target in pattern.findall(content):
+            for key in self._generate_lookup_keys(target):
+                entry = entry_lookup.get(key)
+                if entry and entry not in seen:
+                    ordered_entries.append(entry)
+                    seen.add(entry)
+                    break
+
+        if not ordered_entries:
+            return None
+
+        remaining = [entry for entry in entries if entry not in seen]
+        remaining.sort(key=lambda p: p.name.lower())
+        ordered_entries.extend(remaining)
+        return ordered_entries
+
+    def _sort_directory_entries(self, source_dir: Path, book_code: str) -> List[Path]:
+        """Sort directory entries, falling back to parent content when necessary"""
+        entries = list(source_dir.iterdir())
+        if not entries:
+            return []
+
+        try:
+            return sorted(entries, key=lambda p: self._natural_sort_key(p.name))
+        except TypeError:
+            pass
+
+        ordered = self._order_entries_from_parent(source_dir, entries, book_code)
+        if ordered:
+            return ordered
+
+        # Final fallback: simple case-insensitive sort to keep deterministic order
+        return sorted(entries, key=lambda p: p.name.lower())
+
     def _get_next_division_page(self, book_abbrv: str, division_number: str) -> Optional[int]:
         """Retrieve the next page reference for a division, consuming sequential duplicates"""
         if not book_abbrv or not division_number:
@@ -522,6 +661,17 @@ class TipitakaMigrator:
             self.logger.error(f"Error reading {file_path}: {e}")
             return None
     
+    def _read_raw_file(self, file_path: Path) -> Optional[str]:
+        """Read file content without post-processing (used for order detection)"""
+        try:
+            with open(file_path, 'r', encoding='utf-8') as fh:
+                return fh.read()
+        except FileNotFoundError:
+            return None
+        except Exception as exc:
+            self.logger.error(f"Failed to read raw file {file_path}: {exc}")
+            return None
+
     def _safe_write_file(self, file_path: Path, content: str) -> bool:
         """Safely write file with better error handling"""
         try:
@@ -888,27 +1038,44 @@ class TipitakaMigrator:
     
     def extract_book_id_from_path(self, file_path: Path) -> str:
         """Extract book identifier from file path for PageFind metadata"""
-        # Get book code from path - this should be the directory name after tipitaka
         path_parts = file_path.parts
-        if 'tipitaka' in path_parts:
-            tipitaka_index = path_parts.index('tipitaka')
-            # Structure: tipitaka/basket/book or tipitaka/basket/nikaya/book
-            if tipitaka_index + 2 < len(path_parts):  # has basket/book or basket/nikaya/book structure
-                book_dir = None
-                # Try basket/nikaya/book first
-                if tipitaka_index + 3 < len(path_parts) and path_parts[tipitaka_index + 2] in ['sn', 'an', 'kn', 'mn', 'dn']:
-                    book_dir = path_parts[tipitaka_index + 3]  # book abbreviation (e.g., kh)
-                else:
-                    book_dir = path_parts[tipitaka_index + 2]  # book abbreviation (e.g., para, paci)
-                
-                # Find the corresponding book key in book_mappings
-                for book_key, book_info in self.book_mappings.items():
-                    if book_info['abbrev'] == book_dir or book_dir in book_info.get('references', []):
-                        return book_key
-                
-                # If not found in mappings, return the directory name as fallback
-                return book_dir
-        return ''
+        if 'tipitaka' not in path_parts:
+            return ''
+
+        tipitaka_index = path_parts.index('tipitaka')
+
+        # Preserve previous fallback behaviour in case a match is still not found
+        primary_candidate = ''
+        if tipitaka_index + 2 < len(path_parts):
+            next_segment = path_parts[tipitaka_index + 2]
+            if tipitaka_index + 3 < len(path_parts) and next_segment in ['sn', 'an', 'kn', 'mn', 'dn']:
+                primary_candidate = path_parts[tipitaka_index + 3]
+            else:
+                primary_candidate = next_segment
+
+        suffix_parts = list(path_parts[tipitaka_index + 1:])
+
+        # Check each path segment after tipitaka for a known book reference
+        for segment in suffix_parts:
+            if '.' in segment:
+                continue  # Skip file names like index.mdx
+            normalized = segment.strip().lower()
+            if not normalized or not re.search(r'[a-z]', normalized):
+                continue
+            match = self._book_reference_lookup.get(normalized)
+            if match:
+                return match
+
+        # Try combined adjacent segments (e.g., pt + anu -> pt-anu)
+        for left, right in zip(suffix_parts, suffix_parts[1:]):
+            if '.' in left or '.' in right:
+                continue
+            combined = f"{left.strip().lower()}-{right.strip().lower()}"
+            match = self._book_reference_lookup.get(combined)
+            if match:
+                return match
+
+        return primary_candidate
     
     def is_verses_content(self, content: str) -> bool:
         """Check if content appears to be verses based on italic markdown formatting"""
@@ -1080,12 +1247,17 @@ import TableOfContents from '@components/TableOfContents.astro';"""
                 division_attributes = [f'number="{division_num}"']
                 if book_id:
                     division_attributes.append(f'book="{book_id}"')
+                # Always include edition code, defaulting to 'ch'
+                division_attributes.append('e="ch"')
+                if book_id:
                     book_no = self._get_book_number(book_id)
-                    if book_no:
-                        division_attributes.append(f'bookNo="{book_no}"')
-                    page_ref = self._get_next_division_page(book_id, division_num)
-                    if page_ref is not None:
-                        division_attributes.append(f'page="{page_ref}"')
+                else:
+                    book_no = ''
+                if book_no:
+                    division_attributes.append(f'v="{book_no}"')
+                page_ref = self._get_next_division_page(book_id, division_num) if book_id else None
+                if page_ref is not None:
+                    division_attributes.append(f'p="{page_ref}"')
                 division_tag = ' '.join(division_attributes)
                 converted_lines.append(f'<Division {division_tag}>')
                 
@@ -1093,6 +1265,35 @@ import TableOfContents from '@components/TableOfContents.astro';"""
                 i += 1
                 continue
             
+            # Detect markdown headings that actually contain paragraph numbers (e.g., ## 396\.)
+            heading_match = re.match(r'^\s*(#{1,6})\s+(.*)$', line)
+            if heading_match:
+                heading_content = heading_match.group(2).strip()
+                heading_para_match = re.match(r'^(\d+)\\?\.\s*(.*)$', heading_content)
+                if heading_para_match:
+                    para_num = heading_para_match.group(1)
+                    para_text = heading_para_match.group(2).strip()
+
+                    # Close any open paragraph before starting a new one
+                    if in_paragraph:
+                        converted_lines.append('</Paragraph>')
+                        in_paragraph = False
+
+                    # Always render these as centered paragraphs per requirement
+                    paragraph_open = [f'<Paragraph number="{para_num}" type="center"']
+                    if book_id:
+                        paragraph_open.append(f'book="{book_id}"')
+                    paragraph_open_str = ' '.join(paragraph_open) + '>'
+                    converted_lines.append(paragraph_open_str)
+
+                    # Make the paragraph text bold; fall back to showing the number if text missing
+                    display_text = para_text if para_text else f'{para_num}.'
+                    bold_text = f'**{display_text}**'
+                    converted_lines.append(self.convert_emphasis_markdown(bold_text))
+                    converted_lines.append('</Paragraph>')
+                    i += 1
+                    continue
+
             # Check for paragraph pattern 41\., 42\., etc.
             paragraph_match = re.match(r'^(\d+)\\?\.\s+(.*)$', line)
             if paragraph_match:
@@ -1682,8 +1883,10 @@ import TableOfContents from '@components/TableOfContents.astro';"""
             
         sidebar_order = 1
         
+        entries = self._sort_directory_entries(source_dir, book_code)
+
         # Process files in current directory
-        for item in sorted(source_dir.iterdir(), key=lambda p: self._natural_sort_key(p.name)):
+        for item in entries:
             if item.is_file() and item.suffix == '.md':
                 self.migrate_file(item, book_code, relative_path, locale, sidebar_order)
                 sidebar_order += 1

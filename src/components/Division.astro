@@ -7,32 +7,46 @@
 export interface Props {
   number: string;
   book?: string; // Optional book identifier for PageFind metadata
-  bookNo?: string; // Optional book number for filtering
-  page?: string | number; // Optional page reference from DB
+  e?: string; // Edition code (defaults to 'ch')
+  v?: string | number; // Volume identifier
+  p?: string | number; // Page identifier
+  bookNo?: string; // Backward compatibility: legacy volume number
+  page?: string | number; // Backward compatibility: legacy page reference
 }
 
 const {
   number,
   book = '',
+  e = 'ch',
+  v = undefined,
+  p = undefined,
   bookNo = '',
   page = ''
 } = Astro.props;
 
+const volume = (v ?? bookNo ?? '').toString().trim();
+const pageRef = (p ?? page ?? '').toString().trim();
+const edition = (e ?? 'ch').toString().trim() || 'ch';
+
 // Generate PageFind metadata
 const metadataValue = book ? `div:${book}-${number}` : `div:${number}`;
-const pageMetadata = page ? `page:${page}` : undefined;
-const bookNoMetadata = bookNo ? `bookNo:${bookNo}` : undefined;
+const pageMetadata = pageRef ? `page:${pageRef}` : undefined;
+const bookNoMetadata = volume ? `bookNo:${volume}` : undefined;
 const tooltipParts = [];
 
-if (bookNo) {
-  tooltipParts.push(`Volume ${bookNo}`);
+if (volume) {
+  tooltipParts.push(`Volume ${volume}`);
 }
 
-if (page !== '' && page !== undefined && page !== null) {
-  tooltipParts.push(`Page ${page}`);
+if (pageRef) {
+  tooltipParts.push(`Page ${pageRef}`);
 }
 
 const tooltip = tooltipParts.length ? tooltipParts.join(' · ') : undefined;
+const hasLink = Boolean(tooltip && volume && pageRef);
+const linkHref = hasLink
+  ? `/book?e=${encodeURIComponent(edition)}&v=${encodeURIComponent(volume)}&p=${encodeURIComponent(pageRef)}`
+  : undefined;
 ---
 
 <div 
@@ -42,10 +56,22 @@ const tooltip = tooltipParts.length ? tooltipParts.join(' · ') : undefined;
   class="division-section"
   data-division={number}
   data-book={book || undefined}
-  data-page={page || undefined}
+  data-page={pageRef || undefined}
   title={tooltip}
 >
-  <span class="division-number">{number}.</span>
+  {hasLink && linkHref ? (
+    <a
+      class="division-number-link"
+      href={linkHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={tooltip}
+    >
+      <span class="division-number">{number}.</span>
+    </a>
+  ) : (
+    <span class="division-number" title={tooltip}>{number}.</span>
+  )}
   <div class="division-content">
     <slot />
   </div>
@@ -65,10 +91,20 @@ const tooltip = tooltipParts.length ? tooltipParts.join(' · ') : undefined;
     padding: 0;
     line-height: 1.8;
     margin: 0;
+  }
+
+  .division-number-link,
+  .division-number {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
+  }
+
+  .division-number-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
   }
 
   .division-content {
@@ -80,7 +116,8 @@ const tooltip = tooltipParts.length ? tooltipParts.join(' · ') : undefined;
   }
 
   /* Dark mode support */
-  :global([data-theme="dark"]) .division-number {
+  :global([data-theme="dark"]) .division-number,
+  :global([data-theme="dark"]) .division-number-link {
     color: var(--sl-color-white);
   }
 
@@ -90,7 +127,8 @@ const tooltip = tooltipParts.length ? tooltipParts.join(' · ') : undefined;
       margin: 1rem 0;
     }
     
-    .division-number {
+    .division-number,
+    .division-number-link {
       font-size: 1em;
       padding: 0; /* ลบ padding ใน responsive */
     }
@@ -103,7 +141,8 @@ const tooltip = tooltipParts.length ? tooltipParts.join(' · ') : undefined;
       margin: 1rem 0;
     }
     
-    .division-number {
+    .division-number,
+    .division-number-link {
       color: #000;
     }
   }

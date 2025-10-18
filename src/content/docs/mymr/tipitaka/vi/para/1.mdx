@@ -1,22 +1,11 @@
 ---
-title: 1 မဟာဝိဘင်္ဂ
+title: "1 မဟာဝိဘင်္ဂ"
 tableOfContents: false
 sidebar:
   order: 1
-type: tipitaka
-basket: vi
-book: para
-review:
-  current: review
-  updated: '2025-10-09T15:10:08.779006'
-  updated_by: MyanmarScript
-  notes: Testing Myanmar script para
-  history:
-  - state: review
-    date: '2025-10-09T15:10:08.779006'
-    updated_by: MyanmarScript
-    notes: Testing Myanmar script para
-    previous_state: draft
+type: "tipitaka"
+basket: "vi"
+book: "para"
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
@@ -24,15 +13,8 @@ import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
-import ReviewStatus from '@components/ReviewStatus.astro';
-import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
 
 <DynamicBreadcrumb />
-
-<HypothesisAnnotation frontmatter={frontmatter} />
-
-
-<ReviewStatus review={frontmatter.review} showDetails={true} />
 
 <Paragraph number="1" type="center" book="para">
 နမော တဿ ဘဂဝတော အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ.
