@@ -1,0 +1,46 @@
+---
+title: 1.1.4 ဗလသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a6
+review:
+  current: review
+  updated: '2025-10-20T16:39:24.944612'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:39:24.944612'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="4" book="a6" e="ch" v="16" p="249">
+
+<Paragraph number="16" book="a6">
+“ဆဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု အာဟုနေယျော ဟောတိ …ပေ…  အနုတ္တရံ ပုညက္ခေတ္တံ လောကဿ. ကတမေဟိ ဆဟိ? သဒ္ဓါဗလေန, ဝီရိယဗလေန, သတိဗလေန, သမာဓိဗလေန, ပညာဗလေန, အာသဝါနံ ခယာ အနာသဝံ စေတောဝိမုတ္တိံ ပညာဝိမုတ္တိံ ဒိဋ္ဌေဝ ဓမ္မေ သယံ အဘိညာ သစ္ဆိကတွာ ဥပသမ္ပဇ္ဇ ဝိဟရတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, ဆဟိ ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု အာဟုနေယျော ဟောတိ …ပေ…  အနုတ္တရံ ပုညက္ခေတ္တံ လောကဿာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="17" type="center" book="a6">
+စတုတ္ထံ.
+</Paragraph>

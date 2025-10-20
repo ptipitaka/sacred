@@ -1,0 +1,50 @@
+---
+title: 2.4.4 သုဿူသတိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a6
+review:
+  current: review
+  updated: '2025-10-20T16:39:25.308164'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:39:25.308164'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="88" book="a6" e="ch" v="16" p="381">
+
+<Paragraph number="693" book="a6">
+“ဆဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော သုဏန္တောပိ သဒ္ဓမ္မံ အဘဗ္ဗော နိယာမံ ဩက္ကမိတုံ ကုသလေသု ဓမ္မေသု သမ္မတ္တံ. ကတမေဟိ ဆဟိ? တထာဂတပ္ပဝေဒိတေ ဓမ္မဝိနယေ ဒေသိယမာနေ န သုဿူသတိ, န သောတံ ဩဒဟတိ, န အညာ စိတ္တံ ဥပဋ္ဌာပေတိ, အနတ္ထံ ဂဏှာတိ, အတ္ထံ ရိဉ္စတိ, အနနုလောမိကာယ ခန္တိယာ သမန္နာဂတော ဟောတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, ဆဟိ ဓမ္မေဟိ သမန္နာဂတော သုဏန္တောပိ သဒ္ဓမ္မံ အဘဗ္ဗော နိယာမံ ဩက္ကမိတုံ ကုသလေသု ဓမ္မေသု သမ္မတ္တံ.
+</Paragraph>
+
+<Paragraph number="694" book="a6">
+ဆဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော သုဏန္တော သဒ္ဓမ္မံ ဘဗ္ဗော နိယာမံ ဩက္ကမိတုံ ကုသလေသု ဓမ္မေသု သမ္မတ္တံ. ကတမေဟိ ဆဟိ? တထာဂတပ္ပဝေဒိတေ ဓမ္မဝိနယေ ဒေသိယမာနေ သုဿူသတိ, သောတံ ဩဒဟတိ, အညာ စိတ္တံ ဥပဋ္ဌာပေတိ, အတ္ထံ ဂဏှာတိ, အနတ္ထံ ရိဉ္စတိ, အနုလောမိကာယ ခန္တိယာ သမန္နာဂတော ဟောတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, ဆဟိ ဓမ္မေဟိ သမန္နာဂတော သုဏန္တော သဒ္ဓမ္မံ ဘဗ္ဗော နိယာမံ ဩက္ကမိတုံ ကုသလေသု ဓမ္မေသု သမ္မတ္တန်”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="695" type="center" book="a6">
+စတုတ္ထံ.
+</Paragraph>

@@ -1,0 +1,51 @@
+---
+title: 2.4 သီတိဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a6
+review:
+  current: review
+  updated: '2025-10-20T16:39:25.145375'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:39:25.145375'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a6" section="2.4">
+* [2.4.1 သီတိဘာဝသုတ္တ](2-4/2-4-1)
+* [2.4.2 အာဝရဏသုတ္တ](2-4/2-4-2)
+* [2.4.3 ဝေါရောပိတသုတ္တ](2-4/2-4-3)
+* [2.4.4 သုဿူသတိသုတ္တ](2-4/2-4-4)
+* [2.4.5 အပ္ပဟာယသုတ္တ](2-4/2-4-5)
+* [2.4.6 ပဟီနသုတ္တ](2-4/2-4-6)
+* [2.4.7 အဘဗ္ဗသုတ္တ](2-4/2-4-7)
+* [2.4.8 ပဌမအဘဗ္ဗဋ္ဌာနသုတ္တ](2-4/2-4-8)
+* [2.4.9 ဒုတိယအဘဗ္ဗဋ္ဌာနသုတ္တ](2-4/2-4-9)
+* [2.4.10 တတိယအဘဗ္ဗဋ္ဌာနသုတ္တ](2-4/2-4-10)
+* [2.4.11 စတုတ္ထအဘဗ္ဗဋ္ဌာနသုတ္တ](2-4/2-4-11)
+</TableOfContents>

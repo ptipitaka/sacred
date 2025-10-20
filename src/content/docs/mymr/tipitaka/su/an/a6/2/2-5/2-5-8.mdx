@@ -1,0 +1,46 @@
+---
+title: 2.5.8 ဥက္ခိတ္တာသိကသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: a6
+review:
+  current: review
+  updated: '2025-10-20T16:39:25.360911'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:39:25.360911'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="103" book="a6" e="ch" v="16" p="386">
+
+<Paragraph number="730" book="a6">
+“ဆ, ဘိက္ခဝေ, အာနိသံသေ သမ္ပဿမာနေန အလမေဝ ဘိက္ခုနာ သဗ္ဗသင်္ခါရေသု အနောဓိံ ကရိတွာ ဒုက္ခသညံ ဥပဋ္ဌာပေတုံ. ကတမေ ဆ? ‘သဗ္ဗသင်္ခါရေသု စ မေ နိဗ္ဗိဒသညာ ပစ္စုပဋ္ဌိတာ ဘဝိဿတိ, သေယျထာပိ ဥက္ခိတ္တာသိကေ ဝဓကေ. သဗ္ဗလောကာ စ မေ မနော ဝုဋ္ဌဟိဿတိ, နိဗ္ဗာနေ စ သန္တဒဿာဝီ ဘဝိဿာမိ, အနုသယာ စ မေ သမုဂ္ဃါတံ ဂစ္ဆိဿန္တိ, ကိစ္စကာရီ စ ဘဝိဿာမိ, သတ္ထာ စ မေ ပရိစိဏ္ဏော ဘဝိဿတိ မေတ္တာဝတာယာ’တိ. ဣမေ ခေါ, ဘိက္ခဝေ, ဆ အာနိသံသေ သမ္ပဿမာနေန အလမေဝ ဘိက္ခုနာ သဗ္ဗသင်္ခါရေသု အနောဓိံ ကရိတွာ ဒုက္ခသညံ ဥပဋ္ဌာပေတုန်”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="731" type="center" book="a6">
+အဋ္ဌမံ.
+</Paragraph>

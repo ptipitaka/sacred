@@ -1,0 +1,41 @@
+---
+title: 2.8.2
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a6
+review:
+  current: review
+  updated: '2025-10-20T16:39:25.423310'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:39:25.423310'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="141" book="a6" e="ch" v="16" p="393">
+
+<Paragraph number="776" book="a6">
+“ရာဂဿ, ဘိက္ခဝေ, အဘိညာယ ဆ ဓမ္မာ ဘာဝေတဗ္ဗာ. ကတမေ ဆ? ဗုဒ္ဓါနုဿတိ, ဓမ္မာနုဿတိ, သံဃာနုဿတိ, သီလာနုဿတိ, စာဂါနုဿတိ, ဒေဝတာနုဿတိ. ရာဂဿ, ဘိက္ခဝေ, အဘိညာယ ဣမေ ဆ ဓမ္မာ ဘာဝေတဗ္ဗာ”တိ.
+</Paragraph>
+</Division>
