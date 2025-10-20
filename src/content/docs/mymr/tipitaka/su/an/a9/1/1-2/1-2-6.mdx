@@ -1,0 +1,46 @@
+---
+title: 1.2.6 သညာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: a9
+review:
+  current: review
+  updated: '2025-10-20T17:18:45.529301'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:18:45.529301'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="16" book="a9" e="ch" v="17" p="191">
+
+<Paragraph number="151" book="a9">
+“နဝယိမာ, ဘိက္ခဝေ, သညာ ဘာဝိတာ ဗဟုလီကတာ မဟပ္ဖလာ ဟောန္တိ မဟာနိသံသာ အမတောဂဓာ အမတပရိယောသာနာ. ကတမာ နဝ? အသုဘသညာ, မရဏသညာ, အာဟာရေ ပဋိကူလသညာ, သဗ္ဗလောကေ အနဘိရတသညာ, အနိစ္စသညာ, အနိစ္စေ ဒုက္ခသညာ, ဒုက္ခေ အနတ္တသညာ, ပဟာနသညာ, ဝိရာဂသညာ—  ဣမာ ခေါ, ဘိက္ခဝေ, နဝ သညာ, ဘာဝိတာ ဗဟုလီကတာ မဟပ္ဖလာ ဟောန္တိ မဟာနိသံသာ အမတောဂဓာ အမတပရိယောသာနာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="152" type="center" book="a9">
+ဆဋ္ဌံ.
+</Paragraph>

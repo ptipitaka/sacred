@@ -1,0 +1,50 @@
+---
+title: 2.2.4 ဥပါဒါနက္ခန္ဓသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a9
+review:
+  current: review
+  updated: '2025-10-20T17:18:45.761832'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:18:45.761832'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="66" book="a9" e="ch" v="17" p="251">
+
+<Paragraph number="445" book="a9">
+“ပဉ္စိမေ, ဘိက္ခဝေ, ဥပါဒါနက္ခန္ဓာ. ကတမေ ပဉ္စ? ရူပုပါဒါနက္ခန္ဓော, ဝေဒနုပါဒါနက္ခန္ဓော, သညုပါဒါနက္ခန္ဓော, သင်္ခါရုပါဒါနက္ခန္ဓော, ဝိညာဏုပါဒါနက္ခန္ဓော—  ဣမေ ခေါ, ဘိက္ခဝေ, ပဉ္စုပါဒါနက္ခန္ဓာ.
+</Paragraph>
+
+<Paragraph number="446" book="a9">
+ဣမေသံ ခေါ, ဘိက္ခဝေ, ပဉ္စန္နံ ဥပါဒါနက္ခန္ဓာနံ ပဟာနာယ …ပေ…  ဣမေ စတ္တာရော သတိပဋ္ဌာနာ ဘာဝေတဗ္ဗာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="447" type="center" book="a9">
+စတုတ္ထံ.
+</Paragraph>

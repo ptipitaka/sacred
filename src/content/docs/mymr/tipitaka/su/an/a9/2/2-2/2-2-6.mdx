@@ -1,0 +1,50 @@
+---
+title: 2.2.6 ဂတိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: a9
+review:
+  current: review
+  updated: '2025-10-20T17:18:45.768990'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:18:45.768990'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="68" book="a9" e="ch" v="17" p="251">
+
+<Paragraph number="451" book="a9">
+“ပဉ္စိမာ, ဘိက္ခဝေ, ဂတိယော. ကတမာ ပဉ္စ? နိရယော, တိရစ္ဆာနယောနိ, ပေတ္တိဝိသယော, မနုဿာ, ဒေဝါ—  ဣမာ ခေါ, ဘိက္ခဝေ, ပဉ္စ ဂတိယော.
+</Paragraph>
+
+<Paragraph number="452" book="a9">
+ဣမာသံ ခေါ, ဘိက္ခဝေ, ပဉ္စန္နံ ဂတီနံ ပဟာနာယ …ပေ…  ဣမေ စတ္တာရော သတိပဋ္ဌာနာ ဘာဝေတဗ္ဗာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="453" type="center" book="a9">
+ဆဋ္ဌံ.
+</Paragraph>

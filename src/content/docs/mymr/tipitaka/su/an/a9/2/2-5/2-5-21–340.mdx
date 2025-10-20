@@ -1,0 +1,53 @@
+---
+title: 2.5.21–340
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a9
+review:
+  current: review
+  updated: '2025-10-20T17:18:45.818137'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:18:45.818137'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="113–432" book="a9" e="ch" v="17">
+
+<Paragraph number="491" book="a9">
+“ဒေါသဿ …ပေ…  မောဟဿ…  ကောဓဿ…  ဥပနာဟဿ…  မက္ခဿ…  ပဠာသဿ…  ဣဿာယ…  မစ္ဆရိယဿ…  မာယာယ…  သာဌေယျဿ…  ထမ္ဘဿ…  သာရမ္ဘဿ…  မာနဿ…  အတိမာနဿ…  မဒဿ…  ပမာဒဿ အဘိညာယ …ပေ…  ပရိညာယ…  ပရိက္ခယာယ…  ပဟာနာယ…  ခယာယ…  ဝယာယ…  ဝိရာဂါယ…  နိရောဓာယ…  စာဂါယ…  ပဋိနိဿဂ္ဂါယ …ပေ…  ဣမေ နဝ ဓမ္မာ ဘာဝေတဗ္ဗာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="492" type="center" book="a9">
+ရာဂပေယျာလံ နိဋ္ဌိတံ.
+
+
+
+</Paragraph>
+
+<Paragraph number="493" type="center" book="a9">
+နဝကနိပါတပါဠိ နိဋ္ဌိတာ.
+</Paragraph>

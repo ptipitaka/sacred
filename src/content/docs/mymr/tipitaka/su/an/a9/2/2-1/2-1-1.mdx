@@ -1,0 +1,54 @@
+---
+title: 2.1.1 ခေမသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a9
+review:
+  current: review
+  updated: '2025-10-20T17:18:45.701295'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:18:45.701295'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="52" book="a9" e="ch" v="17" p="248">
+
+<Paragraph number="406" book="a9">
+“‘ခေမံ, ခေမန်’တိ, အာဝုသော, ဝုစ္စတိ. ကိတ္တာဝတာ နု ခေါ, အာဝုသော, ခေမံ ဝုတ္တံ ဘဂဝတာ”တိ?
+</Paragraph>
+
+<Paragraph number="407" book="a9">
+“ဣဓာဝုသော, ဘိက္ခု ဝိဝိစ္စေဝ ကာမေဟိ …ပေ…  ပဌမံ ဈာနံ ဥပသမ္ပဇ္ဇ ဝိဟရတိ. ဧတ္တာဝတာပိ ခေါ, အာဝုသော, ခေမံ ဝုတ္တံ ဘဂဝတာ ပရိယာယေန …ပေ… .
+</Paragraph>
+
+<Paragraph number="408" book="a9">
+ပုန စပရံ, အာဝုသော, ဘိက္ခု သဗ္ဗသော နေဝသညာနာသညာယတနံ သမတိက္ကမ္မ သညာဝေဒယိတနိရောဓံ ဥပသမ္ပဇ္ဇ ဝိဟရတိ, ပညာယ စဿ ဒိသွာ အာသဝါ ပရိက္ခီဏာ ဟောန္တိ. ဧတ္တာဝတာပိ ခေါ, အာဝုသော, ခေမံ ဝုတ္တံ ဘဂဝတာ နိပ္ပရိယာယေနာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="409" type="center" book="a9">
+ပဌမံ.
+</Paragraph>
