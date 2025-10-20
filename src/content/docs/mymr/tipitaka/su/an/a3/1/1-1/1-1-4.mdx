@@ -1,0 +1,50 @@
+---
+title: 1.1.4 အစ္စယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a3
+review:
+  current: review
+  updated: '2025-10-20T16:03:23.785829'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:03:23.785829'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="4" book="a3" e="ch" v="15" p="101">
+
+<Paragraph number="14" book="a3">
+“တီဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဗာလော ဝေဒိတဗ္ဗော. ကတမေဟိ တီဟိ? အစ္စယံ အစ္စယတော န ပဿတိ, အစ္စယံ အစ္စယတော ဒိသွာ ယထာဓမ္မံ နပ္ပဋိကရောတိ, ပရဿ ခေါ ပန အစ္စယံ ဒေသေန္တဿ ယထာဓမ္မံ နပ္ပဋိဂ္ဂဏှာတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, တီဟိ ဓမ္မေဟိ သမန္နာဂတော ဗာလော ဝေဒိတဗ္ဗော.
+</Paragraph>
+
+<Paragraph number="15" book="a3">
+တီဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ပဏ္ဍိတော ဝေဒိတဗ္ဗော. ကတမေဟိ တီဟိ? အစ္စယံ အစ္စယတော ပဿတိ, အစ္စယံ အစ္စယတော ဒိသွာ ယထာဓမ္မံ ပဋိကရောတိ, ပရဿ ခေါ ပန အစ္စယံ ဒေသေန္တဿ ယထာဓမ္မံ ပဋိဂ္ဂဏှာတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, တီဟိ ဓမ္မေဟိ သမန္နာဂတော ပဏ္ဍိတော ဝေဒိတဗ္ဗော. တသ္မာတိဟ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="16" type="center" book="a3">
+စတုတ္ထံ.
+</Paragraph>

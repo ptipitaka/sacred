@@ -1,0 +1,50 @@
+---
+title: 3.3.9 ပဋိစ္ဆန္နသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: a3
+review:
+  current: review
+  updated: '2025-10-20T16:03:24.563622'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:03:24.563622'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="132" book="a3" e="ch" v="15" p="286">
+
+<Paragraph number="1005" book="a3">
+“တီဏိမာနိ, ဘိက္ခဝေ, ပဋိစ္ဆန္နာနိ အာဝဟန္တိ, နော ဝိဝဋာနိ. ကတမာနိ တီဏိ? မာတုဂါမော, ဘိက္ခဝေ, ပဋိစ္ဆန္နော အာဝဟတိ, နော ဝိဝဋော; ဗြာဟ္မဏာနံ, ဘိက္ခဝေ, မန္တာ ပဋိစ္ဆန္နာ အာဝဟန္တိ, နော ဝိဝဋာ; မိစ္ဆာဒိဋ္ဌိ, ဘိက္ခဝေ, ပဋိစ္ဆန္နာ အာဝဟတိ, နော ဝိဝဋာ. ဣမာနိ ခေါ, ဘိက္ခဝေ, တီဏိ ပဋိစ္ဆန္နာနိ အာဝဟန္တိ, နော ဝိဝဋာနိ.
+</Paragraph>
+
+<Paragraph number="1006" book="a3">
+တီဏိမာနိ, ဘိက္ခဝေ, ဝိဝဋာနိ ဝိရောစန္တိ, နော ပဋိစ္ဆန္နာနိ. ကတမာနိ တီဏိ? စန္ဒမဏ္ဍလံ, ဘိက္ခဝေ, ဝိဝဋံ ဝိရောစတိ, နော ပဋိစ္ဆန္နံ; သူရိယမဏ္ဍလံ, ဘိက္ခဝေ, ဝိဝဋံ ဝိရောစတိ, နော ပဋိစ္ဆန္နံ; တထာဂတပ္ပဝေဒိတော ဓမ္မဝိနယော, ဘိက္ခဝေ, ဝိဝဋော ဝိရောစတိ, နော ပဋိစ္ဆန္နော. ဣမာနိ ခေါ, ဘိက္ခဝေ, တီဏိ ဝိဝဋာနိ ဝိရောစန္တိ, နော ပဋိစ္ဆန္နာနီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1007" type="center" book="a3">
+နဝမံ.
+</Paragraph>

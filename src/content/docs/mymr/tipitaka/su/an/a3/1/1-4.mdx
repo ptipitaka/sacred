@@ -1,0 +1,50 @@
+---
+title: 1.4 ဒေဝဒူတဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a3
+review:
+  current: review
+  updated: '2025-10-20T16:03:23.749269'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:03:23.749269'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a3" section="1.4">
+* [1.4.1 သဗြဟ္မကသုတ္တ](1-4/1-4-1)
+* [1.4.2 အာနန္ဒသုတ္တ](1-4/1-4-2)
+* [1.4.3 သာရိပုတ္တသုတ္တ](1-4/1-4-3)
+* [1.4.4 နိဒါနသုတ္တ](1-4/1-4-4)
+* [1.4.5 ဟတ္ထကသုတ္တ](1-4/1-4-5)
+* [1.4.6 ဒေဝဒူတသုတ္တ](1-4/1-4-6)
+* [1.4.7 စတုမဟာရာဇသုတ္တ](1-4/1-4-7)
+* [1.4.8 ဒုတိယစတုမဟာရာဇသုတ္တ](1-4/1-4-8)
+* [1.4.9 သုခုမာလသုတ္တ](1-4/1-4-9)
+* [1.4.10 အာဓိပတေယျသုတ္တ](1-4/1-4-10)
+</TableOfContents>

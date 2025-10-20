@@ -1,0 +1,51 @@
+---
+title: 2.4 သမဏဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a3
+review:
+  current: review
+  updated: '2025-10-20T16:03:24.039120'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:03:24.039120'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a3" section="2.4">
+* [2.4.1 သမဏသုတ္တ](2-4/2-4-1)
+* [2.4.2 ဂဒြဘသုတ္တ](2-4/2-4-2)
+* [2.4.3 ခေတ္တသုတ္တ](2-4/2-4-3)
+* [2.4.4 ဝဇ္ဇိပုတ္တသုတ္တ](2-4/2-4-4)
+* [2.4.5 သေက္ခသုတ္တ](2-4/2-4-5)
+* [2.4.6 ပဌမသိက္ခာသုတ္တ](2-4/2-4-6)
+* [2.4.7 ဒုတိယသိက္ခာသုတ္တ](2-4/2-4-7)
+* [2.4.8 တတိယသိက္ခာသုတ္တ](2-4/2-4-8)
+* [2.4.9 ပဌမသိက္ခတ္တယသုတ္တ](2-4/2-4-9)
+* [2.4.10 ဒုတိယသိက္ခတ္တယသုတ္တ](2-4/2-4-10)
+* [2.4.11 သင်္ကဝါသုတ္တ](2-4/2-4-11)
+</TableOfContents>

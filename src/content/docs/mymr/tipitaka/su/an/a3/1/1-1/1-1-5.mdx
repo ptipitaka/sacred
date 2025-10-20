@@ -1,0 +1,50 @@
+---
+title: 1.1.5 အယောနိသောသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a3
+review:
+  current: review
+  updated: '2025-10-20T16:03:23.790049'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:03:23.790049'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="5" book="a3" e="ch" v="15" p="101">
+
+<Paragraph number="17" book="a3">
+“တီဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဗာလော ဝေဒိတဗ္ဗော. ကတမေဟိ တီဟိ? အယောနိသော ပဉှံ ကတ္တာ ဟောတိ, အယောနိသော ပဉှံ ဝိဿဇ္ဇေတာ ဟောတိ, ပရဿ ခေါ ပန ယောနိသော ပဉှံ ဝိဿဇ္ဇိတံ ပရိမဏ္ဍလေဟိ ပဒဗျဉ္ဇနေဟိ သိလိဋ္ဌေဟိ ဥပဂတေဟိ နာဗ္ဘနုမောဒိတာ ဟောတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, တီဟိ ဓမ္မေဟိ သမန္နာဂတော ဗာလော ဝေဒိတဗ္ဗော.
+</Paragraph>
+
+<Paragraph number="18" book="a3">
+တီဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ပဏ္ဍိတော ဝေဒိတဗ္ဗော. ကတမေဟိ တီဟိ? ယောနိသော ပဉှံ ကတ္တာ ဟောတိ, ယောနိသော ပဉှံ ဝိဿဇ္ဇေတာ ဟောတိ, ပရဿ ခေါ ပန ယောနိသော ပဉှံ ဝိဿဇ္ဇိတံ ပရိမဏ္ဍလေဟိ ပဒဗျဉ္ဇနေဟိ သိလိဋ္ဌေဟိ ဥပဂတေဟိ အဗ္ဘနုမောဒိတာ ဟောတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, တီဟိ ဓမ္မေဟိ သမန္နာဂတော ပဏ္ဍိတော ဝေဒိတဗ္ဗော. တသ္မာတိဟ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="19" type="center" book="a3">
+ပဉ္စမံ.
+</Paragraph>
