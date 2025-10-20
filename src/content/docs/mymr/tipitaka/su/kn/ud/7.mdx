@@ -1,0 +1,50 @@
+---
+title: 7 စူဠဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: ud
+review:
+  current: review
+  updated: '2025-10-20T18:25:08.184009'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:25:08.184009'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ud" section="7">
+* [7.1 ပဌမလကုဏ္ဍကဘဒ္ဒိယသုတ္တ](7/7-1)
+* [7.2 ဒုတိယလကုဏ္ဍကဘဒ္ဒိယသုတ္တ](7/7-2)
+* [7.3 ပဌမသတ္တသုတ္တ](7/7-3)
+* [7.4 ဒုတိယသတ္တသုတ္တ](7/7-4)
+* [7.5 အပရလကုဏ္ဍကဘဒ္ဒိယသုတ္တ](7/7-5)
+* [7.6 တဏှာသင်္ခယသုတ္တ](7/7-6)
+* [7.7 ပပဉ္စခယသုတ္တ](7/7-7)
+* [7.8 ကစ္စာနသုတ္တ](7/7-8)
+* [7.9 ဥဒပါနသုတ္တ](7/7-9)
+* [7.10 ဥတေနသုတ္တ](7/7-10)
+</TableOfContents>

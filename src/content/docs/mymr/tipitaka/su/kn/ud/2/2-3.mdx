@@ -1,0 +1,66 @@
+---
+title: 2.3 ဒဏ္ဍသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: ud
+review:
+  current: review
+  updated: '2025-10-20T18:25:08.246711'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:25:08.246711'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="13" book="ud" e="ch" v="18" p="89">
+
+<Paragraph number="85" book="ud">
+ဧဝံ မေ သုတံ—  ဧကံ သမယံ ဘဂဝါ သာဝတ္ထိယံ ဝိဟရတိ ဇေတဝနေ အနာထပိဏ္ဍိကဿ အာရာမေ. တေန ခေါ ပန သမယေန သမ္ဗဟုလာ ကုမာရကာ အန္တရာ စ သာဝတ္ထိံ အန္တရာ စ ဇေတဝနံ အဟိံ ဒဏ္ဍေန ဟနန္တိ. အထ ခေါ ဘဂဝါ ပုဗ္ဗဏှသမယံ နိဝါသေတွာ ပတ္တစီဝရမာဒါယ သာဝတ္ထိံ ပိဏ္ဍာယ ပါဝိသိ. အဒ္ဒသာ ခေါ ဘဂဝါ သမ္ဗဟုလေ ကုမာရကေ အန္တရာ စ သာဝတ္ထိံ အန္တရာ စ ဇေတဝနံ အဟိံ ဒဏ္ဍေန ဟနန္တေ.
+</Paragraph>
+
+<Paragraph number="86" book="ud">
+အထ ခေါ ဘဂဝါ ဧတမတ္ထံ ဝိဒိတွာ တာယံ ဝေလာယံ ဣမံ ဥဒါနံ ဥဒါနေသိ—
+</Paragraph>
+
+<Paragraph number="87" type="verses" book="ud">
+_“သုခကာမာနိ ဘူတာနိ,_  
+_ယော ဒဏ္ဍေန ဝိဟိံသတိ;_  
+_အတ္တနော သုခမေသာနော,_  
+_ပေစ္စ သော န လဘတေ သုခံ. (15)_  
+
+</Paragraph>
+
+<Paragraph number="88" type="verses" book="ud">
+_သုခကာမာနိ ဘူတာနိ,_  
+_ယော ဒဏ္ဍေန န ဟိံသတိ;_  
+_အတ္တနော သုခမေသာနော,_  
+_ပေစ္စ သော လဘတေ သုခန်”တိ. (16)_  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="89" type="center" book="ud">
+တတိယံ.
+</Paragraph>

@@ -1,0 +1,60 @@
+---
+title: 18ဥဒ် ဥဒါနပါဠိ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ud
+review:
+  current: review
+  updated: '2025-10-20T18:25:08.154917'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:25:08.154917'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+<Paragraph type="center" book="ud">
+[ဟောမေ](/)
+</Paragraph>
+
+<Paragraph type="center" book="ud">
+# 18ဥဒ် ဥဒါနပါဠိ
+</Paragraph>
+
+<Paragraph number="1" type="center" book="ud">
+နမော တဿ ဘဂဝတော အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ.
+
+[ဂေါ တော နေxတ် ပဂေ (1 ဗောဓိဝဂ္ဂ)](1.md)
+
+
+
+</Paragraph>
+
+<TableOfContents book="ud" section="18">
+* [1 ဗောဓိဝဂ္ဂ](1.md)
+* [2 မုစလိန္ဒဝဂ္ဂ](2.md)
+* [3 နန္ဒဝဂ္ဂ](3.md)
+* [4 မေဃိယဝဂ္ဂ](4.md)
+* [5 သောဏဝဂ္ဂ](5.md)
+* [6 ဇစ္စန္ဓဝဂ္ဂ](6.md)
+* [7 စူဠဝဂ္ဂ](7.md)
+* [8 ပါဋလိဂါမိယဝဂ္ဂ](8.md)
+</TableOfContents>
