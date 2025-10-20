@@ -1,0 +1,52 @@
+---
+title: 1.6.1 ဇရာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.261278'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.261278'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="51" book="sn" e="ch" v="18" p="287">
+
+<Paragraph number="288" type="verses" book="sn">
+_“ကိံသု ယာဝ ဇရာ သာဓု,_  
+_ကိံသု သာဓု ပတိဋ္ဌိတံ;_  
+_ကိံသု နရာနံ ရတနံ,_  
+_ကိံသု စောရေဟိ ဒူဟရန်”တိ._  
+
+</Paragraph>
+
+<Paragraph number="289" type="verses" book="sn">
+_“သီလံ ယာဝ ဇရာ သာဓု,_  
+_သဒ္ဓါ သာဓု ပတိဋ္ဌိတာ;_  
+_ပညာ နရာနံ ရတနံ,_  
+_ပုညံ စောရေဟိ ဒူဟရန်”တိ._
+</Paragraph>
+</Division>

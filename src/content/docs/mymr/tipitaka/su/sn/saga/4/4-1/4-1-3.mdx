@@ -1,0 +1,61 @@
+---
+title: 4.1.3 သုဘသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.875394'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.875394'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="139" book="sn" e="ch" v="18" p="300">
+
+<Paragraph number="779" book="sn">
+ဧဝံ မေ သုတံ—  ဧကံ သမယံ ဘဂဝါ ဥရုဝေလာယံ ဝိဟရတိ နဇ္ဇာ နေရဉ္ဇရာယ တီရေ အဇပါလနိဂြေါဓမူလေ ပဌမာဘိသမ္ဗုဒ္ဓေါ. တေန ခေါ ပန သမယေန ဘဂဝါ ရတ္တန္ဓကာရတိမိသာယံ အဗ္ဘောကာသေ နိသိန္နော ဟောတိ, ဒေဝေါ စ ဧကမေကံ ဖုသာယတိ. အထ ခေါ မာရော ပါပိမာ, ဘဂဝတော ဘယံ ဆမ္ဘိတတ္တံ လောမဟံသံ ဥပ္ပါဒေတုကာမော, ယေန ဘဂဝါ တေနုပသင်္ကမိ; ဥပသင်္ကမိတွာ ဘဂဝတော အဝိဒူရေ ဥစ္စာဝစာ ဝဏ္ဏနိဘာ ဥပဒံသေတိ, သုဘာ စေဝ အသုဘာ စ. အထ ခေါ ဘဂဝါ “မာရော အယံ ပါပိမာ” ဣတိ ဝိဒိတွာ မာရံ ပါပိမန္တံ ဂါထာဟိ အဇ္ဈဘာသိ—
+</Paragraph>
+
+<Paragraph number="780" type="verses" book="sn">
+_“သံသရံ ဒီဃမဒ္ဓါနံ,_  
+_ဝဏ္ဏံ ကတွာ သုဘာသုဘံ;_  
+_အလံ တေ တေန ပါပိမ,_  
+_နိဟတော တွမသိ အန္တက._  
+
+</Paragraph>
+
+<Paragraph number="781" type="verses" book="sn">
+_ယေ စ ကာယေန ဝါစာယ,_  
+_မနသာ စ သုသံဝုတာ;_  
+_န တေ မာရဝသာနုဂါ,_  
+_န တေ မာရဿ ဗဒ္ဓဂူ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="782" book="sn">
+အထ ခေါ မာရော …ပေ…  တတ္ထေဝန္တရဓာယီတိ.
+</Paragraph>
+</Division>

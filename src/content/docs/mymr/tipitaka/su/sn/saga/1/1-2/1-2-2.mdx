@@ -1,0 +1,56 @@
+---
+title: 1.2.2 နန္ဒတိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.129574'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.129574'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="12" book="sn" e="ch" v="18" p="281">
+
+<Paragraph number="43" book="sn">
+သာဝတ္ထိနိဒါနံ. ဧကမန္တံ ဌိတာ ခေါ သာ ဒေဝတာ ဘဂဝတော သန္တိကေ ဣမံ ဂါထံ အဘာသိ—
+</Paragraph>
+
+<Paragraph number="44" type="verses" book="sn">
+_“နန္ဒတိ ပုတ္တေဟိ ပုတ္တိမာ,_  
+_ဂေါမာ ဂေါဟိ တထေဝ နန္ဒတိ;_  
+ဥပဓီဟိ နရဿ နန္ဒနာ,_  
+_န ဟိ သော နန္ဒတိ ယော နိရူပဓီ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="45" type="verses" book="sn">
+_“သောစတိ ပုတ္တေဟိ ပုတ္တိမာ,_  
+_ဂေါမာ ဂေါဟိ တထေဝ သောစတိ;_  
+ဥပဓီဟိ နရဿ သောစနာ,_  
+_န ဟိ သော သောစတိ ယော နိရူပဓီ”တိ._
+</Paragraph>
+</Division>

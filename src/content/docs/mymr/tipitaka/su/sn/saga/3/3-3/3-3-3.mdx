@@ -1,0 +1,48 @@
+---
+title: 3.3.3 လောကသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.843940'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.843940'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="134" book="sn" e="ch" v="18" p="299">
+
+<Paragraph number="743" book="sn">
+သာဝတ္ထိနိဒါနံ. ဧကမန္တံ နိသိန္နော ခေါ ရာဇာ ပသေနဒိ ကောသလော ဘဂဝန္တံ ဧတဒဝေါစ—  “ကတိ နု ခေါ, ဘန္တေ, လောကဿ ဓမ္မာ ဥပ္ပဇ္ဇမာနာ ဥပ္ပဇ္ဇန္တိ အဟိတာယ ဒုက္ခာယ အဖာသုဝိဟာရာယာ”တိ? “တယော ခေါ, မဟာရာဇ, လောကဿ ဓမ္မာ ဥပ္ပဇ္ဇမာနာ ဥပ္ပဇ္ဇန္တိ အဟိတာယ ဒုက္ခာယ အဖာသုဝိဟာရာယ. ကတမေ တယော? လောဘော ခေါ, မဟာရာဇ, လောကဿ ဓမ္မော, ဥပ္ပဇ္ဇမာနော ဥပ္ပဇ္ဇတိ အဟိတာယ ဒုက္ခာယ အဖာသုဝိဟာရာယ. ဒေါသော ခေါ, မဟာရာဇ, လောကဿ ဓမ္မော, ဥပ္ပဇ္ဇမာနော ဥပ္ပဇ္ဇတိ အဟိတာယ ဒုက္ခာယ အဖာသုဝိဟာရာယ. မောဟော ခေါ, မဟာရာဇ, လောကဿ ဓမ္မော, ဥပ္ပဇ္ဇမာနော ဥပ္ပဇ္ဇတိ အဟိတာယ ဒုက္ခာယ အဖာသုဝိဟာရာယ. ဣမေ ခေါ, မဟာရာဇ, တယော လောကဿ ဓမ္မာ ဥပ္ပဇ္ဇမာနာ ဥပ္ပဇ္ဇန္တိ အဟိတာယ ဒုက္ခာယ အဖာသုဝိဟာရာယာ”တိ. ဣဒမဝေါစ …ပေ…
+</Paragraph>
+
+<Paragraph number="744" type="verses" book="sn">
+_“လောဘော ဒေါသော စ မောဟော စ,_  
+_ပုရိသံ ပါပစေတသံ;_  
+_ဟိံသန္တိ အတ္တသမ္ဘူတာ,_  
+_တစသာရံဝ သမ္ဖလန်”တိ._
+</Paragraph>
+</Division>

@@ -1,0 +1,50 @@
+---
+title: 11.2 ဒုတိယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.410538'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.410538'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="11.2">
+* [11.2.1 ဝတပဒသုတ္တ](11-2/11-2-1)
+* [11.2.2 သက္ကနာမသုတ္တ](11-2/11-2-2)
+* [11.2.3 မဟာလိသုတ္တ](11-2/11-2-3)
+* [11.2.4 ဒလိဒ္ဒသုတ္တ](11-2/11-2-4)
+* [11.2.5 ရာမဏေယျကသုတ္တ](11-2/11-2-5)
+* [11.2.6 ယဇမာနသုတ္တ](11-2/11-2-6)
+* [11.2.7 ဗုဒ္ဓဝန္ဒနာသုတ္တ](11-2/11-2-7)
+* [11.2.8 ဂဟဋ္ဌဝန္ဒနာသုတ္တ](11-2/11-2-8)
+* [11.2.9 သတ္ထာရဝန္ဒနာသုတ္တ](11-2/11-2-9)
+* [11.2.10 သံဃဝန္ဒနာသုတ္တ](11-2/11-2-10)
+</TableOfContents>

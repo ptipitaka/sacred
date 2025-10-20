@@ -1,0 +1,60 @@
+---
+title: 1.5.7 ဝနရောပသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.251071'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.251071'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="47" book="sn" e="ch" v="18" p="286">
+
+<Paragraph number="255" type="verses" book="sn">
+_“ကေသံ ဒိဝါ စ ရတ္တော စ,_  
+_သဒါ ပုညံ ပဝဍ္ဎတိ;_  
+_ဓမ္မဋ္ဌာ သီလသမ္ပန္နာ,_  
+_ကေ ဇနာ သဂ္ဂဂါမိနော”တိ._  
+
+</Paragraph>
+
+<Paragraph number="256" type="verses" book="sn">
+_“အာရာမရောပါ ဝနရောပါ,_  
+_ယေ ဇနာ သေတုကာရကာ;_  
+_ပပဉ္စ ဥဒပါနဉ္စ,_  
+_ယေ ဒဒန္တိ ဥပဿယံ._  
+
+</Paragraph>
+
+<Paragraph number="257" type="verses" book="sn">
+_တေသံ ဒိဝါ စ ရတ္တော စ,_  
+_သဒါ ပုညံ ပဝဍ္ဎတိ;_  
+_ဓမ္မဋ္ဌာ သီလသမ္ပန္နာ,_  
+_တေ ဇနာ သဂ္ဂဂါမိနော”တိ._
+</Paragraph>
+</Division>

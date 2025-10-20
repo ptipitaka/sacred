@@ -1,0 +1,64 @@
+---
+title: 2.2.5 စန္ဒနသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.590641'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.590641'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="96" book="sn" e="ch" v="18" p="295">
+
+<Paragraph number="442" book="sn">
+ဧကမန္တံ ဌိတော ခေါ စန္ဒနော ဒေဝပုတ္တော ဘဂဝန္တံ ဂါထာယ အဇ္ဈဘာသိ—
+</Paragraph>
+
+<Paragraph number="443" type="verses" book="sn">
+_“ကထံသု တရတိ ဩဃံ,_  
+_ရတ္တိန္ဒိဝမတန္ဒိတော;_  
+_အပ္ပတိဋ္ဌေ အနာလမ္ဗေ,_  
+_ကော ဂမ္ဘီရေ န သီဒတီ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="444" type="verses" book="sn">
+_“သဗ္ဗဒါ သီလသမ္ပန္နော,_  
+_ပညဝါ သုသမာဟိတော;_  
+_အာရဒ္ဓဝီရိယော ပဟိတတ္တော,_  
+_ဩဃံ တရတိ ဒုတ္တရံ._  
+
+</Paragraph>
+
+<Paragraph number="445" type="verses" book="sn">
+_ဝိရတော ကာမသညာယ,_  
+_ရူပသံယောဇနာတိဂေါ;_  
+_နန္ဒီရာဂပရိက္ခီဏော,_  
+_သော ဂမ္ဘီရေ န သီဒတီ”တိ._
+</Paragraph>
+</Division>

@@ -1,0 +1,68 @@
+---
+title: 1.5.6 အစ္ဆရာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.247513'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.247513'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="46" book="sn" e="ch" v="18" p="286">
+
+<Paragraph number="251" type="verses" book="sn">
+_“အစ္ဆရာဂဏသင်္ဃုဋ္ဌံ,_  
+_ပိသာစဂဏသေဝိတံ;_  
+_ဝနန္တံ မောဟနံ နာမ,_  
+_ကထံ ယာတြာ ဘဝိဿတီ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="252" type="verses" book="sn">
+_“ဥဇုကော နာမ သော မဂ္ဂေါ,_  
+_အဘယာ နာမ သာ ဒိသာ;_  
+_ရထော အကူဇနော နာမ,_  
+_ဓမ္မစက္ကေဟိ သံယုတော._  
+
+</Paragraph>
+
+<Paragraph number="253" type="verses" book="sn">
+_ဟိရီ တဿ အပါလမ္ဗော,_  
+_သတျဿ ပရိဝါရဏံ;_  
+_ဓမ္မာဟံ သာရထိံ ဗြူမိ,_  
+_သမ္မာဒိဋ္ဌိပုရေဇဝံ._  
+
+</Paragraph>
+
+<Paragraph number="254" type="verses" book="sn">
+_ယဿ ဧတာဒိသံ ယာနံ,_  
+ဣတ္ထိယာ ပုရိသဿ ဝါ;_  
+_သ ဝေ ဧတေန ယာနေန,_  
+_နိဗ္ဗာနဿေဝ သန္တိကေ”တိ._
+</Paragraph>
+</Division>

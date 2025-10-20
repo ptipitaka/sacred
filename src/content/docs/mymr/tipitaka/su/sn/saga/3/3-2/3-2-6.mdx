@@ -1,0 +1,60 @@
+---
+title: 3.2.6 မလ္လိကာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.822545'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.822545'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="127" book="sn" e="ch" v="18" p="298">
+
+<Paragraph number="672" book="sn">
+သာဝတ္ထိနိဒါနံ. အထ ခေါ ရာဇာ ပသေနဒိ ကောသလော ယေန ဘဂဝါ တေနုပသင်္ကမိ; ဥပသင်္ကမိတွာ ဘဂဝန္တံ အဘိဝါဒေတွာ ဧကမန္တံ နိသီဒိ. အထ ခေါ အညတရော ပုရိသော ယေန ရာဇာ ပသေနဒိ ကောသလော တေနုပသင်္ကမိ; ဥပသင်္ကမိတွာ ရညော ပသေနဒိဿ ကောသလဿ ဥပကဏ္ဏကေ အာရောစေသိ—  “မလ္လိကာ, ဒေဝ, ဒေဝီ ဓီတရံ ဝိဇာတာ”တိ. ဧဝံ ဝုတ္တေ, ရာဇာ ပသေနဒိ ကောသလော အနတ္တမနော အဟောသိ.
+</Paragraph>
+
+<Paragraph number="673" book="sn">
+အထ ခေါ ဘဂဝါ ရာဇာနံ ပသေနဒိံ ကောသလံ အနတ္တမနတံ ဝိဒိတွာ တာယံ ဝေလာယံ ဣမာ ဂါထာယော အဘာသိ—
+</Paragraph>
+
+<Paragraph number="674" type="verses" book="sn">
+_“ဣတ္ထီပိ ဟိ ဧကစ္စိယာ,_  
+_သေယျာ ပေါသ ဇနာဓိပ;_  
+_မေဓာဝိနီ သီလဝတီ,_  
+_သဿုဒေဝါ ပတိဗ္ဗတာ._  
+
+</Paragraph>
+
+<Paragraph number="675" type="verses" book="sn">
+_တဿာ ယော ဇာယတိ ပေါသော,_  
+_သူရော ဟောတိ ဒိသမ္ပတိ;_  
+_တာဒိသာ သုဘဂိယာ ပုတ္တော,_  
+_ရဇ္ဇမ္ပိ အနုသာသတီ”တိ._
+</Paragraph>
+</Division>

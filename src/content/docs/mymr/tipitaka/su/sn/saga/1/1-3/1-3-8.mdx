@@ -1,0 +1,62 @@
+---
+title: 1.3.8 မဟဒ္ဓနသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.184879'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.184879'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="28" book="sn" e="ch" v="18" p="283">
+
+<Paragraph number="117" type="verses" book="sn">
+_“မဟဒ္ဓနာ မဟာဘောဂါ,_  
+_ရဋ္ဌဝန္တောပိ ခတ္တိယာ;_  
+_အညမညာဘိဂိဇ္ဈန္တိ,_  
+_ကာမေသု အနလင်္ကတာ._  
+
+</Paragraph>
+
+<Paragraph number="118" type="verses" book="sn">
+_တေသု ဥဿုက္ကဇာတေသု,_  
+_ဘဝသောတာနုသာရိသု;_  
+_ကေဓ တဏှံ ပဇဟိံသု,_  
+_ကေ လောကသ္မိံ အနုဿုကာ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="119" type="verses" book="sn">
+_“ဟိတွာ အဂါရံ ပဗ္ဗဇိတာ,_  
+_ဟိတွာ ပုတ္တံ ပသုံ ပိယံ;_  
+_ဟိတွာ ရာဂဉ္စ ဒေါသဉ္စ,_  
+_အဝိဇ္ဇဉ္စ ဝိရာဇိယ;_  
+_ခီဏာသဝါ အရဟန္တော,_  
+_တေ လောကသ္မိံ အနုဿုကာ”တိ._
+</Paragraph>
+</Division>

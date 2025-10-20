@@ -1,0 +1,76 @@
+---
+title: 1.2.9 ကုဋိကာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.152373'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.152373'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="19" book="sn" e="ch" v="18" p="282">
+
+<Paragraph number="60" type="verses" book="sn">
+_“ကစ္စိ တေ ကုဋိကာ နတ္ထိ,_  
+_ကစ္စိ နတ္ထိ ကုလာဝကာ;_  
+_ကစ္စိ သန္တာနကာ နတ္ထိ,_  
+_ကစ္စိ မုတ္တောသိ ဗန္ဓနာ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="61" type="verses" book="sn">
+_“တဂ္ဃ မေ ကုဋိကာ နတ္ထိ,_  
+_တဂ္ဃ နတ္ထိ ကုလာဝကာ;_  
+_တဂ္ဃ သန္တာနကာ နတ္ထိ,_  
+_တဂ္ဃ မုတ္တောမှိ ဗန္ဓနာ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="62" type="verses" book="sn">
+_“ကိန္တာဟံ ကုဋိကံ ဗြူမိ,_  
+_ကိံ တေ ဗြူမိ ကုလာဝကံ;_  
+_ကိံ တေ သန္တာနကံ ဗြူမိ,_  
+_ကိန္တာဟံ ဗြူမိ ဗန္ဓနန်”တိ._  
+
+</Paragraph>
+
+<Paragraph number="63" type="verses" book="sn">
+_“မာတရံ ကုဋိကံ ဗြူသိ,_  
+_ဘရိယံ ဗြူသိ ကုလာဝကံ;_  
+_ပုတ္တေ သန္တာနကေ ဗြူသိ,_  
+_တဏှံ မေ ဗြူသိ ဗန္ဓနန်”တိ._  
+
+</Paragraph>
+
+<Paragraph number="64" type="verses" book="sn">
+_“သာဟု တေ ကုဋိကာ နတ္ထိ,_  
+_သာဟု နတ္ထိ ကုလာဝကာ;_  
+_သာဟု သန္တာနကာ နတ္ထိ,_  
+_သာဟု မုတ္တောသိ ဗန္ဓနာ”တိ._
+</Paragraph>
+</Division>

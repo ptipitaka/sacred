@@ -1,0 +1,48 @@
+---
+title: 3.1.3 ဇရာမရဏသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.778262'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.778262'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="114" book="sn" e="ch" v="18" p="297">
+
+<Paragraph number="594" book="sn">
+သာဝတ္ထိနိဒါနံ. ဧကမန္တံ နိသိန္နော ခေါ ရာဇာ ပသေနဒိ ကောသလော ဘဂဝန္တံ ဧတဒဝေါစ—  “အတ္ထိ နု ခေါ, ဘန္တေ, ဇာတဿ အညတြ ဇရာမရဏာ”တိ? “နတ္ထိ ခေါ, မဟာရာဇ, ဇာတဿ အညတြ ဇရာမရဏာ. ယေပိ တေ, မဟာရာဇ, ခတ္တိယမဟာသာလာ အဍ္ဎာ မဟဒ္ဓနာ မဟာဘောဂါ ပဟူတဇာတရူပရဇတာ ပဟူတဝိတ္တူပကရဏာ ပဟူတဓနဓညာ, တေသမ္ပိ ဇာတာနံ နတ္ထိ အညတြ ဇရာမရဏာ. ယေပိ တေ, မဟာရာဇ, ဗြာဟ္မဏမဟာသာလာ …ပေ…  ဂဟပတိမဟာသာလာ အဍ္ဎာ မဟဒ္ဓနာ မဟာဘောဂါ ပဟူတဇာတရူပရဇတာ ပဟူတဝိတ္တူပကရဏာ ပဟူတဓနဓညာ, တေသမ္ပိ ဇာတာနံ နတ္ထိ အညတြ ဇရာမရဏာ. ယေပိ တေ, မဟာရာဇ, ဘိက္ခူ အရဟန္တော ခီဏာသဝါ ဝုသိတဝန္တော ကတကရဏီယာ ဩဟိတဘာရာ အနုပ္ပတ္တသဒတ္ထာ ပရိက္ခီဏဘဝသံယောဇနာ သမ္မဒညာဝိမုတ္တာ, တေသမ္ပာယံ ကာယော ဘေဒနဓမ္မော နိက္ခေပနဓမ္မော”တိ. ဣဒမဝေါစ …ပေ…
+</Paragraph>
+
+<Paragraph number="595" type="verses" book="sn">
+_“ဇီရန္တိ ဝေ ရာဇရထာ သုစိတ္တာ,_  
+_အထော သရီရမ္ပိ ဇရံ ဥပေတိ;_  
+_သတဉ္စ ဓမ္မော န ဇရံ ဥပေတိ,_  
+_သန္တော ဟဝေ သဗ္ဘိ ပဝေဒယန္တီ”တိ._
+</Paragraph>
+</Division>

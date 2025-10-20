@@ -1,0 +1,66 @@
+---
+title: 2.1.5 ဒါမလိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.548605'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.548605'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="86" book="sn" e="ch" v="18" p="294">
+
+<Paragraph number="383" book="sn">
+သာဝတ္ထိနိဒါနံ. အထ ခေါ ဒါမလိ ဒေဝပုတ္တော အဘိက္ကန္တာယ ရတ္တိယာ အဘိက္ကန္တဝဏ္ဏော ကေဝလကပ္ပံ ဇေတဝနံ ဩဘာသေတွာ ယေန ဘဂဝါ တေနုပသင်္ကမိ; ဥပသင်္ကမိတွာ ဘဂဝန္တံ အဘိဝါဒေတွာ ဧကမန္တံ အဋ္ဌာသိ. ဧကမန္တံ ဌိတော ခေါ ဒါမလိ ဒေဝပုတ္တော ဘဂဝတော သန္တိကေ ဣမံ ဂါထံ အဘာသိ—
+</Paragraph>
+
+<Paragraph number="384" type="verses" book="sn">
+_“ကရဏီယမေတံ ဗြာဟ္မဏေန,_  
+_ပဓာနံ အကိလာသုနာ;_  
+_ကာမာနံ ဝိပ္ပဟာနေန,_  
+_န တေနာသီသတေ ဘဝန်”တိ._  
+
+</Paragraph>
+
+<Paragraph number="385" type="verses" book="sn">
+_“နတ္ထိ ကိစ္စံ ဗြာဟ္မဏဿ, __(ဒါမလီတိ ဘဂဝါ)___  
+_ကတကိစ္စော ဟိ ဗြာဟ္မဏော;_  
+_ယာဝ န ဂါဓံ လဘတိ နဒီသု,_  
+_အာယူဟတိ သဗ္ဗဂတ္တေဘိ ဇန္တု;_  
+_ဂါဓဉ္စ လဒ္ဓါန ထလေ ဌိတော ယော,_  
+_နာယူဟတီ ပါရဂတော ဟိ သောဝ._  
+
+</Paragraph>
+
+<Paragraph number="386" type="verses" book="sn">
+_ဧသူပမာ ဒါမလိ ဗြာဟ္မဏဿ,_  
+_ခီဏာသဝဿ နိပကဿ ဈာယိနော;_  
+_ပပ္ပုယျ ဇာတိမရဏဿ အန္တံ,_  
+_နာယူဟတီ ပါရဂတော ဟိ သော”တိ._
+</Paragraph>
+</Division>

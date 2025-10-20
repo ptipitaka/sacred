@@ -1,0 +1,56 @@
+---
+title: 2.3.7 နန္ဒသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.748102'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.748102'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="108" book="sn" e="ch" v="18" p="296">
+
+<Paragraph number="535" book="sn">
+ဧကမန္တံ ဌိတော ခေါ နန္ဒော ဒေဝပုတ္တော ဘဂဝတော သန္တိကေ ဣမံ ဂါထံ အဘာသိ—
+</Paragraph>
+
+<Paragraph number="536" type="verses" book="sn">
+_“အစ္စေန္တိ ကာလာ တရယန္တိ ရတ္တိယော,_  
+_ဝယောဂုဏာ အနုပုဗ္ဗံ ဇဟန္တိ;_  
+_ဧတံ ဘယံ မရဏေ ပေက္ခမာနော,_  
+_ပုညာနိ ကယိရာထ သုခါဝဟာနီ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="537" type="verses" book="sn">
+_“အစ္စေန္တိ ကာလာ တရယန္တိ ရတ္တိယော,_  
+_ဝယောဂုဏာ အနုပုဗ္ဗံ ဇဟန္တိ;_  
+_ဧတံ ဘယံ မရဏေ ပေက္ခမာနော,_  
+_လောကာမိသံ ပဇဟေ သန္တိပေက္ခော”တိ._
+</Paragraph>
+</Division>

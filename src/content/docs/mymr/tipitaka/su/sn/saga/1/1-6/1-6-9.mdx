@@ -1,0 +1,52 @@
+---
+title: 1.6.9 ဒုတိယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.291682'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.291682'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="59" book="sn" e="ch" v="18" p="288">
+
+<Paragraph number="304" type="verses" book="sn">
+_“ကိံသု ဒုတိယာ ပုရိသဿ ဟောတိ,_  
+_ကိံသု စေနံ ပသာသတိ;_  
+_ကိဿ စာဘိရတော မစ္စော,_  
+_သဗ္ဗဒုက္ခာ ပမုစ္စတီ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="305" type="verses" book="sn">
+_“သဒ္ဓါ ဒုတိယာ ပုရိသဿ ဟောတိ,_  
+_ပညာ စေနံ ပသာသတိ;_  
+_နိဗ္ဗာနာဘိရတော မစ္စော,_  
+_သဗ္ဗဒုက္ခာ ပမုစ္စတီ”တိ._
+</Paragraph>
+</Division>

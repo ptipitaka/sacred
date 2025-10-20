@@ -1,0 +1,53 @@
+---
+title: 9.1.5 အာနန္ဒသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:57.273683'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:57.273683'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="225" book="sn" e="ch" v="18" p="312">
+
+<Paragraph number="1399" book="sn">
+ဧကံ သမယံ အာယသ္မာ အာနန္ဒော ကောသလေသု ဝိဟရတိ အညတရသ္မိံ ဝနသဏ္ဍေ. တေန ခေါ ပန သမယေန အာယသ္မာ အာနန္ဒော အတိဝေလံ ဂိဟိသညတ္တိဗဟုလော ဝိဟရတိ. အထ ခေါ ယာ တသ္မိံ ဝနသဏ္ဍေ အဓိဝတ္ထာ ဒေဝတာ အာယသ္မတော အာနန္ဒဿ အနုကမ္ပိကာ အတ္ထကာမာ အာယသ္မန္တံ အာနန္ဒံ သံဝေဇေတုကာမာ ယေနာယသ္မာ အာနန္ဒော တေနုပသင်္ကမိ; ဥပသင်္ကမိတွာ အာယသ္မန္တံ အာနန္ဒံ ဂါထာယ အဇ္ဈဘာသိ—
+</Paragraph>
+
+<Paragraph number="1400" type="verses" book="sn">
+_“ရုက္ခမူလဂဟနံ ပသက္ကိယ,_  
+_နိဗ္ဗာနံ ဟဒယသ္မိံ ဩပိယ;_  
+_ဈာယ ဂေါတမ မာ ပမာဒေါ,_  
+_ကိံ တေ ဗိဠိဗိဠိကာ ကရိဿတီ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="1401" book="sn">
+အထ ခေါ အာယသ္မာ အာနန္ဒော တာယ ဒေဝတာယ သံဝေဇိတော သံဝေဂမာပါဒီတိ.
+</Paragraph>
+</Division>

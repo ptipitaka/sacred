@@ -1,0 +1,54 @@
+---
+title: 1.8.5 ဘီတာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.346153'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.346153'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="75" book="sn" e="ch" v="18" p="290">
+
+<Paragraph number="344" type="verses" book="sn">
+_“ကိံသူဓ ဘီတာ ဇနတာ အနေကာ,_  
+_မဂ္ဂေါ စနေကာယတနပ္ပဝုတ္တော;_  
+_ပုစ္ဆာမိ တံ ဂေါတမ ဘူရိပည,_  
+_ကိသ္မိံ ဌိတော ပရလောကံ န ဘာယေ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="345" type="verses" book="sn">
+_“ဝါစံ မနဉ္စ ပဏိဓာယ သမ္မာ,_  
+_ကာယေန ပါပါနိ အကုဗ္ဗမာနော;_  
+_ဗဟွန္နပါနံ ဃရမာဝသန္တော,_  
+_သဒ္ဓေါ မုဒူ သံဝိဘာဂီ ဝဒညူ;_  
+_ဧတေသု ဓမ္မေသု ဌိတော စတူသု,_  
+_ဓမ္မေ ဌိတော ပရလောကံ န ဘာယေ”တိ._
+</Paragraph>
+</Division>

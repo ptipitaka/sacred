@@ -1,0 +1,60 @@
+---
+title: 1.5.3 အန္နသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.237929'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.237929'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="43" book="sn" e="ch" v="18" p="286">
+
+<Paragraph number="246" type="verses" book="sn">
+_“အန္နမေဝါဘိနန္ဒန္တိ,_  
+ဥဘယေ ဒေဝမာနုသာ;_  
+_အထ ကော နာမ သော ယက္ခော,_  
+_ယံ အန္နံ နာဘိနန္ဒတီ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="247" type="verses" book="sn">
+_“ယေ နံ ဒဒန္တိ သဒ္ဓါယ,_  
+_ဝိပ္ပသန္နေန စေတသာ;_  
+_တမေဝ အန္နံ ဘဇတိ,_  
+_အသ္မိံ လောကေ ပရမှိ စ._  
+
+</Paragraph>
+
+<Paragraph number="248" type="verses" book="sn">
+_တသ္မာ ဝိနေယျ မစ္ဆေရံ,_  
+_ဒဇ္ဇာ ဒါနံ မလာဘိဘူ;_  
+_ပုညာနိ ပရလောကသ္မိံ,_  
+_ပတိဋ္ဌာ ဟောန္တိ ပါဏိနန်”တိ._
+</Paragraph>
+</Division>

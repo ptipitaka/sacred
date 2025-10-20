@@ -1,0 +1,52 @@
+---
+title: 1.7.7 ဥဍ္ဍိတသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T14:56:56.315166'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:56:56.315166'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="67" book="sn" e="ch" v="18" p="289">
+
+<Paragraph number="323" type="verses" book="sn">
+_“ကေနဿု ဥဍ္ဍိတော လောကော,_  
+_ကေနဿု ပရိဝါရိတော;_  
+_ကေနဿု ပိဟိတော လောကော,_  
+_ကိသ္မိံ လောကော ပတိဋ္ဌိတော”တိ._  
+
+</Paragraph>
+
+<Paragraph number="324" type="verses" book="sn">
+_“တဏှာယ ဥဍ္ဍိတော လောကော,_  
+_ဇရာယ ပရိဝါရိတော;_  
+_မစ္စုနာ ပိဟိတော လောကော,_  
+_ဒုက္ခေ လောကော ပတိဋ္ဌိတော”တိ._
+</Paragraph>
+</Division>
