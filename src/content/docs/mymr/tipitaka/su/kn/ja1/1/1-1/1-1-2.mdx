@@ -1,0 +1,50 @@
+---
+title: 1.1.2 ဝဏ္ဏုပထဇာတက
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:22.832765'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:22.832765'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="2" book="ja1" e="ch" v="22" p="1">
+
+<Paragraph number="4" type="verses" book="ja1">
+_“အကိလာသုနော ဝဏ္ဏုပထေ ခဏန္တာ,_  
+ဥဒင်္ဂဏေ တတ္ထ ပပံ အဝိန္ဒုံ;_  
+_ဧဝံ မုနီ ဝိရိယဗလူပပန္နော,_  
+_အကိလာသု ဝိန္ဒေ ဟဒယဿ သန္တိန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="5" type="center" book="ja1">
+ဝဏ္ဏုပထဇာတကံ ဒုတိယံ.
+</Paragraph>

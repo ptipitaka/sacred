@@ -1,0 +1,50 @@
+---
+title: 4.2 ပုစိမန္ဒဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:25.513047'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:25.513047'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ja1" section="4.2">
+* [4.2.1 ပုစိမန္ဒဇာတက](4-2/4-2-1)
+* [4.2.2 ကဿပမန္ဒိယဇာတက](4-2/4-2-2)
+* [4.2.3 ခန္တီဝါဒီဇာတက](4-2/4-2-3)
+* [4.2.4 လောဟကုမ္ဘိဇာတက](4-2/4-2-4)
+* [4.2.5 သဗ္ဗမံသလာဘဇာတက](4-2/4-2-5)
+* [4.2.6 သသပဏ္ဍိတဇာတက](4-2/4-2-6)
+* [4.2.7 မတရောဒနဇာတက](4-2/4-2-7)
+* [4.2.8 ကဏဝေရဇာတက](4-2/4-2-8)
+* [4.2.9 တိတ္တိရဇာတက](4-2/4-2-9)
+* [4.2.10 သုစ္စဇဇာတက](4-2/4-2-10)
+</TableOfContents>

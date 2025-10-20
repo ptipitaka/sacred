@@ -1,0 +1,61 @@
+---
+title: 2.9.9 ဟရိတမဏ္ဍူကဇာတက
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:25.161456'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:25.161456'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="177" book="ja1" e="ch" v="22" p="66">
+
+<Paragraph number="626" type="verses" book="ja1">
+_“အာသီဝိသမ္ပိ မံ သန္တံ,_  
+_ပဝိဋ္ဌံ ကုမိနာမုခံ;_  
+_ရုစ္စတေ ဟရိတာမာတာ,_  
+_ယံ မံ ခါဒန္တိ မစ္ဆကာ”._  
+
+</Paragraph>
+
+</Division>
+<Division number="178" book="ja1" e="ch" v="22" p="66">
+
+<Paragraph number="627" type="verses" book="ja1">
+_“ဝိလုမ္ပတေဝ ပုရိသော,_  
+_ယာဝဿ ဥပကပ္ပတိ;_  
+_ယဒါ စညေ ဝိလုမ္ပန္တိ,_  
+_သော ဝိလုတ္တော ဝိလုမ္ပတီ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="628" type="center" book="ja1">
+ဟရိတမဏ္ဍူကဇာတကံ နဝမံ.
+</Paragraph>

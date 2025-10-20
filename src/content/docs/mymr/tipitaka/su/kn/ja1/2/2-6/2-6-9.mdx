@@ -1,0 +1,61 @@
+---
+title: 2.6.9 ကုက္ကုဋဇာတက
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:24.989184'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:24.989184'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="117" book="ja1" e="ch" v="22" p="56">
+
+<Paragraph number="530" type="verses" book="ja1">
+_“ဒိဋ္ဌာ မယာ ဝနေ ရုက္ခာ,_  
+_အဿကဏ္ဏာ ဝိဘီဋကာ;_  
+_န တာနိ ဧဝံ သက္ကန္တိ,_  
+_ယထာ တွံ ရုက္ခ သက္ကသိ”._  
+
+</Paragraph>
+
+</Division>
+<Division number="118" book="ja1" e="ch" v="22" p="56">
+
+<Paragraph number="531" type="verses" book="ja1">
+_“ပုရာဏကုက္ကုဋော အယံ,_  
+_ဘေတွာ ပဉ္ဇရမာဂတော;_  
+_ကုသလော ဝါဠပါသာနံ,_  
+_အပက္ကမတိ ဘာသတီ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="532" type="center" book="ja1">
+ကုက္ကုဋဇာတကံ နဝမံ.
+</Paragraph>

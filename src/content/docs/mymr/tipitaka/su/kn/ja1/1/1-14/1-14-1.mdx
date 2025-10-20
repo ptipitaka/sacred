@@ -1,0 +1,50 @@
+---
+title: 1.14.1 အသမ္ပဒါနဇာတက
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:23.078842'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:23.078842'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="131" book="ja1" e="ch" v="22" p="30">
+
+<Paragraph number="291" type="verses" book="ja1">
+_“အသမ္ပဒါနေနိတရီတရဿ,_  
+_ဗာလဿ မိတ္တာနိ ကလီ ဘဝန္တိ;_  
+_တသ္မာ ဟရာမိ ဘုသံ အဍ္ဎမာနံ,_  
+_မာ မေ မိတ္တိ ဇီယိတ္ထ သဿတာယန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="292" type="center" book="ja1">
+အသမ္ပဒါနဇာတကံ ပဌမံ.
+</Paragraph>

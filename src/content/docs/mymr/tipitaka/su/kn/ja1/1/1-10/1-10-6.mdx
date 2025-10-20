@@ -1,0 +1,50 @@
+---
+title: 1.10.6 တေလပတ္တဇာတက
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:22.911076'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:22.911076'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="96" book="ja1" e="ch" v="22" p="22">
+
+<Paragraph number="212" type="verses" book="ja1">
+_“သမတိတ္တိကံ အနဝသေကံ,_  
+_တေလပတ္တံ ယထာ ပရိဟရေယျ;_  
+_ဧဝံ သစိတ္တမနုရက္ခေ,_  
+_ပတ္ထယာနော ဒိသံ အဂတပုဗ္ဗန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="213" type="center" book="ja1">
+တေလပတ္တဇာတကံ ဆဋ္ဌံ.
+</Paragraph>

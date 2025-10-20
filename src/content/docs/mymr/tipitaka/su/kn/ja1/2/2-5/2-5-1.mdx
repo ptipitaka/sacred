@@ -1,0 +1,61 @@
+---
+title: 2.5.1 ရုဟကဇာတက
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:24.866512'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:24.866512'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="81" book="ja1" e="ch" v="22" p="50">
+
+<Paragraph number="470" type="verses" book="ja1">
+_“အပိ ရုဟက ဆိန္နာပိ,_  
+_ဇိယာ သန္ဓီယတေ ပုန;_  
+_သန္ဓီယဿု ပုရာဏိယာ,_  
+_မာ ကောဓဿ ဝသံ ဂမိ”._  
+
+</Paragraph>
+
+</Division>
+<Division number="82" book="ja1" e="ch" v="22" p="50">
+
+<Paragraph number="471" type="verses" book="ja1">
+_“ဝိဇ္ဇမာနေသု ဝါကေသု,_  
+_ဝိဇ္ဇမာနေသု ကာရိသု;_  
+_အညံ ဇိယံ ကရိဿာမိ,_  
+_အလညေဝ ပုရာဏိယာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="472" type="center" book="ja1">
+ရုဟကဇာတကံ ပဌမံ.
+</Paragraph>

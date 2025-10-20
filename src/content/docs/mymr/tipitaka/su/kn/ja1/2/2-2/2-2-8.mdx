@@ -1,0 +1,61 @@
+---
+title: 2.2.8 သကုဏဂ္ဃိဇာတက
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:24.642376'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:24.642376'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="35" book="ja1" e="ch" v="22" p="42">
+
+<Paragraph number="395" type="verses" book="ja1">
+_“သေနော ဗလသာ ပတမာနော,_  
+_လာပံ ဂေါစရဌာယိနံ;_  
+_သဟသာ အဇ္ဈပ္ပတ္တောဝ,_  
+_မရဏံ တေနုပါဂမိ._  
+
+</Paragraph>
+
+</Division>
+<Division number="36" book="ja1" e="ch" v="22" p="42">
+
+<Paragraph number="396" type="verses" book="ja1">
+_သောဟံ နယေန သမ္ပန္နော,_  
+_ပေတ္တိကေ ဂေါစရေ ရတော;_  
+_အပေတသတ္တု မောဒါမိ,_  
+_သမ္ပဿံ အတ္ထမတ္တနော”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="397" type="center" book="ja1">
+သကုဏဂ္ဃိဇာတကံ အဋ္ဌမံ.
+</Paragraph>

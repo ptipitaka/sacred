@@ -1,0 +1,50 @@
+---
+title: 8.1 ကစ္စာနိဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:26.424097'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:26.424097'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ja1" section="8.1">
+* [8.1.1 ကစ္စာနိဇာတက](8-1/8-1-1)
+* [8.1.2 အဋ္ဌသဒ္ဒဇာတက](8-1/8-1-2)
+* [8.1.3 သုလသာဇာတက](8-1/8-1-3)
+* [8.1.4 သုမင်္ဂလဇာတက](8-1/8-1-4)
+* [8.1.5 ဂင်္ဂမာလဇာတက](8-1/8-1-5)
+* [8.1.6 စေတိယဇာတက](8-1/8-1-6)
+* [8.1.7 ဣန္ဒြိယဇာတက](8-1/8-1-7)
+* [8.1.8 အာဒိတ္တဇာတက](8-1/8-1-8)
+* [8.1.9 အဋ္ဌာနဇာတက](8-1/8-1-9)
+* [8.1.10 ဒီပိဇာတက](8-1/8-1-10)
+</TableOfContents>

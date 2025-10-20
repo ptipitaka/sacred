@@ -1,0 +1,61 @@
+---
+title: 2.10.5 မူလပရိယာယဇာတက
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:24.567696'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:24.567696'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="190" book="ja1" e="ch" v="22" p="68">
+
+<Paragraph number="647" type="verses" book="ja1">
+_“ကာလော ဃသတိ ဘူတာနိ,_  
+_သဗ္ဗာနေဝ သဟတ္တနာ;_  
+_ယော စ ကာလဃသော ဘူတော,_  
+_သ ဘူတပစနိံ ပစိ”._  
+
+</Paragraph>
+
+</Division>
+<Division number="191" book="ja1" e="ch" v="22" p="68">
+
+<Paragraph number="648" type="verses" book="ja1">
+_“ဗဟူနိ နရသီသာနိ,_  
+_လောမသာနိ ဗြဟာနိ စ;_  
+_ဂီဝါသု ပဋိမုက္ကာနိ,_  
+_ကောစိဒေဝေတ္ထ ကဏ္ဏဝါ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="649" type="center" book="ja1">
+မူလပရိယာယဇာတကံ ပဉ္စမံ.
+</Paragraph>

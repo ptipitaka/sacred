@@ -1,0 +1,52 @@
+---
+title: 9.1 ဂိဇ္ဈဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:26.497728'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:26.497728'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ja1" section="9.1">
+* [9.1.1 ဂိဇ္ဈဇာတက](9-1/9-1-1)
+* [9.1.2 ကောသမ္ဗိယဇာတက](9-1/9-1-2)
+* [9.1.3 မဟာသုဝဇာတက](9-1/9-1-3)
+* [9.1.4 စူဠသုဝဇာတက](9-1/9-1-4)
+* [9.1.5 ဟရိတစဇာတက](9-1/9-1-5)
+* [9.1.6 ပဒကုသလမာဏဝဇာတက](9-1/9-1-6)
+* [9.1.7 လောမသကဿပဇာတက](9-1/9-1-7)
+* [9.1.8 စက္ကဝါကဇာတက](9-1/9-1-8)
+* [9.1.9 ဟလိဒ္ဒိရာဂဇာတက](9-1/9-1-9)
+* [9.1.10 သမုဂ္ဂဇာတက](9-1/9-1-10)
+* [9.1.11 ပူတိမံသဇာတက](9-1/9-1-11)
+* [9.1.12 ဒဒ္ဒရဇာတက](9-1/9-1-12)
+</TableOfContents>

@@ -1,0 +1,50 @@
+---
+title: 1.1.9 မဃဒေဝဇာတက
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:22.874839'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:22.874839'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="9" book="ja1" e="ch" v="22" p="3">
+
+<Paragraph number="18" type="verses" book="ja1">
+_“ဥတ္တမင်္ဂရုဟာ မယှံ,_  
+ဣမေ ဇာတာ ဝယောဟရာ;_  
+_ပါတုဘူတာ ဒေဝဒူတာ,_  
+_ပဗ္ဗဇ္ဇာသမယော မမာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="19" type="center" book="ja1">
+မဃဒေဝဇာတကံ နဝမံ.
+</Paragraph>

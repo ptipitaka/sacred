@@ -1,0 +1,50 @@
+---
+title: 1.8.4 ရုက္ခဓမ္မဇာတက
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:23.534379'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:23.534379'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="74" book="ja1" e="ch" v="22" p="17">
+
+<Paragraph number="163" type="verses" book="ja1">
+_“သာဓူ သမ္ဗဟုလာ ဉာတီ,_  
+_အပိ ရုက္ခာ အရညဇာ;_  
+_ဝါတော ဝဟတိ ဧကဋ္ဌံ,_  
+_ဗြဟန္တမ္ပိ ဝနပ္ပတိန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="164" type="center" book="ja1">
+ရုက္ခဓမ္မဇာတကံ စတုတ္ထံ.
+</Paragraph>

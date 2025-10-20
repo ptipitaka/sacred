@@ -1,0 +1,50 @@
+---
+title: 1.2.5 ခရာဒိယဇာတက
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:23.202216'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:23.202216'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="15" book="ja1" e="ch" v="22" p="4">
+
+<Paragraph number="32" type="verses" book="ja1">
+_“အဋ္ဌက္ခုရံ ခရာဒိယေ,_  
+_မိဂံ ဝင်္ကာတိဝင်္ကိနံ;_  
+_သတ္တဟိ ကာလာတိက္ကန္တံ,_  
+_န နံ ဩဝဒိတုဿဟေ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="33" type="center" book="ja1">
+ခရာဒိယဇာတကံ ပဉ္စမံ.
+</Paragraph>

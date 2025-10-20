@@ -1,0 +1,52 @@
+---
+title: 1.2.1 လက္ခဏမိဂဇာတက
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:23.170112'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:23.170112'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="11" book="ja1" e="ch" v="22" p="3">
+
+<Paragraph number="24" type="verses" book="ja1">
+_“ဟောတိ သီလဝတံ အတ္ထော,_  
+_ပဋိသန္ထာရဝုတ္တိနံ;_  
+_လက္ခဏံ ပဿ အာယန္တံ,_  
+_ဉာတိသင်္ဃပုရက္ခတံ;_  
+_အထ ပဿသိမံ ကာဠံ,_  
+_သုဝိဟီနံဝ ဉာတိဘီ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="25" type="center" book="ja1">
+လက္ခဏမိဂဇာတကံ ပဌမံ.
+</Paragraph>

@@ -1,0 +1,61 @@
+---
+title: 2.3.4 ဒုဗ္ဘိယမက္ကဋဇာတက
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:24.680190'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:24.680190'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="47" book="ja1" e="ch" v="22" p="44">
+
+<Paragraph number="415" type="verses" book="ja1">
+_“အဒမှ တေ ဝါရိ ပဟူတရူပံ,_  
+_ဃမ္မာဘိတတ္တဿ ပိပါသိတဿ;_  
+_သော ဒါနိ ပိတွာန ကိရိင်္ကရောသိ,_  
+_အသင်္ဂမော ပါပဇနေန သေယျော”._  
+
+</Paragraph>
+
+</Division>
+<Division number="48" book="ja1" e="ch" v="22" p="44">
+
+<Paragraph number="416" type="verses" book="ja1">
+_“ကော တေ သုတော ဝါ ဒိဋ္ဌော ဝါ,_  
+_သီလဝါ နာမ မက္ကဋော;_  
+ဣဒါနိ ခေါ တံ ဩဟစ္ဆံ,_  
+_ဧသာ အသ္မာက ဓမ္မတာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="417" type="center" book="ja1">
+ဒုဗ္ဘိယမက္ကဋဇာတကံ စတုတ္ထံ.
+</Paragraph>

@@ -1,0 +1,50 @@
+---
+title: 1.9.1 သုရာပါနဇာတက
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:23.580449'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:23.580449'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="81" book="ja1" e="ch" v="22" p="19">
+
+<Paragraph number="180" type="verses" book="ja1">
+_“အပါယိမှ အနစ္စိမှ,_  
+_အဂါယိမှ ရုဒိမှ စ;_  
+_ဝိသညိကရဏိံ ပိတွာ,_  
+_ဒိဋ္ဌာ နာဟုမှ ဝါနရာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="181" type="center" book="ja1">
+သုရာပါနဇာတကံ ပဌမံ.
+</Paragraph>

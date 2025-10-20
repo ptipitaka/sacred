@@ -1,0 +1,50 @@
+---
+title: 2.10 သိင်္ဂါလဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:24.303237'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:24.303237'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ja1" section="2.10">
+* [2.10.1 သဗ္ဗဒါဌိဇာတက](2-10/2-10-1)
+* [2.10.2 သုနခဇာတက](2-10/2-10-2)
+* [2.10.3 ဂုတ္တိလဇာတက](2-10/2-10-3)
+* [2.10.4 ဝိဂတိစ္ဆဇာတက](2-10/2-10-4)
+* [2.10.5 မူလပရိယာယဇာတက](2-10/2-10-5)
+* [2.10.6 ဗာလောဝါဒဇာတက](2-10/2-10-6)
+* [2.10.7 ပါဒဉ္ဇလီဇာတက](2-10/2-10-7)
+* [2.10.8 ကိံသုကောပမဇာတက](2-10/2-10-8)
+* [2.10.9 သာလကဇာတက](2-10/2-10-9)
+* [2.10.10 ကပိဇာတက](2-10/2-10-10)
+</TableOfContents>

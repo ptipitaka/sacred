@@ -1,0 +1,50 @@
+---
+title: 1.6 အာသီသဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:22.800973'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:22.800973'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ja1" section="1.6">
+* [1.6.1 မဟာသီလဝဇာတက](1-6/1-6-1)
+* [1.6.2 စူဠဇနကဇာတက](1-6/1-6-2)
+* [1.6.3 ပုဏ္ဏပါတိဇာတက](1-6/1-6-3)
+* [1.6.4 ကိံဖလဇာတက](1-6/1-6-4)
+* [1.6.5 ပဉ္စာဝုဓဇာတက](1-6/1-6-5)
+* [1.6.6 ကဉ္စနက္ခန္ဓဇာတက](1-6/1-6-6)
+* [1.6.7 ဝါနရိန္ဒဇာတက](1-6/1-6-7)
+* [1.6.8 တယောဓမ္မဇာတက](1-6/1-6-8)
+* [1.6.9 ဘေရိဝါဒကဇာတက](1-6/1-6-9)
+* [1.6.10 သင်္ခဓမဇာတက](1-6/1-6-10)
+</TableOfContents>

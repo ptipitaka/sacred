@@ -1,0 +1,50 @@
+---
+title: 3.1 သင်္ကပ္ပဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:25.166467'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:25.166467'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ja1" section="3.1">
+* [3.1.1 သင်္ကပ္ပရာဂဇာတက](3-1/3-1-1)
+* [3.1.2 တိလမုဋ္ဌိဇာတက](3-1/3-1-2)
+* [3.1.3 မဏိကဏ္ဌဇာတက](3-1/3-1-3)
+* [3.1.4 ကုဏ္ဍကကုစ္ဆိသိန္ဓဝဇာတက](3-1/3-1-4)
+* [3.1.5 သုကဇာတက](3-1/3-1-5)
+* [3.1.6 ဇရူဒပါနဇာတက](3-1/3-1-6)
+* [3.1.7 ဂါမဏိစန္ဒဇာတက](3-1/3-1-7)
+* [3.1.8 မန္ဓာတုဇာတက](3-1/3-1-8)
+* [3.1.9 တိရီဋဝစ္ဆဇာတက](3-1/3-1-9)
+* [3.1.10 ဒူတဇာတက](3-1/3-1-10)
+</TableOfContents>

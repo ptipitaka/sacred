@@ -1,0 +1,69 @@
+---
+title: 1.4.10 ခဒိရင်္ဂါရဇာတက
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:23.291153'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:23.291153'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="40" book="ja1" e="ch" v="22" p="10">
+
+<Paragraph number="86" type="verses" book="ja1">
+_“ကာမံ ပတာမိ နိရယံ,_  
+ဥဒ္ဓမ္ပာဒေါ အဝံသိရော;_  
+_နာနရိယံ ကရိဿာမိ,_  
+_ဟန္ဒ ပိဏ္ဍံ ပဋိဂ္ဂဟာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="87" type="center" book="ja1">
+ခဒိရင်္ဂါရဇာတကံ ဒသမံ.
+
+  
+ကုလာဝကဝဂ္ဂေါ စတုတ္ထော.
+
+
+
+</Paragraph>
+
+<Paragraph number="88" type="center" book="ja1">
+တဿုဒ္ဒါနံ
+
+
+</Paragraph>
+
+<Paragraph number="89" type="verses" book="ja1">
+_သိရိမာတလိ ဓီတရ ပက္ခိဝရော,_  
+_ရတိယာဂတော မာတာပိတာ စ ပုန;_  
+_ဇဂတီရုဟ ဝုဍ္ဎ သုကက္ကဋကော,_  
+_တထာ နန္ဒကပိဏ္ဍဝရေန ဒသာတိ._
+</Paragraph>

@@ -1,0 +1,69 @@
+---
+title: 1.6.10 သင်္ခဓမဇာတက
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: ja1
+review:
+  current: review
+  updated: '2025-10-20T22:47:23.406538'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:47:23.406538'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="60" book="ja1" e="ch" v="22" p="14">
+
+<Paragraph number="131" type="verses" book="ja1">
+_“ဓမေ ဓမေ နာတိဓမေ,_  
+_အတိဓန္တဉှိ ပါပကံ;_  
+_ဓန္တေနာဓိဂတာ ဘောဂါ,_  
+_တေ တာတော ဝိဓမီ ဓမန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="132" type="center" book="ja1">
+သင်္ခဓမဇာတကံ ဒသမံ.
+
+  
+အာသီသဝဂ္ဂေါ ဆဋ္ဌော.
+
+
+
+</Paragraph>
+
+<Paragraph number="133" type="center" book="ja1">
+တဿုဒ္ဒါနံ
+
+
+</Paragraph>
+
+<Paragraph number="134" type="verses" book="ja1">
+_ယထာ ဣစ္ဆိံ တထာဟုဒကာ ထလာ,_  
+_သုရ သာဒုဖလော စ အလီနမနော;_  
+_သမ္ပဟဋ္ဌမနော စတုရော စ တယော,_  
+_သတလဒ္ဓက ဘောဂဓနေန ဒသာတိ._
+</Paragraph>
