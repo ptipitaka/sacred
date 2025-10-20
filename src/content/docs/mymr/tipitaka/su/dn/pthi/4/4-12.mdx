@@ -1,0 +1,41 @@
+---
+title: 4.12 ဝေဿမဏ္ဍလ
+tableOfContents: false
+sidebar:
+  order: 13
+type: tipitaka
+basket: su
+book: pthi
+review:
+  current: review
+  updated: '2025-10-20T14:29:14.519596'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:29:14.519596'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="133" book="pthi" e="ch" v="8" p="78">
+
+<Paragraph number="275" book="pthi">
+တေသံယေဝ ခေါ, ဝါသေဋ္ဌ, သတ္တာနံ ဧကစ္စေ သတ္တာ မေထုနံ ဓမ္မံ သမာဒါယ ဝိသုကမ္မန္တေ ပယောဇေသုံ. မေထုနံ ဓမ္မံ သမာဒါယ ဝိသုကမ္မန္တေ ပယောဇေန္တီတိ ခေါ, ဝါသေဋ္ဌ, ‘ဝေဿာ, ဝေဿာ’ တွေဝ အက္ခရံ ဥပနိဗ္ဗတ္တံ. ဣတိ ခေါ, ဝါသေဋ္ဌ, ဧဝမေတဿ ဝေဿမဏ္ဍလဿ ပေါရာဏေန အဂ္ဂညေန အက္ခရေန အဘိနိဗ္ဗတ္တိ အဟောသိ တေသညေဝ သတ္တာနံ အနညေသံ သဒိသာနံယေဝ, နော အသဒိသာနံ, ဓမ္မေနေဝ နော အဓမ္မေန. ဓမ္မော ဟိ, ဝါသေဋ္ဌ, သေဋ္ဌော ဇနေတသ္မိံ ဒိဋ္ဌေ စေဝ ဓမ္မေ အဘိသမ္ပရာယဉ္စ.
+</Paragraph>
+</Division>

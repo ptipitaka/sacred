@@ -1,0 +1,48 @@
+---
+title: 8.2 စတ္တာရော ကမ္မကိလေသာ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: pthi
+review:
+  current: review
+  updated: '2025-10-20T14:29:14.787836'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:29:14.787836'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="245" book="pthi" e="ch" v="8" p="147">
+
+<Paragraph number="580" book="pthi">
+ကတမဿ စတ္တာရော ကမ္မကိလေသာ ပဟီနာ ဟောန္တိ? ပါဏာတိပါတော ခေါ, ဂဟပတိပုတ္တ, ကမ္မကိလေသော, အဒိန္နာဒါနံ ကမ္မကိလေသော, ကာမေသုမိစ္ဆာစာရော ကမ္မကိလေသော, မုသာဝါဒေါ ကမ္မကိလေသော. ဣမဿ စတ္တာရော ကမ္မကိလေသာ ပဟီနာ ဟောန္တီ”တိ. ဣဒမဝေါစ ဘဂဝါ. ဣဒံ ဝတွာန သုဂတော အထာပရံ ဧတဒဝေါစ သတ္ထာ—
+</Paragraph>
+
+<Paragraph number="581" type="verses" book="pthi">
+_“ပါဏာတိပါတော အဒိန္နာဒါနံ,_  
+_မုသာဝါဒေါ စ ဝုစ္စတိ;_  
+_ပရဒါရဂမနဉ္စေဝ,_  
+_နပ္ပသံသန္တိ ပဏ္ဍိတာ”တိ._
+</Paragraph>
+</Division>

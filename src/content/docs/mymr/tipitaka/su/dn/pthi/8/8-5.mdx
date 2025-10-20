@@ -1,0 +1,41 @@
+---
+title: 8.5 သုရာမေရယဿ ဆ အာဒီနဝါ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: pthi
+review:
+  current: review
+  updated: '2025-10-20T14:29:14.798244'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:29:14.798244'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="248" book="pthi" e="ch" v="8" p="148">
+
+<Paragraph number="586" book="pthi">
+ဆ ခေါမေ, ဂဟပတိပုတ္တ, အာဒီနဝါ သုရာမေရယမဇ္ဇပ္ပမာဒဋ္ဌာနာနုယောဂေ. သန္ဒိဋ္ဌိကာ ဓနဇာနိ, ကလဟပ္ပဝဍ္ဎနီ, ရောဂါနံ အာယတနံ, အကိတ္တိသဉ္ဇနနီ, ကောပီနနိဒံသနီ, ပညာယ ဒုဗ္ဗလိကရဏီတွေဝ ဆဋ္ဌံ ပဒံ ဘဝတိ. ဣမေ ခေါ, ဂဟပတိပုတ္တ, ဆ အာဒီနဝါ သုရာမေရယမဇ္ဇပ္ပမာဒဋ္ဌာနာနုယောဂေ.
+</Paragraph>
+</Division>

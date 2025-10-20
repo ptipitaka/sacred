@@ -1,0 +1,50 @@
+---
+title: ပါထိကဝဂ္ဂပါဠိ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: pthi
+review:
+  current: review
+  updated: '2025-10-20T14:29:14.328180'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:29:14.328180'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<Paragraph number="1" type="center" book="pthi">
+နမော တဿ ဘဂဝတော အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ.
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+</Paragraph>
+
+<TableOfContents book="pthi">
+* [1 ပါထိကသုတ္တ](1)
+* [2 ဥဒုမ္ဗရိကသုတ္တ](2)
+* [3 စက္ကဝတ္တိသုတ္တ](3)
+* [4 အဂ္ဂညသုတ္တ](4)
+* [5 သမ္ပသာဒနီယသုတ္တ](5)
+* [6 ပါသာဒိကသုတ္တ](6)
+* [7 လက္ခဏသုတ္တ](7)
+* [8 သိင်္ဂါလသုတ္တ](8)
+* [9 အာဋာနာဋိယသုတ္တ](9)
+* [10 သင်္ဂီတိသုတ္တ](10)
+* [11 ဒသုတ္တရသုတ္တ](11)
+</TableOfContents>

@@ -1,0 +1,41 @@
+---
+title: 8.4 ဆ အပါယမုခါနိ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: pthi
+review:
+  current: review
+  updated: '2025-10-20T14:29:14.796215'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:29:14.796215'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="247" book="pthi" e="ch" v="8" p="148">
+
+<Paragraph number="585" book="pthi">
+“ကတမာနိ ဆ ဘောဂါနံ အပါယမုခါနိ န သေဝတိ? သုရာမေရယမဇ္ဇပ္ပမာဒဋ္ဌာနာနုယောဂေါ ခေါ, ဂဟပတိပုတ္တ, ဘောဂါနံ အပါယမုခံ, ဝိကာလဝိသိခါစရိယာနုယောဂေါ ဘောဂါနံ အပါယမုခံ, သမဇ္ဇာဘိစရဏံ ဘောဂါနံ အပါယမုခံ, ဇူတပ္ပမာဒဋ္ဌာနာနုယောဂေါ ဘောဂါနံ အပါယမုခံ, ပါပမိတ္တာနုယောဂေါ ဘောဂါနံ အပါယမုခံ, အာလသျာနုယောဂေါ ဘောဂါနံ အပါယမုခံ.
+</Paragraph>
+</Division>

@@ -1,0 +1,41 @@
+---
+title: 8.8 ဇူတပ္ပမာဒဿ ဆ အာဒီနဝါ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: pthi
+review:
+  current: review
+  updated: '2025-10-20T14:29:14.809903'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:29:14.809903'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="251" book="pthi" e="ch" v="8" p="149">
+
+<Paragraph number="589" book="pthi">
+ဆ ခေါမေ, ဂဟပတိပုတ္တ, အာဒီနဝါ ဇူတပ္ပမာဒဋ္ဌာနာနုယောဂေ. ဇယံ ဝေရံ ပသဝတိ, ဇိနော ဝိတ္တမနုသောစတိ, သန္ဒိဋ္ဌိကာ ဓနဇာနိ, သဘာဂတဿ ဝစနံ န ရူဟတိ, မိတ္တာမစ္စာနံ ပရိဘူတော ဟောတိ, အာဝါဟဝိဝါဟကာနံ အပတ္ထိတော ဟောတိ—  ‘အက္ခဓုတ္တော အယံ ပုရိသပုဂ္ဂလော နာလံ ဒါရဘရဏာယာ’တိ. ဣမေ ခေါ, ဂဟပတိပုတ္တ, ဆ အာဒီနဝါ ဇူတပ္ပမာဒဋ္ဌာနာနုယောဂေ.
+</Paragraph>
+</Division>

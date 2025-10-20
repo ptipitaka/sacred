@@ -1,0 +1,41 @@
+---
+title: 4.2 ရသပထဝိပါတုဘာဝ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: pthi
+review:
+  current: review
+  updated: '2025-10-20T14:29:14.535389'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:29:14.535389'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="120" book="pthi" e="ch" v="8" p="70">
+
+<Paragraph number="253" book="pthi">
+ဧကောဒကီဘူတံ ခေါ ပန, ဝါသေဋ္ဌ, တေန သမယေန ဟောတိ အန္ဓကာရော အန္ဓကာရတိမိသာ. န စန္ဒိမသူရိယာ ပညာယန္တိ, န နက္ခတ္တာနိ တာရကရူပါနိ ပညာယန္တိ, န ရတ္တိန္ဒိဝါ ပညာယန္တိ, န မာသဍ္ဎမာသာ ပညာယန္တိ, န ဥတုသံဝစ္ဆရာ ပညာယန္တိ, န ဣတ္ထိပုမာ ပညာယန္တိ, သတ္တာ သတ္တာတွေဝ သင်္ချံ ဂစ္ဆန္တိ. အထ ခေါ တေသံ, ဝါသေဋ္ဌ, သတ္တာနံ ကဒါစိ ကရဟစိ ဒီဃဿ အဒ္ဓုနော အစ္စယေန ရသပထဝီ ဥဒကသ္မိံ သမတနိ; သေယျထာပိ နာမ ပယသော တတ္တဿ နိဗ္ဗာယမာနဿ ဥပရိ သန္တာနကံ ဟောတိ; ဧဝမေဝ ပါတုရဟောသိ. သာ အဟောသိ ဝဏ္ဏသမ္ပန္နာ ဂန္ဓသမ္ပန္နာ ရသသမ္ပန္နာ, သေယျထာပိ နာမ သမ္ပန္နံ ဝါ သပ္ပိ သမ္ပန္နံ ဝါ နဝနီတံ ဧဝံဝဏ္ဏာ အဟောသိ. သေယျထာပိ နာမ ခုဒ္ဒမဓုံ အနေဠကံ; ဧဝမဿာဒါ အဟောသိ. အထ ခေါ, ဝါသေဋ္ဌ, အညတရော သတ္တော လောလဇာတိကော—  ‘အမ္ဘော, ကိမေဝိဒံ ဘဝိဿတီ’တိ ရသပထဝိံ အင်္ဂုလိယာ သာယိ. တဿ ရသပထဝိံ အင်္ဂုလိယာ သာယတော အစ္ဆာဒေသိ, တဏှာ စဿ ဩက္ကမိ. အညေပိ ခေါ, ဝါသေဋ္ဌ, သတ္တာ တဿ သတ္တဿ ဒိဋ္ဌာနုဂတိံ အာပဇ္ဇမာနာ ရသပထဝိံ အင်္ဂုလိယာ သာယိံသု. တေသံ ရသပထဝိံ အင်္ဂုလိယာ သာယတံ အစ္ဆာဒေသိ, တဏှာ စ တေသံ ဩက္ကမိ.
+</Paragraph>
+</Division>
