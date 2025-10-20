@@ -1,0 +1,68 @@
+---
+title: ဗုဒ္ဓဝံသပါဠိ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: bu
+review:
+  current: review
+  updated: '2025-10-20T22:01:27.649347'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T22:01:27.649347'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<Paragraph number="1" type="center" book="bu">
+နမော တဿ ဘဂဝတော အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ.
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+</Paragraph>
+
+<TableOfContents book="bu">
+* [1 ရတနစင်္ကမနကဏ္ဍ](1)
+* [2 သုမေဓပတ္ထနာကထာ](2)
+* [3 ဒီပင်္ကရဗုဒ္ဓဝံသ](3)
+* [4 ကောဏ္ဍညဗုဒ္ဓဝံသ](4)
+* [5 မင်္ဂလဗုဒ္ဓဝံသ](5)
+* [6 သုမနဗုဒ္ဓဝံသ](6)
+* [7 ရေဝတဗုဒ္ဓဝံသ](7)
+* [8 သောဘိတဗုဒ္ဓဝံသ](8)
+* [9 အနောမဒဿီဗုဒ္ဓဝံသ](9)
+* [10 ပဒုမဗုဒ္ဓဝံသ](10)
+* [11 နာရဒဗုဒ္ဓဝံသ](11)
+* [12 ပဒုမုတ္တရဗုဒ္ဓဝံသ](12)
+* [13 သုမေဓဗုဒ္ဓဝံသ](13)
+* [14 သုဇာတဗုဒ္ဓဝံသ](14)
+* [15 ပိယဒဿီဗုဒ္ဓဝံသ](15)
+* [16 အတ္ထဒဿီဗုဒ္ဓဝံသ](16)
+* [17 ဓမ္မဒဿီဗုဒ္ဓဝံသ](17)
+* [18 သိဒ္ဓတ္ထဗုဒ္ဓဝံသ](18)
+* [19 တိဿဗုဒ္ဓဝံသ](19)
+* [20 ဖုဿဗုဒ္ဓဝံသ](20)
+* [21 ဝိပဿီဗုဒ္ဓဝံသ](21)
+* [22 သိခီဗုဒ္ဓဝံသ](22)
+* [23 ဝေဿဘူဗုဒ္ဓဝံသ](23)
+* [24 ကကုသန္ဓဗုဒ္ဓဝံသ](24)
+* [25 ကောဏာဂမနဗုဒ္ဓဝံသ](25)
+* [26 ကဿပဗုဒ္ဓဝံသ](26)
+* [27 ဂေါတမဗုဒ္ဓဝံသ](27)
+* [28 ဗုဒ္ဓပကိဏ္ဏကကဏ္ဍ](28)
+* [29 ဓာတုဘာဇနီယကထာ](29)
+</TableOfContents>
