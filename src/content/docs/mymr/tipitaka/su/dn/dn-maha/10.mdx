@@ -1,0 +1,52 @@
+---
+title: 10 ပါယာသိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 11
+type: tipitaka
+basket: su
+book: dn-maha
+review:
+  current: review
+  updated: '2025-10-20T14:23:22.912725'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:23:22.912725'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="406" book="dn-maha" e="ch" v="7" p="253">
+
+<Paragraph number="1090" book="dn-maha">
+ဧဝံ မေ သုတံ—  ဧကံ သမယံ အာယသ္မာ ကုမာရကဿပေါ ကောသလေသု စာရိကံ စရမာနော မဟတာ ဘိက္ခုသံဃေန သဒ္ဓိံ ပဉ္စမတ္တေဟိ ဘိက္ခုသတေဟိ ယေန သေတဗျာ နာမ ကောသလာနံ နဂရံ တဒဝသရိ. တတြ သုဒံ အာယသ္မာ ကုမာရကဿပေါ သေတဗျာယံ ဝိဟရတိ ဥတ္တရေန သေတဗျံ သိံသပါဝနေ. တေန ခေါ ပန သမယေန ပါယာသိ ရာဇညော သေတဗျံ အဇ္ဈာဝသတိ သတ္တုဿဒံ သတိဏကဋ္ဌောဒကံ သဓညံ ရာဇဘောဂ္ဂံ ရညာ ပသေနဒိနာ ကောသလေန ဒိန္နံ ရာဇဒါယံ ဗြဟ္မဒေယျံ.
+
+</Paragraph>
+</Division>
+
+<TableOfContents book="dn-maha" section="10">
+* [10.1 ပါယာသိရာဇညဝတ္ထု](10/10-1)
+* [10.2 နတ္ထိကဝါဒ](10/10-2)
+* [10.3 သရဏဂမန](10/10-3)
+* [10.4 ယညကထာ](10/10-4)
+* [10.5 ဥတ္တရမာဏဝဝတ္ထု](10/10-5)
+* [10.6 ပါယာသိဒေဝပုတ္တ](10/10-6)
+</TableOfContents>

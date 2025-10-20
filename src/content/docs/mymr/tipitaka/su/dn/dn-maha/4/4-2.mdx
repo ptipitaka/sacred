@@ -1,0 +1,47 @@
+---
+title: 4.2 သတ္တရတနသမန္နာဂတ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: dn-maha
+review:
+  current: review
+  updated: '2025-10-20T14:23:23.277861'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:23:23.277861'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="dn-maha" section="4.2">
+* [4.2.1 စက္ကရတန](4-2/4-2-1)
+* [4.2.2 ဟတ္ထိရတန](4-2/4-2-2)
+* [4.2.3 အဿရတန](4-2/4-2-3)
+* [4.2.4 မဏိရတန](4-2/4-2-4)
+* [4.2.5 ဣတ္ထိရတန](4-2/4-2-5)
+* [4.2.6 ဂဟပတိရတန](4-2/4-2-6)
+* [4.2.7 ပရိဏာယကရတန](4-2/4-2-7)
+</TableOfContents>

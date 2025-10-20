@@ -1,0 +1,41 @@
+---
+title: 6.6.7 ဘရိယာနံအာမန္တနာ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: dn-maha
+review:
+  current: review
+  updated: '2025-10-20T14:23:23.409482'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:23:23.409482'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="325" book="dn-maha" e="ch" v="7" p="199">
+
+<Paragraph number="737" book="dn-maha">
+အထ ခေါ, ဘော, မဟာဂေါဝိန္ဒော ဗြာဟ္မဏော ယေန စတ္တာရီသာ ဘရိယာ သာဒိသိယော တေနုပသင်္ကမိ; ဥပသင်္ကမိတွာ စတ္တာရီသာ ဘရိယာ သာဒိသိယော ဧတဒဝေါစ—  “ယာ ဘောတီနံ ဣစ္ဆတိ, သကာနိ ဝါ ဉာတိကုလာနိ ဂစ္ဆတု အညံ ဝါ ဘတ္တာရံ ပရိယေသတု. ဣစ္ဆာမဟံ, ဘောတီ, အဂါရသ္မာ အနဂါရိယံ ပဗ္ဗဇိတုံ. ယထာ ခေါ ပန မေ သုတံ ဗြဟ္မုနော အာမဂန္ဓေ ဘာသမာနဿ, တေ န သုနိမ္မဒယာ အဂါရံ အဇ္ဈာဝသတာ. ပဗ္ဗဇိဿာမဟံ, ဘောတီ, အဂါရသ္မာ အနဂါရိယန်”တိ. “တွညေဝ နော ဉာတိ ဉာတိကာမာနံ, တွံ ပန ဘတ္တာ ဘတ္တုကာမာနံ. သစေ ဘဝံ ဂေါဝိန္ဒော အဂါရသ္မာ အနဂါရိယံ ပဗ္ဗဇိဿတိ, မယမ္ပိ အဂါရသ္မာ အနဂါရိယံ ပဗ္ဗဇိဿာမ, အထ ယာ တေ ဂတိ, သာ နော ဂတိ ဘဝိဿတီ”တိ.
+</Paragraph>
+</Division>
