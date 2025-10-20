@@ -1,0 +1,54 @@
+---
+title: 8 ဝတ္တက္ခန္ဓက
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: vi
+book: cula
+review:
+  current: review
+  updated: '2025-10-20T14:06:42.569733'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:06:42.569733'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="cula" section="8">
+* [8.1 အာဂန္တုကဝတ္တကထာ](8/8-1)
+* [8.2 အာဝါသိကဝတ္တကထာ](8/8-2)
+* [8.3 ဂမိကဝတ္တကထာ](8/8-3)
+* [8.4 အနုမောဒနဝတ္တကထာ](8/8-4)
+* [8.5 ဘတ္တဂ္ဂဝတ္တကထာ](8/8-5)
+* [8.6 ပိဏ္ဍစာရိကဝတ္တကထာ](8/8-6)
+* [8.7 အာရညိကဝတ္တကထာ](8/8-7)
+* [8.8 သေနာသနဝတ္တကထာ](8/8-8)
+* [8.9 ဇန္တာဃရဝတ္တကထာ](8/8-9)
+* [8.10 ဝစ္စကုဋိဝတ္တကထာ](8/8-10)
+* [8.11 ဥပဇ္ဈာယဝတ္တကထာ](8/8-11)
+* [8.12 သဒ္ဓိဝိဟာရိကဝတ္တကထာ](8/8-12)
+* [8.13 အာစရိယဝတ္တကထာ](8/8-13)
+* [8.14 အန္တေဝါသိကဝတ္တကထာ](8/8-14)
+</TableOfContents>

@@ -1,0 +1,41 @@
+---
+title: 6.1.4 ပဋိဘာနစိတ္တပဋိက္ခေပ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: vi
+book: cula
+review:
+  current: review
+  updated: '2025-10-20T14:06:42.963124'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:06:42.963124'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="299" book="cula" e="ch" v="4" p="297">
+
+<Paragraph number="1291" book="cula">
+တေန ခေါ ပန သမယေန ဆဗ္ဗဂ္ဂိယာ ဘိက္ခူ ဝိဟာရေ ပဋိဘာနစိတ္တံ ကာရာပေန္တိ—  ဣတ္ထိရူပကံ ပုရိသရူပကံ. မနုဿာ ဝိဟာရစာရိကံ အာဟိဏ္ဍန္တာ ပဿိတွာ ဥဇ္ဈာယန္တိ ခိယျန္တိ ဝိပါစေန္တိ—  “သေယျထာပိ ဂိဟီ ကာမဘောဂိနော”တိ. ဘဂဝတော ဧတမတ္ထံ အာရောစေသုံ. “န, ဘိက္ခဝေ, ပဋိဘာနစိတ္တံ ကာရာပေတဗ္ဗံ—  ဣတ္ထိရူပကံ ပုရိသရူပကံ. ယော ကာရာပေယျ, အာပတ္တိ ဒုက္ကဋဿ. အနုဇာနာမိ, ဘိက္ခဝေ, မာလာကမ္မံ လတာကမ္မံ မကရဒန္တကံ ပဉ္စပဋိကန်”တိ.
+</Paragraph>
+</Division>

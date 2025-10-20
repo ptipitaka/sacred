@@ -1,0 +1,43 @@
+---
+title: 7 သံဃဘေဒကက္ခန္ဓက
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: vi
+book: cula
+review:
+  current: review
+  updated: '2025-10-20T14:06:42.565568'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:06:42.565568'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="cula" section="7">
+* [7.1 ပဌမဘာဏဝါရ](7/7-1)
+* [7.2 ဒုတိယဘာဏဝါရ](7/7-2)
+* [7.3 တတိယဘာဏဝါရ](7/7-3)
+</TableOfContents>

@@ -1,0 +1,46 @@
+---
+title: 7.2 ဒုတိယဘာဏဝါရ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: vi
+book: cula
+review:
+  current: review
+  updated: '2025-10-20T14:06:43.032786'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:06:43.032786'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="cula" section="7.2">
+* [7.2.1 ပကာသနီယကမ္မ](7-2/7-2-1)
+* [7.2.2 အဇာတသတ္တုကုမာရဝတ္ထု](7-2/7-2-2)
+* [7.2.3 အဘိမာရပေသန](7-2/7-2-3)
+* [7.2.4 လောဟိတုပ္ပါဒကကမ္မ](7-2/7-2-4)
+* [7.2.5 နာဠာဂိရိပေသန](7-2/7-2-5)
+* [7.2.6 ပဉ္စဝတ္ထုယာစနကထာ](7-2/7-2-6)
+</TableOfContents>

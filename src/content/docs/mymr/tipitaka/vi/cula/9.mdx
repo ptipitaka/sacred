@@ -1,0 +1,50 @@
+---
+title: 9 ပါတိမောက္ခဋ္ဌပနက္ခန္ဓက
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: vi
+book: cula
+review:
+  current: review
+  updated: '2025-10-20T14:06:42.571738'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:06:42.571738'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="cula" section="9">
+* [9.1 ပါတိမောက္ခုဒ္ဒေသယာစန](9/9-1)
+* [9.2 မဟာသမုဒ္ဒေအဋ္ဌစ္ဆရိယ](9/9-2)
+* [9.3 ဣမသ္မိံဓမ္မဝိနယေအဋ္ဌစ္ဆရိယ](9/9-3)
+* [9.4 ပါတိမောက္ခသဝနာရဟ](9/9-4)
+* [9.5 ဓမ္မိကာဓမ္မိကပါတိမောက္ခဋ္ဌပန](9/9-5)
+* [9.6 ဓမ္မိကပါတိမောက္ခဋ္ဌပန](9/9-6)
+* [9.7 အတ္တာဒါနအင်္ဂ](9/9-7)
+* [9.8 စောဒကေနပစ္စဝေက္ခိတဗ္ဗဓမ္မ](9/9-8)
+* [9.9 စောဒကေနော်ပဋ္ဌာပေတဗ္ဗဓမ္မ](9/9-9)
+* [9.10 စောဒကစုဒိတကပဋိသံယုတ္တကထာ](9/9-10)
+</TableOfContents>
