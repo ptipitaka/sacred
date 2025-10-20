@@ -1,0 +1,50 @@
+---
+title: 2.3 အပဏ္ဏကဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.478131'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.478131'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="2.3">
+* [2.3.1 ပဓာနသုတ္တ](2-3/2-3-1)
+* [2.3.2 သမ္မာဒိဋ္ဌိသုတ္တ](2-3/2-3-2)
+* [2.3.3 သပ္ပုရိသသုတ္တ](2-3/2-3-3)
+* [2.3.4 ပဌမအဂ္ဂသုတ္တ](2-3/2-3-4)
+* [2.3.5 ဒုတိယအဂ္ဂသုတ္တ](2-3/2-3-5)
+* [2.3.6 ကုသိနာရသုတ္တ](2-3/2-3-6)
+* [2.3.7 အစိန္တေယျသုတ္တ](2-3/2-3-7)
+* [2.3.8 ဒက္ခိဏသုတ္တ](2-3/2-3-8)
+* [2.3.9 ဝဏိဇ္ဇသုတ္တ](2-3/2-3-9)
+* [2.3.10 ကမ္ဗောဇသုတ္တ](2-3/2-3-10)
+</TableOfContents>

@@ -1,0 +1,50 @@
+---
+title: 2.4 မစလဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.481302'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.481302'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="2.4">
+* [2.4.1 ပါဏာတိပါတသုတ္တ](2-4/2-4-1)
+* [2.4.2 မုသာဝါဒသုတ္တ](2-4/2-4-2)
+* [2.4.3 အဝဏ္ဏာရဟသုတ္တ](2-4/2-4-3)
+* [2.4.4 ကောဓဂရုသုတ္တ](2-4/2-4-4)
+* [2.4.5 တမောတမသုတ္တ](2-4/2-4-5)
+* [2.4.6 ဩဏတောဏတသုတ္တ](2-4/2-4-6)
+* [2.4.7 ပုတ္တသုတ္တ](2-4/2-4-7)
+* [2.4.8 သံယောဇနသုတ္တ](2-4/2-4-8)
+* [2.4.9 သမ္မာဒိဋ္ဌိသုတ္တ](2-4/2-4-9)
+* [2.4.10 ခန္ဓသုတ္တ](2-4/2-4-10)
+</TableOfContents>

@@ -1,0 +1,50 @@
+---
+title: 3.5.7 ဒုတိယကာလသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.882348'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.882348'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="147" book="a4" e="ch" v="15" p="457">
+
+<Paragraph number="894" book="a4">
+“စတ္တာရောမေ, ဘိက္ခဝေ, ကာလာ သမ္မာ ဘာဝိယမာနာ သမ္မာ အနုပရိဝတ္တိယမာနာ အနုပုဗ္ဗေန အာသဝါနံ ခယံ ပါပေန္တိ. ကတမေ စတ္တာရော? ကာလေန ဓမ္မဿဝနံ, ကာလေန ဓမ္မသာကစ္ဆာ, ကာလေန သမ္မသနာ, ကာလေန ဝိပဿနာ—  ဣမေ ခေါ, ဘိက္ခဝေ, စတ္တာရော ကာလာ သမ္မာ ဘာဝိယမာနာ သမ္မာ အနုပရိဝတ္တိယမာနာ အနုပုဗ္ဗေန အာသဝါနံ ခယံ ပါပေန္တိ.
+</Paragraph>
+
+<Paragraph number="895" book="a4">
+သေယျထာပိ, ဘိက္ခဝေ, ဥပရိပဗ္ဗတေ ထုလ္လဖုသိတကေ ဒေဝေ ဝဿန္တေ တံ ဥဒကံ ယထာနိန္နံ ပဝတ္တမာနံ ပဗ္ဗတကန္ဒရပဒရသာခါ ပရိပူရေတိ; ပဗ္ဗတကန္ဒရပဒရသာခါ ပရိပူရာ ကုသောဗ္ဘေ ပရိပူရေန္တိ; ကုသောဗ္ဘာ ပရိပူရာ မဟာသောဗ္ဘေ ပရိပူရေန္တိ; မဟာသောဗ္ဘာ ပရိပူရာ ကုန္နဒိယော ပရိပူရေန္တိ; ကုန္နဒိယော ပရိပူရာ မဟာနဒိယော ပရိပူရေန္တိ; မဟာနဒိယော ပရိပူရာ သမုဒ္ဒံ ပရိပူရေန္တိ. ဧဝမေဝံ ခေါ, ဘိက္ခဝေ, ဣမေ စတ္တာရော ကာလာ သမ္မာ ဘာဝိယမာနာ သမ္မာ အနုပရိဝတ္တိယမာနာ အနုပုဗ္ဗေန အာသဝါနံ ခယံ ပါပေန္တီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="896" type="center" book="a4">
+သတ္တမံ.
+</Paragraph>

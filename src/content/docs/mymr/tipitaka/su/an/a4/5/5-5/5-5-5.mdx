@@ -1,0 +1,46 @@
+---
+title: 5.5.5 ထူပါရဟသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:54.314275'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:54.314275'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="247" book="a4" e="ch" v="15" p="567">
+
+<Paragraph number="1504" book="a4">
+“စတ္တာရောမေ, ဘိက္ခဝေ, ထူပါရဟာ. ကတမေ စတ္တာရော? တထာဂတော အရဟံ သမ္မာသမ္ဗုဒ္ဓေါ ထူပါရဟော, ပစ္စေကဗုဒ္ဓေါ ထူပါရဟော, တထာဂတသာဝကော ထူပါရဟော, ရာဇာ စက္ကဝတ္တီ ထူပါရဟော—  ဣမေ ခေါ, ဘိက္ခဝေ, စတ္တာရော ထူပါရဟာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1505" type="center" book="a4">
+ပဉ္စမံ.
+</Paragraph>

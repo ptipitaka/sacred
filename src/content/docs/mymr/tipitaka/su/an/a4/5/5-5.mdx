@@ -1,0 +1,51 @@
+---
+title: 5.5 အာပတ္တိဘယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:54.128501'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:54.128501'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="5.5">
+* [5.5.1 သံဃဘေဒကသုတ္တ](5-5/5-5-1)
+* [5.5.2 အာပတ္တိဘယသုတ္တ](5-5/5-5-2)
+* [5.5.3 သိက္ခာနိသံသသုတ္တ](5-5/5-5-3)
+* [5.5.4 သေယျာသုတ္တ](5-5/5-5-4)
+* [5.5.5 ထူပါရဟသုတ္တ](5-5/5-5-5)
+* [5.5.6 ပညာဝုဒ္ဓိသုတ္တ](5-5/5-5-6)
+* [5.5.7 ဗဟုကာရသုတ္တ](5-5/5-5-7)
+* [5.5.8 ပဌမဝေါဟာရသုတ္တ](5-5/5-5-8)
+* [5.5.9 ဒုတိယဝေါဟာရသုတ္တ](5-5/5-5-9)
+* [5.5.10 တတိယဝေါဟာရသုတ္တ](5-5/5-5-10)
+* [5.5.11 စတုတ္ထဝေါဟာရသုတ္တ](5-5/5-5-11)
+</TableOfContents>

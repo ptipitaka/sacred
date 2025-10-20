@@ -1,0 +1,50 @@
+---
+title: 5.6.5 ကုလသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:54.347509'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:54.347509'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="258" book="a4" e="ch" v="15" p="572">
+
+<Paragraph number="1538" book="a4">
+“ယာနိ ကာနိစိ, ဘိက္ခဝေ, ကုလာနိ ဘောဂေသု မဟတ္တံ ပတ္တာနိ န စိရဋ္ဌိတိကာနိ ဘဝန္တိ, သဗ္ဗာနိ တာနိ စတူဟိ ဌာနေဟိ, ဧတေသံ ဝါ အညတရေန. ကတမေဟိ စတူဟိ? နဋ္ဌံ န ဂဝေသန္တိ, ဇိဏ္ဏံ န ပဋိသင်္ခရောန္တိ, အပရိမိတပါနဘောဇနာ ဟောန္တိ, ဒုဿီလံ ဣတ္ထိံ ဝါ ပုရိသံ ဝါ အာဓိပစ္စေ ဌပေန္တိ. ယာနိ ကာနိစိ, ဘိက္ခဝေ, ကုလာနိ ဘောဂေသု မဟတ္တံ ပတ္တာနိ န စိရဋ္ဌိတိကာနိ ဘဝန္တိ, သဗ္ဗာနိ တာနိ ဣမေဟိ စတူဟိ ဌာနေဟိ, ဧတေသံ ဝါ အညတရေန.
+</Paragraph>
+
+<Paragraph number="1539" book="a4">
+ယာနိ ကာနိစိ, ဘိက္ခဝေ, ကုလာနိ ဘောဂေသု မဟတ္တံ ပတ္တာနိ စိရဋ္ဌိတိကာနိ ဘဝန္တိ, သဗ္ဗာနိ တာနိ စတူဟိ ဌာနေဟိ, ဧတေသံ ဝါ အညတရေန. ကတမေဟိ စတူဟိ? နဋ္ဌံ ဂဝေသန္တိ, ဇိဏ္ဏံ ပဋိသင်္ခရောန္တိ, ပရိမိတပါနဘောဇနာ ဟောန္တိ, သီလဝန္တံ ဣတ္ထိံ ဝါ ပုရိသံ ဝါ အာဓိပစ္စေ ဌပေန္တိ. ယာနိ ကာနိစိ, ဘိက္ခဝေ, ကုလာနိ ဘောဂေသု မဟတ္တံ ပတ္တာနိ စိရဋ္ဌိတိကာနိ ဘဝန္တိ, သဗ္ဗာနိ တာနိ ဣမေဟိ စတူဟိ ဌာနေဟိ, ဧတေသံ ဝါ အညတရေနာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1540" type="center" book="a4">
+ပဉ္စမံ.
+</Paragraph>

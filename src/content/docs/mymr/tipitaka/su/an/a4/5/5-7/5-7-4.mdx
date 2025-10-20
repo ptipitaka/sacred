@@ -1,0 +1,50 @@
+---
+title: 5.7.4 မုသာဝါဒီသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:54.380274'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:54.380274'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="267" book="a4" e="ch" v="15" p="577">
+
+<Paragraph number="1577" book="a4">
+…ပေ…  အတ္တနာ စ မုသာဝါဒီ ဟောတိ, ပရဉ္စ မုသာဝါဒေ သမာဒပေတိ, မုသာဝါဒေ စ သမနုညော ဟောတိ, မုသာဝါဒဿ စ ဝဏ္ဏံ ဘာသတိ—  ဣမေဟိ ခေါ …ပေ… .
+</Paragraph>
+
+<Paragraph number="1578" book="a4">
+အတ္တနာ စ မုသာဝါဒါ ပဋိဝိရတော ဟောတိ, ပရဉ္စ မုသာဝါဒါ ဝေရမဏိယာ သမာဒပေတိ, မုသာဝါဒါ ဝေရမဏိယာ စ သမနုညော ဟောတိ, မုသာဝါဒါ ဝေရမဏိယာ စ ဝဏ္ဏံ ဘာသတိ—  ဣမေဟိ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1579" type="center" book="a4">
+စတုတ္ထံ.
+</Paragraph>

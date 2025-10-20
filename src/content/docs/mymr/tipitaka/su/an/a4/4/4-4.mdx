@@ -1,0 +1,50 @@
+---
+title: 4.4 ဗြာဟ္မဏဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.904153'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.904153'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="4.4">
+* [4.4.1 ယောဓာဇီဝသုတ္တ](4-4/4-4-1)
+* [4.4.2 ပါဋိဘောဂသုတ္တ](4-4/4-4-2)
+* [4.4.3 သုတသုတ္တ](4-4/4-4-3)
+* [4.4.4 အဘယသုတ္တ](4-4/4-4-4)
+* [4.4.5 ဗြာဟ္မဏသစ္စသုတ္တ](4-4/4-4-5)
+* [4.4.6 ဥမ္မဂ္ဂသုတ္တ](4-4/4-4-6)
+* [4.4.7 ဝဿကာရသုတ္တ](4-4/4-4-7)
+* [4.4.8 ဥပကသုတ္တ](4-4/4-4-8)
+* [4.4.9 သစ္ဆိကရဏီယသုတ္တ](4-4/4-4-9)
+* [4.4.10 ဥပေါသထသုတ္တ](4-4/4-4-10)
+</TableOfContents>

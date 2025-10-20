@@ -1,0 +1,45 @@
+---
+title: 2 ဒုတိယပဏ္ဏာသက
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.248306'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.248306'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="2">
+* [2.1 ပုညာဘိသန္ဒဝဂ္ဂ](2/2-1)
+* [2.2 ပတ္တကမ္မဝဂ္ဂ](2/2-2)
+* [2.3 အပဏ္ဏကဝဂ္ဂ](2/2-3)
+* [2.4 မစလဝဂ္ဂ](2/2-4)
+* [2.5 အသုရဝဂ္ဂ](2/2-5)
+</TableOfContents>

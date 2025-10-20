@@ -1,0 +1,46 @@
+---
+title: 5.2.8 ဒုတိယဝေါဟာရပထသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:54.213956'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:54.213956'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="218" book="a4" e="ch" v="15" p="549">
+
+<Paragraph number="1390" book="a4">
+…ပေ…  ဒိဋ္ဌေ အဒိဋ္ဌဝါဒီ ဟောတိ, သုတေ အသုတဝါဒီ ဟောတိ, မုတေ အမုတဝါဒီ ဟောတိ, ဝိညာတေ အဝိညာတဝါဒီ ဟောတိ …ပေ…  ဒိဋ္ဌေ ဒိဋ္ဌဝါဒီ ဟောတိ, သုတေ သုတဝါဒီ ဟောတိ, မုတေ မုတဝါဒီ ဟောတိ, ဝိညာတေ ဝိညာတဝါဒီ ဟောတိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1391" type="center" book="a4">
+အဋ္ဌမံ.
+</Paragraph>

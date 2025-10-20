@@ -1,0 +1,50 @@
+---
+title: 5.1 သပ္ပုရိသဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:54.104876'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:54.104876'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="5.1">
+* [5.1.1 သိက္ခာပဒသုတ္တ](5-1/5-1-1)
+* [5.1.2 အဿဒ္ဓသုတ္တ](5-1/5-1-2)
+* [5.1.3 သတ္တကမ္မသုတ္တ](5-1/5-1-3)
+* [5.1.4 ဒသကမ္မသုတ္တ](5-1/5-1-4)
+* [5.1.5 အဋ္ဌင်္ဂိကသုတ္တ](5-1/5-1-5)
+* [5.1.6 ဒသမဂ္ဂသုတ္တ](5-1/5-1-6)
+* [5.1.7 ပဌမပါပဓမ္မသုတ္တ](5-1/5-1-7)
+* [5.1.8 ဒုတိယပါပဓမ္မသုတ္တ](5-1/5-1-8)
+* [5.1.9 တတိယပါပဓမ္မသုတ္တ](5-1/5-1-9)
+* [5.1.10 စတုတ္ထပါပဓမ္မသုတ္တ](5-1/5-1-10)
+</TableOfContents>

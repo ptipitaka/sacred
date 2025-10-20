@@ -1,0 +1,54 @@
+---
+title: 1.2.7 ပဌမအဂတိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.353892'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.353892'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="17" book="a4" e="ch" v="15" p="325">
+
+<Paragraph number="112" book="a4">
+“စတ္တာရိမာနိ, ဘိက္ခဝေ, အဂတိဂမနာနိ. ကတမာနိ စတ္တာရိ? ဆန္ဒာဂတိံ ဂစ္ဆတိ, ဒေါသာဂတိံ ဂစ္ဆတိ, မောဟာဂတိံ ဂစ္ဆတိ, ဘယာဂတိံ ဂစ္ဆတိ—  ဣမာနိ ခေါ, ဘိက္ခဝေ, စတ္တာရိ အဂတိဂမနာနီတိ.
+</Paragraph>
+
+<Paragraph number="113" type="verses" book="a4">
+_ဆန္ဒာ ဒေါသာ ဘယာ မောဟာ,_  
+_ယော ဓမ္မံ အတိဝတ္တတိ;_  
+_နိဟီယတိ တဿ ယသော,_  
+_ကာဠပက္ခေဝ စန္ဒိမာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="114" type="center" book="a4">
+သတ္တမံ.
+</Paragraph>

@@ -1,0 +1,50 @@
+---
+title: 1.1 ဘဏ္ဍဂါမဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.278015'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.278015'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="1.1">
+* [1.1.1 အနုဗုဒ္ဓသုတ္တ](1-1/1-1-1)
+* [1.1.2 ပပတိတသုတ္တ](1-1/1-1-2)
+* [1.1.3 ပဌမခတသုတ္တ](1-1/1-1-3)
+* [1.1.4 ဒုတိယခတသုတ္တ](1-1/1-1-4)
+* [1.1.5 အနုသောတသုတ္တ](1-1/1-1-5)
+* [1.1.6 အပ္ပဿုတသုတ္တ](1-1/1-1-6)
+* [1.1.7 သောဘနသုတ္တ](1-1/1-1-7)
+* [1.1.8 ဝေသာရဇ္ဇသုတ္တ](1-1/1-1-8)
+* [1.1.9 တဏှုပ္ပါဒသုတ္တ](1-1/1-1-9)
+* [1.1.10 ယောဂသုတ္တ](1-1/1-1-10)
+</TableOfContents>

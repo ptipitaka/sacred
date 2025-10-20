@@ -1,0 +1,50 @@
+---
+title: 2.2 ပတ္တကမ္မဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.475147'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.475147'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="2.2">
+* [2.2.1 ပတ္တကမ္မသုတ္တ](2-2/2-2-1)
+* [2.2.2 အာနဏျသုတ္တ](2-2/2-2-2)
+* [2.2.3 ဗြဟ္မသုတ္တ](2-2/2-2-3)
+* [2.2.4 နိရယသုတ္တ](2-2/2-2-4)
+* [2.2.5 ရူပသုတ္တ](2-2/2-2-5)
+* [2.2.6 သရာဂသုတ္တ](2-2/2-2-6)
+* [2.2.7 အဟိရာဇသုတ္တ](2-2/2-2-7)
+* [2.2.8 ဒေဝဒတ္တသုတ္တ](2-2/2-2-8)
+* [2.2.9 ပဓာနသုတ္တ](2-2/2-2-9)
+* [2.2.10 အဓမ္မိကသုတ္တ](2-2/2-2-10)
+</TableOfContents>

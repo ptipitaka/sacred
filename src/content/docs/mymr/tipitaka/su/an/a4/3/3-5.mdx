@@ -1,0 +1,50 @@
+---
+title: 3.5 အာဘာဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.704251'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.704251'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="3.5">
+* [3.5.1 အာဘာသုတ္တ](3-5/3-5-1)
+* [3.5.2 ပဘာသုတ္တ](3-5/3-5-2)
+* [3.5.3 အာလောကသုတ္တ](3-5/3-5-3)
+* [3.5.4 ဩဘာသသုတ္တ](3-5/3-5-4)
+* [3.5.5 ပဇ္ဇောတသုတ္တ](3-5/3-5-5)
+* [3.5.6 ပဌမကာလသုတ္တ](3-5/3-5-6)
+* [3.5.7 ဒုတိယကာလသုတ္တ](3-5/3-5-7)
+* [3.5.8 ဒုစ္စရိတသုတ္တ](3-5/3-5-8)
+* [3.5.9 သုစရိတသုတ္တ](3-5/3-5-9)
+* [3.5.10 သာရသုတ္တ](3-5/3-5-10)
+</TableOfContents>

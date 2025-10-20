@@ -1,0 +1,46 @@
+---
+title: 2.3.5 ဒုတိယအဂ္ဂသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.577193'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.577193'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="75" book="a4" e="ch" v="15" p="391">
+
+<Paragraph number="539" book="a4">
+“စတ္တာရိမာနိ, ဘိက္ခဝေ, အဂ္ဂါနိ. ကတမာနိ စတ္တာရိ? ရူပဂ္ဂံ, ဝေဒနာဂ္ဂံ, သညာဂ္ဂံ, ဘဝဂ္ဂံ—  ဣမာနိ ခေါ, ဘိက္ခဝေ, စတ္တာရိ အဂ္ဂါနီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="540" type="center" book="a4">
+ပဉ္စမံ.
+</Paragraph>

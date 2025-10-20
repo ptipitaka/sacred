@@ -1,0 +1,50 @@
+---
+title: 4.1 ဣန္ဒြိယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.894969'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.894969'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a4" section="4.1">
+* [4.1.1 ဣန္ဒြိယသုတ္တ](4-1/4-1-1)
+* [4.1.2 သဒ္ဓါဗလသုတ္တ](4-1/4-1-2)
+* [4.1.3 ပညာဗလသုတ္တ](4-1/4-1-3)
+* [4.1.4 သတိဗလသုတ္တ](4-1/4-1-4)
+* [4.1.5 ပဋိသင်္ခါနဗလသုတ္တ](4-1/4-1-5)
+* [4.1.6 ကပ္ပသုတ္တ](4-1/4-1-6)
+* [4.1.7 ရောဂသုတ္တ](4-1/4-1-7)
+* [4.1.8 ပရိဟာနိသုတ္တ](4-1/4-1-8)
+* [4.1.9 ဘိက္ခုနီသုတ္တ](4-1/4-1-9)
+* [4.1.10 သုဂတဝိနယသုတ္တ](4-1/4-1-10)
+</TableOfContents>

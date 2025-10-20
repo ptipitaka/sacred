@@ -1,0 +1,46 @@
+---
+title: 4.1.3 ပညာဗလသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a4
+review:
+  current: review
+  updated: '2025-10-20T16:14:53.921702'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:14:53.921702'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="153" book="a4" e="ch" v="15" p="459">
+
+<Paragraph number="911" book="a4">
+“စတ္တာရိမာနိ, ဘိက္ခဝေ, ဗလာနိ. ကတမာနိ စတ္တာရိ? ပညာဗလံ, ဝီရိယဗလံ, အနဝဇ္ဇဗလံ, သင်္ဂဟဗလံ—  ဣမာနိ ခေါ, ဘိက္ခဝေ, စတ္တာရိ ဗလာနီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="912" type="center" book="a4">
+တတိယံ.
+</Paragraph>
