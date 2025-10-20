@@ -1,0 +1,53 @@
+---
+title: 11.7 မဟာပညဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:04.347092'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:04.347092'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="11.7">
+* [11.7.1 မဟာပညာသုတ္တ](11-7/11-7-1)
+* [11.7.2 ပုထုပညာသုတ္တ](11-7/11-7-2)
+* [11.7.3 ဝိပုလပညာသုတ္တ](11-7/11-7-3)
+* [11.7.4 ဂမ္ဘီရပညာသုတ္တ](11-7/11-7-4)
+* [11.7.5 အပ္ပမတ္တပညာသုတ္တ](11-7/11-7-5)
+* [11.7.6 ဘူရိပညာသုတ္တ](11-7/11-7-6)
+* [11.7.7 ပညာဗာဟုလ္လသုတ္တ](11-7/11-7-7)
+* [11.7.8 သီဃပညာသုတ္တ](11-7/11-7-8)
+* [11.7.9 လဟုပညာသုတ္တ](11-7/11-7-9)
+* [11.7.10 ဟာသပညာသုတ္တ](11-7/11-7-10)
+* [11.7.11 ဇဝနပညာသုတ္တ](11-7/11-7-11)
+* [11.7.12 တိက္ခပညာသုတ္တ](11-7/11-7-12)
+* [11.7.13 နိဗ္ဗေဓိကပညာသုတ္တ](11-7/11-7-13)
+</TableOfContents>

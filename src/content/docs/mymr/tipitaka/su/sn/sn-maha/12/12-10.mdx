@@ -1,0 +1,46 @@
+---
+title: 12.10 စတုတ္ထအာမကဓညပေယျာလဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:04.731250'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:04.731250'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="12.10">
+* [12.10.1 ခေတ္တဝတ္ထုသုတ္တ](12-10/12-10-1)
+* [12.10.2 ကယဝိက္ကယသုတ္တ](12-10/12-10-2)
+* [12.10.3 ဒူတေယျသုတ္တ](12-10/12-10-3)
+* [12.10.4 တုလာကူဋသုတ္တ](12-10/12-10-4)
+* [12.10.5 ဥက္ကောဋနသုတ္တ](12-10/12-10-5)
+* [12.10.6–11 ဆေဒနာဒိသုတ္တ](12-10/12-10-6–11)
+</TableOfContents>

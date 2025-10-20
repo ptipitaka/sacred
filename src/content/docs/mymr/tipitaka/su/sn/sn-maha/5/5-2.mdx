@@ -1,0 +1,52 @@
+---
+title: 5.2 အပ္ပမာဒဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:06.558874'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:06.558874'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Paragraph number="1291" type="center" book="sn">
+(အပ္ပမာဒဝဂ္ဂေါ သမ္မပ္ပဓာနဝသေန ဝိတ္ထာရေတဗ္ဗော.)
+
+</Paragraph>
+
+<Paragraph number="1292" type="center" book="sn">
+တဿုဒ္ဒါနံ
+
+
+</Paragraph>
+
+<Paragraph number="1293" type="verses" book="sn">
+_တထာဂတံ ပဒံ ကူဋံ,_  
+_မူလံ သာရေန ဝဿိကံ;_  
+_ရာဇာ စန္ဒိမသူရိယာ,_  
+_ဝတ္ထေန ဒသမံ ပဒန္တိ._
+</Paragraph>

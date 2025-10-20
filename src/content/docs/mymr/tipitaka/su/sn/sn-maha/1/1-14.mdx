@@ -1,0 +1,50 @@
+---
+title: 1.14 ဩဃဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 14
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:03.765231'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:03.765231'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="1.14">
+* [1.14.1 ဩဃသုတ္တ](1-14/1-14-1)
+* [1.14.2 ယောဂသုတ္တ](1-14/1-14-2)
+* [1.14.3 ဥပါဒါနသုတ္တ](1-14/1-14-3)
+* [1.14.4 ဂန္ထသုတ္တ](1-14/1-14-4)
+* [1.14.5 အနုသယသုတ္တ](1-14/1-14-5)
+* [1.14.6 ကာမဂုဏသုတ္တ](1-14/1-14-6)
+* [1.14.7 နီဝရဏသုတ္တ](1-14/1-14-7)
+* [1.14.8 ဥပါဒါနက္ခန္ဓသုတ္တ](1-14/1-14-8)
+* [1.14.9 ဩရမ္ဘာဂိယသုတ္တ](1-14/1-14-9)
+* [1.14.10 ဥဒ္ဓမ္ဘာဂိယသုတ္တ](1-14/1-14-10)
+</TableOfContents>

@@ -1,0 +1,46 @@
+---
+title: 1.4.9 ပဌမဗြဟ္မစရိယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:04.133890'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:04.133890'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="39" book="sn" e="ch" v="18" p="285">
+
+<Paragraph number="139" book="sn">
+သာဝတ္ထိနိဒါနံ. “ဗြဟ္မစရိယဉ္စ ဝေါ, ဘိက္ခဝေ, ဒေသေဿာမိ, ဗြဟ္မစရိယဖလာနိ စ. တံ သုဏာထ. ကတမဉ္စ, ဘိက္ခဝေ, ဗြဟ္မစရိယံ? အယမေဝ အရိယော အဋ္ဌင်္ဂိကော မဂ္ဂေါ, သေယျထိဒံ—  သမ္မာဒိဋ္ဌိ …ပေ…  သမ္မာသမာဓိ. ဣဒံ ဝုစ္စတိ, ဘိက္ခဝေ, ဗြဟ္မစရိယံ. ကတမာနိ စ, ဘိက္ခဝေ, ဗြဟ္မစရိယဖလာနိ? သောတာပတ္တိဖလံ, သကဒါဂါမိဖလံ, အနာဂါမိဖလံ, အရဟတ္တဖလံ—  ဣမာနိ ဝုစ္စန္တိ, ဘိက္ခဝေ, ဗြဟ္မစရိယဖလာနီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="140" type="center" book="sn">
+နဝမံ.
+</Paragraph>

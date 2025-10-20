@@ -1,0 +1,46 @@
+---
+title: 8.2.8 နာနာဓာတုသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:06.963896'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:06.963896'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="916" book="sn" e="ch" v="18" p="420">
+
+<Paragraph number="1607" book="sn">
+“ဣမေသဉ္စ ပနာဟံ, အာဝုသော, စတုန္နံ သတိပဋ္ဌာနာနံ ဘာဝိတတ္တာ ဗဟုလီကတတ္တာ အနေကဓာတုနာနာဓာတုလောကံ ယထာဘူတံ ပဇာနာမီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1608" type="center" book="sn">
+အဋ္ဌမံ.
+</Paragraph>

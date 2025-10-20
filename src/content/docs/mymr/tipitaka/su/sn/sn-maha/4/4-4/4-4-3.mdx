@@ -1,0 +1,46 @@
+---
+title: 4.4.3 အရဟန္တသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:06.384951'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:06.384951'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="503" book="sn" e="ch" v="18" p="353">
+
+<Paragraph number="1089" book="sn">
+“ပဉ္စိမာနိ, ဘိက္ခဝေ, ဣန္ဒြိယာနိ. ကတမာနိ ပဉ္စ? သုခိန္ဒြိယံ, ဒုက္ခိန္ဒြိယံ, သောမနဿိန္ဒြိယံ, ဒေါမနဿိန္ဒြိယံ, ဥပေက္ခိန္ဒြိယံ. ယတော ခေါ, ဘိက္ခဝေ, ဘိက္ခု ဣမေသံ ပဉ္စန္နံ ဣန္ဒြိယာနံ သမုဒယဉ္စ အတ္ထင်္ဂမဉ္စ အဿာဒဉ္စ အာဒီနဝဉ္စ နိဿရဏဉ္စ ယထာဘူတံ ဝိဒိတွာ အနုပါဒါဝိမုတ္တော ဟောတိ—  အယံ ဝုစ္စတိ, ဘိက္ခဝေ, ဘိက္ခု အရဟံ ခီဏာသဝေါ ဝုသိတဝါ ကတကရဏီယော ဩဟိတဘာရော အနုပ္ပတ္တသဒတ္ထော ပရိက္ခီဏဘဝသံယောဇနော သမ္မဒညာဝိမုတ္တော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1090" type="center" book="sn">
+တတိယံ.
+</Paragraph>

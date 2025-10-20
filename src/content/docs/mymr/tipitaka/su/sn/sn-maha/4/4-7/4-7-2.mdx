@@ -1,0 +1,46 @@
+---
+title: 4.7.2 အနုသယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:06.513586'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:06.513586'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="532" book="sn" e="ch" v="18" p="359">
+
+<Paragraph number="1231" book="sn">
+“ပဉ္စိမာနိ, ဘိက္ခဝေ, ဣန္ဒြိယာနိ ဘာဝိတာနိ ဗဟုလီကတာနိ အနုသယသမုဂ္ဃါတာယ သံဝတ္တန္တိ. ကတမာနိ ပဉ္စ? သဒ္ဓိန္ဒြိယံ …ပေ…  ပညိန္ဒြိယံ—  ဣမာနိ ခေါ, ဘိက္ခဝေ, ပဉ္စိန္ဒြိယာနိ ဘာဝိတာနိ ဗဟုလီကတာနိ အနုသယသမုဂ္ဃါတာယ သံဝတ္တန္တီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1232" type="center" book="sn">
+ဒုတိယံ.
+</Paragraph>

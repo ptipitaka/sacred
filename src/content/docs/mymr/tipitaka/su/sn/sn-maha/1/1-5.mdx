@@ -1,0 +1,43 @@
+---
+title: 1.5 အညတိတ္ထိယပေယျာလဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:03.780849'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:03.780849'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="1.5">
+* [1.5.1 ရာဂဝိရာဂသုတ္တ](1-5/1-5-1)
+* [1.5.2–7 သံယောဇနပ္ပဟာနာဒိသုတ္တဆက္က](1-5/1-5-2–7)
+* [1.5.8 အနုပါဒါပရိနိဗ္ဗာနသုတ္တ](1-5/1-5-8)
+</TableOfContents>

@@ -1,0 +1,50 @@
+---
+title: 12.4 သီသပါဝနဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:04.745961'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:04.745961'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="12.4">
+* [12.4.1 သီသပါဝနသုတ္တ](12-4/12-4-1)
+* [12.4.2 ခဒိရပတ္တသုတ္တ](12-4/12-4-2)
+* [12.4.3 ဒဏ္ဍသုတ္တ](12-4/12-4-3)
+* [12.4.4 စေလသုတ္တ](12-4/12-4-4)
+* [12.4.5 သတ္တိသတသုတ္တ](12-4/12-4-5)
+* [12.4.6 ပါဏသုတ္တ](12-4/12-4-6)
+* [12.4.7 ပဌမသူရိယသုတ္တ](12-4/12-4-7)
+* [12.4.8 ဒုတိယသူရိယသုတ္တ](12-4/12-4-8)
+* [12.4.9 ဣန္ဒခီလသုတ္တ](12-4/12-4-9)
+* [12.4.10 ဝါဒတ္ထိကသုတ္တ](12-4/12-4-10)
+</TableOfContents>

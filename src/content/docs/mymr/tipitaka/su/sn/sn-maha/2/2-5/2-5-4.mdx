@@ -1,0 +1,46 @@
+---
+title: 2.5.4 ဒုပ္ပညသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:05.499092'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:05.499092'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="225" book="sn" e="ch" v="18" p="312">
+
+<Paragraph number="538" book="sn">
+အထ ခေါ အညတရော ဘိက္ခု ယေန ဘဂဝါ တေနုပသင်္ကမိ …ပေ…  ဧကမန္တံ နိသိန္နော ခေါ သော ဘိက္ခု ဘဂဝန္တံ ဧတဒဝေါစ—  “‘ဒုပ္ပညော ဧဠမူဂေါ, ဒုပ္ပညော ဧဠမူဂေါ’တိ, ဘန္တေ, ဝုစ္စတိ. ကိတ္တာဝတာ နု ခေါ, ဘန္တေ, ‘ဒုပ္ပညော ဧဠမူဂေါ’တိ ဝုစ္စတီ”တိ? “သတ္တန္နံ ခေါ, ဘိက္ခု, ဗောဇ္ဈင်္ဂါနံ အဘာဝိတတ္တာ အဗဟုလီကတတ္တာ ‘ဒုပ္ပညော ဧဠမူဂေါ’တိ ဝုစ္စတိ. ကတမေသံ သတ္တန္နံ? သတိသမ္ဗောဇ္ဈင်္ဂဿ …ပေ…  ဥပေက္ခာသမ္ဗောဇ္ဈင်္ဂဿ—  ဣမေသံ ခေါ, ဘိက္ခု, သတ္တန္နံ ဗောဇ္ဈင်္ဂါနံ အဘာဝိတတ္တာ အဗဟုလီကတတ္တာ ‘ဒုပ္ပညော ဧဠမူဂေါ’တိ ဝုစ္စတီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="539" type="center" book="sn">
+စတုတ္ထံ.
+</Paragraph>

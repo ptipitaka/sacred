@@ -1,0 +1,50 @@
+---
+title: 12.3.5 အာသဝက္ခယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:04.954681'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:04.954681'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="1095" book="sn" e="ch" v="18" p="443">
+
+<Paragraph number="2285" book="sn">
+“ဇာနတောဟံ, ဘိက္ခဝေ, ပဿတော အာသဝါနံ ခယံ ဝဒါမိ, နော အဇာနတော အပဿတော. ကိဉ္စ, ဘိက္ခဝေ, ဇာနတော ပဿတော အာသဝါနံ ခယော ဟောတိ? ‘ဣဒံ ဒုက္ခန်’တိ, ဘိက္ခဝေ, ဇာနတော ပဿတော အာသဝါနံ ခယော ဟောတိ, ‘အယံ ဒုက္ခသမုဒယော’တိ ဇာနတော ပဿတော အာသဝါနံ ခယော ဟောတိ, ‘အယံ ဒုက္ခနိရောဓော’တိ ဇာနတော ပဿတော အာသဝါနံ ခယော ဟောတိ, ‘အယံ ဒုက္ခနိရောဓဂါမိနီ ပဋိပဒါ’တိ ဇာနတော ပဿတော အာသဝါနံ ခယော ဟောတိ. ဧဝံ ခေါ, ဘိက္ခဝေ, ဇာနတော ဧဝံ ပဿတော အာသဝါနံ ခယော ဟောတိ.
+</Paragraph>
+
+<Paragraph number="2286" book="sn">
+တသ္မာတိဟ, ဘိက္ခဝေ, ‘ဣဒံ ဒုက္ခန်’တိ ယောဂေါ ကရဏီယော …ပေ…  ‘အယံ ဒုက္ခနိရောဓဂါမိနီ ပဋိပဒါ’တိ ယောဂေါ ကရဏီယော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="2287" type="center" book="sn">
+ပဉ္စမံ.
+</Paragraph>

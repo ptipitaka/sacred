@@ -1,0 +1,46 @@
+---
+title: 12.7.3 ပညာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:05.107796'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:05.107796'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="1133" book="sn" e="ch" v="18" p="449">
+
+<Paragraph number="2440" book="sn">
+…  “ဧဝမေဝ ခေါ, ဘိက္ခဝေ, အပ္ပကာ တေ သတ္တာ ယေ ပန အရိယေန ပညာစက္ခုနာ သမန္နာဂတာ; အထ ခေါ ဧတေဝ ဗဟုတရာ သတ္တာ ယေ အဝိဇ္ဇာဂတာ သမ္မုဠှာ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="2441" type="center" book="sn">
+တတိယံ.
+</Paragraph>

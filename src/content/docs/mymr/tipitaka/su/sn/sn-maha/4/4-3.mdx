@@ -1,0 +1,50 @@
+---
+title: 4.3 ဆဠိန္ဒြိယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:05.985572'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:05.985572'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="4.3">
+* [4.3.1 ပုနဗ္ဘဝသုတ္တ](4-3/4-3-1)
+* [4.3.2 ဇီဝိတိန္ဒြိယသုတ္တ](4-3/4-3-2)
+* [4.3.3 အညိန္ဒြိယသုတ္တ](4-3/4-3-3)
+* [4.3.4 ဧကဗီဇီသုတ္တ](4-3/4-3-4)
+* [4.3.5 သုဒ္ဓကသုတ္တ](4-3/4-3-5)
+* [4.3.6 သောတာပန္နသုတ္တ](4-3/4-3-6)
+* [4.3.7 အရဟန္တသုတ္တ](4-3/4-3-7)
+* [4.3.8 သမ္ဗုဒ္ဓသုတ္တ](4-3/4-3-8)
+* [4.3.9 ပဌမသမဏဗြာဟ္မဏသုတ္တ](4-3/4-3-9)
+* [4.3.10 ဒုတိယသမဏဗြာဟ္မဏသုတ္တ](4-3/4-3-10)
+</TableOfContents>

@@ -1,0 +1,50 @@
+---
+title: 2.7 အာနာပါနဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:05.273816'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:05.273816'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="2.7">
+* [2.7.1 အဋ္ဌိကမဟပ္ဖလသုတ္တ](2-7/2-7-1)
+* [2.7.2 ပုဠဝကသုတ္တ](2-7/2-7-2)
+* [2.7.3 ဝိနီလကသုတ္တ](2-7/2-7-3)
+* [2.7.4 ဝိစ္ဆိဒ္ဒကသုတ္တ](2-7/2-7-4)
+* [2.7.5 ဥဒ္ဓုမာတကသုတ္တ](2-7/2-7-5)
+* [2.7.6 မေတ္တာသုတ္တ](2-7/2-7-6)
+* [2.7.7 ကရုဏာသုတ္တ](2-7/2-7-7)
+* [2.7.8 မုဒိတာသုတ္တ](2-7/2-7-8)
+* [2.7.9 ဥပေက္ခာသုတ္တ](2-7/2-7-9)
+* [2.7.10 အာနာပါနသုတ္တ](2-7/2-7-10)
+</TableOfContents>

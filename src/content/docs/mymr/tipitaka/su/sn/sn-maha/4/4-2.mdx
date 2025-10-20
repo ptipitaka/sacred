@@ -1,0 +1,50 @@
+---
+title: 4.2 မုဒုတရဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:05.981687'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:05.981687'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="4.2">
+* [4.2.1 ပဋိလာဘသုတ္တ](4-2/4-2-1)
+* [4.2.2 ပဌမသံခိတ္တသုတ္တ](4-2/4-2-2)
+* [4.2.3 ဒုတိယသံခိတ္တသုတ္တ](4-2/4-2-3)
+* [4.2.4 တတိယသံခိတ္တသုတ္တ](4-2/4-2-4)
+* [4.2.5 ပဌမဝိတ္ထာရသုတ္တ](4-2/4-2-5)
+* [4.2.6 ဒုတိယဝိတ္ထာရသုတ္တ](4-2/4-2-6)
+* [4.2.7 တတိယဝိတ္ထာရသုတ္တ](4-2/4-2-7)
+* [4.2.8 ပဋိပန္နသုတ္တ](4-2/4-2-8)
+* [4.2.9 သမ္ပန္နသုတ္တ](4-2/4-2-9)
+* [4.2.10 အာသဝက္ခယသုတ္တ](4-2/4-2-10)
+</TableOfContents>

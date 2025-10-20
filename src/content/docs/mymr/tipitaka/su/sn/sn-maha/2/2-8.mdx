@@ -1,0 +1,50 @@
+---
+title: 2.8 နိရောဓဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:05.279816'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:05.279816'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="2.8">
+* [2.8.1 အသုဘသုတ္တ](2-8/2-8-1)
+* [2.8.2 မရဏသုတ္တ](2-8/2-8-2)
+* [2.8.3 အာဟာရေပဋိကူလသုတ္တ](2-8/2-8-3)
+* [2.8.4 အနဘိရတိသုတ္တ](2-8/2-8-4)
+* [2.8.5 အနိစ္စသုတ္တ](2-8/2-8-5)
+* [2.8.6 ဒုက္ခသုတ္တ](2-8/2-8-6)
+* [2.8.7 အနတ္တသုတ္တ](2-8/2-8-7)
+* [2.8.8 ပဟာနသုတ္တ](2-8/2-8-8)
+* [2.8.9 ဝိရာဂသုတ္တ](2-8/2-8-9)
+* [2.8.10 နိရောဓသုတ္တ](2-8/2-8-10)
+</TableOfContents>

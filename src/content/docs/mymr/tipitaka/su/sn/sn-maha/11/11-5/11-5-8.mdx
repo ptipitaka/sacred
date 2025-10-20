@@ -1,0 +1,50 @@
+---
+title: 11.5.8 ဘဒ္ဒိယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:04.622903'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:04.622903'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="1044" book="sn" e="ch" v="18" p="434">
+
+<Paragraph number="2080" book="sn">
+ကပိလဝတ္ထုနိဒါနံ. ဧကမန္တံ နိသိန္နံ ခေါ ဘဒ္ဒိယံ သက္ကံ ဘဂဝါ ဧတဒဝေါစ—  “စတူဟိ ခေါ, ဘဒ္ဒိယ, ဓမ္မေဟိ သမန္နာဂတော အရိယသာဝကော သောတာပန္နော ဟောတိ အဝိနိပါတဓမ္မော နိယတော သမ္ဗောဓိပရာယဏော.
+</Paragraph>
+
+<Paragraph number="2081" book="sn">
+ကတမေဟိ စတူဟိ? ဣဓ, ဘဒ္ဒိယ, အရိယသာဝကော ဗုဒ္ဓေ …ပေ…  ဓမ္မေ …ပေ…  သံဃေ …ပေ…  အရိယကန္တေဟိ သီလေဟိ သမန္နာဂတော ဟောတိ အခဏ္ဍေဟိ …ပေ…  သမာဓိသံဝတ္တနိကေဟိ. ဣမေဟိ ခေါ, ဘဒ္ဒိယ, စတူဟိ ဓမ္မေဟိ သမန္နာဂတော အရိယသာဝကော သောတာပန္နော ဟောတိ အဝိနိပါတဓမ္မော နိယတော သမ္ဗောဓိပရာယဏော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="2082" type="center" book="sn">
+အဋ္ဌမံ.
+</Paragraph>

@@ -1,0 +1,50 @@
+---
+title: 12.4.7 ပဌမသူရိယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:05.004651'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:05.004651'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="1107" book="sn" e="ch" v="18" p="445">
+
+<Paragraph number="2334" book="sn">
+“သူရိယဿ, ဘိက္ခဝေ, ဥဒယတော ဧတံ ပုဗ္ဗင်္ဂမံ ဧတံ ပုဗ္ဗနိမိတ္တံ, ယဒိဒံ—  အရုဏုဂ္ဂံ. ဧဝမေဝ ခေါ, ဘိက္ခဝေ, ဘိက္ခုနော စတုန္နံ အရိယသစ္စာနံ ယထာဘူတံ အဘိသမယာယ ဧတံ ပုဗ္ဗင်္ဂမံ ဧတံ ပုဗ္ဗနိမိတ္တံ, ယဒိဒံ—  သမ္မာဒိဋ္ဌိ. တဿေတံ, ဘိက္ခဝေ, ဘိက္ခုနော ပါဋိကင်္ခံ—  ‘ဣဒံ ဒုက္ခန်’တိ ယထာဘူတံ ပဇာနိဿတိ …ပေ…  ‘အယံ ဒုက္ခနိရောဓဂါမိနီ ပဋိပဒါ’တိ ယထာဘူတံ ပဇာနိဿတိ.
+</Paragraph>
+
+<Paragraph number="2335" book="sn">
+တသ္မာတိဟ, ဘိက္ခဝေ, ‘ဣဒံ ဒုက္ခန်’တိ ယောဂေါ ကရဏီယော …ပေ…  ‘အယံ ဒုက္ခနိရောဓဂါမိနီ ပဋိပဒါ’တိ ယောဂေါ ကရဏီယော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="2336" type="center" book="sn">
+သတ္တမံ.
+</Paragraph>

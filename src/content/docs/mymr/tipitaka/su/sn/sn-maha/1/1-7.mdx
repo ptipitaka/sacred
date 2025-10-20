@@ -1,0 +1,46 @@
+---
+title: 1.7 ဧကဓမ္မပေယျာလဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:03.786920'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:03.786920'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="1.7">
+* [1.7.1 ကလျာဏမိတ္တသုတ္တ](1-7/1-7-1)
+* [1.7.2–6 သီလသမ္ပဒါဒိသုတ္တပဉ္စက](1-7/1-7-2–6)
+* [1.7.7 ယောနိသောမနသိကာရသမ္ပဒါသုတ္တ](1-7/1-7-7)
+* [1.7.8 ဒုတိယကလျာဏမိတ္တသုတ္တ](1-7/1-7-8)
+* [1.7.9–13 ဒုတိယသီလသမ္ပဒါဒိသုတ္တပဉ္စက](1-7/1-7-9–13)
+* [1.7.14 ဒုတိယယောနိသောမနသိကာရသမ္ပဒါသုတ္တ](1-7/1-7-14)
+</TableOfContents>

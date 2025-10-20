@@ -1,0 +1,46 @@
+---
+title: 1.8.9–13 ဒုတိယသီလသမ္ပဒါဒိသုတ္တပဉ္စက
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:04.217291'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:04.217291'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="85–89" book="sn" e="ch" v="18" p="294">
+
+<Paragraph number="193" book="sn">
+“နာဟံ, ဘိက္ခဝေ, အညံ ဧကဓမ္မမ္ပိ သမနုပဿာမိ, ယေန အနုပ္ပန္နော ဝါ အရိယော အဋ္ဌင်္ဂိကော မဂ္ဂေါ ဥပ္ပဇ္ဇတိ, ဥပ္ပန္နော ဝါ အရိယော အဋ္ဌင်္ဂိကော မဂ္ဂေါ ဘာဝနာပါရိပူရိံ ဂစ္ဆတိ, ယထယိဒံ, ဘိက္ခဝေ, သီလသမ္ပဒါ …ပေ…  ယထယိဒံ, ဘိက္ခဝေ, ဆန္ဒသမ္ပဒါ …ပေ…  ယထယိဒံ, ဘိက္ခဝေ, အတ္တသမ္ပဒါ …ပေ…  ယထယိဒံ, ဘိက္ခဝေ, ဒိဋ္ဌိသမ္ပဒါ …ပေ…  ယထယိဒံ, ဘိက္ခဝေ, အပ္ပမာဒသမ္ပဒါ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="194" type="center" book="sn">
+ဆဋ္ဌံ.
+</Paragraph>

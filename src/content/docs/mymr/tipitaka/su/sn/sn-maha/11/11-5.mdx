@@ -1,0 +1,50 @@
+---
+title: 11.5 သဂါထကပုညာဘိသန္ဒဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:04.339775'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:04.339775'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="11.5">
+* [11.5.1 ပဌမအဘိသန္ဒသုတ္တ](11-5/11-5-1)
+* [11.5.2 ဒုတိယအဘိသန္ဒသုတ္တ](11-5/11-5-2)
+* [11.5.3 တတိယအဘိသန္ဒသုတ္တ](11-5/11-5-3)
+* [11.5.4 ပဌမမဟဒ္ဓနသုတ္တ](11-5/11-5-4)
+* [11.5.5 ဒုတိယမဟဒ္ဓနသုတ္တ](11-5/11-5-5)
+* [11.5.6 သုဒ္ဓကသုတ္တ](11-5/11-5-6)
+* [11.5.7 နန္ဒိယသုတ္တ](11-5/11-5-7)
+* [11.5.8 ဘဒ္ဒိယသုတ္တ](11-5/11-5-8)
+* [11.5.9 မဟာနာမသုတ္တ](11-5/11-5-9)
+* [11.5.10 အင်္ဂသုတ္တ](11-5/11-5-10)
+</TableOfContents>

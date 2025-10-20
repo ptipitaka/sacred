@@ -1,0 +1,50 @@
+---
+title: 2.3 ဥဒါယိဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:32:05.259263'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:32:05.259263'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="2.3">
+* [2.3.1 ဗောဓာယသုတ္တ](2-3/2-3-1)
+* [2.3.2 ဗောဇ္ဈင်္ဂဒေသနာသုတ္တ](2-3/2-3-2)
+* [2.3.3 ဌာနိယသုတ္တ](2-3/2-3-3)
+* [2.3.4 အယောနိသောမနသိကာရသုတ္တ](2-3/2-3-4)
+* [2.3.5 အပရိဟာနိယသုတ္တ](2-3/2-3-5)
+* [2.3.6 တဏှက္ခယသုတ္တ](2-3/2-3-6)
+* [2.3.7 တဏှာနိရောဓသုတ္တ](2-3/2-3-7)
+* [2.3.8 နိဗ္ဗေဓဘာဂိယသုတ္တ](2-3/2-3-8)
+* [2.3.9 ဧကဓမ္မသုတ္တ](2-3/2-3-9)
+* [2.3.10 ဥဒါယိသုတ္တ](2-3/2-3-10)
+</TableOfContents>
