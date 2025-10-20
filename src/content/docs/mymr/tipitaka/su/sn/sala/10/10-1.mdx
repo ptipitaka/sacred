@@ -1,0 +1,51 @@
+---
+title: 10.1 အဗျာကတဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:02.653856'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:02.653856'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="10.1">
+* [10.1.1 ခေမာသုတ္တ](10-1/10-1-1)
+* [10.1.2 အနုရာဓသုတ္တ](10-1/10-1-2)
+* [10.1.3 ပဌမသာရိပုတ္တကောဋ္ဌိကသုတ္တ](10-1/10-1-3)
+* [10.1.4 ဒုတိယသာရိပုတ္တကောဋ္ဌိကသုတ္တ](10-1/10-1-4)
+* [10.1.5 တတိယသာရိပုတ္တကောဋ္ဌိကသုတ္တ](10-1/10-1-5)
+* [10.1.6 စတုတ္ထသာရိပုတ္တကောဋ္ဌိကသုတ္တ](10-1/10-1-6)
+* [10.1.7 မောဂ္ဂလ္လာနသုတ္တ](10-1/10-1-7)
+* [10.1.8 ဝစ္ဆဂေါတ္တသုတ္တ](10-1/10-1-8)
+* [10.1.9 ကုတူဟလသာလာသုတ္တ](10-1/10-1-9)
+* [10.1.10 အာနန္ဒသုတ္တ](10-1/10-1-10)
+* [10.1.11 သဘိယကစ္စာနသုတ္တ](10-1/10-1-11)
+</TableOfContents>

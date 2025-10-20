@@ -1,0 +1,46 @@
+---
+title: 3.1.2 ပုရိသသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:02.939509'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:02.939509'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="281" book="sn" e="ch" v="18" p="321">
+
+<Paragraph number="1241" book="sn">
+“ပဉ္စဟိ, ဘိက္ခဝေ, အင်္ဂေဟိ သမန္နာဂတော ပုရိသော ဧကန္တအမနာပေါ ဟောတိ မာတုဂါမဿ. ကတမေဟိ ပဉ္စဟိ? န စ ရူပဝါ ဟောတိ, န စ ဘောဂဝါ ဟောတိ, န စ သီလဝါ ဟောတိ, အလသော စ ဟောတိ, ပဇဉ္စဿ န လဘတိ—  ဣမေဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ အင်္ဂေဟိ သမန္နာဂတော ပုရိသော ဧကန္တအမနာပေါ ဟောတိ မာတုဂါမဿ. ပဉ္စဟိ, ဘိက္ခဝေ, အင်္ဂေဟိ သမန္နာဂတော ပုရိသော ဧကန္တမနာပေါ ဟောတိ မာတုဂါမဿ. ကတမေဟိ ပဉ္စဟိ? ရူပဝါ စ ဟောတိ, ဘောဂဝါ စ ဟောတိ, သီလဝါ စ ဟောတိ, ဒက္ခော စ ဟောတိ အနလသော, ပဇဉ္စဿ လဘတိ—  ဣမေဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ အင်္ဂေဟိ သမန္နာဂတော ပုရိသော ဧကန္တမနာပေါ ဟောတိ မာတုဂါမဿာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1242" type="center" book="sn">
+ဒုတိယံ.
+</Paragraph>

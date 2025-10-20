@@ -1,0 +1,46 @@
+---
+title: 1.1.1.11 ဗာဟိရဒုက္ခာတီတာနာဂတသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 11
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:01.675516'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:01.675516'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="11" book="sn" e="ch" v="18" p="281">
+
+<Paragraph number="23" book="sn">
+“ရူပါ, ဘိက္ခဝေ, ဒုက္ခာ အတီတာနာဂတာ; ကော ပန ဝါဒေါ ပစ္စုပ္ပန္နာနံ. ဧဝံ ပဿံ, ဘိက္ခဝေ, သုတဝါ အရိယသာဝကော အတီတေသု ရူပေသု အနပေက္ခော ဟောတိ; အနာဂတေ ရူပေ နာဘိနန္ဒတိ; ပစ္စုပ္ပန္နာနံ ရူပါနံ နိဗ္ဗိဒါယ ဝိရာဂါယ နိရောဓာယ ပဋိပန္နော ဟောတီ”တိ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="24" type="center" book="sn">
+ဧကာဒသမံ.
+</Paragraph>

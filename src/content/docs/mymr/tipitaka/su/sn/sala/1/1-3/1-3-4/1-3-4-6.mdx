@@ -1,0 +1,46 @@
+---
+title: 1.3.4.6 ဒုတိယနတုမှာကသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:02.179374'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:02.179374'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="139" book="sn" e="ch" v="18" p="300">
+
+<Paragraph number="793" book="sn">
+“ယံ, ဘိက္ခဝေ, န တုမှာကံ, တံ ပဇဟထ. တံ ဝေါ ပဟီနံ ဟိတာယ သုခါယ ဘဝိဿတိ. ကိဉ္စ, ဘိက္ခဝေ, န တုမှာကံ? ရူပါ, ဘိက္ခဝေ, န တုမှာကံ; တေ ပဇဟထ. တေ ဝေါ ပဟီနာ ဟိတာယ သုခါယ ဘဝိဿန္တိ. သဒ္ဒါ…  ဂန္ဓာ…  ရသာ…  ဖောဋ္ဌဗ္ဗာ…  ဓမ္မာ န တုမှာကံ; တေ ပဇဟထ. တေ ဝေါ ပဟီနာ ဟိတာယ သုခါယ ဘဝိဿန္တိ. သေယျထာပိ, ဘိက္ခဝေ, ယံ ဣမသ္မိံ ဇေတဝနေ တိဏကဋ္ဌ …ပေ…  ဧဝမေဝ ခေါ, ဘိက္ခဝေ, ရူပါ န တုမှာကံ; တေ ပဇဟထ. တေ ဝေါ ပဟီနာ ဟိတာယ သုခါယ ဘဝိဿန္တီ”တိ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="794" type="center" book="sn">
+ဆဋ္ဌံ.
+</Paragraph>

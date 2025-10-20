@@ -1,0 +1,46 @@
+---
+title: 1.2.5.7 ပဋိသလ္လာနသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:02.005468'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:02.005468'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="100" book="sn" e="ch" v="18" p="295">
+
+<Paragraph number="525" book="sn">
+“ပဋိသလ္လာနေ, ဘိက္ခဝေ, ယောဂမာပဇ္ဇထ. ပဋိသလ္လီနော, ဘိက္ခဝေ, ဘိက္ခု ယထာဘူတံ ပဇာနာတိ. ကိဉ္စ ယထာဘူတံ ပဇာနာတိ? ‘စက္ခု အနိစ္စန်’တိ ယထာဘူတံ ပဇာနာတိ; ‘ရူပါ အနိစ္စာ’တိ ယထာဘူတံ ပဇာနာတိ; ‘စက္ခုဝိညာဏံ အနိစ္စန်’တိ ယထာဘူတံ ပဇာနာတိ; ‘စက္ခုသမ္ဖဿော အနိစ္စော’တိ ယထာဘူတံ ပဇာနာတိ …ပေ…  ‘ယမ္ပိဒံ မနောသမ္ဖဿပစ္စယာ ဥပ္ပဇ္ဇတိ ဝေဒယိတံ သုခံ ဝါ ဒုက္ခံ ဝါ အဒုက္ခမသုခံ ဝါ တမ္ပိ အနိစ္စန်’တိ ယထာဘူတံ ပဇာနာတိ. ပဋိသလ္လာနေ, ဘိက္ခဝေ, ယောဂမာပဇ္ဇထ. ပဋိသလ္လီနော, ဘိက္ခဝေ, ဘိက္ခု ယထာဘူတံ ပဇာနာတီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="526" type="center" book="sn">
+သတ္တမံ.
+</Paragraph>

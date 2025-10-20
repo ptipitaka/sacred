@@ -1,0 +1,44 @@
+---
+title: 9.2 ဒုတိယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:03.418063'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:03.418063'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="9.2">
+* [9.2.1 အသင်္ခတသုတ္တ](9-2/9-2-1)
+* [9.2.2 အနတသုတ္တ](9-2/9-2-2)
+* [9.2.3–32 အနာသဝါဒိသုတ္တ](9-2/9-2-3–32)
+* [9.2.33 ပရာယနသုတ္တ](9-2/9-2-33)
+</TableOfContents>

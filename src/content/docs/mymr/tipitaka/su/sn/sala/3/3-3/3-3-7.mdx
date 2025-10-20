@@ -1,0 +1,46 @@
+---
+title: 3.3.7 ဟေတုသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:03.087651'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:03.087651'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="310" book="sn" e="ch" v="18" p="324">
+
+<Paragraph number="1311" book="sn">
+“ပဉ္စိမာနိ, ဘိက္ခဝေ, မာတုဂါမဿ ဗလာနိ. ကတမာနိ ပဉ္စ? ရူပဗလံ, ဘောဂဗလံ, ဉာတိဗလံ, ပုတ္တဗလံ, သီလဗလံ. န, ဘိက္ခဝေ, မာတုဂါမော ရူပဗလဟေတု ဝါ ဘောဂဗလဟေတု ဝါ ဉာတိဗလဟေတု ဝါ ပုတ္တဗလဟေတု ဝါ ကာယဿ ဘေဒါ ပရံ မရဏာ သုဂတိံ သဂ္ဂံ လောကံ ဥပပဇ္ဇတိ. သီလဗလဟေတု ခေါ, ဘိက္ခဝေ, မာတုဂါမော ကာယဿ ဘေဒါ ပရံ မရဏာ သုဂတိံ သဂ္ဂံ လောကံ ဥပပဇ္ဇတိ. ဣမာနိ ခေါ, ဘိက္ခဝေ, ပဉ္စ မာတုဂါမဿ ဗလာနီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1312" type="center" book="sn">
+သတ္တမံ.
+</Paragraph>

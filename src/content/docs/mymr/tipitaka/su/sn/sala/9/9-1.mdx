@@ -1,0 +1,51 @@
+---
+title: 9.1 ပဌမဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:03.413014'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:03.413014'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="9.1">
+* [9.1.1 ကာယဂတာသတိသုတ္တ](9-1/9-1-1)
+* [9.1.2 သမထဝိပဿနာသုတ္တ](9-1/9-1-2)
+* [9.1.3 သဝိတက္ကသဝိစာရသုတ္တ](9-1/9-1-3)
+* [9.1.4 သုညတသမာဓိသုတ္တ](9-1/9-1-4)
+* [9.1.5 သတိပဋ္ဌာနသုတ္တ](9-1/9-1-5)
+* [9.1.6 သမ္မပ္ပဓာနသုတ္တ](9-1/9-1-6)
+* [9.1.7 ဣဒ္ဓိပါဒသုတ္တ](9-1/9-1-7)
+* [9.1.8 ဣန္ဒြိယသုတ္တ](9-1/9-1-8)
+* [9.1.9 ဗလသုတ္တ](9-1/9-1-9)
+* [9.1.10 ဗောဇ္ဈင်္ဂသုတ္တ](9-1/9-1-10)
+* [9.1.11 မဂ္ဂင်္ဂသုတ္တ](9-1/9-1-11)
+</TableOfContents>

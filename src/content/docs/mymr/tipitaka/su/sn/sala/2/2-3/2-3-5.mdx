@@ -1,0 +1,50 @@
+---
+title: 2.3.5 ဉာဏသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:02.871179'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:02.871179'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Paragraph type="center" book="sn">
+* ဉာဏသုတ္တ
+</Paragraph>
+
+<Division number="273" book="sn" e="ch" v="18" p="320">
+
+<Paragraph number="1210" book="sn">
+“‘ဣမာ ဝေဒနာ’တိ မေ, ဘိက္ခဝေ, ပုဗ္ဗေ အနနုဿုတေသု ဓမ္မေသု စက္ခုံ ဥဒပါဒိ, ဉာဏံ ဥဒပါဒိ, ပညာ ဥဒပါဒိ, ဝိဇ္ဇာ ဥဒပါဒိ, အာလောကော ဥဒပါဒိ. ‘အယံ ဝေဒနာသမုဒယော’တိ မေ, ဘိက္ခဝေ, ပုဗ္ဗေ အနနုဿုတေသု ဓမ္မေသု စက္ခုံ ဥဒပါဒိ …ပေ…  အာလောကော ဥဒပါဒိ. ‘အယံ ဝေဒနာသမုဒယဂါမိနီ ပဋိပဒါ’တိ မေ, ဘိက္ခဝေ, ပုဗ္ဗေ အနနုဿုတေသု ဓမ္မေသု စက္ခုံ ဥဒပါဒိ …ပေ…  ‘အယံ ဝေဒနာနိရောဓော’တိ မေ, ဘိက္ခဝေ, ပုဗ္ဗေ အနနုဿုတေသု ဓမ္မေသု စက္ခုံ ဥဒပါဒိ …ပေ…  ‘အယံ ဝေဒနာနိရောဓဂါမိနီ ပဋိပဒါ’တိ မေ, ဘိက္ခဝေ, ပုဗ္ဗေ အနနုဿုတေသု ဓမ္မေသု စက္ခုံ ဥဒပါဒိ …ပေ…  ‘အယံ ဝေဒနာယ အဿာဒေါ’တိ မေ, ဘိက္ခဝေ, ပုဗ္ဗေ အနနုဿုတေသု ဓမ္မေသု …ပေ…  ‘အယံ ဝေဒနာယ အာဒီနဝေါ’တိ မေ, ဘိက္ခဝေ, ပုဗ္ဗေ အနနုဿုတေသု ဓမ္မေသု …ပေ…  ‘ဣဒံ ခေါ နိဿရဏန်’တိ မေ, ဘိက္ခဝေ, ပုဗ္ဗေ အနနုဿုတေသု ဓမ္မေသု စက္ခုံ ဥဒပါဒိ, ဉာဏံ ဥဒပါဒိ, ပညာ ဥဒပါဒိ, ဝိဇ္ဇာ ဥဒပါဒိ, အာလောကော ဥဒပါဒီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1211" type="center" book="sn">
+ပဉ္စမံ.
+</Paragraph>

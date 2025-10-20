@@ -1,0 +1,62 @@
+---
+title: 13သ်4 သဠာယတနဝဂ္ဂသံယုတ္တပါဠိ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:22:01.576243'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:22:01.576243'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+<Paragraph type="center" book="sn">
+[ဟောမေ](/)
+</Paragraph>
+
+<Paragraph type="center" book="sn">
+# 13သ်4 သဠာယတနဝဂ္ဂသံယုတ္တပါဠိ
+</Paragraph>
+
+<Paragraph number="1" book="sn">
+နမော တဿ ဘဂဝတော အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ.
+
+[ဂေါ တော နေxတ် ပဂေ (1 သဠာယတနသံယုတ္တ)](1.md)
+
+
+
+</Paragraph>
+
+<TableOfContents book="sn" section="13">
+* [1 သဠာယတနသံယုတ္တ](1.md)
+* [2 ဝေဒနာသံယုတ္တ](2.md)
+* [3 မာတုဂါမသံယုတ္တ](3.md)
+* [4 ဇမ္ဗုခါဒကသံယုတ္တ](4.md)
+* [5 သာမဏ္ဍကသံယုတ္တ](5.md)
+* [6 မောဂ္ဂလ္လာနသံယုတ္တ](6.md)
+* [7 စိတ္တသံယုတ္တ](7.md)
+* [8 ဂါမဏိသံယုတ္တ](8.md)
+* [9 အသင်္ခတသံယုတ္တ](9.md)
+* [10 အဗျာကတသံယုတ္တ](10.md)
+</TableOfContents>
