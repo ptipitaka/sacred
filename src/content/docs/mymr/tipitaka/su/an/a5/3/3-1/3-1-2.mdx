@@ -1,0 +1,54 @@
+---
+title: 3.1.2 ဥဿင်္ကိတသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.690356'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.690356'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="102" book="a5" e="ch" v="16" p="112">
+
+<Paragraph number="615" book="a5">
+“ပဉ္စဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု ဥဿင်္ကိတပရိသင်္ကိတော ဟောတိ ပါပဘိက္ခူတိ အပိ အကုပ္ပဓမ္မောပိ.
+</Paragraph>
+
+<Paragraph number="616" book="a5">
+ကတမေဟိ ပဉ္စဟိ? ဣဓ, ဘိက္ခဝေ, ဘိက္ခု ဝေသိယာဂေါစရော ဝါ ဟောတိ, ဝိဓဝါဂေါစရော ဝါ ဟောတိ, ထုလ္လကုမာရိကာဂေါစရော ဝါ ဟောတိ, ပဏ္ဍကဂေါစရော ဝါ ဟောတိ, ဘိက္ခုနီဂေါစရော ဝါ ဟောတိ.
+</Paragraph>
+
+<Paragraph number="617" book="a5">
+ဣမေဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု ဥဿင်္ကိတပရိသင်္ကိတော ဟောတိ ပါပဘိက္ခူတိ အပိ အကုပ္ပဓမ္မောပီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="618" type="center" book="a5">
+ဒုတိယံ.
+</Paragraph>

@@ -1,0 +1,46 @@
+---
+title: 5.3.6 ဒုတိယကုလူပကသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:06.480441'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:06.480441'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="226" book="a5" e="ch" v="16" p="226">
+
+<Paragraph number="1272" book="a5">
+“ပဉ္စိမေ, ဘိက္ခဝေ, အာဒီနဝါ ကုလူပကဿ ဘိက္ခုနော အတိဝေလံ ကုလေသု သံသဋ္ဌဿ ဝိဟရတော. ကတမေ ပဉ္စ? မာတုဂါမဿ အဘိဏှဒဿနံ, ဒဿနေ သတိ သံသဂ္ဂေါ, သံသဂ္ဂေ သတိ ဝိဿာသော, ဝိဿာသေ သတိ ဩတာရော, ဩတိဏ္ဏစိတ္တဿေတံ ပါဋိကင်္ခံ—  ‘အနဘိရတော ဝါ ဗြဟ္မစရိယံ စရိဿတိ အညတရံ ဝါ သံကိလိဋ္ဌံ အာပတ္တိံ အာပဇ္ဇိဿတိ သိက္ခံ ဝါ ပစ္စက္ခာယ ဟီနာယာဝတ္တိဿတိ’. ဣမေ ခေါ, ဘိက္ခဝေ, ပဉ္စ အာဒီနဝါ ကုလူပကဿ ဘိက္ခုနော အတိဝေလံ ကုလေသု သံသဋ္ဌဿ ဝိဟရတော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1273" type="center" book="a5">
+ဆဋ္ဌံ.
+</Paragraph>

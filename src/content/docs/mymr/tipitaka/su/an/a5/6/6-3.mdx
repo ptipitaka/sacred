@@ -1,0 +1,44 @@
+---
+title: 6.3 သိက္ခာပဒပေယျာလ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:06.619040'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:06.619040'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a5" section="6.3">
+* [6.3.1 ဘိက္ခုသုတ္တ](6-3/6-3-1)
+* [6.3.2–7 ဘိက္ခုနီသုတ္တာဒိ](6-3/6-3-2–7)
+* [6.3.8 အာဇီဝကသုတ္တ](6-3/6-3-8)
+* [6.3.9–17 နိဂဏ္ဌသုတ္တာဒိ](6-3/6-3-9–17)
+</TableOfContents>

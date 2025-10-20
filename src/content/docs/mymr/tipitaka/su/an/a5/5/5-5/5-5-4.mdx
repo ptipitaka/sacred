@@ -1,0 +1,46 @@
+---
+title: 5.5.4 ပဌမမနောဒုစ္စရိတသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:06.581590'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:06.581590'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="244" book="a5" e="ch" v="16" p="234">
+
+<Paragraph number="1325" book="a5">
+“ပဉ္စိမေ, ဘိက္ခဝေ, အာဒီနဝါ မနောဒုစ္စရိတေ …ပေ…  အာနိသံသာ မနောသုစရိတေ. ကတမေ ပဉ္စ? အတ္တာပိ အတ္တာနံ န ဥပဝဒတိ; အနုဝိစ္စ ဝိညူ ပသံသန္တိ; ကလျာဏော ကိတ္တိသဒ္ဒေါ အဗ္ဘုဂ္ဂစ္ဆတိ; အသမ္မူဠှော ကာလံ ကရောတိ; ကာယဿ ဘေဒါ ပရံ မရဏာ သုဂတိံ သဂ္ဂံ လောကံ ဥပပဇ္ဇတိ. ဣမေ ခေါ, ဘိက္ခဝေ, ပဉ္စ အာနိသံသာ မနောသုစရိတေ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1326" type="center" book="a5">
+စတုတ္ထံ.
+</Paragraph>

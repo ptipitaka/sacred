@@ -1,0 +1,50 @@
+---
+title: 2.2 သညာဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.362952'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.362952'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a5" section="2.2">
+* [2.2.1 ပဌမသညာသုတ္တ](2-2/2-2-1)
+* [2.2.2 ဒုတိယသညာသုတ္တ](2-2/2-2-2)
+* [2.2.3 ပဌမဝဍ္ဎိသုတ္တ](2-2/2-2-3)
+* [2.2.4 ဒုတိယဝဍ္ဎိသုတ္တ](2-2/2-2-4)
+* [2.2.5 သာကစ္ဆသုတ္တ](2-2/2-2-5)
+* [2.2.6 သာဇီဝသုတ္တ](2-2/2-2-6)
+* [2.2.7 ပဌမဲဒ္ဓိပါဒသုတ္တ](2-2/2-2-7)
+* [2.2.8 ဒုတိယဲဒ္ဓိပါဒသုတ္တ](2-2/2-2-8)
+* [2.2.9 နိဗ္ဗိဒါသုတ္တ](2-2/2-2-9)
+* [2.2.10 အာသဝက္ခယသုတ္တ](2-2/2-2-10)
+</TableOfContents>

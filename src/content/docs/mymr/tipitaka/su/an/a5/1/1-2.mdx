@@ -1,0 +1,50 @@
+---
+title: 1.2 ဗလဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.166523'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.166523'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a5" section="1.2">
+* [1.2.1 အနနုဿုတသုတ္တ](1-2/1-2-1)
+* [1.2.2 ကူဋသုတ္တ](1-2/1-2-2)
+* [1.2.3 သံခိတ္တသုတ္တ](1-2/1-2-3)
+* [1.2.4 ဝိတ္ထတသုတ္တ](1-2/1-2-4)
+* [1.2.5 ဒဋ္ဌဗ္ဗသုတ္တ](1-2/1-2-5)
+* [1.2.6 ပုနကူဋသုတ္တ](1-2/1-2-6)
+* [1.2.7 ပဌမဟိတသုတ္တ](1-2/1-2-7)
+* [1.2.8 ဒုတိယဟိတသုတ္တ](1-2/1-2-8)
+* [1.2.9 တတိယဟိတသုတ္တ](1-2/1-2-9)
+* [1.2.10 စတုတ္ထဟိတသုတ္တ](1-2/1-2-10)
+</TableOfContents>

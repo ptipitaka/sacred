@@ -1,0 +1,50 @@
+---
+title: 3.3.6 ဒုတိယအနာယုဿာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.825980'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.825980'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="126" book="a5" e="ch" v="16" p="128">
+
+<Paragraph number="716" book="a5">
+“ပဉ္စိမေ, ဘိက္ခဝေ, ဓမ္မာ အနာယုဿာ. ကတမေ ပဉ္စ? အသပ္ပါယကာရီ ဟောတိ, သပ္ပါယေ မတ္တံ န ဇာနာတိ, အပရိဏတဘောဇီ စ ဟောတိ, ဒုဿီလော စ, ပါပမိတ္တော စ. ဣမေ ခေါ, ဘိက္ခဝေ, ပဉ္စ ဓမ္မာ အနာယုဿာ.
+</Paragraph>
+
+<Paragraph number="717" book="a5">
+ပဉ္စိမေ, ဘိက္ခဝေ, ဓမ္မာ အာယုဿာ. ကတမေ ပဉ္စ? သပ္ပါယကာရီ ဟောတိ, သပ္ပါယေ မတ္တံ ဇာနာတိ, ပရိဏတဘောဇီ စ ဟောတိ, သီလဝါ စ, ကလျာဏမိတ္တော စ. ဣမေ ခေါ, ဘိက္ခဝေ, ပဉ္စ ဓမ္မာ အာယုဿာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="718" type="center" book="a5">
+ဆဋ္ဌံ.
+</Paragraph>

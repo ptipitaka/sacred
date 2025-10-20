@@ -1,0 +1,50 @@
+---
+title: 5.2.5 ပဌမအက္ခန္တိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:06.431560'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:06.431560'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="215" book="a5" e="ch" v="16" p="222">
+
+<Paragraph number="1239" book="a5">
+“ပဉ္စိမေ, ဘိက္ခဝေ, အာဒီနဝါ အက္ခန္တိယာ. ကတမေ ပဉ္စ? ဗဟုနော ဇနဿ အပ္ပိယော ဟောတိ အမနာပေါ, ဝေရဗဟုလော စ ဟောတိ, ဝဇ္ဇဗဟုလော စ, သမ္မူဠှော ကာလံ ကရောတိ, ကာယဿ ဘေဒါ ပရံ မရဏာ အပါယံ ဒုဂ္ဂတိံ ဝိနိပါတံ နိရယံ ဥပပဇ္ဇတိ. ဣမေ ခေါ, ဘိက္ခဝေ, ပဉ္စ အာဒီနဝါ အက္ခန္တိယာ.
+</Paragraph>
+
+<Paragraph number="1240" book="a5">
+ပဉ္စိမေ, ဘိက္ခဝေ, အာနိသံသာ ခန္တိယာ. ကတမေ ပဉ္စ? ဗဟုနော ဇနဿ ပိယော ဟောတိ မနာပေါ, န ဝေရဗဟုလော ဟောတိ, န ဝဇ္ဇဗဟုလော, အသမ္မူဠှော ကာလံ ကရောတိ, ကာယဿ ဘေဒါ ပရံ မရဏာ သုဂတိံ သဂ္ဂံ လောကံ ဥပပဇ္ဇတိ. ဣမေ ခေါ, ဘိက္ခဝေ, ပဉ္စ အာနိသံသာ ခန္တိယာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1241" type="center" book="a5">
+ပဉ္စမံ.
+</Paragraph>

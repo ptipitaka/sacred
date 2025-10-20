@@ -1,0 +1,50 @@
+---
+title: 3.2.2 ပစ္ဆာသမဏသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.748921'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.748921'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="112" book="a5" e="ch" v="16" p="120">
+
+<Paragraph number="666" book="a5">
+“ပဉ္စဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ပစ္ဆာသမဏော န အာဒါတဗ္ဗော. ကတမေဟိ ပဉ္စဟိ? အတိဒူရေ ဝါ ဂစ္ဆတိ အစ္စာသန္နေ ဝါ, န ပတ္တပရိယာပန္နံ ဂဏှတိ, အာပတ္တိသာမန္တာ ဘဏမာနံ န နိဝါရေတိ, ဘဏမာနဿ အန္တရန္တရာ ကထံ ဩပါတေတိ, ဒုပ္ပညော ဟောတိ ဇဠော ဧဠမူဂေါ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ ဓမ္မေဟိ သမန္နာဂတော ပစ္ဆာသမဏော န အာဒါတဗ္ဗော.
+</Paragraph>
+
+<Paragraph number="667" book="a5">
+ပဉ္စဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ပစ္ဆာသမဏော အာဒါတဗ္ဗော. ကတမေဟိ ပဉ္စဟိ? နာတိဒူရေ ဂစ္ဆတိ န အစ္စာသန္နေ, ပတ္တပရိယာပန္နံ ဂဏှတိ, အာပတ္တိသာမန္တာ ဘဏမာနံ နိဝါရေတိ, ဘဏမာနဿ န အန္တရန္တရာ ကထံ ဩပါတေတိ, ပညဝါ ဟောတိ အဇဠော အနေဠမူဂေါ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ ဓမ္မေဟိ သမန္နာဂတော ပစ္ဆာသမဏော အာဒါတဗ္ဗော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="668" type="center" book="a5">
+ဒုတိယံ.
+</Paragraph>

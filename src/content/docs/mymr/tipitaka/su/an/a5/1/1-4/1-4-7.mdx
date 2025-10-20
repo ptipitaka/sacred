@@ -1,0 +1,62 @@
+---
+title: 1.4.7 ဘောဇနသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.314194'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.314194'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="37" book="a5" e="ch" v="16" p="35">
+
+<Paragraph number="192" book="a5">
+“ဘောဇနံ, ဘိက္ခဝေ, ဒဒမာနော ဒါယကော ပဋိဂ္ဂါဟကာနံ ပဉ္စ ဌာနာနိ ဒေတိ. ကတမာနိ ပဉ္စ? အာယုံ ဒေတိ, ဝဏ္ဏံ ဒေတိ, သုခံ ဒေတိ, ဗလံ ဒေတိ, ပဋိဘာနံ ဒေတိ. အာယုံ ခေါ ပန ဒတွာ အာယုဿ ဘာဂီ ဟောတိ ဒိဗ္ဗဿ ဝါ မာနုသဿ ဝါ; ဝဏ္ဏံ ဒတွာ ဝဏ္ဏဿ ဘာဂီ ဟောတိ ဒိဗ္ဗဿ ဝါ မာနုသဿ ဝါ; သုခံ ဒတွာ သုခဿ ဘာဂီ ဟောတိ ဒိဗ္ဗဿ ဝါ မာနုသဿ ဝါ; ဗလံ ဒတွာ ဗလဿ ဘာဂီ ဟောတိ ဒိဗ္ဗဿ ဝါ မာနုသဿ ဝါ; ပဋိဘာနံ ဒတွာ ပဋိဘာနဿ ဘာဂီ ဟောတိ ဒိဗ္ဗဿ ဝါ မာနုသဿ ဝါ. ဘောဇနံ, ဘိက္ခဝေ, ဒဒမာနော ဒါယကော ပဋိဂ္ဂါဟကာနံ ဣမာနိ ပဉ္စ ဌာနာနိ ဒေတီတိ.
+</Paragraph>
+
+<Paragraph number="193" type="verses" book="a5">
+_အာယုဒေါ ဗလဒေါ ဓီရော,_  
+_ဝဏ္ဏဒေါ ပဋိဘာနဒေါ;_  
+_သုခဿ ဒါတာ မေဓာဝီ,_  
+_သုခံ သော အဓိဂစ္ဆတိ._  
+
+</Paragraph>
+
+<Paragraph number="194" type="verses" book="a5">
+_အာယုံ ဒတွာ ဗလံ ဝဏ္ဏံ,_  
+_သုခဉ္စ ပဋိဘာနကံ;_  
+_ဒီဃာယု ယသဝါ ဟောတိ,_  
+_ယတ္ထ ယတ္ထူပပဇ္ဇတီ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="195" type="center" book="a5">
+သတ္တမံ.
+</Paragraph>

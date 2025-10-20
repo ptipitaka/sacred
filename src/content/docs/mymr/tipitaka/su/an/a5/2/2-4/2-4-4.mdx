@@ -1,0 +1,50 @@
+---
+title: 2.4.4 အဿဒ္ဓသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.496009'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.496009'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="84" book="a5" e="ch" v="16" p="98">
+
+<Paragraph number="541" book="a5">
+“ပဉ္စဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ထေရော ဘိက္ခု သဗြဟ္မစာရီနံ အပ္ပိယော စ ဟောတိ, အမနာပေါ စ အဂရု စ အဘာဝနီယော စ. ကတမေဟိ ပဉ္စဟိ? အဿဒ္ဓေါ ဟောတိ, အဟိရိကော ဟောတိ, အနောတ္တပ္ပီ ဟောတိ, ကုသီတော ဟောတိ, ဒုပ္ပညော ဟောတိ—  ဣမေဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ ဓမ္မေဟိ သမန္နာဂတော ထေရော ဘိက္ခု သဗြဟ္မစာရီနံ အပ္ပိယော စ ဟောတိ အမနာပေါ စ အဂရု စ အဘာဝနီယော စ.
+</Paragraph>
+
+<Paragraph number="542" book="a5">
+ပဉ္စဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ထေရော ဘိက္ခု သဗြဟ္မစာရီနံ ပိယော စ ဟောတိ မနာပေါ စ ဂရု စ ဘာဝနီယော စ. ကတမေဟိ ပဉ္စဟိ? သဒ္ဓေါ ဟောတိ, ဟိရီမာ ဟောတိ, ဩတ္တပ္ပီ ဟောတိ, အာရဒ္ဓဝီရိယော ဟောတိ, ပညဝါ ဟောတိ—  ဣမေဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ ဓမ္မေဟိ သမန္နာဂတော ထေရော ဘိက္ခု သဗြဟ္မစာရီနံ ပိယော စ ဟောတိ မနာပေါ စ ဂရု စ ဘာဝနီယော စာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="543" type="center" book="a5">
+စတုတ္ထံ.
+</Paragraph>

@@ -1,0 +1,54 @@
+---
+title: 2.2.3 ပဌမဝဍ္ဎိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.422042'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.422042'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="63" book="a5" e="ch" v="16" p="70">
+
+<Paragraph number="403" book="a5">
+“ပဉ္စဟိ, ဘိက္ခဝေ, ဝဍ္ဎီဟိ ဝဍ္ဎမာနော အရိယသာဝကော အရိယာယ ဝဍ္ဎိယာ ဝဍ္ဎတိ, သာရာဒါယီ စ ဟောတိ ဝရာဒါယီ စ ကာယဿ. ကတမာဟိ ပဉ္စဟိ? သဒ္ဓါယ ဝဍ္ဎတိ, သီလေန ဝဍ္ဎတိ, သုတေန ဝဍ္ဎတိ, စာဂေန ဝဍ္ဎတိ, ပညာယ ဝဍ္ဎတိ—  ဣမာဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ ဝဍ္ဎီဟိ ဝဍ္ဎမာနော အရိယသာဝကော အရိယာယ ဝဍ္ဎိယာ ဝဍ္ဎတိ, သာရာဒါယီ စ ဟောတိ ဝရာဒါယီ စ ကာယဿာ”တိ.
+</Paragraph>
+
+<Paragraph number="404" type="verses" book="a5">
+_“သဒ္ဓါယ သီလေန စ ယော ပဝဍ္ဎတိ,_  
+_ပညာယ စာဂေန သုတေန စူဘယံ;_  
+_သော တာဒိသော သပ္ပုရိသော ဝိစက္ခဏော,_  
+_အာဒီယတီ သာရမိဓေဝ အတ္တနော”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="405" type="center" book="a5">
+တတိယံ.
+</Paragraph>

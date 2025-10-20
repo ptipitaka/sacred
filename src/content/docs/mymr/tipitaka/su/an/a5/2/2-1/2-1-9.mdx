@@ -1,0 +1,46 @@
+---
+title: 2.1.9 ပဌမဝုဍ္ဎပဗ္ဗဇိတသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.407621'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.407621'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="59" book="a5" e="ch" v="16" p="69">
+
+<Paragraph number="392" book="a5">
+“ပဉ္စဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဒုလ္လဘော ဝုဍ္ဎပဗ္ဗဇိတော. ကတမေဟိ ပဉ္စဟိ? ဒုလ္လဘော, ဘိက္ခဝေ, ဝုဍ္ဎပဗ္ဗဇိတော နိပုဏော, ဒုလ္လဘော အာကပ္ပသမ္ပန္နော, ဒုလ္လဘော ဗဟုဿုတော, ဒုလ္လဘော ဓမ္မကထိကော, ဒုလ္လဘော ဝိနယဓရော. ဣမေဟိ ခေါ, ဘိက္ခဝေ, ပဉ္စဟိ ဓမ္မေဟိ သမန္နာဂတော ဒုလ္လဘော ဝုဍ္ဎပဗ္ဗဇိတောတိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="393" type="center" book="a5">
+နဝမံ.
+</Paragraph>

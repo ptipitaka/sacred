@@ -1,0 +1,50 @@
+---
+title: 4.2 အာဃာတဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:05.966300'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:05.966300'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a5" section="4.2">
+* [4.2.1 ပဌမအာဃာတပဋိဝိနယသုတ္တ](4-2/4-2-1)
+* [4.2.2 ဒုတိယအာဃာတပဋိဝိနယသုတ္တ](4-2/4-2-2)
+* [4.2.3 သာကစ္ဆသုတ္တ](4-2/4-2-3)
+* [4.2.4 သာဇီဝသုတ္တ](4-2/4-2-4)
+* [4.2.5 ပဉှပုစ္ဆာသုတ္တ](4-2/4-2-5)
+* [4.2.6 နိရောဓသုတ္တ](4-2/4-2-6)
+* [4.2.7 စောဒနာသုတ္တ](4-2/4-2-7)
+* [4.2.8 သီလသုတ္တ](4-2/4-2-8)
+* [4.2.9 ခိပ္ပနိသန္တိသုတ္တ](4-2/4-2-9)
+* [4.2.10 ဘဒ္ဒဇိသုတ္တ](4-2/4-2-10)
+</TableOfContents>

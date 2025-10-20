@@ -1,0 +1,41 @@
+---
+title: 6.4.4
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a5
+review:
+  current: review
+  updated: '2025-10-20T16:27:06.750733'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:27:06.750733'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="306" book="a5" e="ch" v="16" p="245">
+
+<Paragraph number="1409" book="a5">
+“ရာဂဿ, ဘိက္ခဝေ, အဘိညာယ ပဉ္စ ဓမ္မာ ဘာဝေတဗ္ဗာ. ကတမေ ပဉ္စ? သဒ္ဓိန္ဒြိယံ, ဝီရိယိန္ဒြိယံ, သတိန္ဒြိယံ, သမာဓိန္ဒြိယံ, ပညိန္ဒြိယံ—  ရာဂဿ, ဘိက္ခဝေ, အဘိညာယ ဣမေ ပဉ္စ ဓမ္မာ ဘာဝေတဗ္ဗာ”တိ. (4)
+</Paragraph>
+</Division>
