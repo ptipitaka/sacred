@@ -1,0 +1,55 @@
+---
+title: 39.10.7
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:04.269066'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:04.269066'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="84" book="ap1" e="ch" v="20" p="349">
+
+<Paragraph number="4278" type="verses" book="ap1">
+_ရာဇာဟံ ပတ္ထိဝေါ အာသိံ,_  
+_သတ္တိယာ ပုရိသံ ဟနိံ;_  
+_တေန ကမ္မဝိပါကေန,_  
+_နိရယေ ပစ္စိသံ ဘုသံ._  
+
+</Paragraph>
+
+</Division>
+<Division number="85" book="ap1" e="ch" v="20" p="349">
+
+<Paragraph number="4279" type="verses" book="ap1">
+_ကမ္မုနော တဿ သေသေန,_  
+ဣဒါနိ သကလံ မမ;_  
+_ပါဒေ ဆဝိံ ပကပ္ပေသိ,_  
+_န ဟိ ကမ္မံ ဝိနဿတိ._
+</Paragraph>
+</Division>

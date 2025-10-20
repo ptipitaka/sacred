@@ -1,0 +1,50 @@
+---
+title: 21 ကဏိကာရပုပ္ဖိယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 22
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:01.867235'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:01.867235'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap1" section="21">
+* [21.1 ကဏိကာရပုပ္ဖိယတ္ထေရအပဒါန](21/21-1)
+* [21.2 မိနေလပုပ္ဖိယတ္ထေရအပဒါန](21/21-2)
+* [21.3 ကိင်္ကဏိပုပ္ဖိယတ္ထေရအပဒါန](21/21-3)
+* [21.4 တရဏိယတ္ထေရအပဒါန](21/21-4)
+* [21.5 နိဂ္ဂုဏ္ဍိပုပ္ဖိယတ္ထေရအပဒါန](21/21-5)
+* [21.6 ဥဒကဒါယကတ္ထေရအပဒါန](21/21-6)
+* [21.7 သလလမာလိယတ္ထေရအပဒါန](21/21-7)
+* [21.8 ကောရဏ္ဍပုပ္ဖိယတ္ထေရအပဒါန](21/21-8)
+* [21.9 အာဓာရဒါယကတ္ထေရအပဒါန](21/21-9)
+* [21.10 ပါပနိဝါရိယတ္ထေရအပဒါန](21/21-10)
+</TableOfContents>

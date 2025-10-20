@@ -1,0 +1,50 @@
+---
+title: 18 ကုမုဒဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 19
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:01.841551'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:01.841551'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap1" section="18">
+* [18.1 ကုမုဒမာလိယတ္ထေရအပဒါန](18/18-1)
+* [18.2 နိဿေဏိဒါယကတ္ထေရအပဒါန](18/18-2)
+* [18.3 ရတ္တိပုပ္ဖိယတ္ထေရအပဒါန](18/18-3)
+* [18.4 ဥဒပါနဒါယကတ္ထေရအပဒါန](18/18-4)
+* [18.5 သီဟာသနဒါယကတ္ထေရအပဒါန](18/18-5)
+* [18.6 မဂ္ဂဒတ္တိကတ္ထေရအပဒါန](18/18-6)
+* [18.7 ဧကဒီပိယတ္ထေရအပဒါန](18/18-7)
+* [18.8 မဏိပူဇကတ္ထေရအပဒါန](18/18-8)
+* [18.9 တိကိစ္ဆကတ္ထေရအပဒါန](18/18-9)
+* [18.10 သံဃုပဋ္ဌာကတ္ထေရအပဒါန](18/18-10)
+</TableOfContents>

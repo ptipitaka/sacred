@@ -1,0 +1,51 @@
+---
+title: 56 ယသဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 57
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:02.060765'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:02.060765'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap1" section="56">
+* [56.1 ယသတ္ထေရအပဒါန](56/56-1)
+* [56.2 နဒီကဿပတ္ထေရအပဒါန](56/56-2)
+* [56.3 ဂယာကဿပတ္ထေရအပဒါန](56/56-3)
+* [56.4 ကိမိလတ္ထေရအပဒါန](56/56-4)
+* [56.5 ဝဇ္ဇီပုတ္တတ္ထေရအပဒါန](56/56-5)
+* [56.6 ဥတ္တရတ္ထေရအပဒါန](56/56-6)
+* [56.7 အပရော်တ္တရတ္ထေရအပဒါန](56/56-7)
+* [56.8 ဘဒ္ဒဇိတ္ထေရအပဒါန](56/56-8)
+* [56.9 သိဝကတ္ထေရအပဒါန](56/56-9)
+* [56.10 ဥပဝါနတ္ထေရအပဒါန](56/56-10)
+* [56.11 ရဋ္ဌပါလတ္ထေရအပဒါန](56/56-11)
+</TableOfContents>

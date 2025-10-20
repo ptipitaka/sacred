@@ -1,0 +1,50 @@
+---
+title: 37 မန္ဒာရဝပုပ္ဖိယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 38
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:01.952410'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:01.952410'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap1" section="37">
+* [37.1 မန္ဒာရဝပုပ္ဖိယတ္ထေရအပဒါန](37/37-1)
+* [37.2 ကက္ကာရုပုပ္ဖိယတ္ထေရအပဒါန](37/37-2)
+* [37.3 ဘိသမုဠာလဒါယကတ္ထေရအပဒါန](37/37-3)
+* [37.4 ကေသရပုပ္ဖိယတ္ထေရအပဒါန](37/37-4)
+* [37.5 အင်္ကောလပုပ္ဖိယတ္ထေရအပဒါန](37/37-5)
+* [37.6 ကဒမ္ဗပုပ္ဖိယတ္ထေရအပဒါန](37/37-6)
+* [37.7 ဥဒ္ဒါလကပုပ္ဖိယတ္ထေရအပဒါန](37/37-7)
+* [37.8 ဧကစမ္ပကပုပ္ဖိယတ္ထေရအပဒါန](37/37-8)
+* [37.9 တိမိရပုပ္ဖိယတ္ထေရအပဒါန](37/37-9)
+* [37.10 သဠလပုပ္ဖိယတ္ထေရအပဒါန](37/37-10)
+</TableOfContents>

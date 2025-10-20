@@ -1,0 +1,50 @@
+---
+title: 55 ဘဒ္ဒိယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 56
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:02.056303'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:02.056303'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap1" section="55">
+* [55.1 လကုဏ္ဍဘဒ္ဒိယတ္ထေရအပဒါန](55/55-1)
+* [55.2 ကင်္ခါရေဝတတ္ထေရအပဒါန](55/55-2)
+* [55.3 သီဝလိတ္ထေရအပဒါန](55/55-3)
+* [55.4 ဝင်္ဂီသတ္ထေရအပဒါန](55/55-4)
+* [55.5 နန္ဒကတ္ထေရအပဒါန](55/55-5)
+* [55.6 ကာဠုဒါယိတ္ထေရအပဒါန](55/55-6)
+* [55.7 အဘယတ္ထေရအပဒါန](55/55-7)
+* [55.8 လောမသကင်္ဂိယတ္ထေရအပဒါန](55/55-8)
+* [55.9 ဝနဝစ္ဆတ္ထေရအပဒါန](55/55-9)
+* [55.10 စူဠသုဂန္ဓတ္ထေရအပဒါန](55/55-10)
+</TableOfContents>

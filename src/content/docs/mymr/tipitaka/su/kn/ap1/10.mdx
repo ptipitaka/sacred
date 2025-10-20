@@ -1,0 +1,50 @@
+---
+title: 10 သုဓာဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 11
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:01.789870'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:01.789870'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap1" section="10">
+* [10.1 သုဓာပိဏ္ဍိယတ္ထေရအပဒါန](10/10-1)
+* [10.2 သုစိန္တိကတ္ထေရအပဒါန](10/10-2)
+* [10.3 အဍ္ဎစေဠကတ္ထေရအပဒါန](10/10-3)
+* [10.4 သူစိဒါယကတ္ထေရအပဒါန](10/10-4)
+* [10.5 ဂန္ဓမာလိယတ္ထေရအပဒါန](10/10-5)
+* [10.6 တိပုပ္ဖိယတ္ထေရအပဒါန](10/10-6)
+* [10.7 မဓုပိဏ္ဍိကတ္ထေရအပဒါန](10/10-7)
+* [10.8 သေနာသနဒါယကတ္ထေရအပဒါန](10/10-8)
+* [10.9 ဝေယျာဝစ္စကတ္ထေရအပဒါန](10/10-9)
+* [10.10 ဗုဒ္ဓုပဋ္ဌာကတ္ထေရအပဒါန](10/10-10)
+</TableOfContents>

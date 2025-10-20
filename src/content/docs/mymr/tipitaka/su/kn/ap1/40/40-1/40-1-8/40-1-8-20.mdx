@@ -1,0 +1,44 @@
+---
+title: 40.1.8.20 ပါဒုကာနိသံသ
+tableOfContents: false
+sidebar:
+  order: 20
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:04.634262'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:04.634262'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="146" book="ap1" e="ch" v="20" p="363">
+
+<Paragraph number="4443" type="verses" book="ap1">
+_ပါဒုကေ သုဂတေ ဒတွာ,_  
+_သံဃေ ဂဏဝရုတ္တမေ;_  
+ဣဒ္ဓိပါဒုကမာရုယှ,_  
+_ဝိဟရာမိ ယဒိစ္ဆကံ._
+</Paragraph>
+</Division>

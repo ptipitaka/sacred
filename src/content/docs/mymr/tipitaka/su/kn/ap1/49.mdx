@@ -1,0 +1,50 @@
+---
+title: 49 ပံသုကူလဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 50
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:02.022483'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:02.022483'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap1" section="49">
+* [49.1 ပံသုကူလသညကတ္ထေရအပဒါန](49/49-1)
+* [49.2 ဗုဒ္ဓသညကတ္ထေရအပဒါန](49/49-2)
+* [49.3 ဘိသဒါယကတ္ထေရအပဒါန](49/49-3)
+* [49.4 ဉာဏထဝိကတ္ထေရအပဒါန](49/49-4)
+* [49.5 စန္ဒနမာလိယတ္ထေရအပဒါန](49/49-5)
+* [49.6 ဓာတုပူဇကတ္ထေရအပဒါန](49/49-6)
+* [49.7 ပုလိနုပ္ပါဒကတ္ထေရအပဒါန](49/49-7)
+* [49.8 တရဏိယတ္ထေရအပဒါန](49/49-8)
+* [49.9 ဓမ္မရုစိယတ္ထေရအပဒါန](49/49-9)
+* [49.10 သာလမဏ္ဍပိယတ္ထေရအပဒါန](49/49-10)
+</TableOfContents>

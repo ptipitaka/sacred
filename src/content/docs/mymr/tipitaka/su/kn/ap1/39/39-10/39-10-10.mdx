@@ -1,0 +1,44 @@
+---
+title: 39.10.10
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: ap1
+review:
+  current: review
+  updated: '2025-10-20T21:21:04.235105'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:21:04.235105'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="90" book="ap1" e="ch" v="20" p="349">
+
+<Paragraph number="4284" type="verses" book="ap1">
+_နိဗ္ဗုဒ္ဓေ ဝတ္တမာနမှိ,_  
+_မလ္လပုတ္တံ နိဟေဌယိံ;_  
+_တေန ကမ္မဝိပါကေန,_  
+_ပိဋ္ဌိဒုက္ခံ အဟူ မမ._
+</Paragraph>
+</Division>
