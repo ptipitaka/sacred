@@ -1,0 +1,52 @@
+---
+title: 4 ဝိဘင်္ဂဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: mn
+review:
+  current: review
+  updated: '2025-10-20T14:50:20.756925'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:50:20.756925'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="mn" section="4">
+* [4.1 ဘဒ္ဒေကရတ္တသုတ္တ](4/4-1)
+* [4.2 အာနန္ဒဘဒ္ဒေကရတ္တသုတ္တ](4/4-2)
+* [4.3 မဟာကစ္စာနဘဒ္ဒေကရတ္တသုတ္တ](4/4-3)
+* [4.4 လောမသကင်္ဂိယဘဒ္ဒေကရတ္တသုတ္တ](4/4-4)
+* [4.5 စူဠကမ္မဝိဘင်္ဂသုတ္တ](4/4-5)
+* [4.6 မဟာကမ္မဝိဘင်္ဂသုတ္တ](4/4-6)
+* [4.7 သဠာယတနဝိဘင်္ဂသုတ္တ](4/4-7)
+* [4.8 ဥဒ္ဒေသဝိဘင်္ဂသုတ္တ](4/4-8)
+* [4.9 အရဏဝိဘင်္ဂသုတ္တ](4/4-9)
+* [4.10 ဓာတုဝိဘင်္ဂသုတ္တ](4/4-10)
+* [4.11 သစ္စဝိဘင်္ဂသုတ္တ](4/4-11)
+* [4.12 ဒက္ခိဏာဝိဘင်္ဂသုတ္တ](4/4-12)
+</TableOfContents>
