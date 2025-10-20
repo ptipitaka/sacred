@@ -1,0 +1,50 @@
+---
+title: 3 ဩပမ္မဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: mn
+review:
+  current: review
+  updated: '2025-10-20T14:35:57.609386'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:35:57.609386'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="mn" section="3">
+* [3.1 ကကစူပမသုတ္တ](3/3-1)
+* [3.2 အလဂဒ္ဒူပမသုတ္တ](3/3-2)
+* [3.3 ဝမ္မိကသုတ္တ](3/3-3)
+* [3.4 ရထဝိနီတသုတ္တ](3/3-4)
+* [3.5 နိဝါပသုတ္တ](3/3-5)
+* [3.6 ပါသရာသိသုတ္တ](3/3-6)
+* [3.7 စူဠဟတ္ထိပဒေါပမသုတ္တ](3/3-7)
+* [3.8 မဟာဟတ္ထိပဒေါပမသုတ္တ](3/3-8)
+* [3.9 မဟာသာရောပမသုတ္တ](3/3-9)
+* [3.10 စူဠသာရောပမသုတ္တ](3/3-10)
+</TableOfContents>

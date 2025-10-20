@@ -1,0 +1,41 @@
+---
+title: 1.8.2 စိတ္တုပပါဒပရိယာယ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: mn
+review:
+  current: review
+  updated: '2025-10-20T14:35:57.794990'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:35:57.794990'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="84" book="mn" e="ch" v="24" p="162">
+
+<Paragraph number="247" book="mn">
+စိတ္တုပ္ပါဒမ္ပိ ခေါ အဟံ, စုန္ဒ, ကုသလေသု ဓမ္မေသု ဗဟုကာရံ ဝဒါမိ, ကော ပန ဝါဒေါ ကာယေန ဝါစာယ အနုဝိဓီယနာသု. တသ္မာတိဟ, စုန္ဒ, ‘ပရေ ဝိဟိံသကာ ဘဝိဿန္တိ, မယမေတ္ထ အဝိဟိံသကာ ဘဝိဿာမာ’တိ စိတ္တံ ဥပ္ပါဒေတဗ္ဗံ. ‘ပရေ ပါဏာတိပါတီ ဘဝိဿန္တိ, မယမေတ္ထ ပါဏာတိပါတာ ပဋိဝိရတာ ဘဝိဿာမာ’တိ စိတ္တံ ဥပ္ပါဒေတဗ္ဗံ …ပေ…  ‘ပရေ သန္ဒိဋ္ဌိပရာမာသီ အာဓာနဂ္ဂါဟီ ဒုပ္ပဋိနိဿဂ္ဂီ ဘဝိဿန္တိ, မယမေတ္ထ အသန္ဒိဋ္ဌိပရာမာသီ အနာဓာနဂ္ဂါဟီ သုပ္ပဋိနိဿဂ္ဂီ ဘဝိဿာမာ’တိ စိတ္တံ ဥပ္ပါဒေတဗ္ဗံ. (44)
+</Paragraph>
+</Division>

@@ -1,0 +1,50 @@
+---
+title: 2 သီဟနာဒဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: mn
+review:
+  current: review
+  updated: '2025-10-20T14:35:57.605973'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:35:57.605973'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="mn" section="2">
+* [2.1 စူဠသီဟနာဒသုတ္တ](2/2-1)
+* [2.2 မဟာသီဟနာဒသုတ္တ](2/2-2)
+* [2.3 မဟာဒုက္ခက္ခန္ဓသုတ္တ](2/2-3)
+* [2.4 စူဠဒုက္ခက္ခန္ဓသုတ္တ](2/2-4)
+* [2.5 အနုမာနသုတ္တ](2/2-5)
+* [2.6 စေတောခိလသုတ္တ](2/2-6)
+* [2.7 ဝနပတ္ထသုတ္တ](2/2-7)
+* [2.8 မဓုပိဏ္ဍိကသုတ္တ](2/2-8)
+* [2.9 ဒွေဓာဝိတက္ကသုတ္တ](2/2-9)
+* [2.10 ဝိတက္ကသဏ္ဌာနသုတ္တ](2/2-10)
+</TableOfContents>

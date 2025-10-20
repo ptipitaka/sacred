@@ -1,0 +1,41 @@
+---
+title: 1.8.4 ဥပရိဘာဂပရိယာယ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: mn
+review:
+  current: review
+  updated: '2025-10-20T14:35:57.800976'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:35:57.800976'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="86" book="mn" e="ch" v="24" p="170">
+
+<Paragraph number="251" book="mn">
+သေယျထာပိ, စုန္ဒ, ယေ ကေစိ အကုသလာ ဓမ္မာ သဗ္ဗေ တေ အဓောဘာဂင်္ဂမနီယာ, ယေ ကေစိ ကုသလာ ဓမ္မာ သဗ္ဗေ တေ ဥပရိဘာဂင်္ဂမနီယာ; ဧဝမေဝ ခေါ, စုန္ဒ, ဝိဟိံသကဿ ပုရိသပုဂ္ဂလဿ အဝိဟိံသာ ဟောတိ ဥပရိဘာဂါယ, ပါဏာတိပါတိဿ ပုရိသပုဂ္ဂလဿ ပါဏာတိပါတာ ဝေရမဏီ ဟောတိ ဥပရိဘာဂါယ …ပေ…  သန္ဒိဋ္ဌိပရာမာသိအာဓာနဂ္ဂါဟိဒုပ္ပဋိနိဿဂ္ဂိဿ ပုရိသပုဂ္ဂလဿ အသန္ဒိဋ္ဌိပရာမာသိအနာဓာနဂ္ဂါဟိသုပ္ပဋိနိဿဂ္ဂိတာ ဟောတိ ဥပရိဘာဂါယ. (44)
+</Paragraph>
+</Division>
