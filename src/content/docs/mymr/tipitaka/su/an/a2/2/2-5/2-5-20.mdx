@@ -1,0 +1,53 @@
+---
+title: 2.5.20
+tableOfContents: false
+sidebar:
+  order: 20
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:13.996272'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:13.996272'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="118" book="a2" e="ch" v="15" p="85">
+
+<Paragraph number="201" book="a2">
+“ဒွိန္နံ, ဘိက္ခဝေ, အာသဝါ န ဝဍ္ဎန္တိ. ကတမေသံ ဒွိန္နံ? ယော စ အဝိနယေ အဝိနယသညီ, ယော စ ဝိနယေ ဝိနယသညီ. ဣမေသံ ခေါ, ဘိက္ခဝေ, ဒွိန္နံ အာသဝါ န ဝဍ္ဎန္တီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="202" type="center" book="a2">
+ဗာလဝဂ္ဂေါ ပဉ္စမော.
+
+
+
+</Paragraph>
+
+<Paragraph number="203" type="center" book="a2">
+ဒုတိယော ပဏ္ဏာသကော သမတ္တော.
+</Paragraph>

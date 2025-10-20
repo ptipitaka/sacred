@@ -1,0 +1,41 @@
+---
+title: 4.3.1–10
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:14.398573'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:14.398573'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="201" book="a2" e="ch" v="15" p="97">
+
+<Paragraph number="289" book="a2">
+“ဒွေမေ, ဘိက္ခဝေ, အတ္ထဝသေ ပဋိစ္စ တထာဂတေန သာဝကာနံ သိက္ခာပဒံ ပညတ္တံ. ကတမေ ဒွေ? သံဃသုဋ္ဌုတာယ သံဃဖာသုတာယ…  ဒုမ္မင်္ကူနံ ပုဂ္ဂလာနံ နိဂ္ဂဟာယ, ပေသလာနံ ဘိက္ခူနံ ဖာသုဝိဟာရာယ…  ဒိဋ္ဌဓမ္မိကာနံ အာသဝါနံ သံဝရာယ, သမ္ပရာယိကာနံ အာသဝါနံ ပဋိဃာတာယ…  ဒိဋ္ဌဓမ္မိကာနံ ဝေရာနံ သံဝရာယ, သမ္ပရာယိကာနံ ဝေရာနံ ပဋိဃာတာယ…  ဒိဋ္ဌဓမ္မိကာနံ ဝဇ္ဇာနံ သံဝရာယ, သမ္ပရာယိကာနံ ဝဇ္ဇာနံ ပဋိဃာတာယ…  ဒိဋ္ဌဓမ္မိကာနံ ဘယာနံ သံဝရာယ, သမ္ပရာယိကာနံ ဘယာနံ ပဋိဃာတာယ…  ဒိဋ္ဌဓမ္မိကာနံ အကုသလာနံ ဓမ္မာနံ သံဝရာယ, သမ္ပရာယိကာနံ အကုသလာနံ ဓမ္မာနံ ပဋိဃာတာယ…  ဂိဟီနံ အနုကမ္ပာယ, ပါပိစ္ဆာနံ ဘိက္ခူနံ ပက္ခုပစ္ဆေဒါယ…  အပ္ပသန္နာနံ ပသာဒါယ, ပသန္နာနံ ဘိယျောဘာဝါယ…  သဒ္ဓမ္မဋ္ဌိတိယာ ဝိနယာနုဂ္ဂဟာယ. ဣမေ ခေါ, ဘိက္ခဝေ, ဒွေ အတ္ထဝသေ ပဋိစ္စ တထာဂတေန သာဝကာနံ သိက္ခာပဒံ ပညတ္တန်”တိ.
+</Paragraph>
+</Division>

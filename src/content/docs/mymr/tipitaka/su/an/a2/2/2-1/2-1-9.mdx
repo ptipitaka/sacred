@@ -1,0 +1,41 @@
+---
+title: 2.1.9
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:13.860287'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:13.860287'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="61" book="a2" e="ch" v="15" p="77">
+
+<Paragraph number="137" book="a2">
+“ဒွေမေ, ဘိက္ခဝေ, အတ္ထဝသေ သမ္ပဿမာနာ ကိံပုရိသာ မာနုသိံ ဝါစံ န ဘာသန္တိ. ကတမေ ဒွေ? မာ စ မုသာ ဘဏိမှာ, မာ စ ပရံ အဘူတေန အဗ္ဘာစိက္ခိမှာတိ. ဣမေ ခေါ, ဘိက္ခဝေ, ဒွေ အတ္ထဝသေ သမ္ပဿမာနာ ကိံပုရိသာ မာနုသိံ ဝါစံ န ဘာသန္တီ”တိ.
+</Paragraph>
+</Division>

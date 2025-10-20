@@ -1,0 +1,41 @@
+---
+title: 2.2.12
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:13.873459'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:13.873459'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="76" book="a2" e="ch" v="15" p="80">
+
+<Paragraph number="156" book="a2">
+“ဒွေမာနိ, ဘိက္ခဝေ, သုခါနိ. ကတမာနိ ဒွေ? သာတာရမ္မဏဉ္စ သုခံ ဥပေက္ခာရမ္မဏဉ္စ သုခံ. ဣမာနိ ခေါ, ဘိက္ခဝေ, ဒွေ သုခါနိ. ဧတဒဂ္ဂံ, ဘိက္ခဝေ, ဣမေသံ ဒွိန္နံ သုခါနံ ယဒိဒံ ဥပေက္ခာရမ္မဏံ သုခန်”တိ.
+</Paragraph>
+</Division>

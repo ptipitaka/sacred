@@ -1,0 +1,45 @@
+---
+title: 1.5.1
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:13.779567'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:13.779567'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="43" book="a2" e="ch" v="15" p="70">
+
+<Paragraph number="106" book="a2">
+“ဒွေမာ, ဘိက္ခဝေ, ပရိသာ. ကတမာ ဒွေ? ဥတ္တာနာ စ ပရိသာ ဂမ္ဘီရာ စ ပရိသာ. ကတမာ စ, ဘိက္ခဝေ, ဥတ္တာနာ ပရိသာ? ဣဓ, ဘိက္ခဝေ, ယဿံ ပရိသာယံ ဘိက္ခူ ဥဒ္ဓတာ ဟောန္တိ ဥန္နဠာ စပလာ မုခရာ ဝိကိဏ္ဏဝါစာ မုဋ္ဌဿတီ အသမ္ပဇာနာ အသမာဟိတာ ဝိဗ္ဘန္တစိတ္တာ ပါကတိန္ဒြိယာ. အယံ ဝုစ္စတိ, ဘိက္ခဝေ, ဥတ္တာနာ ပရိသာ.
+</Paragraph>
+
+<Paragraph number="107" book="a2">
+ကတမာ စ, ဘိက္ခဝေ, ဂမ္ဘီရာ ပရိသာ? ဣဓ, ဘိက္ခဝေ, ယဿံ ပရိသာယံ ဘိက္ခူ အနုဒ္ဓတာ ဟောန္တိ အနုန္နဠာ အစပလာ အမုခရာ အဝိကိဏ္ဏဝါစာ ဥပဋ္ဌိတဿတီ သမ္ပဇာနာ သမာဟိတာ ဧကဂ္ဂစိတ္တာ သံဝုတိန္ဒြိယာ. အယံ ဝုစ္စတိ, ဘိက္ခဝေ, ဂမ္ဘီရာ ပရိသာ. ဣမာ ခေါ, ဘိက္ခဝေ, ဒွေ ပရိသာ. ဧတဒဂ္ဂံ, ဘိက္ခဝေ, ဣမာသံ ဒွိန္နံ ပရိသာနံ ယဒိဒံ ဂမ္ဘီရာ ပရိသာ”တိ.
+</Paragraph>
+</Division>

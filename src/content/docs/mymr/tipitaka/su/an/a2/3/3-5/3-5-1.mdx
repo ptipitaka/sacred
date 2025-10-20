@@ -1,0 +1,41 @@
+---
+title: 3.5.1
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:14.282960'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:14.282960'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="164" book="a2" e="ch" v="15" p="93">
+
+<Paragraph number="257" book="a2">
+“ဒွေမေ, ဘိက္ခဝေ, ဓမ္မာ. ကတမေ ဒွေ? သမာပတ္တိကုသလတာ စ သမာပတ္တိဝုဋ္ဌာနကုသလတာ စ. ဣမေ ခေါ, ဘိက္ခဝေ, ဒွေ ဓမ္မာ”တိ.
+</Paragraph>
+</Division>

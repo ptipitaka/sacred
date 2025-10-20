@@ -1,0 +1,45 @@
+---
+title: 1.4.1
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:13.753905'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:13.753905'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="33" book="a2" e="ch" v="15" p="62">
+
+<Paragraph number="70" book="a2">
+“အသပ္ပုရိသဘူမိဉ္စ ဝေါ, ဘိက္ခဝေ, ဒေသေဿာမိ သပ္ပုရိသဘူမိဉ္စ. တံ သုဏာထ, သာဓုကံ မနသိ ကရောထ. ဘာသိဿာမီ”တိ. “ဧဝံ, ဘန္တေ”တိ ခေါ တေ ဘိက္ခူ ဘဂဝတော ပစ္စဿောသုံ. ဘဂဝါ ဧတဒဝေါစ—
+</Paragraph>
+
+<Paragraph number="71" book="a2">
+“ကတမာ စ, ဘိက္ခဝေ, အသပ္ပုရိသဘူမိ? အသပ္ပုရိသော, ဘိက္ခဝေ, အကတညူ ဟောတိ အကတဝေဒီ. အသဗ္ဘိ ဟေတံ, ဘိက္ခဝေ, ဥပညာတံ ယဒိဒံ အကတညုတာ အကတဝေဒိတာ. ကေဝလာ ဧသာ, ဘိက္ခဝေ, အသပ္ပုရိသဘူမိ ယဒိဒံ အကတညုတာ အကတဝေဒိတာ. ( ) သပ္ပုရိသော စ ခေါ, ဘိက္ခဝေ, ကတညူ ဟောတိ ကတဝေဒီ. သဗ္ဘိ ဟေတံ, ဘိက္ခဝေ, ဥပညာတံ ယဒိဒံ ကတညုတာ ကတဝေဒိတာ. ကေဝလာ ဧသာ, ဘိက္ခဝေ, သပ္ပုရိသဘူမိ ယဒိဒံ ကတညုတာ ကတဝေဒိတာ”တိ.
+</Paragraph>
+</Division>

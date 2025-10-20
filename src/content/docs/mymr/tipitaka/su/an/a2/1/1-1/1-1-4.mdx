@@ -1,0 +1,46 @@
+---
+title: 1.1.4 အတပနီယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:13.672891'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:13.672891'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="4" book="a2" e="ch" v="15" p="51">
+
+<Paragraph number="12" book="a2">
+“ဒွေမေ, ဘိက္ခဝေ, ဓမ္မာ အတပနီယာ. ကတမေ ဒွေ? ဣဓ, ဘိက္ခဝေ, ဧကစ္စဿ ကာယသုစရိတံ ကတံ ဟောတိ, အကတံ ဟောတိ ကာယဒုစ္စရိတံ; ဝစီသုစရိတံ ကတံ ဟောတိ, အကတံ ဟောတိ ဝစီဒုစ္စရိတံ; မနောသုစရိတံ ကတံ ဟောတိ, အကတံ ဟောတိ မနောဒုစ္စရိတံ. သော ‘ကာယသုစရိတံ မေ ကတန်’တိ န တပ္ပတိ, ‘အကတံ မေ ကာယဒုစ္စရိတန်’တိ န တပ္ပတိ; ‘ဝစီသုစရိတံ မေ ကတန်’တိ န တပ္ပတိ, ‘အကတံ မေ ဝစီဒုစ္စရိတန်’တိ န တပ္ပတိ; ‘မနောသုစရိတံ မေ ကတန်’တိ န တပ္ပတိ, ‘အကတံ မေ မနောဒုစ္စရိတန်’တိ န တပ္ပတိ. ဣမေ ခေါ, ဘိက္ခဝေ, ဒွေ ဓမ္မာ အတပနီယာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="13" type="center" book="a2">
+စတုတ္ထံ.
+</Paragraph>

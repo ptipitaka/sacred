@@ -1,0 +1,45 @@
+---
+title: 1.5.5
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:13.795638'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:13.795638'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="47" book="a2" e="ch" v="15" p="72">
+
+<Paragraph number="114" book="a2">
+“ဒွေမာ, ဘိက္ခဝေ, ပရိသာ. ကတမာ ဒွေ? ပရိသာကသဋော စ ပရိသာမဏ္ဍော စ. ကတမော စ, ဘိက္ခဝေ, ပရိသာကသဋော? ဣဓ, ဘိက္ခဝေ, ယဿံ ပရိသာယံ ဘိက္ခူ ဆန္ဒာဂတိံ ဂစ္ဆန္တိ, ဒေါသာဂတိံ ဂစ္ဆန္တိ, မောဟာဂတိံ ဂစ္ဆန္တိ, ဘယာဂတိံ ဂစ္ဆန္တိ. အယံ ဝုစ္စတိ, ဘိက္ခဝေ, ပရိသာကသဋော.
+</Paragraph>
+
+<Paragraph number="115" book="a2">
+ကတမော စ, ဘိက္ခဝေ, ပရိသာမဏ္ဍော? ဣဓ, ဘိက္ခဝေ, ယဿံ ပရိသာယံ ဘိက္ခူ န ဆန္ဒာဂတိံ ဂစ္ဆန္တိ, န ဒေါသာဂတိံ ဂစ္ဆန္တိ, န မောဟာဂတိံ ဂစ္ဆန္တိ, န ဘယာဂတိံ ဂစ္ဆန္တိ. အယံ ဝုစ္စတိ, ဘိက္ခဝေ, ပရိသာမဏ္ဍော. ဣမာ ခေါ, ဘိက္ခဝေ, ဒွေ ပရိသာ. ဧတဒဂ္ဂံ, ဘိက္ခဝေ, ဣမာသံ ဒွိန္နံ ပရိသာနံ ယဒိဒံ ပရိသာမဏ္ဍော”တိ.
+</Paragraph>
+</Division>

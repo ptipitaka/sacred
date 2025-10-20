@@ -1,0 +1,50 @@
+---
+title: 4.1 ကောဓပေယျာလ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:14.344943'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:14.344943'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a2" section="4.1">
+* [4.1.1–5](4-1/4-1-1–5)
+* [4.1.6–10](4-1/4-1-6–10)
+* [4.1.11–15](4-1/4-1-11–15)
+* [4.1.16–20](4-1/4-1-16–20)
+* [4.1.21–25](4-1/4-1-21–25)
+* [4.1.26–30](4-1/4-1-26–30)
+* [4.1.31–35](4-1/4-1-31–35)
+* [4.1.36–40](4-1/4-1-36–40)
+* [4.1.41–45](4-1/4-1-41–45)
+* [4.1.46–50](4-1/4-1-46–50)
+</TableOfContents>

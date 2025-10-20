@@ -1,0 +1,41 @@
+---
+title: 4.1.16–20
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a2
+review:
+  current: review
+  updated: '2025-10-20T15:52:14.361890'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:52:14.361890'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="184" book="a2" e="ch" v="15" p="95">
+
+<Paragraph number="279" book="a2">
+“ဒွီဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော သုခံ ဝိဟရတိ. ကတမေဟိ ဒွီဟိ? အက္ကောဓေန စ အနုပနာဟေန စ…  အမက္ခေန စ အပဠာသေန စ…  အနိဿာယ စ အမစ္ဆရိယေန စ…  အမာယာယ စ အသာဌေယျေန စ…  ဟိရိယာ စ ဩတ္တပ္ပေန စ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, ဒွီဟိ ဓမ္မေဟိ သမန္နာဂတော သုခံ ဝိဟရတိ”.
+</Paragraph>
+</Division>
