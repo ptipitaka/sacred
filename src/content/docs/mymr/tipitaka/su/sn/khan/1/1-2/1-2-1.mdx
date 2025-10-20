@@ -1,0 +1,50 @@
+---
+title: 1.2.1 ဥပယဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:12:14.548335'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:12:14.548335'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="1.2.1">
+* [1.2.1.1 ဥပယသုတ္တ](1-2-1/1-2-1-1)
+* [1.2.1.2 ဗီဇသုတ္တ](1-2-1/1-2-1-2)
+* [1.2.1.3 ဥဒါနသုတ္တ](1-2-1/1-2-1-3)
+* [1.2.1.4 ဥပါဒါနပရိပဝတ္တသုတ္တ](1-2-1/1-2-1-4)
+* [1.2.1.5 သတ္တဋ္ဌာနသုတ္တ](1-2-1/1-2-1-5)
+* [1.2.1.6 သမ္မာသမ္ဗုဒ္ဓသုတ္တ](1-2-1/1-2-1-6)
+* [1.2.1.7 အနတ္တလက္ခဏသုတ္တ](1-2-1/1-2-1-7)
+* [1.2.1.8 မဟာလိသုတ္တ](1-2-1/1-2-1-8)
+* [1.2.1.9 အာဒိတ္တသုတ္တ](1-2-1/1-2-1-9)
+* [1.2.1.10 နိရုတ္တိပထသုတ္တ](1-2-1/1-2-1-10)
+</TableOfContents>

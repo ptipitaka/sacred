@@ -1,0 +1,43 @@
+---
+title: 3.4 စတုတ္ထဂမနဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:12:15.505233'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:12:15.505233'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="3.4">
+* [3.4.1 နဝါတသုတ္တ](3-4/3-4-1)
+* [3.4.2–25 ဧတံမမာဒိသုတ္တ](3-4/3-4-2–25)
+* [3.4.26 အဒုက္ခမသုခီသုတ္တ](3-4/3-4-26)
+</TableOfContents>

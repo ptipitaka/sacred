@@ -1,0 +1,50 @@
+---
+title: 1.3.3.7 ဒုတိယသမုဒယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:12:14.981400'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:12:14.981400'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="132" book="sn" e="ch" v="18" p="299">
+
+<Paragraph number="740" book="sn">
+ဗာရာဏသိယံ ဝိဟရန္တိ ဣသိပတနေ မိဂဒါယေ …ပေ…  ဧကမန္တံ နိသိန္နော ခေါ အာယသ္မာ မဟာကောဋ္ဌိကော အာယသ္မန္တံ သာရိပုတ္တံ ဧတဒဝေါစ—  “‘ဝိဇ္ဇာ, ဝိဇ္ဇာ’တိ, အာဝုသော သာရိပုတ္တ, ဝုစ္စတိ. ကတမာ နု ခေါ, အာဝုသော, ဝိဇ္ဇာ; ကိတ္တာဝတာ စ ဝိဇ္ဇာဂတော ဟောတီ”တိ?
+</Paragraph>
+
+<Paragraph number="741" book="sn">
+“ဣဓာဝုသော, သုတဝါ အရိယသာဝကော ရူပဿ သမုဒယဉ္စ အတ္ထင်္ဂမဉ္စ အဿာဒဉ္စ အာဒီနဝဉ္စ နိဿရဏဉ္စ ယထာဘူတံ ပဇာနာတိ. ဝေဒနာယ …ပေ…  သညာယ…  သင်္ခါရာနံ…  ဝိညာဏဿ သမုဒယဉ္စ အတ္ထင်္ဂမဉ္စ အဿာဒဉ္စ အာဒီနဝဉ္စ နိဿရဏဉ္စ ယထာဘူတံ ပဇာနာတိ. အယံ ဝုစ္စတာဝုသော, ဝိဇ္ဇာ; ဧတ္တာဝတာ စ ဝိဇ္ဇာဂတော ဟောတီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="742" type="center" book="sn">
+သတ္တမံ.
+</Paragraph>

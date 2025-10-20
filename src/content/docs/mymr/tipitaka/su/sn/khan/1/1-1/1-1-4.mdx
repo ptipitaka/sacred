@@ -1,0 +1,50 @@
+---
+title: 1.1.4 နတုမှာကဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:12:14.368907'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:12:14.368907'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="1.1.4">
+* [1.1.4.1 နတုမှာကသုတ္တ](1-1-4/1-1-4-1)
+* [1.1.4.2 ဒုတိယနတုမှာကသုတ္တ](1-1-4/1-1-4-2)
+* [1.1.4.3 အညတရဘိက္ခုသုတ္တ](1-1-4/1-1-4-3)
+* [1.1.4.4 ဒုတိယအညတရဘိက္ခုသုတ္တ](1-1-4/1-1-4-4)
+* [1.1.4.5 အာနန္ဒသုတ္တ](1-1-4/1-1-4-5)
+* [1.1.4.6 ဒုတိယအာနန္ဒသုတ္တ](1-1-4/1-1-4-6)
+* [1.1.4.7 အနုဓမ္မသုတ္တ](1-1-4/1-1-4-7)
+* [1.1.4.8 ဒုတိယအနုဓမ္မသုတ္တ](1-1-4/1-1-4-8)
+* [1.1.4.9 တတိယအနုဓမ္မသုတ္တ](1-1-4/1-1-4-9)
+* [1.1.4.10 စတုတ္ထအနုဓမ္မသုတ္တ](1-1-4/1-1-4-10)
+</TableOfContents>

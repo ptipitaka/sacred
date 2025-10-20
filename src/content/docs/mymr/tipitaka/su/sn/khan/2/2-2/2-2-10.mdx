@@ -1,0 +1,46 @@
+---
+title: 2.2.10 ဝယဓမ္မသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:12:15.412253'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:12:15.412253'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="179" book="sn" e="ch" v="18" p="305">
+
+<Paragraph number="866" book="sn">
+သာဝတ္ထိနိဒါနံ. ဧကမန္တံ နိသိန္နော ခေါ အာယသ္မာ ရာဓော ဘဂဝန္တံ ဧတဒဝေါစ—  “‘ဝယဓမ္မော, ဝယဓမ္မော’တိ, ဘန္တေ, ဝုစ္စတိ. ကတမော နု ခေါ, ဘန္တေ, ဝယဓမ္မော”တိ? “ရူပံ ခေါ, ရာဓ, ဝယဓမ္မော, ဝေဒနာ ဝယဓမ္မော, သညာ ဝယဓမ္မော, သင်္ခါရာ ဝယဓမ္မော, ဝိညာဏံ ဝယဓမ္မော. ဧဝံ ပဿံ …ပေ…  နာပရံ ဣတ္ထတ္တာယာတိ ပဇာနာတီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="867" type="center" book="sn">
+ဒသမံ.
+</Paragraph>

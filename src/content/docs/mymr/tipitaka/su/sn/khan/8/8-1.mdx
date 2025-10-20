@@ -1,0 +1,52 @@
+---
+title: 8.1 နာဂဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:12:15.989166'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:12:15.989166'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="8.1">
+* [8.1.1 သုဒ္ဓိကသုတ္တ](8-1/8-1-1)
+* [8.1.2 ပဏီတတရသုတ္တ](8-1/8-1-2)
+* [8.1.3 ဥပေါသထသုတ္တ](8-1/8-1-3)
+* [8.1.4 ဒုတိယော်ပေါသထသုတ္တ](8-1/8-1-4)
+* [8.1.5 တတိယော်ပေါသထသုတ္တ](8-1/8-1-5)
+* [8.1.6 စတုတ္ထော်ပေါသထသုတ္တ](8-1/8-1-6)
+* [8.1.7 သုတသုတ္တ](8-1/8-1-7)
+* [8.1.8 ဒုတိယသုတသုတ္တ](8-1/8-1-8)
+* [8.1.9 တတိယသုတသုတ္တ](8-1/8-1-9)
+* [8.1.10 စတုတ္ထသုတသုတ္တ](8-1/8-1-10)
+* [8.1.11–20 အဏ္ဍဇဒါနူပကာရသုတ္တဒသက](8-1/8-1-11–20)
+* [8.1.21–50 ဇလာဗုဇာဒိဒါနူပကာရသုတ္တတ္တိံသက](8-1/8-1-21–50)
+</TableOfContents>
