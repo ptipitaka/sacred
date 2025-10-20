@@ -1,0 +1,49 @@
+---
+title: 22.1.9 ဝိဓုရဇာတက
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: ja2
+review:
+  current: review
+  updated: '2025-10-20T23:12:24.236005'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T23:12:24.236005'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ja2" section="22.1.9">
+* [22.1.9.1 ဒေါဟဠကဏ္ဍ](22-1-9/22-1-9-1)
+* [22.1.9.2 မဏိကဏ္ဍ](22-1-9/22-1-9-2)
+* [22.1.9.3 အက္ခကဏ္ဍ](22-1-9/22-1-9-3)
+* [22.1.9.4 ဃရာဝါသပဉှာ](22-1-9/22-1-9-4)
+* [22.1.9.5 လက္ခဏကဏ္ဍ](22-1-9/22-1-9-5)
+* [22.1.9.6 ရာဇဝသတိ](22-1-9/22-1-9-6)
+* [22.1.9.7 အန္တရပေယျာလ](22-1-9/22-1-9-7)
+* [22.1.9.8 သာဓုနရဓမ္မကဏ္ဍ](22-1-9/22-1-9-8)
+* [22.1.9.9 ကာဠာဂိရိကဏ္ဍ](22-1-9/22-1-9-9)
+</TableOfContents>
