@@ -1,0 +1,50 @@
+---
+title: 1 သုမေဓာဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: ap2
+review:
+  current: review
+  updated: '2025-10-20T21:41:17.450016'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:41:17.450016'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap2" section="1">
+* [1.1 သုမေဓာထေရီအပဒါန](1/1-1)
+* [1.2 မေခလာဒါယိကာထေရီအပဒါန](1/1-2)
+* [1.3 မဏ္ဍပဒါယိကာထေရီအပဒါန](1/1-3)
+* [1.4 သင်္ကမနတ္ထာထေရီအပဒါန](1/1-4)
+* [1.5 နဠမာလိကာထေရီအပဒါန](1/1-5)
+* [1.6 ဧကပိဏ္ဍပါတဒါယိကာထေရီအပဒါန](1/1-6)
+* [1.7 ကဋစ္ဆုဘိက္ခာဒါယိကာထေရီအပဒါန](1/1-7)
+* [1.8 သတ္တုပ္ပလမာလိကာထေရီအပဒါန](1/1-8)
+* [1.9 ပဉ္စဒီပိကာထေရီအပဒါန](1/1-9)
+* [1.10 ဥဒကဒါယိကာထေရီအပဒါန](1/1-10)
+</TableOfContents>

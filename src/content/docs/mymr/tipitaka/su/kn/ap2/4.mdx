@@ -1,0 +1,50 @@
+---
+title: 4 ခတ္တိယာဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: ap2
+review:
+  current: review
+  updated: '2025-10-20T21:41:17.482780'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T21:41:17.482780'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ap2" section="4">
+* [4.1 ယသဝတီပမုခအဋ္ဌာရသဘိက္ခုနီသဟဿအပဒါန](4/4-1)
+* [4.2 စတုရာသီတိဘိက္ခုနီသဟဿအပဒါန](4/4-2)
+* [4.3 ဥပ္ပလဒါယိကာထေရီအပဒါန](4/4-3)
+* [4.4 သိင်္ဂါလမာတုထေရီအပဒါန](4/4-4)
+* [4.5 သုက္ကာထေရီအပဒါန](4/4-5)
+* [4.6 အဘိရူပနန္ဒာထေရီအပဒါန](4/4-6)
+* [4.7 အဍ္ဎကာသိထေရီအပဒါန](4/4-7)
+* [4.8 ပုဏ္ဏိကာထေရီအပဒါန](4/4-8)
+* [4.9 အမ္ဗပါလိထေရီအပဒါန](4/4-9)
+* [4.10 ပေသလာထေရီအပဒါန](4/4-10)
+</TableOfContents>
