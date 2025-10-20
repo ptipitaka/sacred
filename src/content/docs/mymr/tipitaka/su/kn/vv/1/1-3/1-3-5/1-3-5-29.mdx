@@ -1,0 +1,43 @@
+---
+title: 1.3.5.29 ဝိဓူပနဒါယိကာဝိမာနဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 29
+type: tipitaka
+basket: su
+book: vv
+review:
+  current: review
+  updated: '2025-10-20T19:17:36.883528'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T19:17:36.883528'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="557–564" book="vv" e="ch" v="19" p="47">
+
+<Paragraph number="445" type="verses" book="vv">
+_“ဝိဓူပနံ အဟမဒါသိံ,_  
+_ဘိက္ခုနော ပိဏ္ဍာယ စရန္တဿ;_  
+_ …ပေ… _
+</Paragraph>
+</Division>

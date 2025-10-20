@@ -217,19 +217,52 @@ const typeMetadata = `type:${type}`;
         // Client-side word wrapping for Pali text
         document.addEventListener('DOMContentLoaded', function() {
             const paliWrappers = document.querySelectorAll('.paragraph-section.pali .pali-wrapper');
-            
+
             paliWrappers.forEach(wrapper => {
-                const text = wrapper.textContent || '';
-                const words = text.split(/(\s+)/);
-                
-                const wrappedHTML = words.map(part => {
-                    if (part.trim()) {
-                        return `<span class="pali-word">${part}</span>`;
+                const nodes = Array.from(wrapper.childNodes);
+                if (nodes.length === 0) {
+                    return;
+                }
+
+                const needsTransform = nodes.some(node => {
+                    if (node.nodeType !== Node.TEXT_NODE) {
+                        return false;
                     }
-                    return part; // Keep whitespace
-                }).join('');
-                
-                wrapper.innerHTML = wrappedHTML;
+                    const text = node.textContent || '';
+                    return text.trim().length > 0;
+                });
+
+                if (!needsTransform) {
+                    return;
+                }
+
+                const fragment = document.createDocumentFragment();
+
+                nodes.forEach(node => {
+                    if (node.nodeType !== Node.TEXT_NODE) {
+                        fragment.appendChild(node);
+                        return;
+                    }
+
+                    const text = node.textContent || '';
+                    if (text.length === 0) {
+                        return;
+                    }
+
+                    const parts = text.split(/(\s+)/);
+                    parts.forEach(part => {
+                        if (part.trim().length === 0) {
+                            fragment.appendChild(document.createTextNode(part));
+                        } else {
+                            const span = document.createElement('span');
+                            span.className = 'pali-word';
+                            span.textContent = part;
+                            fragment.appendChild(span);
+                        }
+                    });
+                });
+
+                wrapper.replaceChildren(fragment);
             });
         });
     </script>

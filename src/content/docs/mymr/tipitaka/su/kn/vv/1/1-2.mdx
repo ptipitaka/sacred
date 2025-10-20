@@ -1,0 +1,51 @@
+---
+title: 1.2 စိတ္တလတာဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: vv
+review:
+  current: review
+  updated: '2025-10-20T19:17:36.666331'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T19:17:36.666331'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="vv" section="1.2">
+* [1.2.1 ဒါသိဝိမာနဝတ္ထု](1-2/1-2-1)
+* [1.2.2 လခုမာဝိမာနဝတ္ထု](1-2/1-2-2)
+* [1.2.3 အာစာမဒါယိကာဝိမာနဝတ္ထု](1-2/1-2-3)
+* [1.2.4 စဏ္ဍာလိဝိမာနဝတ္ထု](1-2/1-2-4)
+* [1.2.5 ဘဒ္ဒိတ္ထိဝိမာနဝတ္ထု](1-2/1-2-5)
+* [1.2.6 သောဏဒိန္နာဝိမာနဝတ္ထု](1-2/1-2-6)
+* [1.2.7 ဥပေါသထာဝိမာနဝတ္ထု](1-2/1-2-7)
+* [1.2.8 နိဒ္ဒါဝိမာနဝတ္ထု](1-2/1-2-8)
+* [1.2.9 သုနိဒ္ဒါဝိမာနဝတ္ထု](1-2/1-2-9)
+* [1.2.10 ပဌမဘိက္ခာဒါယိကာဝိမာနဝတ္ထု](1-2/1-2-10)
+* [1.2.11 ဒုတိယဘိက္ခာဒါယိကာဝိမာနဝတ္ထု](1-2/1-2-11)
+</TableOfContents>
