@@ -1,0 +1,50 @@
+---
+title: 1.8 မိတ္တာထေရီဂါထာ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.696637'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.696637'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="8" book="th2" e="ch" v="19" p="378">
+
+<Paragraph number="16" type="verses" book="th2">
+_“သဒ္ဓါယ ပဗ္ဗဇိတွာန,_  
+_မိတ္တေ မိတ္တရတာ ဘဝ;_  
+_ဘာဝေဟိ ကုသလေ ဓမ္မေ,_  
+_ယောဂက္ခေမဿ ပတ္တိယာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="17" type="center" book="th2">
+…  မိတ္တာ ထေရီ… .
+</Paragraph>

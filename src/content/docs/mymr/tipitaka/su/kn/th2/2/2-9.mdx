@@ -1,0 +1,61 @@
+---
+title: 2.9 အဘယာထေရီဂါထာ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.826215'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.826215'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="35" book="th2" e="ch" v="19" p="383">
+
+<Paragraph number="63" type="verses" book="th2">
+_“အဘယေ ဘိဒုရော ကာယော,_  
+_ယတ္ထ သတာ ပုထုဇ္ဇနာ;_  
+_နိက္ခိပိဿာမိမံ ဒေဟံ,_  
+_သမ္ပဇာနာ သတီမတီ._  
+
+</Paragraph>
+
+</Division>
+<Division number="36" book="th2" e="ch" v="19" p="383">
+
+<Paragraph number="64" type="verses" book="th2">
+_ဗဟူဟိ ဒုက္ခဓမ္မေဟိ,_  
+_အပ္ပမာဒရတာယ မေ;_  
+_တဏှက္ခယော အနုပ္ပတ္တော,_  
+_ကတံ ဗုဒ္ဓဿ သာသနန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="65" type="center" book="th2">
+…  အဘယာ ထေရီ… .
+</Paragraph>

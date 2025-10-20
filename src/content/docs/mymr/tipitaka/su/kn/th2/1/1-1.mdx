@@ -1,0 +1,49 @@
+---
+title: 1.1 အညတရာထေရီဂါထာ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.608689'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.608689'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="1" book="th2" e="ch" v="19" p="377">
+
+<Paragraph number="2" type="verses" book="th2">
+_“သုခံ သုပါဟိ ထေရိကေ,_  
+_ကတွာ စောဠေန ပါရုတာ;_  
+ဥပသန္တော ဟိ တေ ရာဂေါ,_  
+_သုက္ခဍာကံ ဝ ကုမ္ဘိယန်”တိ._  
+
+</Paragraph>
+
+<Paragraph number="3" book="th2">
+ဣတ္ထံ သုဒံ အညတရာ ထေရီ အပညာတာ ဘိက္ခုနီ ဂါထံ အဘာသိတ္ထာတိ.
+</Paragraph>
+</Division>

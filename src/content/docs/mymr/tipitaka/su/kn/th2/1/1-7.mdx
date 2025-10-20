@@ -1,0 +1,50 @@
+---
+title: 1.7 ဝီရာထေရီဂါထာ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.691578'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.691578'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="7" book="th2" e="ch" v="19" p="378">
+
+<Paragraph number="14" type="verses" book="th2">
+_“ဝီရာ ဝီရေဟိ ဓမ္မေဟိ,_  
+_ဘိက္ခုနီ ဘာဝိတိန္ဒြိယာ;_  
+_ဓာရေတိ အန္တိမံ ဒေဟံ,_  
+_ဇေတွာ မာရံ သဝါဟိနိန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="15" type="center" book="th2">
+…  ဝီရာ ထေရီ… .
+</Paragraph>

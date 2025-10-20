@@ -1,0 +1,63 @@
+---
+title: 2.4 အဍ္ဎကာသိထေရီဂါထာ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.792062'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.792062'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="25" book="th2" e="ch" v="19" p="381">
+
+<Paragraph number="48" type="verses" book="th2">
+_“ယာဝ ကာသိဇနပဒေါ,_  
+_သုင်္ကော မေ တတ္ထကော အဟု;_  
+_တံ ကတွာ နေဂမော အဂ္ဃံ,_  
+_အဍ္ဎေနဂ္ဃံ ဌပေသိ မံ._  
+
+</Paragraph>
+
+</Division>
+<Division number="26" book="th2" e="ch" v="19" p="382">
+
+<Paragraph number="49" type="verses" book="th2">
+_အထ နိဗ္ဗိန္ဒဟံ ရူပေ,_  
+_နိဗ္ဗိန္ဒဉ္စ ဝိရဇ္ဇဟံ;_  
+_မာ ပုန ဇာတိသံသာရံ,_  
+_သန္ဓာဝေယျံ ပုနပ္ပုနံ;_  
+_တိဿော ဝိဇ္ဇာ သစ္ဆိကတာ,_  
+_ကတံ ဗုဒ္ဓဿ သာသနန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="50" type="center" book="th2">
+…  အဍ္ဎကာသိ ထေရီ… .
+</Paragraph>

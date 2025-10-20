@@ -1,0 +1,50 @@
+---
+title: 1.12 ဓမ္မဒိန္နာထေရီဂါထာ
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.625011'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.625011'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="12" book="th2" e="ch" v="19" p="379">
+
+<Paragraph number="24" type="verses" book="th2">
+_“ဆန္ဒဇာတာ အဝသာယီ,_  
+_မနသာ စ ဖုဋာ သိယာ;_  
+_ကာမေသု အပ္ပဋိဗဒ္ဓစိတ္တာ,_  
+ဥဒ္ဓံသောတာတိ ဝုစ္စတီ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="25" type="center" book="th2">
+…  ဓမ္မဒိန္နာ ထေရီ… .
+</Paragraph>

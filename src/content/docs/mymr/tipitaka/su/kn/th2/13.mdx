@@ -1,0 +1,45 @@
+---
+title: 13 ဝီသတိနိပါတ
+tableOfContents: false
+sidebar:
+  order: 14
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.448794'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.448794'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="th2" section="13">
+* [13.1 အမ္ဗပါလီထေရီဂါထာ](13/13-1)
+* [13.2 ရောဟိနီထေရီဂါထာ](13/13-2)
+* [13.3 စာပါထေရီဂါထာ](13/13-3)
+* [13.4 သုန္ဒရီထေရီဂါထာ](13/13-4)
+* [13.5 သုဘာကမ္မာရဓီတုထေရီဂါထာ](13/13-5)
+</TableOfContents>

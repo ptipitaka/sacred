@@ -1,0 +1,52 @@
+---
+title: 5 ပဉ္စကနိပါတ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.482343'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.482343'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="th2" section="5">
+* [5.1 အညတရထေရီဂါထာ](5/5-1)
+* [5.2 ဝိမလာထေရီဂါထာ](5/5-2)
+* [5.3 သီဟာထေရီဂါထာ](5/5-3)
+* [5.4 သုန္ဒရီနန္ဒာထေရီဂါထာ](5/5-4)
+* [5.5 နန္ဒုတ္တရာထေရီဂါထာ](5/5-5)
+* [5.6 မိတ္တာကာဠီထေရီဂါထာ](5/5-6)
+* [5.7 သကုလာထေရီဂါထာ](5/5-7)
+* [5.8 သောဏာထေရီဂါထာ](5/5-8)
+* [5.9 ဘဒ္ဒါကုဏ္ဍလကေသာထေရီဂါထာ](5/5-9)
+* [5.10 ပဋာစာရာထေရီဂါထာ](5/5-10)
+* [5.11 တိံသမတ္တာထေရီဂါထာ](5/5-11)
+* [5.12 စန္ဒာထေရီဂါထာ](5/5-12)
+</TableOfContents>

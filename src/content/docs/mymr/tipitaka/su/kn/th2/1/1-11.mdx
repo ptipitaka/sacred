@@ -1,0 +1,52 @@
+---
+title: 1.11 မုတ္တာထေရီဂါထာ
+tableOfContents: false
+sidebar:
+  order: 11
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.616183'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.616183'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="11" book="th2" e="ch" v="19" p="379">
+
+<Paragraph number="22" type="verses" book="th2">
+_“သုမုတ္တာ သာဓုမုတ္တာမှိ,_  
+_တီဟိ ခုဇ္ဇေဟိ မုတ္တိယာ;_  
+ဥဒုက္ခလေန မုသလေန,_  
+_ပတိနာ ခုဇ္ဇကေန စ;_  
+_မုတ္တာမှိ ဇာတိမရဏာ,_  
+_ဘဝနေတ္တိ သမူဟတာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="23" type="center" book="th2">
+…  မုတ္တာ ထေရီ… .
+</Paragraph>

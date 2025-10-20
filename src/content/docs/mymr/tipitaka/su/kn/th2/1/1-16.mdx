@@ -1,0 +1,50 @@
+---
+title: 1.16 ဝုဍ္ဎပဗ္ဗဇိတသုမနာထေရီဂါထာ
+tableOfContents: false
+sidebar:
+  order: 16
+type: tipitaka
+basket: su
+book: th2
+review:
+  current: review
+  updated: '2025-10-20T20:59:05.645042'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:59:05.645042'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="16" book="th2" e="ch" v="19" p="379">
+
+<Paragraph number="32" type="verses" book="th2">
+_“သုခံ တွံ ဝုဍ္ဎိကေ သေဟိ,_  
+_ကတွာ စောဠေန ပါရုတာ;_  
+ဥပသန္တော ဟိ တေ ရာဂေါ,_  
+_သီတိဘူတာသိ နိဗ္ဗုတာ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="33" type="center" book="th2">
+…  သုမနာ ဝုဍ္ဎပဗ္ဗဇိတာ ထေရီ… .
+</Paragraph>
