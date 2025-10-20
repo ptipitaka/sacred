@@ -1,0 +1,41 @@
+---
+title: 15.2.4–6
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a1
+review:
+  current: review
+  updated: '2025-10-20T15:41:49.119052'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:41:49.119052'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="281–283" book="a1" e="ch" v="15">
+
+<Paragraph number="372" book="a1">
+“အဋ္ဌာနမေတံ, ဘိက္ခဝေ, အနဝကာသော ယံ ဣတ္ထီ သက္ကတ္တံ ကာရေယျ …ပေ…  မာရတ္တံ ကာရေယျ …ပေ…  ဗြဟ္မတ္တံ ကာရေယျ. နေတံ ဌာနံ ဝိဇ္ဇတိ. ဌာနဉ္စ ခေါ ဧတံ, ဘိက္ခဝေ, ဝိဇ္ဇတိ ယံ ပုရိသော သက္ကတ္တံ ကာရေယျ …ပေ…  မာရတ္တံ ကာရေယျ …ပေ…  ဗြဟ္မတ္တံ ကာရေယျ. ဌာနမေတံ ဝိဇ္ဇတီ”တိ.
+</Paragraph>
+</Division>

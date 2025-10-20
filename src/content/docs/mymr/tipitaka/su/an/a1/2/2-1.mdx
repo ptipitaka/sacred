@@ -1,0 +1,46 @@
+---
+title: '2.1'
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a1
+review:
+  current: review
+  updated: '2025-10-20T15:41:49.490758'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:41:49.490758'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="11" book="a1" e="ch" v="15" p="2">
+
+<Paragraph number="24" book="a1">
+“နာဟံ, ဘိက္ခဝေ, အညံ ဧကဓမ္မမ္ပိ သမနုပဿာမိ ယေန အနုပ္ပန္နော ဝါ ကာမစ္ဆန္ဒော ဥပ္ပဇ္ဇတိ ဥပ္ပန္နော ဝါ ကာမစ္ဆန္ဒော ဘိယျောဘာဝါယ ဝေပုလ္လာယ သံဝတ္တတိ ယထယိဒံ, ဘိက္ခဝေ, သုဘနိမိတ္တံ. သုဘနိမိတ္တံ, ဘိက္ခဝေ, အယောနိသော မနသိ ကရောတော အနုပ္ပန္နော စေဝ ကာမစ္ဆန္ဒော ဥပ္ပဇ္ဇတိ ဥပ္ပန္နော စ ကာမစ္ဆန္ဒော ဘိယျောဘာဝါယ ဝေပုလ္လာယ သံဝတ္တတီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="25" type="center" book="a1">
+ပဌမံ.
+</Paragraph>

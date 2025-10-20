@@ -1,0 +1,41 @@
+---
+title: 15.1.8
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: a1
+review:
+  current: review
+  updated: '2025-10-20T15:41:49.104144'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:41:49.104144'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="275" book="a1" e="ch" v="15" p="29">
+
+<Paragraph number="365" book="a1">
+“အဋ္ဌာနမေတံ, ဘိက္ခဝေ, အနဝကာသော ယံ ဒိဋ္ဌိသမ္ပန္နော ပုဂ္ဂလော သံဃံ ဘိန္ဒေယျ. နေတံ ဌာနံ ဝိဇ္ဇတိ. ဌာနဉ္စ ခေါ ဧတံ, ဘိက္ခဝေ, ဝိဇ္ဇတိ ယံ ပုထုဇ္ဇနော သံဃံ ဘိန္ဒေယျ. ဌာနမေတံ ဝိဇ္ဇတီ”တိ.
+</Paragraph>
+</Division>

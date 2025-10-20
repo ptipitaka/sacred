@@ -1,0 +1,58 @@
+---
+title: 10 ဒုတိယပမာဒါဒိဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 11
+type: tipitaka
+basket: su
+book: a1
+review:
+  current: review
+  updated: '2025-10-20T15:41:48.844909'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:41:48.844909'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a1" section="10">
+* [10.1](10/10-1)
+* [10.2](10/10-2)
+* [10.3](10/10-3)
+* [10.4](10/10-4)
+* [10.5–12](10/10-5–12)
+* [10.13](10/10-13)
+* [10.14](10/10-14)
+* [10.15](10/10-15)
+* [10.16](10/10-16)
+* [10.17](10/10-17)
+* [10.18](10/10-18)
+* [10.19](10/10-19)
+* [10.20](10/10-20)
+* [10.21–31](10/10-21–31)
+* [10.32](10/10-32)
+* [10.33](10/10-33)
+* [10.34](10/10-34)
+* [10.35–42](10/10-35–42)
+</TableOfContents>

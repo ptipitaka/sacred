@@ -1,0 +1,46 @@
+---
+title: '2.4'
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a1
+review:
+  current: review
+  updated: '2025-10-20T15:41:49.505319'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:41:49.505319'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="14" book="a1" e="ch" v="15" p="3">
+
+<Paragraph number="30" book="a1">
+“နာဟံ, ဘိက္ခဝေ, အညံ ဧကဓမ္မမ္ပိ သမနုပဿာမိ ယေန အနုပ္ပန္နံ ဝါ ဥဒ္ဓစ္စကုက္ကုစ္စံ ဥပ္ပဇ္ဇတိ ဥပ္ပန္နံ ဝါ ဥဒ္ဓစ္စကုက္ကုစ္စံ ဘိယျောဘာဝါယ ဝေပုလ္လာယ သံဝတ္တတိ ယထယိဒံ, ဘိက္ခဝေ, စေတသော အဝူပသမော. အဝူပသန္တစိတ္တဿ, ဘိက္ခဝေ, အနုပ္ပန္နဉ္စေဝ ဥဒ္ဓစ္စကုက္ကုစ္စံ ဥပ္ပဇ္ဇတိ ဥပ္ပန္နဉ္စ ဥဒ္ဓစ္စကုက္ကုစ္စံ ဘိယျောဘာဝါယ ဝေပုလ္လာယ သံဝတ္တတီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="31" type="center" book="a1">
+စတုတ္ထံ.
+</Paragraph>

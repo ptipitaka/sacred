@@ -1,0 +1,41 @@
+---
+title: 16.2.2
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a1
+review:
+  current: review
+  updated: '2025-10-20T15:41:49.164688'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:41:49.164688'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="299" book="a1" e="ch" v="15" p="32">
+
+<Paragraph number="387" book="a1">
+“နာဟံ, ဘိက္ခဝေ, အညံ ဧကဓမ္မမ္ပိ သမနုပဿာမိ ယေန အနုပ္ပန္နာ ဝါ ကုသလာ ဓမ္မာ ဥပ္ပဇ္ဇန္တိ ဥပ္ပန္နာ ဝါ ကုသလာ ဓမ္မာ ဘိယျောဘာဝါယ ဝေပုလ္လာယ သံဝတ္တန္တိ ယထယိဒံ, ဘိက္ခဝေ, သမ္မာဒိဋ္ဌိ. သမ္မာဒိဋ္ဌိကဿ, ဘိက္ခဝေ, အနုပ္ပန္နာ စေဝ ကုသလာ ဓမ္မာ ဥပ္ပဇ္ဇန္တိ ဥပ္ပန္နာ စ ကုသလာ ဓမ္မာ ဘိယျောဘာဝါယ ဝေပုလ္လာယ သံဝတ္တန္တီ”တိ.
+</Paragraph>
+</Division>
