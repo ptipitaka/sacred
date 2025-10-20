@@ -1,0 +1,56 @@
+---
+title: 4 မဟာဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: pv
+review:
+  current: review
+  updated: '2025-10-20T20:21:39.052665'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:21:39.052665'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="pv" section="4">
+* [4.1 အမ္ဗသက္ကရပေတဝတ္ထု](4/4-1)
+* [4.2 သေရီသကပေတဝတ္ထု](4/4-2)
+* [4.3 နန္ဒကပေတဝတ္ထု](4/4-3)
+* [4.4 ရေဝတီပေတဝတ္ထု](4/4-4)
+* [4.5 ဥစ္ဆုပေတဝတ္ထု](4/4-5)
+* [4.6 ကုမာရပေတဝတ္ထု](4/4-6)
+* [4.7 ရာဇပုတ္တပေတဝတ္ထု](4/4-7)
+* [4.8 ဂူထခါဒကပေတဝတ္ထု](4/4-8)
+* [4.9 ဂူထခါဒကပေတိဝတ္ထု](4/4-9)
+* [4.10 ဂဏပေတဝတ္ထု](4/4-10)
+* [4.11 ပါဋလိပုတ္တပေတဝတ္ထု](4/4-11)
+* [4.12 အမ္ဗဝနပေတဝတ္ထု](4/4-12)
+* [4.13 အက္ခရုက္ခပေတဝတ္ထု](4/4-13)
+* [4.14 ဘောဂသံဟရဏပေတဝတ္ထု](4/4-14)
+* [4.15 သေဋ္ဌိပုတ္တပေတဝတ္ထု](4/4-15)
+* [4.16 သဋ္ဌိကူဋပေတဝတ္ထု](4/4-16)
+</TableOfContents>
