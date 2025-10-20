@@ -1,0 +1,41 @@
+---
+title: 1.3.289–336
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: a11
+review:
+  current: review
+  updated: '2025-10-20T17:45:28.602964'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:45:28.602964'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="310–357" book="a11" e="ch" v="17">
+
+<Paragraph number="220" book="a11">
+… ရူပသဉ္စေတနာယ…  သဒ္ဒသဉ္စေတနာယ…  ဂန္ဓသဉ္စေတနာယ…  ရသသဉ္စေတနာယ…  ဖောဋ္ဌဗ္ဗသဉ္စေတနာယ…  ဓမ္မသဉ္စေတနာယ… .
+</Paragraph>
+</Division>

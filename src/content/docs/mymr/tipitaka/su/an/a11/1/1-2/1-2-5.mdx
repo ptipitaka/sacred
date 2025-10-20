@@ -1,0 +1,50 @@
+---
+title: 1.2.5 မေတ္တာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a11
+review:
+  current: review
+  updated: '2025-10-20T17:45:28.567874'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:45:28.567874'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="15" book="a11" e="ch" v="17" p="542">
+
+<Paragraph number="140" book="a11">
+“မေတ္တာယ, ဘိက္ခဝေ, စေတောဝိမုတ္တိယာ အာသေဝိတာယ ဘာဝိတာယ ဗဟုလီကတာယ ယာနီကတာယ ဝတ္ထုကတာယ အနုဋ္ဌိတာယ ပရိစိတာယ သုသမာရဒ္ဓါယ ဧကာဒသာနိသံသာ ပါဋိကင်္ခါ.
+</Paragraph>
+
+<Paragraph number="141" book="a11">
+ကတမေ ဧကာဒသ? သုခံ သုပတိ, သုခံ ပဋိဗုဇ္ဈတိ, န ပါပကံ သုပိနံ ပဿတိ, မနုဿာနံ ပိယော ဟောတိ, အမနုဿာနံ ပိယော ဟောတိ, ဒေဝတာ ရက္ခန္တိ, နာဿ အဂ္ဂိ ဝါ ဝိသံ ဝါ သတ္ထံ ဝါ ကမတိ, တုဝဋံ စိတ္တံ သမာဓိယတိ, မုခဝဏ္ဏော ဝိပ္ပသီဒတိ, အသမ္မူဠှော ကာလံ ကရောတိ, ဥတ္တရိ အပ္ပဋိဝိဇ္ဈန္တော ဗြဟ္မလောကူပဂေါ ဟောတိ. မေတ္တာယ, ဘိက္ခဝေ, စေတောဝိမုတ္တိယာ အာသေဝိတာယ ဘာဝိတာယ ဗဟုလီကတာယ ယာနီကတာယ ဝတ္ထုကတာယ အနုဋ္ဌိတာယ ပရိစိတာယ သုသမာရဒ္ဓါယ ဣမေ ဧကာဒသာနိသံသာ ပါဋိကင်္ခါ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="142" type="center" book="a11">
+ပဉ္စမံ.
+</Paragraph>
