@@ -1,0 +1,50 @@
+---
+title: 3.1.1 သမဏသညာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:17.053400'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:17.053400'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="101" book="a10" e="ch" v="17" p="427">
+
+<Paragraph number="925" book="a10">
+“တိဿော ဣမာ, ဘိက္ခဝေ, သမဏသညာ ဘာဝိတာ ဗဟုလီကတာ သတ္တ ဓမ္မေ ပရိပူရေန္တိ. ကတမာ တိဿော? ဝေဝဏ္ဏိယမှိ အဇ္ဈုပဂတော, ပရပဋိဗဒ္ဓါ မေ ဇီဝိကာ, အညော မေ အာကပ္ပေါ ကရဏီယောတိ—  ဣမာ ခေါ, ဘိက္ခဝေ, တိဿော သမဏသညာ ဘာဝိတာ ဗဟုလီကတာ သတ္တ ဓမ္မေ ပရိပူရေန္တိ.
+</Paragraph>
+
+<Paragraph number="926" book="a10">
+ကတမေ သတ္တ? သန္တတကာရီ ဟောတိ သန္တတဝုတ္တိ သီလေသု, အနဘိဇ္ဈာလု ဟောတိ, အဗျာပဇ္ဇော ဟောတိ, အနတိမာနီ ဟောတိ, သိက္ခာကာမော ဟောတိ, “ဣဒမတ္ထန်”တိဿ ဟောတိ ဇီဝိတပရိက္ခာရေသု, အာရဒ္ဓဝီရိယော စ ဝိဟရတိ. ဣမာ ခေါ, ဘိက္ခဝေ, တိဿော သမဏသညာ ဘာဝိတာ ဗဟုလီကတာ ဣမေ သတ္တ ဓမ္မေ ပရိပူရေန္တီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="927" type="center" book="a10">
+ပဌမံ.
+</Paragraph>

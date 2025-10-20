@@ -1,0 +1,50 @@
+---
+title: 4.4.2 ကဏှမဂ္ဂသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:17.375099'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:17.375099'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="190" book="a10" e="ch" v="17" p="485">
+
+<Paragraph number="1358" book="a10">
+“ကဏှမဂ္ဂဉ္စ ဝေါ, ဘိက္ခဝေ, ဒေသေဿာမိ သုက္ကမဂ္ဂဉ္စ. တံ သုဏာထ …ပေ…  ကတမော စ, ဘိက္ခဝေ, ကဏှော မဂ္ဂေါ? ပါဏာတိပါတော …ပေ…  မိစ္ဆာဒိဋ္ဌိ—  အယံ ဝုစ္စတိ, ဘိက္ခဝေ, ကဏှော မဂ္ဂေါ.
+</Paragraph>
+
+<Paragraph number="1359" book="a10">
+ကတမော စ, ဘိက္ခဝေ, သုက္ကော မဂ္ဂေါ? ပါဏာတိပါတာ ဝေရမဏီ …ပေ…  သမ္မာဒိဋ္ဌိ—  အယံ ဝုစ္စတိ, ဘိက္ခဝေ, သုက္ကော မဂ္ဂေါ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1360" type="center" book="a10">
+ဒုတိယံ.
+</Paragraph>

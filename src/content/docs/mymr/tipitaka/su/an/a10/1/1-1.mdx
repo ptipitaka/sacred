@@ -1,0 +1,50 @@
+---
+title: 1.1 အာနိသံသဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:16.541569'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:16.541569'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a10" section="1.1">
+* [1.1.1 ကိမတ္ထိယသုတ္တ](1-1/1-1-1)
+* [1.1.2 စေတနာကရဏီယသုတ္တ](1-1/1-1-2)
+* [1.1.3 ပဌမော်ပနိသသုတ္တ](1-1/1-1-3)
+* [1.1.4 ဒုတိယော်ပနိသသုတ္တ](1-1/1-1-4)
+* [1.1.5 တတိယော်ပနိသသုတ္တ](1-1/1-1-5)
+* [1.1.6 သမာဓိသုတ္တ](1-1/1-1-6)
+* [1.1.7 သာရိပုတ္တသုတ္တ](1-1/1-1-7)
+* [1.1.8 ဈာနသုတ္တ](1-1/1-1-8)
+* [1.1.9 သန္တဝိမောက္ခသုတ္တ](1-1/1-1-9)
+* [1.1.10 ဝိဇ္ဇာသုတ္တ](1-1/1-1-10)
+</TableOfContents>

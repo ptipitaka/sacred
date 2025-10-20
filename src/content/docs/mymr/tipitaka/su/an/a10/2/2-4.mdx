@@ -1,0 +1,50 @@
+---
+title: 2.4 ထေရဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:16.800067'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:16.800067'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a10" section="2.4">
+* [2.4.1 ဝါဟနသုတ္တ](2-4/2-4-1)
+* [2.4.2 အာနန္ဒသုတ္တ](2-4/2-4-2)
+* [2.4.3 ပုဏ္ဏိယသုတ္တ](2-4/2-4-3)
+* [2.4.4 ဗျာကရဏသုတ္တ](2-4/2-4-4)
+* [2.4.5 ကတ္ထီသုတ္တ](2-4/2-4-5)
+* [2.4.6 အဓိမာနသုတ္တ](2-4/2-4-6)
+* [2.4.7 နပ္ပိယသုတ္တ](2-4/2-4-7)
+* [2.4.8 အက္ကောသကသုတ္တ](2-4/2-4-8)
+* [2.4.9 ကောကာလိကသုတ္တ](2-4/2-4-9)
+* [2.4.10 ခီဏာသဝဗလသုတ္တ](2-4/2-4-10)
+</TableOfContents>

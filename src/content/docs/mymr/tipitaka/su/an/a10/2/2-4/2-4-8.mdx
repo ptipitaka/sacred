@@ -1,0 +1,46 @@
+---
+title: 2.4.8 အက္ကောသကသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:16.986266'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:16.986266'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="88" book="a10" e="ch" v="17" p="393">
+
+<Paragraph number="738" book="a10">
+“ယော သော, ဘိက္ခဝေ, ဘိက္ခု အက္ကောသကပရိဘာသကော အရိယူပဝါဒီ သဗြဟ္မစာရီနံ ဌာနမေတံ အဝကာသော ယံ သော ဒသန္နံ ဗျသနာနံ အညတရံ ဗျသနံ နိဂစ္ဆေယျ. ကတမေသံ ဒသန္နံ? အနဓိဂတံ နာဓိဂစ္ဆတိ, အဓိဂတာ ပရိဟာယတိ, သဒ္ဓမ္မဿ န ဝေါဒါယန္တိ, သဒ္ဓမ္မေသု ဝါ အဓိမာနိကော ဟောတိ အနဘိရတော ဝါ ဗြဟ္မစရိယံ စရတိ, အညတရံ ဝါ သံကိလိဋ္ဌံ အာပတ္တိံ အာပဇ္ဇတိ, ဂါဠှံ ဝါ ရောဂါတင်္ကံ ဖုသတိ, ဥမ္မာဒံ ဝါ ပါပုဏာတိ စိတ္တက္ခေပံ, သမ္မူဠှော ကာလံ ကရောတိ, ကာယဿ ဘေဒါ ပရံ မရဏာ အပါယံ ဒုဂ္ဂတိံ ဝိနိပါတံ နိရယံ ဥပပဇ္ဇတိ. ယော သော, ဘိက္ခဝေ, ဘိက္ခု အက္ကောသကပရိဘာသကော အရိယူပဝါဒီ သဗြဟ္မစာရီနံ, ဌာနမေတံ အဝကာသော ယံ သော ဣမေသံ ဒသန္နံ ဗျသနာနံ အညတရံ ဗျသနံ နိဂစ္ဆေယျာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="739" type="center" book="a10">
+အဋ္ဌမံ.
+</Paragraph>

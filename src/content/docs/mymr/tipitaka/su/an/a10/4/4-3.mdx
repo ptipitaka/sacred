@@ -1,0 +1,51 @@
+---
+title: 4.3 သာဓုဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:17.269301'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:17.269301'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a10" section="4.3">
+* [4.3.1 သာဓုသုတ္တ](4-3/4-3-1)
+* [4.3.2 အရိယဓမ္မသုတ္တ](4-3/4-3-2)
+* [4.3.3 ကုသလသုတ္တ](4-3/4-3-3)
+* [4.3.4 အတ္ထသုတ္တ](4-3/4-3-4)
+* [4.3.5 ဓမ္မသုတ္တ](4-3/4-3-5)
+* [4.3.6 အာသဝသုတ္တ](4-3/4-3-6)
+* [4.3.7 ဝဇ္ဇသုတ္တ](4-3/4-3-7)
+* [4.3.8 တပနီယသုတ္တ](4-3/4-3-8)
+* [4.3.9 အာစယဂါမိသုတ္တ](4-3/4-3-9)
+* [4.3.10 ဒုက္ခုဒြယသုတ္တ](4-3/4-3-10)
+* [4.3.11 ဝိပါကသုတ္တ](4-3/4-3-11)
+</TableOfContents>

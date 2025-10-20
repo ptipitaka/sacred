@@ -1,0 +1,50 @@
+---
+title: 2.5 ဥပါလိဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:16.804067'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:16.804067'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a10" section="2.5">
+* [2.5.1 ကာမဘောဂီသုတ္တ](2-5/2-5-1)
+* [2.5.2 ဘယသုတ္တ](2-5/2-5-2)
+* [2.5.3 ကိံဒိဋ္ဌိကသုတ္တ](2-5/2-5-3)
+* [2.5.4 ဝဇ္ဇိယမာဟိတသုတ္တ](2-5/2-5-4)
+* [2.5.5 ဥတ္တိယသုတ္တ](2-5/2-5-5)
+* [2.5.6 ကောကနုဒသုတ္တ](2-5/2-5-6)
+* [2.5.7 အာဟုနေယျသုတ္တ](2-5/2-5-7)
+* [2.5.8 ထေရသုတ္တ](2-5/2-5-8)
+* [2.5.9 ဥပါလိသုတ္တ](2-5/2-5-9)
+* [2.5.10 အဘဗ္ဗသုတ္တ](2-5/2-5-10)
+</TableOfContents>

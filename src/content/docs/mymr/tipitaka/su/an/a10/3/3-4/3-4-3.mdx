@@ -1,0 +1,46 @@
+---
+title: 3.4.3 အကုသလသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:17.203252'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:17.203252'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="136" book="a10" e="ch" v="17" p="453">
+
+<Paragraph number="1110" book="a10">
+“အကုသလဉ္စ ဝေါ, ဘိက္ခဝေ, ဒေသေဿာမိ ကုသလဉ္စ. တံ သုဏာထ …ပေ…  ကတမဉ္စ, ဘိက္ခဝေ, အကုသလံ? မိစ္ဆာဒိဋ္ဌိ …ပေ…  မိစ္ဆာဝိမုတ္တိ—  ဣဒံ ဝုစ္စတိ, ဘိက္ခဝေ, အကုသလံ. ကတမဉ္စ, ဘိက္ခဝေ, ကုသလံ? သမ္မာဒိဋ္ဌိ …ပေ…  သမ္မာဝိမုတ္တိ—  ဣဒံ ဝုစ္စတိ, ဘိက္ခဝေ, ကုသလန်”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1111" type="center" book="a10">
+တတိယံ.
+</Paragraph>

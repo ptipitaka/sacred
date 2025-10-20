@@ -1,0 +1,50 @@
+---
+title: 2.3 အာကင်္ခဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:16.795253'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:16.795253'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a10" section="2.3">
+* [2.3.1 အာကင်္ခသုတ္တ](2-3/2-3-1)
+* [2.3.2 ကဏ္ဋကသုတ္တ](2-3/2-3-2)
+* [2.3.3 ဣဋ္ဌဓမ္မသုတ္တ](2-3/2-3-3)
+* [2.3.4 ဝဍ္ဎိသုတ္တ](2-3/2-3-4)
+* [2.3.5 မိဂသာလာသုတ္တ](2-3/2-3-5)
+* [2.3.6 တယောဓမ္မသုတ္တ](2-3/2-3-6)
+* [2.3.7 ကာကသုတ္တ](2-3/2-3-7)
+* [2.3.8 နိဂဏ္ဌသုတ္တ](2-3/2-3-8)
+* [2.3.9 အာဃာတဝတ္ထုသုတ္တ](2-3/2-3-9)
+* [2.3.10 အာဃာတပဋိဝိနယသုတ္တ](2-3/2-3-10)
+</TableOfContents>

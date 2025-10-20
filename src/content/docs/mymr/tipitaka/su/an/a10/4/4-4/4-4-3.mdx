@@ -1,0 +1,50 @@
+---
+title: 4.4.3 သဒ္ဓမ္မသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:17.378164'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:17.378164'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="191" book="a10" e="ch" v="17" p="485">
+
+<Paragraph number="1361" book="a10">
+“သဒ္ဓမ္မဉ္စ ဝေါ, ဘိက္ခဝေ, ဒေသေဿာမိ အသဒ္ဓမ္မဉ္စ. တံ သုဏာထ …ပေ…  ကတမော စ, ဘိက္ခဝေ, အသဒ္ဓမ္မော? ပါဏာတိပါတော …ပေ…  မိစ္ဆာဒိဋ္ဌိ—  အယံ ဝုစ္စတိ, ဘိက္ခဝေ, အသဒ္ဓမ္မော.
+</Paragraph>
+
+<Paragraph number="1362" book="a10">
+ကတမော စ, ဘိက္ခဝေ, သဒ္ဓမ္မော? ပါဏာတိပါတာ ဝေရမဏီ …ပေ…  သမ္မာဒိဋ္ဌိ—  အယံ ဝုစ္စတိ, ဘိက္ခဝေ, သဒ္ဓမ္မော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1363" type="center" book="a10">
+တတိယံ.
+</Paragraph>

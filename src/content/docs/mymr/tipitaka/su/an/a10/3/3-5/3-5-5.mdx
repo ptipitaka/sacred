@@ -1,0 +1,46 @@
+---
+title: 3.5.5 ဥပ္ပါဒေတဗ္ဗသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:17.243788'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:17.243788'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="149" book="a10" e="ch" v="17" p="456">
+
+<Paragraph number="1137" book="a10">
+“ဥပ္ပါဒေတဗ္ဗဉ္စ ဝေါ, ဘိက္ခဝေ, ဓမ္မံ ဒေသေဿာမိ န ဥပ္ပါဒေတဗ္ဗဉ္စ. တံ သုဏာထ …ပေ…  ကတမော စ, ဘိက္ခဝေ, န ဥပ္ပါဒေတဗ္ဗော ဓမ္မော? မိစ္ဆာဒိဋ္ဌိ …ပေ…  မိစ္ဆာဝိမုတ္တိ—  အယံ ဝုစ္စတိ, ဘိက္ခဝေ, န ဥပ္ပါဒေတဗ္ဗော ဓမ္မော. ကတမော စ, ဘိက္ခဝေ, ဥပ္ပါဒေတဗ္ဗော ဓမ္မော? သမ္မာဒိဋ္ဌိ …ပေ…  သမ္မာဝိမုတ္တိ—  အယံ ဝုစ္စတိ, ဘိက္ခဝေ, ဥပ္ပါဒေတဗ္ဗော ဓမ္မော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1138" type="center" book="a10">
+ပဉ္စမံ.
+</Paragraph>

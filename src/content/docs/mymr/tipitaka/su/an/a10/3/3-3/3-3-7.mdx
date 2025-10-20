@@ -1,0 +1,46 @@
+---
+title: 3.3.7 သတ္တမသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:17.175842'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:17.175842'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="129" book="a10" e="ch" v="17" p="451">
+
+<Paragraph number="1094" book="a10">
+“ဒသယိမေ, ဘိက္ခဝေ, ဓမ္မာ ဘာဝိတာ ဗဟုလီကတာ မဟပ္ဖလာ ဟောန္တိ မဟာနိသံသာ, နာညတြ သုဂတဝိနယာ. ကတမေ ဒသ? သမ္မာဒိဋ္ဌိ …ပေ…  သမ္မာဝိမုတ္တိ—  ဣမေ ခေါ, ဘိက္ခဝေ, ဒသ ဓမ္မာ ဘာဝိတာ ဗဟုလီကတာ မဟပ္ဖလာ ဟောန္တိ မဟာနိသံသာ, နာညတြ သုဂတဝိနယာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1095" type="center" book="a10">
+သတ္တမံ.
+</Paragraph>

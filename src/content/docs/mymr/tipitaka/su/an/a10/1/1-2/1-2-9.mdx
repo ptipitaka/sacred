@@ -1,0 +1,46 @@
+---
+title: 1.2.9 ပဌမအရိယာဝါသသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:16.607289'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:16.607289'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="19" book="a10" e="ch" v="17" p="279">
+
+<Paragraph number="117" book="a10">
+“ဒသယိမေ, ဘိက္ခဝေ, အရိယာဝါသာ, ယေ အရိယာ အာဝသိံသု ဝါ အာဝသန္တိ ဝါ အာဝသိဿန္တိ ဝါ. ကတမေ ဒသ? ဣဓ, ဘိက္ခဝေ, ဘိက္ခု ပဉ္စင်္ဂဝိပ္ပဟီနော ဟောတိ, ဆဠင်္ဂသမန္နာဂတော, ဧကာရက္ခော, စတုရာပဿေနော, ပဏုန္နပစ္စေကသစ္စော, သမဝယသဋ္ဌေသနော, အနာဝိလသင်္ကပ္ပေါ, ပဿဒ္ဓကာယသင်္ခါရော, သုဝိမုတ္တစိတ္တော, သုဝိမုတ္တပညော. ဣမေ ခေါ, ဘိက္ခဝေ, ဒသ အရိယာဝါသာ, ယေ အရိယာ အာဝသိံသု ဝါ အာဝသန္တိ ဝါ အာဝသိဿန္တိ ဝါ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="118" type="center" book="a10">
+နဝမံ.
+</Paragraph>

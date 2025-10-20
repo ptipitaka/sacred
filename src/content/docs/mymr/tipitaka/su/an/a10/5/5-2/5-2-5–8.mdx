@@ -1,0 +1,46 @@
+---
+title: 5.2.5–8
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-20T17:32:17.485898'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:32:17.485898'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="225–228" book="a10" e="ch" v="17">
+
+<Paragraph number="1522" book="a10">
+“ဒသဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ခတံ ဥပဟတံ အတ္တာနံ ပရိဟရတိ …ပေ…  အက္ခတံ အနုပဟတံ အတ္တာနံ ပရိဟရတိ …ပေ…  ဝီသတိယာ, ဘိက္ခဝေ …ပေ…  တိံသာယ, ဘိက္ခဝေ …ပေ…  စတ္တာရီသာယ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ခတံ ဥပဟတံ အတ္တာနံ ပရိဟရတိ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1523" type="center" book="a10">
+( )
+</Paragraph>
