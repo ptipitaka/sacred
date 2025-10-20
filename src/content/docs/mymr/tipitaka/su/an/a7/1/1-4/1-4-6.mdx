@@ -1,0 +1,64 @@
+---
+title: 1.4.6 ဒုတိယမိတ္တသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: a7
+review:
+  current: review
+  updated: '2025-10-20T16:52:08.705804'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:52:08.705804'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="37" book="a7" e="ch" v="16" p="422">
+
+<Paragraph number="197" book="a7">
+“သတ္တဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု မိတ္တော သေဝိတဗ္ဗော ဘဇိတဗ္ဗော ပယိရုပါသိတဗ္ဗော အပိ ပနုဇ္ဇမာနေနပိ. ကတမေဟိ သတ္တဟိ? ပိယော စ ဟောတိ မနာပေါ စ ဂရု စ ဘာဝနီယော စ ဝတ္တာ စ ဝစနက္ခမော စ ဂမ္ဘီရဉ္စ ကထံ ကတ္တာ ဟောတိ, နော စ အဋ္ဌာနေ နိယောဇေတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, သတ္တဟိ ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု မိတ္တော သေဝိတဗ္ဗော ဘဇိတဗ္ဗော ပယိရုပါသိတဗ္ဗော အပိ ပနုဇ္ဇမာနေနပီတိ.
+</Paragraph>
+
+<Paragraph number="198" type="verses" book="a7">
+_ပိယော ဂရု ဘာဝနီယော,_  
+_ဝတ္တာ စ ဝစနက္ခမော;_  
+_ဂမ္ဘီရဉ္စ ကထံ ကတ္တာ,_  
+_နော စဋ္ဌာနေ နိယောဇကော._  
+
+</Paragraph>
+
+<Paragraph number="199" type="verses" book="a7">
+_ယမှိ ဧတာနိ ဌာနာနိ,_  
+_သံဝိဇ္ဇန္တီဓ ပုဂ္ဂလေ;_  
+_သော မိတ္တော မိတ္တကာမေန,_  
+_အတ္ထကာမာနုကမ္ပတော;_  
+_အပိ နာသိယမာနေန,_  
+_ဘဇိတဗ္ဗော တထာဝိဓော”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="200" type="center" book="a7">
+ဆဋ္ဌံ.
+</Paragraph>

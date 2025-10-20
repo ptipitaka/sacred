@@ -1,0 +1,46 @@
+---
+title: 1.2.1 ပဌမအနုသယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: a7
+review:
+  current: review
+  updated: '2025-10-20T16:52:08.601136'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:52:08.601136'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="11" book="a7" e="ch" v="16" p="401">
+
+<Paragraph number="58" book="a7">
+“သတ္တိမေ, ဘိက္ခဝေ, အနုသယာ. ကတမေ သတ္တ? ကာမရာဂါနုသယော, ပဋိဃာနုသယော, ဒိဋ္ဌာနုသယော, ဝိစိကိစ္ဆာနုသယော, မာနာနုသယော, ဘဝရာဂါနုသယော, အဝိဇ္ဇာနုသယော. ဣမေ ခေါ, ဘိက္ခဝေ, သတ္တ အနုသယာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="59" type="center" book="a7">
+ပဌမံ.
+</Paragraph>

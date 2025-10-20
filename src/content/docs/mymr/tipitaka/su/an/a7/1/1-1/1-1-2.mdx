@@ -1,0 +1,50 @@
+---
+title: 1.1.2 ဒုတိယပိယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: a7
+review:
+  current: review
+  updated: '2025-10-20T16:52:08.573278'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:52:08.573278'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="2" book="a7" e="ch" v="16" p="396">
+
+<Paragraph number="6" book="a7">
+“သတ္တဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု သဗြဟ္မစာရီနံ အပ္ပိယော စ ဟောတိ အမနာပေါ စ အဂရု စ အဘာဝနီယော စ. ကတမေဟိ သတ္တဟိ? ဣဓ, ဘိက္ခဝေ, ဘိက္ခု လာဘကာမော စ ဟောတိ, သက္ကာရကာမော စ ဟောတိ, အနဝညတ္တိကာမော စ ဟောတိ, အဟိရိကော စ ဟောတိ, အနောတ္တပ္ပီ စ, ဣဿုကီ စ, မစ္ဆရီ စ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, သတ္တဟိ ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု သဗြဟ္မစာရီနံ အပ္ပိယော စ ဟောတိ အမနာပေါ စ အဂရု စ အဘာဝနီယော စ.
+</Paragraph>
+
+<Paragraph number="7" book="a7">
+သတ္တဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု သဗြဟ္မစာရီနံ ပိယော စ ဟောတိ မနာပေါ စ ဂရု စ ဘာဝနီယော စ. ကတမေဟိ သတ္တဟိ? ဣဓ, ဘိက္ခဝေ, ဘိက္ခု န လာဘကာမော စ ဟောတိ, န သက္ကာရကာမော စ ဟောတိ, န အနဝညတ္တိကာမော စ ဟောတိ, ဟိရီမာ စ ဟောတိ, ဩတ္တပ္ပီ စ, အနိဿုကီ စ, အမစ္ဆရီ စ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, သတ္တဟိ ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု သဗြဟ္မစာရီနံ ပိယော စ ဟောတိ မနာပေါ စ ဂရု စ ဘာဝနီယော စာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="8" type="center" book="a7">
+ဒုတိယံ.
+</Paragraph>

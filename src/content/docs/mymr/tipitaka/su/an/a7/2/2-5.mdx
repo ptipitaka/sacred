@@ -1,0 +1,42 @@
+---
+title: 2.5 အာဟုနေယျဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a7
+review:
+  current: review
+  updated: '2025-10-20T16:52:08.795745'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:52:08.795745'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a7" section="2.5">
+* [2.5.1](2-5/2-5-1)
+* [2.5.2–528](2-5/2-5-2–528)
+</TableOfContents>

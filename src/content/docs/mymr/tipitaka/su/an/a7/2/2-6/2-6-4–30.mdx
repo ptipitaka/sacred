@@ -1,0 +1,41 @@
+---
+title: 2.6.4–30
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a7
+review:
+  current: review
+  updated: '2025-10-20T16:52:09.154827'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:52:09.154827'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="626–652" book="a7" e="ch" v="16">
+
+<Paragraph number="678" book="a7">
+“ရာဂဿ, ဘိက္ခဝေ, ပရိညာယ …ပေ…  ပရိက္ခယာယ…  ပဟာနာယ…  ခယာယ…  ဝယာယ…  ဝိရာဂါယ…  နိရောဓာယ…  စာဂါယ …ပေ…  ပဋိနိဿဂ္ဂါယ ဣမေ သတ္တ ဓမ္မာ ဘာဝေတဗ္ဗာ”တိ.
+</Paragraph>
+</Division>

@@ -1,0 +1,46 @@
+---
+title: 2.3.4 စတုတ္ထဝိနယဓရသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: a7
+review:
+  current: review
+  updated: '2025-10-20T16:52:08.911221'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:52:08.911221'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="78" book="a7" e="ch" v="16" p="505">
+
+<Paragraph number="614" book="a7">
+“သတ္တဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု ဝိနယဓရော ဟောတိ. ကတမေဟိ သတ္တဟိ? အာပတ္တိံ ဇာနာတိ, အနာပတ္တိံ ဇာနာတိ, လဟုကံ အာပတ္တိံ ဇာနာတိ, ဂရုကံ အာပတ္တိံ ဇာနာတိ, အနေကဝိဟိတံ ပုဗ္ဗေနိဝါသံ အနုဿရတိ, သေယျထိဒံ—  ဧကမ္ပိ ဇာတိံ, ဒွေပိ ဇာတိယော …ပေ…  ဣတိ သာကာရံ သော်ဒ္ဒေသံ အနေကဝိဟိတံ ပုဗ္ဗေနိဝါသံ အနုဿရတိ. ဒိဗ္ဗေန စက္ခုနာ ဝိသုဒ္ဓေန အတိက္ကန္တမာနုသကေန ယထာကမ္မူပဂေ သတ္တေ ပဇာနာတိ. အာသဝါနံ ခယာ အနာသဝံ စေတောဝိမုတ္တိံ ပညာဝိမုတ္တိံ ဒိဋ္ဌေဝ ဓမ္မေ သယံ အဘိညာ သစ္ဆိကတွာ ဥပသမ္ပဇ္ဇ ဝိဟရတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, သတ္တဟိ ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု ဝိနယဓရော ဟောတီ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="615" type="center" book="a7">
+စတုတ္ထံ.
+</Paragraph>

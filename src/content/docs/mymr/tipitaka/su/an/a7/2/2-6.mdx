@@ -1,0 +1,45 @@
+---
+title: 2.6 ရာဂပေယျာလ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: a7
+review:
+  current: review
+  updated: '2025-10-20T16:52:08.811686'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:52:08.811686'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="a7" section="2.6">
+* [2.6.1](2-6/2-6-1)
+* [2.6.2](2-6/2-6-2)
+* [2.6.3](2-6/2-6-3)
+* [2.6.4–30](2-6/2-6-4–30)
+* [2.6.31–510](2-6/2-6-31–510)
+</TableOfContents>

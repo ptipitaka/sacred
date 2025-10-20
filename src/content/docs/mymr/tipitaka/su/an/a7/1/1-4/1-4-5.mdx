@@ -1,0 +1,70 @@
+---
+title: 1.4.5 ပဌမမိတ္တသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a7
+review:
+  current: review
+  updated: '2025-10-20T16:52:08.702289'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T16:52:08.702289'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="36" book="a7" e="ch" v="16" p="421">
+
+<Paragraph number="192" book="a7">
+“သတ္တဟိ, ဘိက္ခဝေ, အင်္ဂေဟိ သမန္နာဂတော မိတ္တော သေဝိတဗ္ဗော. ကတမေဟိ သတ္တဟိ? ဒုဒ္ဒဒံ ဒဒါတိ, ဒုက္ကရံ ကရောတိ, ဒုက္ခမံ ခမတိ, ဂုယှမဿ အာဝိ ကရောတိ, ဂုယှမဿ ပရိဂုဟတိ, အာပဒါသု န ဇဟတိ, ခီဏေန နာတိမညတိ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, သတ္တဟိ အင်္ဂေဟိ သမန္နာဂတော မိတ္တော သေဝိတဗ္ဗောတိ.
+</Paragraph>
+
+<Paragraph number="193" type="verses" book="a7">
+_ဒုဒ္ဒဒံ ဒဒါတိ မိတ္တော,_  
+_ဒုက္ကရဉ္စာပိ ကုဗ္ဗတိ;_  
+_အထောပိဿ ဒုရုတ္တာနိ,_  
+_ခမတိ ဒုက္ခမာနိ စ._  
+
+</Paragraph>
+
+<Paragraph number="194" type="verses" book="a7">
+_ဂုယှဉ္စ တဿ အက္ခာတိ,_  
+_ဂုယှဿ ပရိဂူဟတိ;_  
+_အာပဒါသု န ဇဟာတိ,_  
+_ခီဏေန နာတိမညတိ._  
+
+</Paragraph>
+
+<Paragraph number="195" type="verses" book="a7">
+_ယမှိ ဧတာနိ ဌာနာနိ,_  
+_သံဝိဇ္ဇန္တီဓ ပုဂ္ဂလေ;_  
+_သော မိတ္တော မိတ္တကာမေန,_  
+_ဘဇိတဗ္ဗော တထာဝိဓော”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="196" type="center" book="a7">
+ပဉ္စမံ.
+</Paragraph>
