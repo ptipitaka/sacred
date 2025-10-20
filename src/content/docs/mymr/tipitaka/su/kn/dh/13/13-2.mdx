@@ -1,0 +1,55 @@
+---
+title: 13.2 သုဒ္ဓေါဒနဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.632086'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.632086'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="168" book="dh" e="ch" v="18" p="38">
+
+<Paragraph number="181" type="verses" book="dh">
+ဥတ္တိဋ္ဌေ နပ္ပမဇ္ဇေယျ,_  
+_ဓမ္မံ သုစရိတံ စရေ;_  
+_ဓမ္မစာရီ သုခံ သေတိ,_  
+_အသ္မိံ လောကေ ပရမှိ စ._  
+
+</Paragraph>
+
+</Division>
+<Division number="169" book="dh" e="ch" v="18" p="39">
+
+<Paragraph number="182" type="verses" book="dh">
+_ဓမ္မံ စရေ သုစရိတံ,_  
+_န နံ ဒုစ္စရိတံ စရေ;_  
+_ဓမ္မစာရီ သုခံ သေတိ,_  
+_အသ္မိံ လောကေ ပရမှိ စ._
+</Paragraph>
+</Division>

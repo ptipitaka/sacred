@@ -1,0 +1,44 @@
+---
+title: 9.9 ကောကသုနခလုဒ္ဒကဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.651302'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.651302'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="125" book="dh" e="ch" v="18" p="32">
+
+<Paragraph number="134" type="verses" book="dh">
+_ယော အပ္ပဒုဋ္ဌဿ နရဿ ဒုဿတိ,_  
+_သုဒ္ဓဿ ပေါသဿ အနင်္ဂဏဿ;_  
+_တမေဝ ဗာလံ ပစ္စေတိ ပါပံ,_  
+_သုခုမော ရဇော ပဋိဝါတံဝ ခိတ္တော._
+</Paragraph>
+</Division>

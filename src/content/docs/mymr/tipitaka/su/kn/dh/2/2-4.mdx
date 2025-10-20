@@ -1,0 +1,55 @@
+---
+title: 2.4 ဗာလနက္ခတ္တသံဃုဋ္ဌဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.977998'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.977998'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="26" book="dh" e="ch" v="18" p="17">
+
+<Paragraph number="28" type="verses" book="dh">
+_ပမာဒမနုယုဉ္ဇန္တိ,_  
+_ဗာလာ ဒုမ္မေဓိနော ဇနာ;_  
+_အပ္ပမာဒဉ္စ မေဓာဝီ,_  
+_ဓနံ သေဋ္ဌံဝ ရက္ခတိ._  
+
+</Paragraph>
+
+</Division>
+<Division number="27" book="dh" e="ch" v="18" p="17">
+
+<Paragraph number="29" type="verses" book="dh">
+_မာ ပမာဒမနုယုဉ္ဇေထ,_  
+_မာ ကာမရတိသန္ထဝံ;_  
+_အပ္ပမတ္တော ဟိ ဈာယန္တော,_  
+_ပပ္ပေါတိ ဝိပုလံ သုခံ._
+</Paragraph>
+</Division>

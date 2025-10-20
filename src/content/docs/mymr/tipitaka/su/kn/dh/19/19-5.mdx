@@ -1,0 +1,55 @@
+---
+title: 19.5 သမ္ဗဟုလဘိက္ခုဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.946962'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.946962'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="262" book="dh" e="ch" v="18" p="51">
+
+<Paragraph number="283" type="verses" book="dh">
+_န ဝါက္ကရဏမတ္တေန,_  
+_ဝဏ္ဏပေါက္ခရတာယ ဝါ;_  
+_သာဓုရူပေါ နရော ဟောတိ,_  
+ဣဿုကီ မစ္ဆရီ သဌော._  
+
+</Paragraph>
+
+</Division>
+<Division number="263" book="dh" e="ch" v="18" p="51">
+
+<Paragraph number="284" type="verses" book="dh">
+_ယဿ စေတံ သမုစ္ဆိန္နံ,_  
+_မူလဃစ္စံ သမူဟတံ;_  
+_သ ဝန္တဒေါသော မေဓာဝီ,_  
+_“သာဓုရူပေါ”တိ ဝုစ္စတိ._
+</Paragraph>
+</Division>

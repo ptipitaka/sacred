@@ -1,0 +1,46 @@
+---
+title: 18.10 မေဏ္ဍကသေဋ္ဌိဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.892236'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.892236'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="252" book="dh" e="ch" v="18" p="49">
+
+<Paragraph number="272" type="verses" book="dh">
+_သုဒဿံ ဝဇ္ဇမညေသံ,_  
+_အတ္တနော ပန ဒုဒ္ဒသံ;_  
+_ပရေသံ ဟိ သော ဝဇ္ဇာနိ,_  
+_ဩပုနာတိ ယထာ ဘုသံ;_  
+_အတ္တနော ပန ဆာဒေတိ,_  
+_ကလိံဝ ကိတဝါ သဌော._
+</Paragraph>
+</Division>

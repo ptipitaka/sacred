@@ -1,0 +1,61 @@
+---
+title: 16.9 နန္ဒိယဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.850710'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.850710'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="219" book="dh" e="ch" v="18" p="45">
+
+<Paragraph number="237" type="verses" book="dh">
+_စိရပ္ပဝါသိံ ပုရိသံ,_  
+_ဒူရတော သောတ္ထိမာဂတံ;_  
+_ဉာတိမိတ္တာ သုဟဇ္ဇာ စ,_  
+_အဘိနန္ဒန္တိ အာဂတံ._  
+
+</Paragraph>
+
+</Division>
+<Division number="220" book="dh" e="ch" v="18" p="45">
+
+<Paragraph number="238" type="verses" book="dh">
+_တထေဝ ကတပုညမ္ပိ,_  
+_အသ္မာ လောကာ ပရံ ဂတံ;_  
+_ပုညာနိ ပဋိဂဏှန္တိ,_  
+_ပိယံ ဉာတီဝ အာဂတံ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="239" type="center" book="dh">
+ပိယဝဂ္ဂေါ သောဠသမော.
+</Paragraph>

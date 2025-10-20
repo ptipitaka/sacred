@@ -1,0 +1,44 @@
+---
+title: 26.11 ကုဟကဗြာဟ္မဏဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 11
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.231391'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.231391'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="394" book="dh" e="ch" v="18" p="70">
+
+<Paragraph number="422" type="verses" book="dh">
+_ကိံ တေ ဇဋာဟိ ဒုမ္မေဓ,_  
+_ကိံ တေ အဇိနသာဋိယာ;_  
+_အဗ္ဘန္တရံ တေ ဂဟနံ,_  
+_ဗာဟိရံ ပရိမဇ္ဇသိ._
+</Paragraph>
+</Division>

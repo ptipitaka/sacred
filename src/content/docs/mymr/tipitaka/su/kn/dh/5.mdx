@@ -1,0 +1,55 @@
+---
+title: 5 ဗာလဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.425309'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.425309'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="dh" section="5">
+* [5.1 အညတရပုရိသဝတ္ထု](5/5-1)
+* [5.2 မဟာကဿပသဒ္ဓိဝိဟာရိကဝတ္ထု](5/5-2)
+* [5.3 အာနန္ဒသေဋ္ဌိဝတ္ထု](5/5-3)
+* [5.4 ဂဏ္ဌိဘေဒကစောရဝတ္ထု](5/5-4)
+* [5.5 ဥဒါယိတ္ထေရဝတ္ထု](5/5-5)
+* [5.6 တိံသပါဝေယျကဘိက္ခုဝတ္ထု](5/5-6)
+* [5.7 သုပ္ပဗုဒ္ဓကုဋ္ဌိဝတ္ထု](5/5-7)
+* [5.8 ကဿကဝတ္ထု](5/5-8)
+* [5.9 သုမနမာလာကာရဝတ္ထု](5/5-9)
+* [5.10 ဥပ္ပလဝဏ္ဏတ္ထေရီဝတ္ထု](5/5-10)
+* [5.11 ဇမ္ဗုကတ္ထေရဝတ္ထု](5/5-11)
+* [5.12 အဟိပေတဝတ္ထု](5/5-12)
+* [5.13 သဋ္ဌိကူဋပေတဝတ္ထု](5/5-13)
+* [5.14 စိတ္တဂဟပတိဝတ္ထု](5/5-14)
+* [5.15 ဝနဝါသိတိဿသာမဏေရဝတ္ထု](5/5-15)
+</TableOfContents>

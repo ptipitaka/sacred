@@ -1,0 +1,44 @@
+---
+title: 24.11 အပုတ္တကသေဋ္ဌိဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 11
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.149886'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.149886'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="355" book="dh" e="ch" v="18" p="64">
+
+<Paragraph number="381" type="verses" book="dh">
+_ဟနန္တိ ဘောဂါ ဒုမ္မေဓံ,_  
+_နော စ ပါရဂဝေသိနော;_  
+_ဘောဂတဏှာယ ဒုမ္မေဓော,_  
+_ဟန္တိ အညေဝ အတ္တနံ._
+</Paragraph>
+</Division>

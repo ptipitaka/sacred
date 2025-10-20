@@ -1,0 +1,44 @@
+---
+title: 22.3 ဝဂ္ဂုမုဒါတီရိယဘိက္ခုဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.085102'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.085102'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="308" book="dh" e="ch" v="18" p="57">
+
+<Paragraph number="332" type="verses" book="dh">
+_သေယျော အယောဂုဠော ဘုတ္တော,_  
+_တတ္တော အဂ္ဂိသိခူပမော;_  
+_ယဉ္စေ ဘုဉ္ဇေယျ ဒုဿီလော,_  
+_ရဋ္ဌပိဏ္ဍမသညတော._
+</Paragraph>
+</Division>

@@ -1,0 +1,44 @@
+---
+title: 8.12 ပဋာစာရာထေရီဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.567845'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.567845'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="113" book="dh" e="ch" v="18" p="30">
+
+<Paragraph number="121" type="verses" book="dh">
+_ယော စ ဝဿသတံ ဇီဝေ,_  
+_အပဿံ ဥဒယဗ္ဗယံ;_  
+_ဧကာဟံ ဇီဝိတံ သေယျော,_  
+_ပဿတော ဥဒယဗ္ဗယံ._
+</Paragraph>
+</Division>

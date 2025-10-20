@@ -1,0 +1,50 @@
+---
+title: 7 အရဟန္တဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.433834'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.433834'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="dh" section="7">
+* [7.1 ဇီဝကပဉှဝတ္ထု](7/7-1)
+* [7.2 မဟာကဿပတ္ထေရဝတ္ထု](7/7-2)
+* [7.3 ဗေလဋ္ဌသီသတ္ထေရဝတ္ထု](7/7-3)
+* [7.4 အနုရုဒ္ဓတ္ထေရဝတ္ထု](7/7-4)
+* [7.5 မဟာကစ္စာယနတ္ထေရဝတ္ထု](7/7-5)
+* [7.6 သာရိပုတ္တတ္ထေရဝတ္ထု](7/7-6)
+* [7.7 ကောသမ္ဗိဝါသိတိဿတ္ထေရသာမဏေရဝတ္ထု](7/7-7)
+* [7.8 သာရိပုတ္တတ္ထေရဝတ္ထု](7/7-8)
+* [7.9 ခဒိရဝနိယရေဝတတ္ထေရဝတ္ထု](7/7-9)
+* [7.10 အညတရဲတ္ထိဝတ္ထု](7/7-10)
+</TableOfContents>

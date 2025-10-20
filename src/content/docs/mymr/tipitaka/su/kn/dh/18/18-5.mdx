@@ -1,0 +1,55 @@
+---
+title: 18.5 အညတရကုလပုတ္တဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.913624'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.913624'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="242" book="dh" e="ch" v="18" p="48">
+
+<Paragraph number="262" type="verses" book="dh">
+_မလိတ္ထိယာ ဒုစ္စရိတံ,_  
+_မစ္ဆေရံ ဒဒတော မလံ;_  
+_မလာ ဝေ ပါပကာ ဓမ္မာ,_  
+_အသ္မိံ လောကေ ပရမှိ စ._  
+
+</Paragraph>
+
+</Division>
+<Division number="243" book="dh" e="ch" v="18" p="48">
+
+<Paragraph number="263" type="verses" book="dh">
+_တတော မလာ မလတရံ,_  
+_အဝိဇ္ဇာ ပရမံ မလံ;_  
+_ဧတံ မလံ ပဟန္တွာန,_  
+_နိမ္မလာ ဟောထ ဘိက္ခဝေါ._
+</Paragraph>
+</Division>

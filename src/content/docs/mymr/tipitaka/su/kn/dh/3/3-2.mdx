@@ -1,0 +1,44 @@
+---
+title: 3.2 အညတရဘိက္ခုဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.367633'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.367633'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="35" book="dh" e="ch" v="18" p="18">
+
+<Paragraph number="38" type="verses" book="dh">
+_ဒုန္နိဂ္ဂဟဿ လဟုနော,_  
+_ယတ္ထကာမနိပါတိနော;_  
+_စိတ္တဿ ဒမထော သာဓု,_  
+_စိတ္တံ ဒန္တံ သုခါဝဟံ._
+</Paragraph>
+</Division>

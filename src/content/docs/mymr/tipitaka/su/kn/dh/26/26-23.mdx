@@ -1,0 +1,44 @@
+---
+title: 26.23 သာမဏေရာနံဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 23
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.281745'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.281745'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="406" book="dh" e="ch" v="18" p="71">
+
+<Paragraph number="434" type="verses" book="dh">
+_အဝိရုဒ္ဓံ ဝိရုဒ္ဓေသု,_  
+_အတ္တဒဏ္ဍေသု နိဗ္ဗုတံ;_  
+_သာဒါနေသု အနာဒါနံ,_  
+_တမဟံ ဗြူမိ ဗြာဟ္မဏံ._
+</Paragraph>
+</Division>

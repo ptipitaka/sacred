@@ -1,0 +1,55 @@
+---
+title: 19.6 ဟတ္ထကဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.950483'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.950483'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="264" book="dh" e="ch" v="18" p="51">
+
+<Paragraph number="285" type="verses" book="dh">
+_န မုဏ္ဍကေန သမဏော,_  
+_အဗ္ဗတော အလိကံ ဘဏံ;_  
+ဣစ္ဆာလောဘသမာပန္နော,_  
+_သမဏော ကိံ ဘဝိဿတိ._  
+
+</Paragraph>
+
+</Division>
+<Division number="265" book="dh" e="ch" v="18" p="51">
+
+<Paragraph number="286" type="verses" book="dh">
+_ယော စ သမေတိ ပါပါနိ,_  
+_အဏုံထူလာနိ သဗ္ဗသော;_  
+_သမိတတ္တာ ဟိ ပါပါနံ,_  
+_“သမဏော”တိ ပဝုစ္စတိ._
+</Paragraph>
+</Division>

@@ -1,0 +1,44 @@
+---
+title: 10.6 အဇဂရပေတဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.536547'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.536547'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="136" book="dh" e="ch" v="18" p="33">
+
+<Paragraph number="146" type="verses" book="dh">
+_အထ ပါပါနိ ကမ္မာနိ,_  
+_ကရံ ဗာလော န ဗုဇ္ဈတိ;_  
+_သေဟိ ကမ္မေဟိ ဒုမ္မေဓော,_  
+_အဂ္ဂိဒဍ္ဎောဝ တပ္ပတိ._
+</Paragraph>
+</Division>

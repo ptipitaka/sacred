@@ -1,0 +1,44 @@
+---
+title: 5.12 အဟိပေတဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.444249'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.444249'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="71" book="dh" e="ch" v="18" p="23">
+
+<Paragraph number="76" type="verses" book="dh">
+_န ဟိ ပါပံ ကတံ ကမ္မံ,_  
+_သဇ္ဇုခီရံဝ မုစ္စတိ;_  
+_ဍဟန္တံ ဗာလမနွေတိ,_  
+_ဘသ္မစ္ဆန္နောဝ ပါဝကော._
+</Paragraph>
+</Division>

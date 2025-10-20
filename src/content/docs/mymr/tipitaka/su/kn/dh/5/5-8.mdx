@@ -1,0 +1,44 @@
+---
+title: 5.8 ကဿကဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.478729'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.478729'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="67" book="dh" e="ch" v="18" p="23">
+
+<Paragraph number="72" type="verses" book="dh">
+_န တံ ကမ္မံ ကတံ သာဓု,_  
+_ယံ ကတွာ အနုတပ္ပတိ;_  
+_ယဿ အဿုမုခေါ ရောဒံ,_  
+_ဝိပါကံ ပဋိသေဝတိ._
+</Paragraph>
+</Division>

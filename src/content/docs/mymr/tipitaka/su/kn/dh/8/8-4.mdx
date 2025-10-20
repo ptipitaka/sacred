@@ -1,0 +1,55 @@
+---
+title: 8.4 အနတ္ထပုစ္ဆကဗြာဟ္မဏဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.586428'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.586428'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="104" book="dh" e="ch" v="18" p="28">
+
+<Paragraph number="112" type="verses" book="dh">
+_အတ္တာ ဟဝေ ဇိတံ သေယျော,_  
+_ယာ စာယံ ဣတရာ ပဇာ;_  
+_အတ္တဒန္တဿ ပေါသဿ,_  
+_နိစ္စံ သညတစာရိနော._  
+
+</Paragraph>
+
+</Division>
+<Division number="105" book="dh" e="ch" v="18" p="28">
+
+<Paragraph number="113" type="verses" book="dh">
+_နေဝ ဒေဝေါ န ဂန္ဓဗ္ဗော,_  
+_န မာရော သဟ ဗြဟ္မုနာ;_  
+_ဇိတံ အပဇိတံ ကယိရာ,_  
+_တထာရူပဿ ဇန္တုနော._
+</Paragraph>
+</Division>

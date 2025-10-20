@@ -1,0 +1,52 @@
+---
+title: 9 ပါပဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.441878'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.441878'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="dh" section="9">
+* [9.1 စူဠေကသာဋကဗြာဟ္မဏဝတ္ထု](9/9-1)
+* [9.2 သေယျသကတ္ထေရဝတ္ထု](9/9-2)
+* [9.3 လာဇဒေဝဓီတာဝတ္ထု](9/9-3)
+* [9.4 အနာထပိဏ္ဍိကသေဋ္ဌိဝတ္ထု](9/9-4)
+* [9.5 အသညတပရိက္ခာရဝတ္ထု](9/9-5)
+* [9.6 ဗိဠာလပါဒကသေဋ္ဌိဝတ္ထု](9/9-6)
+* [9.7 မဟာဓနဝါဏိဇဝတ္ထု](9/9-7)
+* [9.8 ကုက္ကုဋမိတ္တနေသာဒဝတ္ထု](9/9-8)
+* [9.9 ကောကသုနခလုဒ္ဒကဝတ္ထု](9/9-9)
+* [9.10 မဏိကာရကုလူပကတိဿတ္ထေရဝတ္ထု](9/9-10)
+* [9.11 တယောဇနဝတ္ထု](9/9-11)
+* [9.12 သုပ္ပဗုဒ္ဓသကျဝတ္ထု](9/9-12)
+</TableOfContents>

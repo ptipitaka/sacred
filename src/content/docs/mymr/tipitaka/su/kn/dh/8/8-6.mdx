@@ -1,0 +1,46 @@
+---
+title: 8.6 သာရိပုတ္တတ္ထေရဿ ဘာဂိနေယျဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.595679'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.595679'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="107" book="dh" e="ch" v="18" p="29">
+
+<Paragraph number="115" type="verses" book="dh">
+_ယော စ ဝဿသတံ ဇန္တု,_  
+_အဂ္ဂိံ ပရိစရေ ဝနေ;_  
+_ဧကဉ္စ ဘာဝိတတ္တာနံ,_  
+_မုဟုတ္တမပိ ပူဇယေ;_  
+_သာယေဝ ပူဇနာ သေယျော,_  
+_ယဉ္စေ ဝဿသတံ ဟုတံ._
+</Paragraph>
+</Division>

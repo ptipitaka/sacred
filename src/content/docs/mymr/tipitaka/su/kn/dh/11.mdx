@@ -1,0 +1,49 @@
+---
+title: 11 ဇရာဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.351437'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.351437'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="dh" section="11">
+* [11.1 ဝိသာခါယသဟာယိကာနံဝတ္ထု](11/11-1)
+* [11.2 သိရိမာဝတ္ထု](11/11-2)
+* [11.3 ဥတ္တရာထေရီဝတ္ထု](11/11-3)
+* [11.4 သမ္ဗဟုလအဓိမာနိကဘိက္ခုဝတ္ထု](11/11-4)
+* [11.5 ဇနပဒကလျာဏီရူပနန္ဒာထေရီဝတ္ထု](11/11-5)
+* [11.6 မလ္လိကာဒေဝီဝတ္ထု](11/11-6)
+* [11.7 လာဠုဒါယီထေရဝတ္ထု](11/11-7)
+* [11.8 ဥဒါနဝတ္ထု](11/11-8)
+* [11.9 မဟာဓနသေဋ္ဌိပုတ္တဝတ္ထု](11/11-9)
+</TableOfContents>

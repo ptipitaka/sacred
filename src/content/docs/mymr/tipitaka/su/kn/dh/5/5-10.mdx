@@ -1,0 +1,44 @@
+---
+title: 5.10 ဥပ္ပလဝဏ္ဏတ္ထေရီဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.436397'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.436397'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="69" book="dh" e="ch" v="18" p="23">
+
+<Paragraph number="74" type="verses" book="dh">
+_မဓုံဝါ မညတိ ဗာလော,_  
+_ယာဝ ပါပံ န ပစ္စတိ;_  
+_ယဒါ စ ပစ္စတိ ပါပံ,_  
+_အထ ဒုက္ခံ နိဂစ္ဆတိ._
+</Paragraph>
+</Division>

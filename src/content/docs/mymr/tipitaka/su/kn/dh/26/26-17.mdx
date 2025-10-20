@@ -1,0 +1,44 @@
+---
+title: 26.17 သာရိပုတ္တတ္ထေရဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 17
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.253548'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.253548'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="400" book="dh" e="ch" v="18" p="70">
+
+<Paragraph number="428" type="verses" book="dh">
+_အက္ကောဓနံ ဝတဝန္တံ,_  
+_သီလဝန္တံ အနုဿဒံ;_  
+_ဒန္တံ အန္တိမသာရီရံ,_  
+_တမဟံ ဗြူမိ ဗြာဟ္မဏံ._
+</Paragraph>
+</Division>

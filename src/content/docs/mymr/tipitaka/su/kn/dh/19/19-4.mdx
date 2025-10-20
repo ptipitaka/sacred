@@ -1,0 +1,55 @@
+---
+title: 19.4 လကုဏ္ဍကဘဒ္ဒိယတ္ထေရဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.944922'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.944922'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="260" book="dh" e="ch" v="18" p="51">
+
+<Paragraph number="281" type="verses" book="dh">
+_န တေန ထေရော သော ဟောတိ,_  
+_ယေနဿ ပလိတံ သိရော;_  
+_ပရိပက္ကော ဝယော တဿ,_  
+_“မောဃဇိဏ္ဏော”တိ ဝုစ္စတိ._  
+
+</Paragraph>
+
+</Division>
+<Division number="261" book="dh" e="ch" v="18" p="51">
+
+<Paragraph number="282" type="verses" book="dh">
+_ယမှိ သစ္စဉ္စ ဓမ္မော စ,_  
+_အဟိံသာ သံယမော ဒမော;_  
+_သ ဝေ ဝန္တမလော ဓီရော,_  
+_“ထေရော” ဣတိ ပဝုစ္စတိ._
+</Paragraph>
+</Division>

@@ -1,0 +1,61 @@
+---
+title: 20.12 ပဋာစာရာဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.011992'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.011992'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="288" book="dh" e="ch" v="18" p="54">
+
+<Paragraph number="310" type="verses" book="dh">
+_န သန္တိ ပုတ္တာ တာဏာယ,_  
+_န ပိတာ နာပိ ဗန္ဓဝါ;_  
+_အန္တကေနာဓိပန္နဿ,_  
+_နတ္ထိ ဉာတီသု တာဏတာ._  
+
+</Paragraph>
+
+</Division>
+<Division number="289" book="dh" e="ch" v="18" p="54">
+
+<Paragraph number="311" type="verses" book="dh">
+_ဧတမတ္ထဝသံ ဉတွာ,_  
+_ပဏ္ဍိတော သီလသံဝုတော;_  
+_နိဗ္ဗာနဂမနံ မဂ္ဂံ,_  
+_ခိပ္ပမေဝ ဝိသောဓယေ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="312" type="center" book="dh">
+မဂ္ဂဝဂ္ဂေါ ဝီသတိမော.
+</Paragraph>

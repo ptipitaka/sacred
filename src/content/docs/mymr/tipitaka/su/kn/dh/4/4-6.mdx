@@ -1,0 +1,44 @@
+---
+title: 4.6 ပါဝေယျအာဇီဝကဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.418997'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.418997'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="50" book="dh" e="ch" v="18" p="20">
+
+<Paragraph number="54" type="verses" book="dh">
+_န ပရေသံ ဝိလောမာနိ,_  
+_န ပရေသံ ကတာကတံ;_  
+_အတ္တနောဝ အဝေက္ခေယျ,_  
+_ကတာနိ အကတာနိ စ._
+</Paragraph>
+</Division>

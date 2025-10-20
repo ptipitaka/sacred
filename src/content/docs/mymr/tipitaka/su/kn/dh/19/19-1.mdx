@@ -1,0 +1,55 @@
+---
+title: 19.1 ဝိနိစ္ဆယမဟာမတ္တဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.929926'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.929926'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="256" book="dh" e="ch" v="18" p="50">
+
+<Paragraph number="277" type="verses" book="dh">
+_န တေန ဟောတိ ဓမ္မဋ္ဌော,_  
+_ယေနတ္ထံ သာဟသာ နယေ;_  
+_ယော စ အတ္ထံ အနတ္ထဉ္စ,_  
+ဥဘော နိစ္ဆေယျ ပဏ္ဍိတော._  
+
+</Paragraph>
+
+</Division>
+<Division number="257" book="dh" e="ch" v="18" p="50">
+
+<Paragraph number="278" type="verses" book="dh">
+_အသာဟသေန ဓမ္မေန,_  
+_သမေန နယတီ ပရေ;_  
+_ဓမ္မဿ ဂုတ္တော မေဓာဝီ,_  
+_“ဓမ္မဋ္ဌော”တိ ပဝုစ္စတိ._
+</Paragraph>
+</Division>

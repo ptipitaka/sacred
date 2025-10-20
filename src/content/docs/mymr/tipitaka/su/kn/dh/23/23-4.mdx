@@ -1,0 +1,44 @@
+---
+title: 23.4 ပသေနဒိကောသလဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.124755'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.124755'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="325" book="dh" e="ch" v="18" p="59">
+
+<Paragraph number="350" type="verses" book="dh">
+_မိဒ္ဓီ ယဒါ ဟောတိ မဟဂ္ဃသော စ,_  
+_နိဒ္ဒါယိတာ သမ္ပရိဝတ္တသာယီ;_  
+_မဟာဝရာဟောဝ နိဝါပပုဋ္ဌော,_  
+_ပုနပ္ပုနံ ဂဗ္ဘမုပေတိ မန္ဒော._
+</Paragraph>
+</Division>

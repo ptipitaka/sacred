@@ -1,0 +1,63 @@
+---
+title: 1.14 ဒွေသဟာယကဘိက္ခုဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 14
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.470264'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.470264'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="19" book="dh" e="ch" v="18" p="15">
+
+<Paragraph number="20" type="verses" book="dh">
+_ဗဟုမ္ပိ စေ သံဟိတ ဘာသမာနော,_  
+_န တက္ကရော ဟောတိ နရော ပမတ္တော;_  
+_ဂေါပေါဝ ဂါဝေါ ဂဏယံ ပရေသံ,_  
+_န ဘာဂဝါ သာမညဿ ဟောတိ._  
+
+</Paragraph>
+
+</Division>
+<Division number="20" book="dh" e="ch" v="18" p="16">
+
+<Paragraph number="21" type="verses" book="dh">
+_အပ္ပမ္ပိ စေ သံဟိတ ဘာသမာနော,_  
+_ဓမ္မဿ ဟောတိ အနုဓမ္မစာရီ;_  
+_ရာဂဉ္စ ဒေါသဉ္စ ပဟာယ မောဟံ,_  
+_သမ္မပ္ပဇာနော သုဝိမုတ္တစိတ္တော;_  
+_အနုပါဒိယာနော ဣဓ ဝါ ဟုရံ ဝါ,_  
+_သ ဘာဂဝါ သာမညဿ ဟောတိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="22" type="center" book="dh">
+ယမကဝဂ္ဂေါ ပဌမော.
+</Paragraph>

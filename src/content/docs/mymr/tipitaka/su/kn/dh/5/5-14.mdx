@@ -1,0 +1,57 @@
+---
+title: 5.14 စိတ္တဂဟပတိဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 14
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.450477'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.450477'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="73" book="dh" e="ch" v="18" p="23">
+
+<Paragraph number="78" type="verses" book="dh">
+_အသန္တံ ဘာဝနမိစ္ဆေယျ,_  
+_ပုရေက္ခာရဉ္စ ဘိက္ခုသု;_  
+_အာဝါသေသု စ ဣဿရိယံ,_  
+_ပူဇံ ပရကုလေသု စ._  
+
+</Paragraph>
+
+</Division>
+<Division number="74" book="dh" e="ch" v="18" p="24">
+
+<Paragraph number="79" book="dh">
+_မမေဝ ကတ မညန္တု,_  
+_ဂိဟီ ပဗ္ဗဇိတာ ဥဘော;_  
+_မမေဝါတိဝသာ အဿု,_  
+_ကိစ္စာကိစ္စေသု ကိသ္မိစိ;_  
+ဣတိ ဗာလဿ သင်္ကပ္ပေါ,_  
+ဣစ္ဆာ မာနော စ ဝဍ္ဎတိ._
+</Paragraph>
+</Division>

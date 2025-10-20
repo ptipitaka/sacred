@@ -1,0 +1,50 @@
+---
+title: 9.12 သုပ္ပဗုဒ္ဓသကျဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.619213'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.619213'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="128" book="dh" e="ch" v="18" p="32">
+
+<Paragraph number="137" type="verses" book="dh">
+_န အန္တလိက္ခေ န သမုဒ္ဒမဇ္ဈေ,_  
+_န ပဗ္ဗတာနံ ဝိဝရံ ပဝိဿ;_  
+_န ဝိဇ္ဇတီ သော ဇဂတိပ္ပဒေသော,_  
+_ယတ္ထဋ္ဌိတံ နပ္ပသဟေယျ မစ္စု._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="138" type="center" book="dh">
+ပါပဝဂ္ဂေါ နဝမော.
+</Paragraph>

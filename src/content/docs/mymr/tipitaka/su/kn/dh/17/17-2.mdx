@@ -1,0 +1,44 @@
+---
+title: 17.2 အညတရဘိက္ခုဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.860898'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.860898'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="222" book="dh" e="ch" v="18" p="46">
+
+<Paragraph number="241" type="verses" book="dh">
+_ယော ဝေ ဥပ္ပတိတံ ကောဓံ,_  
+_ရထံ ဘန္တံဝ ဝါရယေ;_  
+_တမဟံ သာရထိံ ဗြူမိ,_  
+_ရသ္မိဂ္ဂါဟော ဣတရော ဇနော._
+</Paragraph>
+</Division>

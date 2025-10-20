@@ -1,0 +1,44 @@
+---
+title: 1.13 သုမနဒေဝီဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 13
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.465981'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.465981'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="18" book="dh" e="ch" v="18" p="15">
+
+<Paragraph number="19" type="verses" book="dh">
+ဣဓ နန္ဒတိ ပေစ္စ နန္ဒတိ,_  
+_ကတပုညော ဥဘယတ္ထ နန္ဒတိ;_  
+_“ပုညံ မေ ကတန်”တိ နန္ဒတိ,_  
+_ဘိယျော နန္ဒတိ သုဂ္ဂတိံ ဂတော._
+</Paragraph>
+</Division>

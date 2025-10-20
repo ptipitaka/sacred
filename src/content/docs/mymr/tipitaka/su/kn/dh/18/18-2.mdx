@@ -1,0 +1,44 @@
+---
+title: 18.2 အညတရဗြာဟ္မဏဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.902317'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.902317'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="239" book="dh" e="ch" v="18" p="48">
+
+<Paragraph number="259" type="verses" book="dh">
+_အနုပုဗ္ဗေန မေဓာဝီ,_  
+_ထောကံ ထောကံ ခဏေ ခဏေ;_  
+_ကမ္မာရော ရဇတဿေဝ,_  
+_နိဒ္ဓမေ မလမတ္တနော._
+</Paragraph>
+</Division>

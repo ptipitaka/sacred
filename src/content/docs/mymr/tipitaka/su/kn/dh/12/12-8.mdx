@@ -1,0 +1,46 @@
+---
+title: 12.8 ကာလတ္ထေရဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.615334'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.615334'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="164" book="dh" e="ch" v="18" p="38">
+
+<Paragraph number="176" type="verses" book="dh">
+_ယော သာသနံ အရဟတံ,_  
+_အရိယာနံ ဓမ္မဇီဝိနံ;_  
+_ပဋိက္ကောသတိ ဒုမ္မေဓော,_  
+_ဒိဋ္ဌိံ နိဿာယ ပါပိကံ;_  
+_ဖလာနိ ကဋ္ဌကဿေဝ,_  
+_အတ္တဃာတာယ ဖလ္လတိ._
+</Paragraph>
+</Division>

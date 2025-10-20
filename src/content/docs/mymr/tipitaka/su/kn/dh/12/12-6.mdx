@@ -1,0 +1,44 @@
+---
+title: 12.6 ဒေဝဒတ္တဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.609079'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.609079'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="162" book="dh" e="ch" v="18" p="37">
+
+<Paragraph number="174" type="verses" book="dh">
+_ယဿ အစ္စန္တဒုဿိလျံ,_  
+_မာလုဝါ သာလမိဝေါတ္ထတံ;_  
+_ကရောတိ သော တထတ္တာနံ,_  
+_ယထာ နံ ဣစ္ဆတီ ဒိသော._
+</Paragraph>
+</Division>

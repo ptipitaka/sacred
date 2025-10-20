@@ -1,0 +1,44 @@
+---
+title: 13.7 ပေသကာရဓီတာဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.648300'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.648300'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="174" book="dh" e="ch" v="18" p="39">
+
+<Paragraph number="187" type="verses" book="dh">
+_အန္ဓဘူတော အယံ လောကော,_  
+_တနုကေတ္ထ ဝိပဿတိ;_  
+_သကုဏော ဇာလမုတ္တောဝ,_  
+_အပ္ပေါ သဂ္ဂါယ ဂစ္ဆတိ._
+</Paragraph>
+</Division>

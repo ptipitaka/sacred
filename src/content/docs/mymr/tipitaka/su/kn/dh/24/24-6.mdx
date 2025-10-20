@@ -1,0 +1,44 @@
+---
+title: 24.6 ဥဂ္ဂသေနဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.168621'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.168621'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="348" book="dh" e="ch" v="18" p="63">
+
+<Paragraph number="374" type="verses" book="dh">
+_မုဉ္စ ပုရေ မုဉ္စ ပစ္ဆတော,_  
+_မဇ္ဈေ မုဉ္စ ဘဝဿ ပါရဂူ;_  
+_သဗ္ဗတ္ထ ဝိမုတ္တမာနသော,_  
+_န ပုနံ ဇာတိဇရံ ဥပေဟိသိ._
+</Paragraph>
+</Division>

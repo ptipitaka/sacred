@@ -1,0 +1,44 @@
+---
+title: 20.10 မဟာဓနဝါဏိဇဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.002514'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.002514'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="286" book="dh" e="ch" v="18" p="54">
+
+<Paragraph number="308" book="dh">
+ဣဓ ဝဿံ ဝသိဿာမိ,_  
+ဣဓ ဟေမန္တဂိမှိသု;_  
+ဣတိ ဗာလော ဝိစိန္တေတိ,_  
+_အန္တရာယံ န ဗုဇ္ဈတိ._
+</Paragraph>
+</Division>

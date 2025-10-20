@@ -1,0 +1,46 @@
+---
+title: 19.3 ဧကုဒါနခီဏာသဝဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.941609'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.941609'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="259" book="dh" e="ch" v="18" p="50">
+
+<Paragraph number="280" type="verses" book="dh">
+_န တာဝတာ ဓမ္မဓရော,_  
+_ယာဝတာ ဗဟု ဘာသတိ;_  
+_ယော စ အပ္ပမ္ပိ သုတွာန,_  
+_ဓမ္မံ ကာယေန ပဿတိ;_  
+_သ ဝေ ဓမ္မဓရော ဟောတိ,_  
+_ယော ဓမ္မံ နပ္ပမဇ္ဇတိ._
+</Paragraph>
+</Division>

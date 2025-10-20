@@ -1,0 +1,44 @@
+---
+title: 23.2 ဟတ္ထာစရိယပုဗ္ဗကဘိက္ခုဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.114877'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.114877'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="323" book="dh" e="ch" v="18" p="59">
+
+<Paragraph number="348" type="verses" book="dh">
+_န ဟိ ဧတေဟိ ယာနေဟိ,_  
+_ဂစ္ဆေယျ အဂတံ ဒိသံ;_  
+_ယထာတ္တနာ သုဒန္တေန,_  
+_ဒန္တော ဒန္တေန ဂစ္ဆတိ._
+</Paragraph>
+</Division>

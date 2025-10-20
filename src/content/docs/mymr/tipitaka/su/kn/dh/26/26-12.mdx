@@ -1,0 +1,44 @@
+---
+title: 26.12 ကိသာဂေါတမီဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.234391'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.234391'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="395" book="dh" e="ch" v="18" p="70">
+
+<Paragraph number="423" type="verses" book="dh">
+_ပံသုကူလဓရံ ဇန္တုံ,_  
+_ကိသံ ဓမနိသန္ထတံ;_  
+_ဧကံ ဝနသ္မိံ ဈာယန္တံ,_  
+_တမဟံ ဗြူမိ ဗြာဟ္မဏံ._
+</Paragraph>
+</Division>

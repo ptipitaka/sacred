@@ -1,0 +1,57 @@
+---
+title: 25.1 ပဉ္စဘိက္ခုဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.180053'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.180053'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="360" book="dh" e="ch" v="18" p="65">
+
+<Paragraph number="387" type="verses" book="dh">
+_စက္ခုနာ သံဝရော သာဓု,_  
+_သာဓု သောတေန သံဝရော;_  
+_ဃာနေန သံဝရော သာဓု,_  
+_သာဓု ဇိဝှါယ သံဝရော._  
+
+</Paragraph>
+
+</Division>
+<Division number="361" book="dh" e="ch" v="18" p="65">
+
+<Paragraph number="388" type="verses" book="dh">
+_ကာယေန သံဝရော သာဓု,_  
+_သာဓု ဝါစာယ သံဝရော;_  
+_မနသာ သံဝရော သာဓု,_  
+_သာဓု သဗ္ဗတ္ထ သံဝရော;_  
+_သဗ္ဗတ္ထ သံဝုတော ဘိက္ခု,_  
+_သဗ္ဗဒုက္ခာ ပမုစ္စတိ._
+</Paragraph>
+</Division>

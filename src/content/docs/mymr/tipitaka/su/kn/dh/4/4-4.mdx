@@ -1,0 +1,44 @@
+---
+title: 4.4 ပတိပူဇိကကုမာရိဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:36.413648'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:36.413648'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="48" book="dh" e="ch" v="18" p="20">
+
+<Paragraph number="52" type="verses" book="dh">
+_ပုပ္ဖါနိ ဟေဝ ပစိနန္တံ,_  
+_ဗျာသတ္တမနသံ နရံ;_  
+_အတိတ္တညေဝ ကာမေသု,_  
+_အန္တကော ကုရုတေ ဝသံ._
+</Paragraph>
+</Division>

@@ -1,0 +1,44 @@
+---
+title: 11.2 သိရိမာဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: dh
+review:
+  current: review
+  updated: '2025-10-20T18:11:35.558304'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:11:35.558304'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="147" book="dh" e="ch" v="18" p="35">
+
+<Paragraph number="158" type="verses" book="dh">
+_ပဿ စိတ္တကတံ ဗိမ္ဗံ,_  
+_အရုကာယံ သမုဿိတံ;_  
+_အာတုရံ ဗဟုသင်္ကပ္ပံ,_  
+_ယဿ နတ္ထိ ဓုဝံ ဌိတိ._
+</Paragraph>
+</Division>
