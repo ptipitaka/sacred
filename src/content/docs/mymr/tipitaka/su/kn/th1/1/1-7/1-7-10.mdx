@@ -1,0 +1,71 @@
+---
+title: 1.7.10 ပုဏ္ဏတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.129468'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.129468'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="70" book="th1" e="ch" v="19" p="235">
+
+<Paragraph number="157" type="verses" book="th1">
+_“သီလမေဝ ဣဓ အဂ္ဂံ,_  
+_ပညဝါ ပန ဥတ္တမော;_  
+_မနုဿေသု စ ဒေဝေသု,_  
+_သီလပညာဏတော ဇယန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="158" type="center" book="th1">
+…  ပုဏ္ဏော ထေရော… .
+
+  
+ဝဂ္ဂေါ သတ္တမော.
+
+
+
+</Paragraph>
+
+<Paragraph number="159" type="center" book="th1">
+တဿုဒ္ဒါနံ
+
+
+</Paragraph>
+
+<Paragraph number="160" type="verses" book="th1">
+_ဝပ္ပေါ စ ဝဇ္ဇိပုတ္တော စ,_  
+_ပက္ခော ဝိမလကောဏ္ဍညော;_  
+ဥက္ခေပကတဝစ္ဆော စ,_  
+_မေဃိယော ဧကဓမ္မိကော;_  
+_ဧကုဒါနိယဆန္နာ စ,_  
+_ပုဏ္ဏတ္ထေရော မဟဗ္ဗလောတိ._
+</Paragraph>

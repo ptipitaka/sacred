@@ -1,0 +1,50 @@
+---
+title: 1.5.9 ရာမဏေယျကတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.067390'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.067390'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="49" book="th1" e="ch" v="19" p="230">
+
+<Paragraph number="111" type="verses" book="th1">
+_“စိဟစိဟာဘိနဒိတေ,_  
+_သိပ္ပိကာဘိရုတေဟိ စ;_  
+_န မေ တံ ဖန္ဒတိ စိတ္တံ,_  
+_ဧကတ္တနိရတံ ဟိ မေ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="112" type="center" book="th1">
+…  ရာမဏေယျကော ထေရော… .
+</Paragraph>

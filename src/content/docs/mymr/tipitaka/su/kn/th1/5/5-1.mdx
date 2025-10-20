@@ -1,0 +1,52 @@
+---
+title: 5.1 ပဌမဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:47.266046'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:47.266046'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="th1" section="5.1">
+* [5.1.1 ရာဇဒတ္တတ္ထေရဂါထာ](5-1/5-1-1)
+* [5.1.2 သုဘူတတ္ထေရဂါထာ](5-1/5-1-2)
+* [5.1.3 ဂိရိမာနန္ဒတ္ထေရဂါထာ](5-1/5-1-3)
+* [5.1.4 သုမနတ္ထေရဂါထာ](5-1/5-1-4)
+* [5.1.5 ဝဍ္ဎတ္ထေရဂါထာ](5-1/5-1-5)
+* [5.1.6 နဒီကဿပတ္ထေရဂါထာ](5-1/5-1-6)
+* [5.1.7 ဂယာကဿပတ္ထေရဂါထာ](5-1/5-1-7)
+* [5.1.8 ဝက္ကလိတ္ထေရဂါထာ](5-1/5-1-8)
+* [5.1.9 ဝိဇိတသေနတ္ထေရဂါထာ](5-1/5-1-9)
+* [5.1.10 ယသဒတ္တတ္ထေရဂါထာ](5-1/5-1-10)
+* [5.1.11 သောဏကုဋိကဏ္ဏတ္ထေရဂါထာ](5-1/5-1-11)
+* [5.1.12 ကောသိယတ္ထေရဂါထာ](5-1/5-1-12)
+</TableOfContents>

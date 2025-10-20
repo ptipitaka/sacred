@@ -1,0 +1,50 @@
+---
+title: 1.9.3 သီဟတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.226583'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.226583'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="83" book="th1" e="ch" v="19" p="20">
+
+<Paragraph number="187" type="verses" book="th1">
+_“သီဟပ္ပမတ္တော ဝိဟရ,_  
+_ရတ္တိန္ဒိဝမတန္ဒိတော;_  
+_ဘာဝေဟိ ကုသလံ ဓမ္မံ,_  
+_ဇဟ သီဃံ သမုဿယန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="188" type="center" book="th1">
+…  သီဟော ထေရော… .
+</Paragraph>

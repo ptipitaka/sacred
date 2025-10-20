@@ -1,0 +1,61 @@
+---
+title: 2.5.3 ဗြဟ္မာလိတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:47.011096'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:47.011096'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="205" book="th1" e="ch" v="19" p="259">
+
+<Paragraph number="408" type="verses" book="th1">
+_“ကဿိန္ဒြိယာနိ သမထင်္ဂတာနိ,_  
+_အဿာ ယထာ သာရထိနာ သုဒန္တာ;_  
+_ပဟီနမာနဿ အနာသဝဿ,_  
+_ဒေဝါပိ ကဿ ပိဟယန္တိ တာဒိနောတိ._  
+
+</Paragraph>
+
+</Division>
+<Division number="206" book="th1" e="ch" v="19" p="260">
+
+<Paragraph number="409" type="verses" book="th1">
+_မယှိန္ဒြိယာနိ သမထင်္ဂတာနိ,_  
+_အဿာ ယထာ သာရထိနာ သုဒန္တာ;_  
+_ပဟီနမာနဿ အနာသဝဿ,_  
+_ဒေဝါပိ မယှံ ပိဟယန္တိ တာဒိနော”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="410" type="center" book="th1">
+…  ဗြဟ္မာလိ ထေရော… .
+</Paragraph>

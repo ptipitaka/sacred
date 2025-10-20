@@ -1,0 +1,61 @@
+---
+title: 2.3.3 သောဘိတတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.884737'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.884737'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="165" book="th1" e="ch" v="19" p="253">
+
+<Paragraph number="344" type="verses" book="th1">
+_“သတိမာ ပညဝါ ဘိက္ခု,_  
+_အာရဒ္ဓဗလဝီရိယော;_  
+_ပဉ္စ ကပ္ပသတာနာဟံ,_  
+_ဧကရတ္တိံ အနုဿရိံ._  
+
+</Paragraph>
+
+</Division>
+<Division number="166" book="th1" e="ch" v="19" p="253">
+
+<Paragraph number="345" type="verses" book="th1">
+_စတ္တာရော သတိပဋ္ဌာနေ,_  
+_သတ္တ အဋ္ဌ စ ဘာဝယံ;_  
+_ပဉ္စ ကပ္ပသတာနာဟံ,_  
+_ဧကရတ္တိံ အနုဿရိန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="346" type="center" book="th1">
+…  သောဘိတော ထေရော… .
+</Paragraph>

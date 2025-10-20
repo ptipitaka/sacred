@@ -1,0 +1,61 @@
+---
+title: 2.5.7 အနူပမတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:47.035794'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:47.035794'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="213" book="th1" e="ch" v="19" p="261">
+
+<Paragraph number="420" type="verses" book="th1">
+_“နန္ဒမာနာဂတံ စိတ္တံ,_  
+_သူလမာရောပမာနကံ;_  
+_တေန တေနေဝ ဝဇသိ,_  
+_ယေန သူလံ ကလိင်္ဂရံ._  
+
+</Paragraph>
+
+</Division>
+<Division number="214" book="th1" e="ch" v="19" p="261">
+
+<Paragraph number="421" type="verses" book="th1">
+_တာဟံ စိတ္တကလိံ ဗြူမိ,_  
+_တံ ဗြူမိ စိတ္တဒုဗ္ဘကံ;_  
+_သတ္ထာ တေ ဒုလ္လဘော လဒ္ဓေါ,_  
+_မာနတ္ထေ မံ နိယောဇယီ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="422" type="center" book="th1">
+…  အနူပမော ထေရော… .
+</Paragraph>

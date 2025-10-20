@@ -1,0 +1,52 @@
+---
+title: 1.5.6 သမိဒ္ဓိတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.016592'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.016592'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="46" book="th1" e="ch" v="19" p="230">
+
+<Paragraph number="105" type="verses" book="th1">
+_“သဒ္ဓါယာဟံ ပဗ္ဗဇိတော,_  
+_အဂါရသ္မာနဂါရိယံ;_  
+_သတိ ပညာ စ မေ ဝုဍ္ဎာ,_  
+_စိတ္တဉ္စ သုသမာဟိတံ;_  
+_ကာမံ ကရဿု ရူပါနိ,_  
+_နေဝ မံ ဗျာဓယိဿသီ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="106" type="center" book="th1">
+…  သမိဒ္ဓိတ္ထေရော… .
+</Paragraph>

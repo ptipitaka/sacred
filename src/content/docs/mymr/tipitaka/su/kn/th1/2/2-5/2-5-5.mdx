@@ -1,0 +1,61 @@
+---
+title: 2.5.5 ဝိသာခပဉ္စာလပုတ္တတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:47.022095'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:47.022095'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="209" book="th1" e="ch" v="19" p="260">
+
+<Paragraph number="414" type="verses" book="th1">
+_“န ဥက္ခိပေ နော စ ပရိက္ခိပေ ပရေ,_  
+_န ဩက္ခိပေ ပါရဂတံ န ဧရယေ;_  
+_န စတ္တဝဏ္ဏံ ပရိသာသု ဗျာဟရေ,_  
+_အနုဒ္ဓတော သမ္မိတဘာဏိ သုဗ္ဗတော._  
+
+</Paragraph>
+
+</Division>
+<Division number="210" book="th1" e="ch" v="19" p="260">
+
+<Paragraph number="415" type="verses" book="th1">
+_သုသုခုမနိပုဏတ္ထဒဿိနာ,_  
+_မတိကုသလေန နိဝါတဝုတ္တိနာ;_  
+_သံသေဝိတဝုဒ္ဓသီလိနာ,_  
+_နိဗ္ဗာနံ န ဟိ တေန ဒုလ္လဘန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="416" type="center" book="th1">
+…  ဝိသာခေါ ပဉ္စာလပုတ္တော ထေရော… .
+</Paragraph>

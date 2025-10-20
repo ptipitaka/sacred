@@ -1,0 +1,50 @@
+---
+title: 1.9.2 ကဿပတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.221843'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.221843'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="82" book="th1" e="ch" v="19" p="20">
+
+<Paragraph number="185" type="verses" book="th1">
+_“ယေန ယေန သုဘိက္ခာနိ,_  
+_သိဝါနိ အဘယာနိ စ;_  
+_တေန ပုတ္တက ဂစ္ဆဿု,_  
+_မာ သောကာပဟတော ဘဝါ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="186" type="center" book="th1">
+…  ကဿပေါ ထေရော… .
+</Paragraph>

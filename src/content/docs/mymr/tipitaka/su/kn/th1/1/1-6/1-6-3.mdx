@@ -1,0 +1,50 @@
+---
+title: 1.6.3 ဝလ္လိယတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.088777'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.088777'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="53" book="th1" e="ch" v="19" p="231">
+
+<Paragraph number="121" type="verses" book="th1">
+_“ဝဿတိ ဒေဝေါ ယထာ သုဂီတံ,_  
+_ဆန္နာ မေ ကုဋိကာ သုခါ နိဝါတာ;_  
+_တဿံ ဝိဟရာမိ အပ္ပမတ္တော,_  
+_အထ စေ ပတ္ထယသိ ပဝဿ ဒေဝါ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="122" type="center" book="th1">
+…  ဝလ္လိယော ထေရော… .
+</Paragraph>

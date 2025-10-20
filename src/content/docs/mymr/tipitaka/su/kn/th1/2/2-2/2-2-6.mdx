@@ -1,0 +1,62 @@
+---
+title: 2.2.6 မဟာကာဠတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.846233'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.846233'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="151" book="th1" e="ch" v="19" p="251">
+
+<Paragraph number="321" type="verses" book="th1">
+_“ကာဠီ ဣတ္ထီ ဗြဟတီ ဓင်္ကရူပါ,_  
+_သတ္ထိဉ္စ ဘေတွာ အပရဉ္စ သတ္ထိံ;_  
+_ဗာဟဉ္စ ဘေတွာ အပရဉ္စ ဗာဟံ,_  
+_သီသဉ္စ ဘေတွာ ဒဓိထာလကံဝ;_  
+_ဧသာ နိသိန္နာ အဘိသန္ဒဟိတွာ._  
+
+</Paragraph>
+
+</Division>
+<Division number="152" book="th1" e="ch" v="19" p="251">
+
+<Paragraph number="322" type="verses" book="th1">
+_ယော ဝေ အဝိဒွါ ဥပဓိံ ကရောတိ,_  
+_ပုနပ္ပုနံ ဒုက္ခမုပေတိ မန္ဒော;_  
+_တသ္မာ ပဇာနံ ဥပဓိံ န ကယိရာ,_  
+_မာဟံ ပုန ဘိန္နသိရော သယိဿန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="323" type="center" book="th1">
+…  မဟာကာဠော ထေရော… .
+</Paragraph>

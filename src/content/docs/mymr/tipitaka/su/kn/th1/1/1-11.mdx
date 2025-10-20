@@ -1,0 +1,50 @@
+---
+title: 1.11 ဧကာဒသမဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 11
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:45.563123'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:45.563123'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="th1" section="1.11">
+* [1.11.1 ဗေလဋ္ဌာနိကတ္ထေရဂါထာ](1-11/1-11-1)
+* [1.11.2 သေတုစ္ဆတ္ထေရဂါထာ](1-11/1-11-2)
+* [1.11.3 ဗန္ဓုရတ္ထေရဂါထာ](1-11/1-11-3)
+* [1.11.4 ခိတကတ္ထေရဂါထာ](1-11/1-11-4)
+* [1.11.5 မလိတဝမ္ဘတ္ထေရဂါထာ](1-11/1-11-5)
+* [1.11.6 သုဟေမန္တတ္ထေရဂါထာ](1-11/1-11-6)
+* [1.11.7 ဓမ္မသဝတ္ထေရဂါထာ](1-11/1-11-7)
+* [1.11.8 ဓမ္မသဝပိတုတ္ထေရဂါထာ](1-11/1-11-8)
+* [1.11.9 သံဃရက္ခိတတ္ထေရဂါထာ](1-11/1-11-9)
+* [1.11.10 ဥသဘတ္ထေရဂါထာ](1-11/1-11-10)
+</TableOfContents>

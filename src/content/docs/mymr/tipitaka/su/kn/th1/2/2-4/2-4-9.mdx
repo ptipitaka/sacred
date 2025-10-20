@@ -1,0 +1,61 @@
+---
+title: 2.4.9 ဥသဘတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.995173'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.995173'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="197" book="th1" e="ch" v="19" p="258">
+
+<Paragraph number="394" type="verses" book="th1">
+_“အမ္ဗပလ္လဝသင်္ကာသံ,_  
+_အံသေ ကတွာန စီဝရံ;_  
+_နိသိန္နော ဟတ္ထိဂီဝါယံ,_  
+_ဂါမံ ပိဏ္ဍာယ ပါဝိသိံ._  
+
+</Paragraph>
+
+</Division>
+<Division number="198" book="th1" e="ch" v="19" p="258">
+
+<Paragraph number="395" type="verses" book="th1">
+_ဟတ္ထိက္ခန္ဓတော ဩရုယှ,_  
+_သံဝေဂံ အလဘိံ တဒါ;_  
+_သောဟံ ဒိတ္တော တဒါ သန္တော,_  
+_ပတ္တော မေ အာသဝက္ခယော”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="396" type="center" book="th1">
+…  ဥသဘော ထေရော… .
+</Paragraph>

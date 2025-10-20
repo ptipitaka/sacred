@@ -1,0 +1,61 @@
+---
+title: 2.2.8 ကိမိလတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:46.857739'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:46.857739'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="155" book="th1" e="ch" v="19" p="252">
+
+<Paragraph number="327" type="verses" book="th1">
+_“ပါစီနဝံသဒါယမှိ,_  
+_သကျပုတ္တာ သဟာယကာ;_  
+_ပဟာယာနပ္ပကေ ဘောဂေ,_  
+ဥဉ္ဆာပတ္တာဂတေ ရတာ._  
+
+</Paragraph>
+
+</Division>
+<Division number="156" book="th1" e="ch" v="19" p="252">
+
+<Paragraph number="328" type="verses" book="th1">
+_အာရဒ္ဓဝီရိယာ ပဟိတတ္တာ,_  
+_နိစ္စံ ဒဠှပရက္ကမာ;_  
+_ရမန္တိ ဓမ္မရတိယာ,_  
+_ဟိတွာန လောကိယံ ရတိန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="329" type="center" book="th1">
+…  ကိမိလော ထေရော… .
+</Paragraph>

@@ -1,0 +1,61 @@
+---
+title: 2.5.4 မောဃရာဇတ္ထေရဂါထာ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: th1
+review:
+  current: review
+  updated: '2025-10-20T20:39:47.017096'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T20:39:47.017096'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="207" book="th1" e="ch" v="19" p="260">
+
+<Paragraph number="411" type="verses" book="th1">
+_“ဆဝိပါပက စိတ္တဘဒ္ဒက,_  
+_မောဃရာဇ သတတံ သမာဟိတော;_  
+_ဟေမန္တိကသီတကာလရတ္တိယော,_  
+_ဘိက္ခု တွံသိ ကထံ ကရိဿသိ”._  
+
+</Paragraph>
+
+</Division>
+<Division number="208" book="th1" e="ch" v="19" p="260">
+
+<Paragraph number="412" type="verses" book="th1">
+_“သမ္ပန္နသဿာ မဂဓာ,_  
+_ကေဝလာ ဣတိ မေ သုတံ;_  
+_ပလာလစ္ဆန္နကော သေယျံ,_  
+_ယထညေ သုခဇီဝိနော”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="413" type="center" book="th1">
+…  မောဃရာဇာ ထေရော… .
+</Paragraph>
