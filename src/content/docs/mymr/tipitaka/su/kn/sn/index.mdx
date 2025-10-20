@@ -1,0 +1,44 @@
+---
+title: သုတ္တနိပါတပါဠိ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T18:58:29.650498'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:58:29.650498'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<Paragraph number="1" type="center" book="sn">
+နမော တဿ ဘဂဝတော အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ.
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+</Paragraph>
+
+<TableOfContents book="sn">
+* [1 ဥရဂဝဂ္ဂ](1)
+* [2 စူဠဝဂ္ဂ](2)
+* [3 မဟာဝဂ္ဂ](3)
+* [4 အဋ္ဌကဝဂ္ဂ](4)
+* [5 ပါရာယနဝဂ္ဂ](5)
+</TableOfContents>
