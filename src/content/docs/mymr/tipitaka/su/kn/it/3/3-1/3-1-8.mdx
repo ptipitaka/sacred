@@ -1,0 +1,64 @@
+---
+title: 3.1.8 ဒုတိယအာသဝသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: it
+review:
+  current: review
+  updated: '2025-10-20T18:39:00.847385'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:39:00.847385'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="57" book="it" e="ch" v="18" p="229">
+
+<Paragraph number="368" book="it">
+ဝုတ္တဉှေတံ ဘဂဝတာ ဝုတ္တမရဟတာတိ မေ သုတံ—
+</Paragraph>
+
+<Paragraph number="369" book="it">
+“တယောမေ, ဘိက္ခဝေ, အာသဝါ. ကတမေ တယော? ကာမာသဝေါ, ဘဝါသဝေါ, အဝိဇ္ဇာသဝေါ—  ဣမေ ခေါ, ဘိက္ခဝေ, တယော အာသဝါ”တိ. ဧတမတ္ထံ ဘဂဝါ အဝေါစ. တတ္ထေတံ ဣတိ ဝုစ္စတိ—
+</Paragraph>
+
+<Paragraph number="370" type="verses" book="it">
+_“ယဿ ကာမာသဝေါ ခီဏော,_  
+_အဝိဇ္ဇာ စ ဝိရာဇိတာ;_  
+_ဘဝါသဝေါ ပရိက္ခီဏော,_  
+_ဝိပ္ပမုတ္တော နိရူပဓိ;_  
+_ဓာရေတိ အန္တိမံ ဒေဟံ,_  
+_ဇေတွာ မာရံ သဝါဟိနိန်”တိ._  
+
+</Paragraph>
+
+<Paragraph number="371" book="it">
+အယမ္ပိ အတ္ထော ဝုတ္တော ဘဂဝတာ, ဣတိ မေ သုတန္တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="372" type="center" book="it">
+အဋ္ဌမံ.
+</Paragraph>

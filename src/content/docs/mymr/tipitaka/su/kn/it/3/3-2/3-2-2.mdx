@@ -1,0 +1,72 @@
+---
+title: 3.2.2 စက္ခုသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: it
+review:
+  current: review
+  updated: '2025-10-20T18:39:00.860756'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:39:00.860756'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="61" book="it" e="ch" v="18" p="231">
+
+<Paragraph number="393" book="it">
+ဝုတ္တဉှေတံ ဘဂဝတာ ဝုတ္တမရဟတာတိ မေ သုတံ—
+</Paragraph>
+
+<Paragraph number="394" book="it">
+“တီဏိမာနိ, ဘိက္ခဝေ, စက္ခူနိ. ကတမာနိ တီဏိ? မံသစက္ခု, ဒိဗ္ဗစက္ခု, ပညာစက္ခု—  ဣမာနိ ခေါ, ဘိက္ခဝေ, တီဏိ စက္ခူနီ”တိ. ဧတမတ္ထံ ဘဂဝါ အဝေါစ. တတ္ထေတံ ဣတိ ဝုစ္စတိ—
+</Paragraph>
+
+<Paragraph number="395" type="verses" book="it">
+_“မံသစက္ခု ဒိဗ္ဗစက္ခု,_  
+_ပညာစက္ခု အနုတ္တရံ;_  
+_ဧတာနိ တီဏိ စက္ခူနိ,_  
+_အက္ခာသိ ပုရိသုတ္တမော._  
+
+</Paragraph>
+
+<Paragraph number="396" type="verses" book="it">
+_မံသစက္ခုဿ ဥပ္ပါဒေါ,_  
+_မဂ္ဂေါ ဒိဗ္ဗဿ စက္ခုနော;_  
+_ယတော ဉာဏံ ဥဒပါဒိ,_  
+_ပညာစက္ခု အနုတ္တရံ;_  
+_ယဿ စက္ခုဿ ပဋိလာဘာ,_  
+_သဗ္ဗဒုက္ခာ ပမုစ္စတီ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="397" book="it">
+အယမ္ပိ အတ္ထော ဝုတ္တော ဘဂဝတာ, ဣတိ မေ သုတန္တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="398" type="center" book="it">
+ဒုတိယံ.
+</Paragraph>

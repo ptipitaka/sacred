@@ -1,0 +1,70 @@
+---
+title: 2.2.2 ဒေသနာသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: it
+review:
+  current: review
+  updated: '2025-10-20T18:39:00.778261'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:39:00.778261'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="39" book="it" e="ch" v="18" p="218">
+
+<Paragraph number="245" book="it">
+ဝုတ္တဉှေတံ ဘဂဝတာ ဝုတ္တမရဟတာတိ မေ သုတံ—
+</Paragraph>
+
+<Paragraph number="246" book="it">
+“တထာဂတဿ, ဘိက္ခဝေ, အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ ဒွေ ဓမ္မဒေသနာ ပရိယာယေန ဘဝန္တိ. ကတမာ ဒွေ? ‘ပါပံ ပါပကတော ပဿထာ’တိ—  အယံ ပဌမာ ဓမ္မဒေသနာ; ‘ပါပံ ပါပကတော ဒိသွာ တတ္ထ နိဗ္ဗိန္ဒထ ဝိရဇ္ဇထ ဝိမုစ္စထာ’တိ—  အယံ ဒုတိယာ ဓမ္မဒေသနာ. တထာဂတဿ, ဘိက္ခဝေ, အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ ဣမာ ဒွေ ဓမ္မဒေသနာ ပရိယာယေန ဘဝန္တီ”တိ. ဧတမတ္ထံ ဘဂဝါ အဝေါစ. တတ္ထေတံ ဣတိ ဝုစ္စတိ—
+</Paragraph>
+
+<Paragraph number="247" type="verses" book="it">
+_“တထာဂတဿ ဗုဒ္ဓဿ,_  
+_သဗ္ဗဘူတာနုကမ္ပိနော;_  
+_ပရိယာယဝစနံ ပဿ,_  
+_ဒွေ စ ဓမ္မာ ပကာသိတာ._  
+
+</Paragraph>
+
+<Paragraph number="248" type="verses" book="it">
+_ပါပကံ ပဿထ စေတံ,_  
+_တတ္ထ စာပိ ဝိရဇ္ဇထ;_  
+_တတော ဝိရတ္တစိတ္တာသေ,_  
+_ဒုက္ခဿန္တံ ကရိဿထာ”တိ._  
+
+</Paragraph>
+
+<Paragraph number="249" book="it">
+အယမ္ပိ အတ္ထော ဝုတ္တော ဘဂဝတာ, ဣတိ မေ သုတန္တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="250" type="center" book="it">
+ဒုတိယံ.
+</Paragraph>

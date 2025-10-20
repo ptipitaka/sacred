@@ -1,0 +1,64 @@
+---
+title: 1.2.7 ဒုတိယသေခသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: it
+review:
+  current: review
+  updated: '2025-10-20T18:39:00.705058'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T18:39:00.705058'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="17" book="it" e="ch" v="18" p="202">
+
+<Paragraph number="88" book="it">
+ဝုတ္တဉှေတံ ဘဂဝတာ ဝုတ္တမရဟတာတိ မေ သုတံ—
+</Paragraph>
+
+<Paragraph number="89" book="it">
+“သေခဿ, ဘိက္ခဝေ, ဘိက္ခုနော အပ္ပတ္တမာနသဿ အနုတ္တရံ ယောဂက္ခေမံ ပတ္ထယမာနဿ ဝိဟရတော ဗာဟိရံ အင်္ဂန္တိ ကရိတွာ နာညံ ဧကင်္ဂမ္ပိ သမနုပဿာမိ ယံ ဧဝံ ဗဟူပကာရံ ယထယိဒံ, ဘိက္ခဝေ, ကလျာဏမိတ္တတာ. ကလျာဏမိတ္တော, ဘိက္ခဝေ, ဘိက္ခု အကုသလံ ပဇဟတိ, ကုသလံ ဘာဝေတီ”တိ. ဧတမတ္ထံ ဘဂဝါ အဝေါစ. တတ္ထေတံ ဣတိ ဝုစ္စတိ—
+</Paragraph>
+
+<Paragraph number="90" type="verses" book="it">
+_“ကလျာဏမိတ္တော ယော ဘိက္ခု,_  
+_သပ္ပတိဿော သဂါရဝေါ;_  
+_ကရံ မိတ္တာနံ ဝစနံ,_  
+_သမ္ပဇာနော ပတိဿတော;_  
+_ပါပုဏေ အနုပုဗ္ဗေန,_  
+_သဗ္ဗသံယောဇနက္ခယန်”တိ._  
+
+</Paragraph>
+
+<Paragraph number="91" book="it">
+အယမ္ပိ အတ္ထော ဝုတ္တော ဘဂဝတာ, ဣတိ မေ သုတန္တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="92" type="center" book="it">
+သတ္တမံ.
+</Paragraph>
