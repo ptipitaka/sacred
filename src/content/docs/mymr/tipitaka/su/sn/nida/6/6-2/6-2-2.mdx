@@ -1,0 +1,46 @@
+---
+title: 6.2.2 ရူပိယပါတိသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:04:06.190359'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:04:06.190359'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="168" book="sn" e="ch" v="18" p="304">
+
+<Paragraph number="1053" book="sn">
+သာဝတ္ထိယံ ဝိဟရတိ. “ဒါရုဏော, ဘိက္ခဝေ, လာဘသက္ကာရသိလောကော …ပေ…  ဣဓာဟံ, ဘိက္ခဝေ, ဧကစ္စံ ပုဂ္ဂလံ ဧဝံ စေတသာ စေတော ပရိစ္စ ပဇာနာမိ—  ‘န စာယမာယသ္မာ ရူပိယပါတိယာပိ သုဝဏ္ဏစုဏ္ဏပရိပူရာယ ဟေတု သမ္ပဇာနမုသာ ဘာသေယျာ’တိ. တမေနံ ပဿာမိ အပရေန သမယေန လာဘသက္ကာရသိလောကေန အဘိဘူတံ ပရိယာဒိဏ္ဏစိတ္တံ သမ္ပဇာနမုသာ ဘာသန္တံ. ဧဝံ ဒါရုဏော ခေါ, ဘိက္ခဝေ, လာဘသက္ကာရသိလောကော …ပေ…  ဧဝဉှိ ဝေါ, ဘိက္ခဝေ, သိက္ခိတဗ္ဗန်”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1054" type="center" book="sn">
+ဒုတိယံ.
+</Paragraph>

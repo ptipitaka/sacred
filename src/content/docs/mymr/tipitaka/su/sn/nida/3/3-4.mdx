@@ -1,0 +1,50 @@
+---
+title: 3.4 စတုတ္ထဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:04:05.837815'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:04:05.837815'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="3.4">
+* [3.4.1 စတုဓာတုသုတ္တ](3-4/3-4-1)
+* [3.4.2 ပုဗ္ဗေသမ္ဗောဓသုတ္တ](3-4/3-4-2)
+* [3.4.3 အစရိံသုတ္တ](3-4/3-4-3)
+* [3.4.4 နောစေဒံသုတ္တ](3-4/3-4-4)
+* [3.4.5 ဧကန္တဒုက္ခသုတ္တ](3-4/3-4-5)
+* [3.4.6 အဘိနန္ဒသုတ္တ](3-4/3-4-6)
+* [3.4.7 ဥပ္ပါဒသုတ္တ](3-4/3-4-7)
+* [3.4.8 သမဏဗြာဟ္မဏသုတ္တ](3-4/3-4-8)
+* [3.4.9 ဒုတိယသမဏဗြာဟ္မဏသုတ္တ](3-4/3-4-9)
+* [3.4.10 တတိယသမဏဗြာဟ္မဏသုတ္တ](3-4/3-4-10)
+</TableOfContents>

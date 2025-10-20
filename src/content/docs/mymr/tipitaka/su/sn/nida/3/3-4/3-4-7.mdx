@@ -1,0 +1,50 @@
+---
+title: 3.4.7 ဥပ္ပါဒသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:04:05.980021'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:04:05.980021'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="120" book="sn" e="ch" v="18" p="298">
+
+<Paragraph number="812" book="sn">
+သာဝတ္ထိယံ ဝိဟရတိ. “ယော, ဘိက္ခဝေ, ပထဝီဓာတုယာ ဥပ္ပါဒေါ ဌိတိ အဘိနိဗ္ဗတ္တိ ပါတုဘာဝေါ, ဒုက္ခဿေသော ဥပ္ပါဒေါ ရောဂါနံ ဌိတိ ဇရာမရဏဿ ပါတုဘာဝေါ. ယော အာပေါဓာတုယာ …ပေ…  ယော တေဇောဓာတုယာ…  ယော ဝါယောဓာတုယာ ဥပ္ပါဒေါ ဌိတိ အဘိနိဗ္ဗတ္တိ ပါတုဘာဝေါ, ဒုက္ခဿေသော ဥပ္ပါဒေါ ရောဂါနံ ဌိတိ ဇရာမရဏဿ ပါတုဘာဝေါ.
+</Paragraph>
+
+<Paragraph number="813" book="sn">
+ယော စ ခေါ, ဘိက္ခဝေ, ပထဝီဓာတုယာ နိရောဓော ဝူပသမော အတ္ထင်္ဂမော, ဒုက္ခဿေသော နိရောဓော ရောဂါနံ ဝူပသမော ဇရာမရဏဿ အတ္ထင်္ဂမော. ယော အာပေါဓာတုယာ …ပေ…  ယော တေဇောဓာတုယာ…  ယော ဝါယောဓာတုယာ နိရောဓော ဝူပသမော အတ္ထင်္ဂမော, ဒုက္ခဿေသော နိရောဓော ရောဂါနံ ဝူပသမော ဇရာမရဏဿ အတ္ထင်္ဂမော”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="814" type="center" book="sn">
+သတ္တမံ.
+</Paragraph>

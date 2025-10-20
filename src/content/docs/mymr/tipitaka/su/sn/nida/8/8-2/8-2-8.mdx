@@ -1,0 +1,46 @@
+---
+title: 8.2.8 ပါပဘိက္ခုနီသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 8
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:04:06.417535'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:04:06.417535'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="219" book="sn" e="ch" v="18" p="310">
+
+<Paragraph number="1198" book="sn">
+“အဒ္ဒသံ ဘိက္ခုနိံ ဝေဟာသံ ဂစ္ဆန္တိံ. တဿာ သင်္ဃာဋိပိ အာဒိတ္တာ …ပေ…  ပါပဘိက္ခုနီ အဟောသိ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1199" type="center" book="sn">
+အဋ္ဌမံ.
+</Paragraph>

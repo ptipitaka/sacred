@@ -1,0 +1,50 @@
+---
+title: 1.6 ဒုက္ခဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:04:05.285147'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:04:05.285147'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="1.6">
+* [1.6.1 ပရိဝီမံသနသုတ္တ](1-6/1-6-1)
+* [1.6.2 ဥပါဒါနသုတ္တ](1-6/1-6-2)
+* [1.6.3 သံယောဇနသုတ္တ](1-6/1-6-3)
+* [1.6.4 ဒုတိယသံယောဇနသုတ္တ](1-6/1-6-4)
+* [1.6.5 မဟာရုက္ခသုတ္တ](1-6/1-6-5)
+* [1.6.6 ဒုတိယမဟာရုက္ခသုတ္တ](1-6/1-6-6)
+* [1.6.7 တရုဏရုက္ခသုတ္တ](1-6/1-6-7)
+* [1.6.8 နာမရူပသုတ္တ](1-6/1-6-8)
+* [1.6.9 ဝိညာဏသုတ္တ](1-6/1-6-9)
+* [1.6.10 နိဒါနသုတ္တ](1-6/1-6-10)
+</TableOfContents>

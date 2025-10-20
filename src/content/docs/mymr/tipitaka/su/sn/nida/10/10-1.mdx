@@ -1,0 +1,52 @@
+---
+title: 10.1 ဘိက္ခုဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:04:05.721682'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:04:05.721682'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sn" section="10.1">
+* [10.1.1 ကောလိတသုတ္တ](10-1/10-1-1)
+* [10.1.2 ဥပတိဿသုတ္တ](10-1/10-1-2)
+* [10.1.3 ဃဋသုတ္တ](10-1/10-1-3)
+* [10.1.4 နဝသုတ္တ](10-1/10-1-4)
+* [10.1.5 သုဇာတသုတ္တ](10-1/10-1-5)
+* [10.1.6 လကုဏ္ဍကဘဒ္ဒိယသုတ္တ](10-1/10-1-6)
+* [10.1.7 ဝိသာခသုတ္တ](10-1/10-1-7)
+* [10.1.8 နန္ဒသုတ္တ](10-1/10-1-8)
+* [10.1.9 တိဿသုတ္တ](10-1/10-1-9)
+* [10.1.10 ထေရနာမကသုတ္တ](10-1/10-1-10)
+* [10.1.11 မဟာကပ္ပိနသုတ္တ](10-1/10-1-11)
+* [10.1.12 သဟာယကသုတ္တ](10-1/10-1-12)
+</TableOfContents>

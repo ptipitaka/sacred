@@ -1,0 +1,46 @@
+---
+title: 8.1.3 ပိဏ္ဍသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sn
+review:
+  current: review
+  updated: '2025-10-20T15:04:06.351496'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T15:04:06.351496'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="204" book="sn" e="ch" v="18" p="308">
+
+<Paragraph number="1165" book="sn">
+“ဣဓာဟံ, အာဝုသော, ဂိဇ္ဈကူဋာ ပဗ္ဗတာ ဩရောဟန္တော အဒ္ဒသံ မံသပိဏ္ဍံ ဝေဟာသံ ဂစ္ဆန္တံ. တမေနံ ဂိဇ္ဈာပိ ကာကာပိ ကုလလာပိ အနုပတိတွာ အနုပတိတွာ ဝိတစ္ဆေန္တိ ဝိရာဇေန္တိ. သာ သုဒံ အဋ္ဋဿရံ ကရောတိ …ပေ…  ဧသော, ဘိက္ခဝေ, သတ္တော ဣမသ္မိံယေဝ ရာဇဂဟေ သာကုဏိကော အဟောသိ …ပေ… .
+
+</Paragraph>
+</Division>
+
+<Paragraph number="1166" type="center" book="sn">
+တတိယံ.
+</Paragraph>
