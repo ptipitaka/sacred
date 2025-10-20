@@ -1,0 +1,50 @@
+---
+title: 1.1.3 ပဌမအပ္ပိယသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: a8
+review:
+  current: review
+  updated: '2025-10-20T17:05:27.014779'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:05:27.014779'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="3" book="a8" e="ch" v="17" p="6">
+
+<Paragraph number="28" book="a8">
+“အဋ္ဌဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု သဗြဟ္မစာရီနံ အပ္ပိယော စ ဟောတိ အမနာပေါ စ အဂရု စ အဘာဝနီယော စ. ကတမေဟိ အဋ္ဌဟိ? ဣဓ, ဘိက္ခဝေ, ဘိက္ခု အပ္ပိယပသံသီ စ ဟောတိ, ပိယဂရဟီ စ, လာဘကာမော စ, သက္ကာရကာမော စ, အဟိရိကော စ, အနောတ္တပ္ပီ စ, ပါပိစ္ဆော စ, မိစ္ဆာဒိဋ္ဌိ စ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, အဋ္ဌဟိ ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု သဗြဟ္မစာရီနံ အပ္ပိယော စ ဟောတိ အမနာပေါ စ အဂရု စ အဘာဝနီယော စ.
+</Paragraph>
+
+<Paragraph number="29" book="a8">
+အဋ္ဌဟိ, ဘိက္ခဝေ, ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု သဗြဟ္မစာရီနံ ပိယော စ ဟောတိ မနာပေါ စ ဂရု စ ဘာဝနီယော စ. ကတမေဟိ အဋ္ဌဟိ? ဣဓ, ဘိက္ခဝေ, ဘိက္ခု န အပ္ပိယပသံသီ စ ဟောတိ, န ပိယဂရဟီ စ, န လာဘကာမော စ, န သက္ကာရကာမော စ, ဟိရီမာ စ ဟောတိ, ဩတ္တပ္ပီ စ, အပ္ပိစ္ဆော စ, သမ္မာဒိဋ္ဌိ စ. ဣမေဟိ ခေါ, ဘိက္ခဝေ, အဋ္ဌဟိ ဓမ္မေဟိ သမန္နာဂတော ဘိက္ခု သဗြဟ္မစာရီနံ ပိယော စ ဟောတိ မနာပေါ စ ဂရု စ ဘာဝနီယော စာ”တိ.
+
+</Paragraph>
+</Division>
+
+<Paragraph number="30" type="center" book="a8">
+တတိယံ.
+</Paragraph>

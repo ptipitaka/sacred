@@ -1,0 +1,62 @@
+---
+title: 2.1.9 ပဌမပုဂ္ဂလသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: a8
+review:
+  current: review
+  updated: '2025-10-20T17:05:27.285225'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:05:27.285225'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="59" book="a8" e="ch" v="17" p="115">
+
+<Paragraph number="610" book="a8">
+“အဋ္ဌိမေ, ဘိက္ခဝေ, ပုဂ္ဂလာ အာဟုနေယျာ ပါဟုနေယျာ ဒက္ခိဏေယျာ အဉ္ဇလိကရဏီယာ အနုတ္တရံ ပုညက္ခေတ္တံ လောကဿ? ကတမေ အဋ္ဌ? သောတာပန္နော, သောတာပတ္တိဖလသစ္ဆိကိရိယာယ ပဋိပန္နော, သကဒါဂါမီ, သကဒါဂါမိဖလသစ္ဆိကိရိယာယ ပဋိပန္နော, အနာဂါမီ, အနာဂါမိဖလသစ္ဆိကိရိယာယ ပဋိပန္နော, အရဟာ, အရဟတ္တာယ ပဋိပန္နော. ဣမေ ခေါ, ဘိက္ခဝေ, အဋ္ဌ ပုဂ္ဂလာ အာဟုနေယျာ …ပေ…  အနုတ္တရံ ပုညက္ခေတ္တံ လောကဿာတိ.
+</Paragraph>
+
+<Paragraph number="611" type="verses" book="a8">
+_စတ္တာရော စ ပဋိပန္နာ,_  
+_စတ္တာရော စ ဖလေ ဌိတာ;_  
+_ဧသ သံဃော ဥဇုဘူတော,_  
+_ပညာသီလသမာဟိတော._  
+
+</Paragraph>
+
+<Paragraph number="612" type="verses" book="a8">
+_ယဇမာနာနံ မနုဿာနံ,_  
+_ပုညပေက္ခာန ပါဏိနံ;_  
+_ကရောတံ ဩပဓိကံ ပုညံ,_  
+_သံဃေ ဒိန္နံ မဟပ္ဖလန်”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="613" type="center" book="a8">
+နဝမံ.
+</Paragraph>

@@ -1,0 +1,70 @@
+---
+title: 1.1.5 ပဌမလောကဓမ္မသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: a8
+review:
+  current: review
+  updated: '2025-10-20T17:05:27.022712'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:05:27.022712'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="5" book="a8" e="ch" v="17" p="7">
+
+<Paragraph number="34" book="a8">
+“အဋ္ဌိမေ, ဘိက္ခဝေ, လောကဓမ္မာ လောကံ အနုပရိဝတ္တန္တိ, လောကော စ အဋ္ဌ လောကဓမ္မေ အနုပရိဝတ္တတိ. ကတမေ အဋ္ဌ? လာဘော စ, အလာဘော စ, ယသော စ, အယသော စ, နိန္ဒာ စ, ပသံသာ စ, သုခဉ္စ, ဒုက္ခဉ္စ. ဣမေ ခေါ, ဘိက္ခဝေ, အဋ္ဌ လောကဓမ္မာ လောကံ အနုပရိဝတ္တန္တိ, လောကော စ ဣမေ အဋ္ဌ လောကဓမ္မေ အနုပရိဝတ္တတီတိ.
+</Paragraph>
+
+<Paragraph number="35" type="verses" book="a8">
+_လာဘော အလာဘော စ ယသာယသော စ,_  
+_နိန္ဒာ ပသံသာ စ သုခံ ဒုခဉ္စ;_  
+_ဧတေ အနိစ္စာ မနုဇေသု ဓမ္မာ,_  
+_အသဿတာ ဝိပရိဏာမဓမ္မာ._  
+
+</Paragraph>
+
+<Paragraph number="36" type="verses" book="a8">
+_ဧတေ စ ဉတွာ သတိမာ သုမေဓော,_  
+_အဝေက္ခတိ ဝိပရိဏာမဓမ္မေ;_  
+ဣဋ္ဌဿ ဓမ္မာ န မထေန္တိ စိတ္တံ,_  
+_အနိဋ္ဌတော နော ပဋိဃာတမေတိ._  
+
+</Paragraph>
+
+<Paragraph number="37" type="verses" book="a8">
+_တဿာနုရောဓာ အထ ဝါ ဝိရောဓာ,_  
+_ဝိဓူပိတာ အတ္ထင်္ဂတာ န သန္တိ;_  
+_ပဒဉ္စ ဉတွာ ဝိရဇံ အသောကံ,_  
+_သမ္မပ္ပဇာနာတိ ဘဝဿ ပါရဂူ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="38" type="center" book="a8">
+ပဉ္စမံ.
+</Paragraph>

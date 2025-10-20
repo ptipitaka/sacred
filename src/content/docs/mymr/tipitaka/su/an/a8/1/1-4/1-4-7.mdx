@@ -1,0 +1,70 @@
+---
+title: 1.4.7 သပ္ပုရိသဒါနသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: su
+book: a8
+review:
+  current: review
+  updated: '2025-10-20T17:05:27.150908'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T17:05:27.150908'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="37" book="a8" e="ch" v="17" p="74">
+
+<Paragraph number="355" book="a8">
+“အဋ္ဌိမာနိ, ဘိက္ခဝေ, သပ္ပုရိသဒါနာနိ. ကတမာနိ အဋ္ဌ? သုစိံ ဒေတိ, ပဏီတံ ဒေတိ, ကာလေန ဒေတိ, ကပ္ပိယံ ဒေတိ, ဝိစေယျ ဒေတိ, အဘိဏှံ ဒေတိ, ဒဒံ စိတ္တံ ပသာဒေတိ, ဒတွာ အတ္တမနော ဟောတိ. ဣမာနိ ခေါ, ဘိက္ခဝေ, အဋ္ဌ သပ္ပုရိသဒါနာနီတိ.
+</Paragraph>
+
+<Paragraph number="356" type="verses" book="a8">
+_သုစိံ ပဏီတံ ကာလေန,_  
+_ကပ္ပိယံ ပါနဘောဇနံ;_  
+_အဘိဏှံ ဒဒါတိ ဒါနံ,_  
+_သုခေတ္တေသု ဗြဟ္မစာရိသု._  
+
+</Paragraph>
+
+<Paragraph number="357" type="verses" book="a8">
+_နေဝ ဝိပ္ပဋိသာရိဿ,_  
+_စဇိတွာ အာမိသံ ဗဟုံ;_  
+_ဧဝံ ဒိန္နာနိ ဒါနာနိ,_  
+_ဝဏ္ဏယန္တိ ဝိပဿိနော._  
+
+</Paragraph>
+
+<Paragraph number="358" type="verses" book="a8">
+_ဧဝံ ယဇိတွာ မေဓာဝီ,_  
+_သဒ္ဓေါ မုတ္တေန စေတသာ;_  
+_အဗျာဗဇ္ဈံ သုခံ လောကံ,_  
+_ပဏ္ဍိတော ဥပပဇ္ဇတီ”တိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="359" type="center" book="a8">
+သတ္တမံ.
+</Paragraph>
