@@ -1,0 +1,47 @@
+---
+title: 15 မဟာသင်္ဂါမ
+tableOfContents: false
+sidebar:
+  order: 16
+type: tipitaka
+basket: vi
+book: pari
+review:
+  current: review
+  updated: '2025-10-20T14:12:15.746817'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:12:15.746817'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="pari" section="15">
+* [15.1 ဝေါဟရန္တေနဇာနိတဗ္ဗာဒိ](15/15-1)
+* [15.2 အဂတိအဂန္တဗ္ဗ](15/15-2)
+* [15.3 အဂတိအဂမန](15/15-3)
+* [15.4 သညာပနီယာဒိ](15/15-4)
+* [15.5 ပရပက္ခာဒိအဝဇာနန](15/15-5)
+* [15.6 အနုဝိဇ္ဇကဿအနုယောဂ](15/15-6)
+* [15.7 ပုစ္ဆာဝိဘာဂ](15/15-7)
+</TableOfContents>

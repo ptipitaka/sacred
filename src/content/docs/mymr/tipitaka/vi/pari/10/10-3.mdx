@@ -1,0 +1,56 @@
+---
+title: 10.3 ဆေဒနကာဒိ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: vi
+book: pari
+review:
+  current: review
+  updated: '2025-10-20T14:12:16.216784'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:12:16.216784'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="337" book="pari" e="ch" v="5" p="258">
+
+<Paragraph number="1648" book="pari">
+“ကတိ ဆေဒနကာနိ? ကတိ ဘေဒနကာနိ? ကတိ ဥဒ္ဒါလနကာနိ? ကတိ အနညပါစိတ္တိယာနိ? ကတိ ဘိက္ခုသမ္မုတိယော? ကတိ သာမီစိယော? ကတိ ပရမာနိ?
+</Paragraph>
+
+<Paragraph number="1649" type="verses" book="pari">
+_ကတိ ဇာနန္တိ ပညတ္တာ,_  
+_ဗုဒ္ဓေနာဒိစ္စဗန္ဓုနာ”._  
+
+</Paragraph>
+
+<Paragraph number="1650" book="pari">
+“ဆ ဆေဒနကာနိ. ဧကံ ဘေဒနကံ. ဧကံ ဥဒ္ဒါလနကံ. စတ္တာရိ အနညပါစိတ္တိယာနိ. စတဿော ဘိက္ခုသမ္မုတိယော. သတ္တ သာမီစိယော. စုဒ္ဒသ ပရမာနိ.
+</Paragraph>
+
+<Paragraph number="1651" type="verses" book="pari">
+_သောဒသ ဇာနန္တိ ပညတ္တာ,_  
+_ဗုဒ္ဓေနာဒိစ္စဗန္ဓုနာ”._
+</Paragraph>
+</Division>

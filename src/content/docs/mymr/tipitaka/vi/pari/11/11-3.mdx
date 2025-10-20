@@ -1,0 +1,49 @@
+---
+title: 11.3 အဓိကရဏမူလာဒိ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: vi
+book: pari
+review:
+  current: review
+  updated: '2025-10-20T14:12:16.243661'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:12:16.243661'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="343" book="pari" e="ch" v="5" p="266">
+
+<Paragraph number="1715" book="pari">
+စတုန္နံ အဓိကရဏာနံ ကတိ မူလာနိ, ကတိ သမုဋ္ဌာနာ? စတုန္နံ အဓိကရဏာနံ တေတ္တိံသ မူလာနိ, တေတ္တိံသ သမုဋ္ဌာနာ.
+</Paragraph>
+
+<Paragraph number="1716" book="pari">
+စတုန္နံ အဓိကရဏာနံ ကတမာနိ တေတ္တိံသ မူလာနိ? ဝိဝါဒါဓိကရဏဿ ဒွါဒသ မူလာနိ, အနုဝါဒါဓိကရဏဿ စုဒ္ဒသ မူလာနိ, အာပတ္တာဓိကရဏဿ ဆ မူလာနိ, ကိစ္စာဓိကရဏဿ ဧကံ မူလံ, သံဃော—  စတုန္နံ အဓိကရဏာနံ ဣမာနိ တေတ္တိံသ မူလာနိ.
+</Paragraph>
+
+<Paragraph number="1717" book="pari">
+စတုန္နံ အဓိကရဏာနံ ကတမေ တေတ္တိံသ သမုဋ္ဌာနာ? ဝိဝါဒါဓိကရဏဿ အဋ္ဌာရသဘေဒကရဝတ္ထူနိ သမုဋ္ဌာနာ, အနုဝါဒါဓိကရဏဿ စတဿော ဝိပတ္တိယော သမုဋ္ဌာနာ, အာပတ္တာဓိကရဏဿ သတ္တာပတ္တိက္ခန္ဓာ သမုဋ္ဌာနာ, ကိစ္စာဓိကရဏဿ စတ္တာရိ ကမ္မာနိ သမုဋ္ဌာနာ—  စတုန္နံ အဓိကရဏာနံ ဣမေ တေတ္တိံသ သမုဋ္ဌာနာ.
+</Paragraph>
+</Division>

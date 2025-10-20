@@ -1,0 +1,43 @@
+---
+title: 1.1.1.4 နိဿဂ္ဂိယကဏ္ဍ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: vi
+book: pari
+review:
+  current: review
+  updated: '2025-10-20T14:12:15.848447'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:12:15.848447'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="pari" section="1.1.1.4">
+* [1.1.1.4.1 ကထိနဝဂ္ဂ](1-1-1-4/1-1-1-4-1)
+* [1.1.1.4.2 ကောသိယဝဂ္ဂ](1-1-1-4/1-1-1-4-2)
+* [1.1.1.4.3 ပတ္တဝဂ္ဂ](1-1-1-4/1-1-1-4-3)
+</TableOfContents>

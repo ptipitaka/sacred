@@ -1,0 +1,50 @@
+---
+title: 1.1.4 သင်္ဂဟိတဝါရ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: vi
+book: pari
+review:
+  current: review
+  updated: '2025-10-20T14:12:15.818395'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:12:15.818395'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="183" book="pari" e="ch" v="5" p="80">
+
+<Paragraph number="576" book="pari">
+မေထုနံ ဓမ္မံ ပဋိသေဝန္တဿ အာပတ္တိယော သတ္တန္နံ အာပတ္တိက္ခန္ဓာနံ ကတိဟိ အာပတ္တိက္ခန္ဓေဟိ သင်္ဂဟိတာ? မေထုနံ ဓမ္မံ ပဋိသေဝန္တဿ အာပတ္တိယော သတ္တန္နံ အာပတ္တိက္ခန္ဓာနံ တီဟိ အာပတ္တိက္ခန္ဓေဟိ သင်္ဂဟိတာ—  သိယာ ပါရာဇိကာပတ္တိက္ခန္ဓေန, သိယာ ထုလ္လစ္စယာပတ္တိက္ခန္ဓေန, သိယာ ဒုက္ကဋာပတ္တိက္ခန္ဓေန …ပေ… . (1)
+</Paragraph>
+
+<Paragraph number="577" book="pari">
+အနာဒရိယံ ပဋိစ္စ ဥဒကေ ဥစ္စာရံ ဝါ ပဿာဝံ ဝါ ခေဠံ ဝါ ကရောန္တဿ အာပတ္တိ သတ္တန္နံ အာပတ္တိက္ခန္ဓာနံ ကတိဟိ အာပတ္တိက္ခန္ဓေဟိ သင်္ဂဟိတာ? အနာဒရိယံ ပဋိစ္စ ဥဒကေ ဥစ္စာရံ ဝါ ပဿာဝံ ဝါ ခေဠံ ဝါ ကရောန္တဿ အာပတ္တိ သတ္တန္နံ အာပတ္တိက္ခန္ဓာနံ ဧကေန အာပတ္တိက္ခန္ဓေန သင်္ဂဟိတာ—  ဒုက္ကဋာပတ္တိက္ခန္ဓေန. (2)
+
+</Paragraph>
+</Division>
+
+<Paragraph number="578" type="center" book="pari">
+သင်္ဂဟိတဝါရော နိဋ္ဌိတော စတုတ္ထော.
+</Paragraph>

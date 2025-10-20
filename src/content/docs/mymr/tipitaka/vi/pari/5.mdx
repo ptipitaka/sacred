@@ -1,0 +1,56 @@
+---
+title: 5 သမထဘေဒ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: vi
+book: pari
+review:
+  current: review
+  updated: '2025-10-20T14:12:15.780075'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:12:15.780075'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="pari" section="5">
+* [5.1 အဓိကရဏပရိယာယဝါရ](5/5-1)
+* [5.2 သာဓာရဏဝါရ](5/5-2)
+* [5.3 တဗ္ဘာဂိယဝါရ](5/5-3)
+* [5.4 သမထာသမထဿသာဓာရဏဝါရ](5/5-4)
+* [5.5 သမထာသမထဿတဗ္ဘာဂိယဝါရ](5/5-5)
+* [5.6 သမထသမ္မုခါဝိနယဝါရ](5/5-6)
+* [5.7 ဝိနယဝါရ](5/5-7)
+* [5.8 ကုသလဝါရ](5/5-8)
+* [5.9 ယတ္ထဝါရ, ပုစ္ဆာဝါရ](5/5-9)
+* [5.10 သမထဝါရ, ဝိဿဇ္ဇနာဝါရ](5/5-10)
+* [5.11 သံသဋ္ဌဝါရ](5/5-11)
+* [5.12 သမ္မတိဝါရ](5/5-12)
+* [5.13 သမ္မန္တိနသမ္မန္တိဝါရ](5/5-13)
+* [5.14 သမထာဓိကရဏဝါရ](5/5-14)
+* [5.15 သမုဋ္ဌာပနဝါရ](5/5-15)
+* [5.16 ဘဇတိဝါရ](5/5-16)
+</TableOfContents>
