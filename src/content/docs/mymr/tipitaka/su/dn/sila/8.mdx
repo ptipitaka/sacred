@@ -1,0 +1,48 @@
+---
+title: 8 မဟာသီဟနာဒသုတ္တ
+tableOfContents: false
+sidebar:
+  order: 9
+type: tipitaka
+basket: su
+book: sila
+review:
+  current: review
+  updated: '2025-10-20T14:17:35.933708'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:17:35.933708'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sila" section="8">
+* [အစေလကဿပဝတ္ထု](8/acelakassapavatthu)
+* [8.1 သမနုယုဉ္ဇာပနကထာ](8/8-1)
+* [8.2 အရိယအဋ္ဌင်္ဂိကမဂ္ဂ](8/8-2)
+* [8.3 တပေါပက္ကမကထာ](8/8-3)
+* [8.4 တပေါပက္ကမနိရတ္ထကထာ](8/8-4)
+* [8.5 သီလသမာဓိပညာသမ္ပဒါ](8/8-5)
+* [8.6 သီဟနာဒကထာ](8/8-6)
+* [8.7 တိတ္ထိယပရိဝါသကထာ](8/8-7)
+</TableOfContents>

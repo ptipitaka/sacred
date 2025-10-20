@@ -1,0 +1,41 @@
+---
+title: 2.4.3.2.2 သတိသမ္ပဇည
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sila
+review:
+  current: review
+  updated: '2025-10-20T14:17:36.169477'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:17:36.169477'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="214" book="sila" e="ch" v="6" p="67">
+
+<Paragraph number="305" book="sila">
+ကထဉ္စ, မဟာရာဇ, ဘိက္ခု သတိသမ္ပဇညေန သမန္နာဂတော ဟောတိ? ဣဓ, မဟာရာဇ, ဘိက္ခု အဘိက္ကန္တေ ပဋိက္ကန္တေ သမ္ပဇာနကာရီ ဟောတိ, အာလောကိတေ ဝိလောကိတေ သမ္ပဇာနကာရီ ဟောတိ, သမိဉ္ဇိတေ ပသာရိတေ သမ္ပဇာနကာရီ ဟောတိ, သင်္ဃာဋိပတ္တစီဝရဓာရဏေ သမ္ပဇာနကာရီ ဟောတိ, အသိတေ ပီတေ ခါယိတေ သာယိတေ သမ္ပဇာနကာရီ ဟောတိ, ဥစ္စာရပဿာဝကမ္မေ သမ္ပဇာနကာရီ ဟောတိ, ဂတေ ဌိတေ နိသိန္နေ သုတ္တေ ဇာဂရိတေ ဘာသိတေ တုဏှီဘာဝေ သမ္ပဇာနကာရီ ဟောတိ. ဧဝံ ခေါ, မဟာရာဇ, ဘိက္ခု သတိသမ္ပဇညေန သမန္နာဂတော ဟောတိ.
+</Paragraph>
+</Division>

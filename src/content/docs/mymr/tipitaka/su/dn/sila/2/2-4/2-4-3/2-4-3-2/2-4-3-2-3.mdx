@@ -1,0 +1,41 @@
+---
+title: 2.4.3.2.3 သန္တောသ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: su
+book: sila
+review:
+  current: review
+  updated: '2025-10-20T14:17:36.172622'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:17:36.172622'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="215" book="sila" e="ch" v="6" p="67">
+
+<Paragraph number="306" book="sila">
+ကထဉ္စ, မဟာရာဇ, ဘိက္ခု သန္တုဋ္ဌော ဟောတိ? ဣဓ, မဟာရာဇ, ဘိက္ခု သန္တုဋ္ဌော ဟောတိ ကာယပရိဟာရိကေန စီဝရေန, ကုစ္ဆိပရိဟာရိကေန ပိဏ္ဍပါတေန. သော ယေန ယေနေဝ ပက္ကမတိ, သမာဒါယေဝ ပက္ကမတိ. သေယျထာပိ, မဟာရာဇ, ပက္ခီ သကုဏော ယေန ယေနေဝ ဍေတိ, သပတ္တဘာရောဝ ဍေတိ; ဧဝမေဝ ခေါ, မဟာရာဇ, ဘိက္ခု သန္တုဋ္ဌော ဟောတိ ကာယပရိဟာရိကေန စီဝရေန ကုစ္ဆိပရိဟာရိကေန ပိဏ္ဍပါတေန. သော ယေန ယေနေဝ ပက္ကမတိ, သမာဒါယေဝ ပက္ကမတိ. ဧဝံ ခေါ, မဟာရာဇ, ဘိက္ခု သန္တုဋ္ဌော ဟောတိ.
+</Paragraph>
+</Division>

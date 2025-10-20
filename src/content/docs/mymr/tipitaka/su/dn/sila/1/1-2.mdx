@@ -1,0 +1,43 @@
+---
+title: 1.2 သီလ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: sila
+review:
+  current: review
+  updated: '2025-10-20T14:17:35.945941'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:17:35.945941'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="sila" section="1.2">
+* [1.2.1 စူဠသီလ](1-2/1-2-1)
+* [1.2.2 မဇ္ဈိမသီလ](1-2/1-2-2)
+* [1.2.3 မဟာသီလ](1-2/1-2-3)
+</TableOfContents>

@@ -1,0 +1,65 @@
+---
+title: 6ဒ် သီလက္ခန္ဓဝဂ္ဂပါဠိ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: sila
+review:
+  current: review
+  updated: '2025-10-20T14:17:35.898197'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:17:35.898197'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+<Paragraph type="center" book="sila">
+[ဟောမေ](/)
+</Paragraph>
+
+<Paragraph type="center" book="sila">
+# 6ဒ် သီလက္ခန္ဓဝဂ္ဂပါဠိ
+</Paragraph>
+
+<Paragraph number="1" book="sila">
+နမော တဿ ဘဂဝတော အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ.
+
+[ဂေါ တော နေxတ် ပဂေ (1 ဗြဟ္မဇာလသုတ္တ)](1.md)
+
+
+
+</Paragraph>
+
+<TableOfContents book="sila" section="6">
+* [1 ဗြဟ္မဇာလသုတ္တ](1.md)
+* [2 သာမညဖလသုတ္တ](2.md)
+* [3 အမ္ဗဋ္ဌသုတ္တ](3.md)
+* [4 သောဏဒဏ္ဍသုတ္တ](4.md)
+* [5 ကူဋဒန္တသုတ္တ](5.md)
+* [6 မဟာလိသုတ္တ](6.md)
+* [7 ဇာလိယသုတ္တ](7.md)
+* [8 မဟာသီဟနာဒသုတ္တ](8.md)
+* [9 ပေါဋ္ဌပါဒသုတ္တ](9.md)
+* [10 သုဘသုတ္တ](10.md)
+* [11 ကေဝဋ္ဋသုတ္တ](11.md)
+* [12 လောဟိစ္စသုတ္တ](12.md)
+* [13 တေဝိဇ္ဇသုတ္တ](13.md)
+</TableOfContents>
