@@ -1,0 +1,50 @@
+---
+title: 2.4.13 စာရိတ္တဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 13
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.380893'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.380893'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.4.13">
+* [2.4.13.1 စာရိတ္တသိက္ခာပဒ](2-4-13/2-4-13-1)
+* [2.4.13.2 မဟာနာမသိက္ခာပဒ](2-4-13/2-4-13-2)
+* [2.4.13.3 ဥယျုတ္တသေနာသိက္ခာပဒ](2-4-13/2-4-13-3)
+* [2.4.13.4 သေနာဝါသသိက္ခာပဒ](2-4-13/2-4-13-4)
+* [2.4.13.5 ဥယျောဓိကသိက္ခာပဒ](2-4-13/2-4-13-5)
+* [2.4.13.6 သုရာပါနသိက္ခာပဒ](2-4-13/2-4-13-6)
+* [2.4.13.7 အင်္ဂုလိပတောဒကသိက္ခာပဒ](2-4-13/2-4-13-7)
+* [2.4.13.8 ဟသဓမ္မသိက္ခာပဒ](2-4-13/2-4-13-8)
+* [2.4.13.9 အနာဒရိယသိက္ခာပဒ](2-4-13/2-4-13-9)
+* [2.4.13.10 ဘိံသာပနသိက္ခာပဒ](2-4-13/2-4-13-10)
+</TableOfContents>

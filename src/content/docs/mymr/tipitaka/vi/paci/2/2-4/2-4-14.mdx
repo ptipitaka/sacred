@@ -1,0 +1,50 @@
+---
+title: 2.4.14 ဇောတိကဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 14
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.382931'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.382931'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.4.14">
+* [2.4.14.1 ဇောတိကသိက္ခာပဒ](2-4-14/2-4-14-1)
+* [2.4.14.2 နဟာနသိက္ခာပဒ](2-4-14/2-4-14-2)
+* [2.4.14.3 ဒုဗ္ဗဏ္ဏကရဏသိက္ခာပဒ](2-4-14/2-4-14-3)
+* [2.4.14.4 ဝိကပ္ပနသိက္ခာပဒ](2-4-14/2-4-14-4)
+* [2.4.14.5 စီဝရအပနိဓာနသိက္ခာပဒ](2-4-14/2-4-14-5)
+* [2.4.14.6 သဉ္စိစ္စသိက္ခာပဒ](2-4-14/2-4-14-6)
+* [2.4.14.7 သပ္ပါဏကသိက္ခာပဒ](2-4-14/2-4-14-7)
+* [2.4.14.8 ဥက္ကောဋနသိက္ခာပဒ](2-4-14/2-4-14-8)
+* [2.4.14.9 ထေယျသတ္ထသိက္ခာပဒ](2-4-14/2-4-14-9)
+* [2.4.14.10 အရိဋ္ဌသိက္ခာပဒ](2-4-14/2-4-14-10)
+</TableOfContents>

@@ -1,0 +1,56 @@
+---
+title: 2.4 ပါစိတ္တိယကဏ္ဍ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.138429'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.138429'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.4">
+* [2.4.1 လသုဏဝဂ္ဂ](2-4/2-4-1)
+* [2.4.2 ရတ္တန္ဓကာရဝဂ္ဂ](2-4/2-4-2)
+* [2.4.3 နဂ္ဂဝဂ္ဂ](2-4/2-4-3)
+* [2.4.4 တုဝဋ္ဋဝဂ္ဂ](2-4/2-4-4)
+* [2.4.5 စိတ္တာဂါရဝဂ္ဂ](2-4/2-4-5)
+* [2.4.6 အာရာမဝဂ္ဂ](2-4/2-4-6)
+* [2.4.7 ဂဗ္ဘိနိဝဂ္ဂ](2-4/2-4-7)
+* [2.4.8 ကုမာရိဘူတဝဂ္ဂ](2-4/2-4-8)
+* [2.4.9 ဆတ္တုပါဟနဝဂ္ဂ](2-4/2-4-9)
+* [2.4.10 မုသာဝါဒဝဂ္ဂ](2-4/2-4-10)
+* [2.4.11 ဘူတဂါမဝဂ္ဂ](2-4/2-4-11)
+* [2.4.12 ဘောဇနဝဂ္ဂ](2-4/2-4-12)
+* [2.4.13 စာရိတ္တဝဂ္ဂ](2-4/2-4-13)
+* [2.4.14 ဇောတိကဝဂ္ဂ](2-4/2-4-14)
+* [2.4.15 ဒိဋ္ဌိဝဂ္ဂ](2-4/2-4-15)
+* [2.4.16 ဓမ္မိကဝဂ္ဂ](2-4/2-4-16)
+</TableOfContents>

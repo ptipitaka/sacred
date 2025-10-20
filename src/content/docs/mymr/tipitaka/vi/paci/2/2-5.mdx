@@ -1,0 +1,42 @@
+---
+title: 2.5 ပါဋိဒေသနီယကဏ္ဍ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.140924'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.140924'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.5">
+* [2.5.1 သပ္ပိဝိညာပနသိက္ခာပဒ](2-5/2-5-1)
+* [2.5.2–8 တေလ-မဓု-ဖာဏိတ-မစ္ဆ-မံသ-ခီရ-ဒဓိဝိညာပနသိက္ခာပဒ](2-5/2-5-2–8)
+</TableOfContents>

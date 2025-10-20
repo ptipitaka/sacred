@@ -1,0 +1,50 @@
+---
+title: 2.4.1 လသုဏဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.372836'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.372836'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.4.1">
+* [2.4.1.1 လသုဏသိက္ခာပဒ](2-4-1/2-4-1-1)
+* [2.4.1.2 သမ္ဗာဓလောမသိက္ခာပဒ](2-4-1/2-4-1-2)
+* [2.4.1.3 တလဃာတကသိက္ခာပဒ](2-4-1/2-4-1-3)
+* [2.4.1.4 ဇတုမဋ္ဌကသိက္ခာပဒ](2-4-1/2-4-1-4)
+* [2.4.1.5 ဥဒကသုဒ္ဓိကသိက္ခာပဒ](2-4-1/2-4-1-5)
+* [2.4.1.6 ဥပတိဋ္ဌနသိက္ခာပဒ](2-4-1/2-4-1-6)
+* [2.4.1.7 အာမကဓညသိက္ခာပဒ](2-4-1/2-4-1-7)
+* [2.4.1.8 ဥစ္စာရဆဍ္ဍနသိက္ခာပဒ](2-4-1/2-4-1-8)
+* [2.4.1.9 ဒုတိယော်စ္စာရဆဍ္ဍနသိက္ခာပဒ](2-4-1/2-4-1-9)
+* [2.4.1.10 နစ္စဂီတသိက္ခာပဒ](2-4-1/2-4-1-10)
+</TableOfContents>

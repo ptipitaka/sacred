@@ -1,0 +1,48 @@
+---
+title: 2.1 ပါရာဇိကကဏ္ဍ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.130219'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.130219'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.1">
+* [2.1.1 မေထုနဓမ္မသိက္ခာပဒ](2-1/2-1-1)
+* [2.1.2 အဒိန္နာဒါနသိက္ခာပဒ](2-1/2-1-2)
+* [2.1.3 မနုဿဝိဂ္ဂဟသိက္ခာပဒ](2-1/2-1-3)
+* [2.1.4 ဥတ္တရိမနုဿဓမ္မသိက္ခာပဒ](2-1/2-1-4)
+* [2.1.5 ဥဗ္ဘဇာဏုမဏ္ဍလိကာသိက္ခာပဒ](2-1/2-1-5)
+* [2.1.6 ဝဇ္ဇပ္ပဋိစ္ဆာဒိကာသိက္ခာပဒ](2-1/2-1-6)
+* [2.1.7 ဥက္ခိတ္တာနုဝတ္တိကာသိက္ခာပဒ](2-1/2-1-7)
+* [2.1.8 အဋ္ဌဝတ္ထုကာသိက္ခာပဒ](2-1/2-1-8)
+</TableOfContents>

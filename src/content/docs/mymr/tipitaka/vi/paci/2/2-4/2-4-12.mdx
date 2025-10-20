@@ -1,0 +1,50 @@
+---
+title: 2.4.12 ဘောဇနဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 12
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.378832'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.378832'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.4.12">
+* [2.4.12.1 အာဝသထပိဏ္ဍသိက္ခာပဒ](2-4-12/2-4-12-1)
+* [2.4.12.2 ဂဏဘောဇနသိက္ခာပဒ](2-4-12/2-4-12-2)
+* [2.4.12.3 ကာဏမာတုသိက္ခာပဒ](2-4-12/2-4-12-3)
+* [2.4.12.4 ဝိကာလဘောဇနသိက္ခာပဒ](2-4-12/2-4-12-4)
+* [2.4.12.5 သန္နိဓိကာရကသိက္ခာပဒ](2-4-12/2-4-12-5)
+* [2.4.12.6 ဒန္တပေါနသိက္ခာပဒ](2-4-12/2-4-12-6)
+* [2.4.12.7 ဥယျောဇနသိက္ခာပဒ](2-4-12/2-4-12-7)
+* [2.4.12.8 သဘောဇနသိက္ခာပဒ](2-4-12/2-4-12-8)
+* [2.4.12.9 ရဟောပဋိစ္ဆန္နသိက္ခာပဒ](2-4-12/2-4-12-9)
+* [2.4.12.10 ရဟောနိသဇ္ဇသိက္ခာပဒ](2-4-12/2-4-12-10)
+</TableOfContents>

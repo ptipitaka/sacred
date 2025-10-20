@@ -1,0 +1,50 @@
+---
+title: 1.5.3 ဩဝါဒဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 3
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:03.620473'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:03.620473'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="1.5.3">
+* [1.5.3.1 ဩဝါဒသိက္ခာပဒ](1-5-3/1-5-3-1)
+* [1.5.3.2 အတ္ထင်္ဂတသိက္ခာပဒ](1-5-3/1-5-3-2)
+* [1.5.3.3 ဘိက္ခုနုပဿယသိက္ခာပဒ](1-5-3/1-5-3-3)
+* [1.5.3.4 အာမိသသိက္ခာပဒ](1-5-3/1-5-3-4)
+* [1.5.3.5 စီဝရဒါနသိက္ခာပဒ](1-5-3/1-5-3-5)
+* [1.5.3.6 စီဝရသိဗ္ဗနသိက္ခာပဒ](1-5-3/1-5-3-6)
+* [1.5.3.7 သံဝိဓာနသိက္ခာပဒ](1-5-3/1-5-3-7)
+* [1.5.3.8 နာဝါဘိရုဟနသိက္ခာပဒ](1-5-3/1-5-3-8)
+* [1.5.3.9 ပရိပါစိတသိက္ခာပဒ](1-5-3/1-5-3-9)
+* [1.5.3.10 ရဟောနိသဇ္ဇသိက္ခာပဒ](1-5-3/1-5-3-10)
+</TableOfContents>

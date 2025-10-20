@@ -1,0 +1,50 @@
+---
+title: 1.5.2 ဘူတဂါမဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:03.617152'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:03.617152'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="1.5.2">
+* [1.5.2.1 ဘူတဂါမသိက္ခာပဒ](1-5-2/1-5-2-1)
+* [1.5.2.2 အညဝါဒကသိက္ခာပဒ](1-5-2/1-5-2-2)
+* [1.5.2.3 ဥဇ္ဈာပနကသိက္ခာပဒ](1-5-2/1-5-2-3)
+* [1.5.2.4 သေနာသနသိက္ခာပဒ](1-5-2/1-5-2-4)
+* [1.5.2.5 ဒုတိယသေနာသနသိက္ခာပဒ](1-5-2/1-5-2-5)
+* [1.5.2.6 အနုပခဇ္ဇသိက္ခာပဒ](1-5-2/1-5-2-6)
+* [1.5.2.7 နိက္ကဍ္ဎနသိက္ခာပဒ](1-5-2/1-5-2-7)
+* [1.5.2.8 ဝေဟာသကုဋိသိက္ခာပဒ](1-5-2/1-5-2-8)
+* [1.5.2.9 မဟလ္လကဝိဟာရသိက္ခာပဒ](1-5-2/1-5-2-9)
+* [1.5.2.10 သပ္ပါဏကသိက္ခာပဒ](1-5-2/1-5-2-10)
+</TableOfContents>

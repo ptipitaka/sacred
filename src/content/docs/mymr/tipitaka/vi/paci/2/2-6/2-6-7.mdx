@@ -1,0 +1,55 @@
+---
+title: 2.6.7 ပါဒုကဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:05.010896'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:05.010896'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.6.7">
+* [2.6.7.1 ပါဒုကသိက္ခာပဒ](2-6-7/2-6-7-1)
+* [2.6.7.2 ဥပါဟနာရုဠှသိက္ခာပဒ](2-6-7/2-6-7-2)
+* [2.6.7.3 ယာနသိက္ခာပဒ](2-6-7/2-6-7-3)
+* [2.6.7.4 သယနသိက္ခာပဒ](2-6-7/2-6-7-4)
+* [2.6.7.5 ပလ္လတ္ထိကသိက္ခာပဒ](2-6-7/2-6-7-5)
+* [2.6.7.6 ဝေဌိတသိက္ခာပဒ](2-6-7/2-6-7-6)
+* [2.6.7.7 ဩဂုဏ္ဌိတသိက္ခာပဒ](2-6-7/2-6-7-7)
+* [2.6.7.8 ဆမာသိက္ခာပဒ](2-6-7/2-6-7-8)
+* [2.6.7.9 နီစာသနသိက္ခာပဒ](2-6-7/2-6-7-9)
+* [2.6.7.10 ဌိတသိက္ခာပဒ](2-6-7/2-6-7-10)
+* [2.6.7.11 ပစ္ဆတောဂမနသိက္ခာပဒ](2-6-7/2-6-7-11)
+* [2.6.7.12 ဥပ္ပထေနဂမနသိက္ခာပဒ](2-6-7/2-6-7-12)
+* [2.6.7.13 ဌိတောဥစ္စာရသိက္ခာပဒ](2-6-7/2-6-7-13)
+* [2.6.7.14 ဟရိတေဥစ္စာရသိက္ခာပဒ](2-6-7/2-6-7-14)
+* [2.6.7.15 ဥဒကေဥစ္စာရသိက္ခာပဒ](2-6-7/2-6-7-15)
+</TableOfContents>

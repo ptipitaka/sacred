@@ -1,0 +1,48 @@
+---
+title: 2.3.3.10 ပရိဏတသိက္ခာပဒ
+tableOfContents: false
+sidebar:
+  order: 10
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.351527'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.351527'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Paragraph type="center" book="paci">
+* (ဒုတိယ) ပတ္တဝဂ္ဂ
+</Paragraph>
+
+
+<Paragraph number="2563" book="paci">
+ဥဒ္ဒိဋ္ဌာ ခေါ, အယျာယော, တိံသ နိဿဂ္ဂိယာ ပါစိတ္တိယာ ဓမ္မာ. တတ္ထာယျာယော ပုစ္ဆာမိ—  “ကစ္စိတ္ထ ပရိသုဒ္ဓါ”? ဒုတိယမ္ပိ ပုစ္ဆာမိ—  “ကစ္စိတ္ထ ပရိသုဒ္ဓါ”? တတိယမ္ပိ ပုစ္ဆာမိ—  “ကစ္စိတ္ထ ပရိသုဒ္ဓါ”? ပရိသုဒ္ဓေတ္ထာယျာယော, တသ္မာ တုဏှီ, ဧဝမေတံ ဓာရယာမီတိ.
+
+</Paragraph>
+
+<Paragraph number="2564" type="center" book="paci">
+ဘိက္ခုနိဝိဘင်္ဂေ နိဿဂ္ဂိယကဏ္ဍံ နိဋ္ဌိတံ.
+</Paragraph>

@@ -1,0 +1,50 @@
+---
+title: 2.6.4 သက္ကစ္စဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 4
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:04.998899'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:04.998899'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.6.4">
+* [2.6.4.1 သက္ကစ္စသိက္ခာပဒ](2-6-4/2-6-4-1)
+* [2.6.4.2 ပတ္တသညီသိက္ခာပဒ](2-6-4/2-6-4-2)
+* [2.6.4.3 သပဒါနသိက္ခာပဒ](2-6-4/2-6-4-3)
+* [2.6.4.4 သမသူပကသိက္ခာပဒ](2-6-4/2-6-4-4)
+* [2.6.4.5 ထူပကတသိက္ခာပဒ](2-6-4/2-6-4-5)
+* [2.6.4.6 ဩဒနပ္ပဋိစ္ဆာဒနသိက္ခာပဒ](2-6-4/2-6-4-6)
+* [2.6.4.7 သူပေါဒနဝိညတ္တိသိက္ခာပဒ](2-6-4/2-6-4-7)
+* [2.6.4.8 ဥဇ္ဈာနသညီသိက္ခာပဒ](2-6-4/2-6-4-8)
+* [2.6.4.9 ကဗဠသိက္ခာပဒ](2-6-4/2-6-4-9)
+* [2.6.4.10 အာလောပသိက္ခာပဒ](2-6-4/2-6-4-10)
+</TableOfContents>

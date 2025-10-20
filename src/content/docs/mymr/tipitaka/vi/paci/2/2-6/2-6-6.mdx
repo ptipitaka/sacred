@@ -1,0 +1,50 @@
+---
+title: 2.6.6 သုရုသုရုဝဂ္ဂ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-20T13:11:05.007899'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T13:11:05.007899'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="paci" section="2.6.6">
+* [2.6.6.1 သုရုသုရုကာရကသိက္ခာပဒ](2-6-6/2-6-6-1)
+* [2.6.6.2 ဟတ္ထနိလ္လေဟကသိက္ခာပဒ](2-6-6/2-6-6-2)
+* [2.6.6.3 ပတ္တနိလ္လေဟကသိက္ခာပဒ](2-6-6/2-6-6-3)
+* [2.6.6.4 ဩဋ္ဌနိလ္လေဟကသိက္ခာပဒ](2-6-6/2-6-6-4)
+* [2.6.6.5 သာမိသသိက္ခာပဒ](2-6-6/2-6-6-5)
+* [2.6.6.6 သသိတ္ထကသိက္ခာပဒ](2-6-6/2-6-6-6)
+* [2.6.6.7 ဆတ္တပါဏိသိက္ခာပဒ](2-6-6/2-6-6-7)
+* [2.6.6.8 ဒဏ္ဍပါဏိသိက္ခာပဒ](2-6-6/2-6-6-8)
+* [2.6.6.9 သတ္ထပါဏိသိက္ခာပဒ](2-6-6/2-6-6-9)
+* [2.6.6.10 အာဝုဓပါဏိသိက္ခာပဒ](2-6-6/2-6-6-10)
+</TableOfContents>
