@@ -1,0 +1,49 @@
+---
+title: 2.14 စောဒနာကထာ
+tableOfContents: false
+sidebar:
+  order: 14
+type: tipitaka
+basket: vi
+book: vi-maha
+review:
+  current: review
+  updated: '2025-10-20T14:00:51.854785'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:00:51.854785'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="153" book="vi-maha" e="ch" v="3" p="154">
+
+<Paragraph number="639" book="vi-maha">
+တေန ခေါ ပန သမယေန ဆဗ္ဗဂ္ဂိယာ ဘိက္ခူ အနောကာသကတံ ဘိက္ခုံ အာပတ္တိယာ စောဒေန္တိ. ဘဂဝတော ဧတမတ္ထံ အာရောစေသုံ. “န, ဘိက္ခဝေ, အနောကာသကတော ဘိက္ခု အာပတ္တိယာ စောဒေတဗ္ဗော. ယော စောဒေယျ, အာပတ္တိ ဒုက္ကဋဿ. အနုဇာနာမိ, ဘိက္ခဝေ, ဩကာသံ ကာရာပေတွာ အာပတ္တိယာ စောဒေတုံ—  ကရောတု အာယသ္မာ ဩကာသံ, အဟံ တံ ဝတ္တုကာမော”တိ.
+</Paragraph>
+
+<Paragraph number="640" book="vi-maha">
+တေန ခေါ ပန သမယေန ပေသလာ ဘိက္ခူ ဆဗ္ဗဂ္ဂိယေ ဘိက္ခူ ဩကာသံ ကာရာပေတွာ အာပတ္တိယာ စောဒေန္တိ. ဆဗ္ဗဂ္ဂိယာ ဘိက္ခူ လဘန္တိ အာဃာတံ, လဘန္တိ အပ္ပစ္စယံ, ဝဓေန တဇ္ဇေန္တိ. ဘဂဝတော ဧတမတ္ထံ အာရောစေသုံ. “အနုဇာနာမိ, ဘိက္ခဝေ, ကတေပိ ဩကာသေ ပုဂ္ဂလံ တုလယိတွာ အာပတ္တိယာ စောဒေတုန်”တိ.
+</Paragraph>
+
+<Paragraph number="641" book="vi-maha">
+တေန ခေါ ပန သမယေန ဆဗ္ဗဂ္ဂိယာ ဘိက္ခူ—  “ပုရမှာကံ ပေသလာ ဘိက္ခူ ဩကာသံ ကာရာပေန္တီ”တိ—  ပဋိကစ္စေဝ သုဒ္ဓါနံ ဘိက္ခူနံ အနာပတ္တိကာနံ အဝတ္ထုသ္မိံ အကာရဏေ ဩကာသံ ကာရာပေန္တိ. ဘဂဝတော ဧတမတ္ထံ အာရောစေသုံ. “န, ဘိက္ခဝေ, သုဒ္ဓါနံ ဘိက္ခူနံ အနာပတ္တိကာနံ အဝတ္ထုသ္မိံ အကာရဏေ ဩကာသော ကာရာပေတဗ္ဗော. ယော ကာရာပေယျ, အာပတ္တိ ဒုက္ကဋဿ. အနုဇာနာမိ, ဘိက္ခဝေ, ပုဂ္ဂလံ တုလယိတွာ ဩကာသံ ကာတုန်”တိ.
+</Paragraph>
+</Division>

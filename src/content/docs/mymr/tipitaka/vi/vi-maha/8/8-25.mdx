@@ -1,0 +1,41 @@
+---
+title: 8.25 နဂ္ဂိယပဋိက္ခေပကထာ
+tableOfContents: false
+sidebar:
+  order: 25
+type: tipitaka
+basket: vi
+book: vi-maha
+review:
+  current: review
+  updated: '2025-10-20T14:00:52.659627'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:00:52.659627'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="370" book="vi-maha" e="ch" v="3" p="421">
+
+<Paragraph number="1717" book="vi-maha">
+တေန ခေါ ပန သမယေန အညတရော ဘိက္ခု နဂ္ဂေါ ဟုတွာ ယေန ဘဂဝါ တေနုပသင်္ကမိ, ဥပသင်္ကမိတွာ ဘဂဝန္တံ ဧတဒဝေါစ—  “ဘဂဝါ, ဘန္တေ, အနေကပရိယာယေန အပ္ပိစ္ဆဿ သန္တုဋ္ဌဿ သလ္လေခဿ ဓုတဿ ပါသာဒိကဿ အပစယဿ ဝီရိယာရမ္ဘဿ ဝဏ္ဏဝါဒီ. ဣဒံ, ဘန္တေ, နဂ္ဂိယံ အနေကပရိယာယေန အပ္ပိစ္ဆတာယ သန္တုဋ္ဌိတာယ သလ္လေခါယ ဓုတတာယ ပါသာဒိကတာယ အပစယာယ ဝီရိယာရမ္ဘာယ သံဝတ္တတိ. သာဓု, ဘန္တေ, ဘဂဝါ ဘိက္ခူနံ နဂ္ဂိယံ အနုဇာနာတူ”တိ. ဝိဂရဟိ ဗုဒ္ဓေါ ဘဂဝါ—  “အနနုစ္ဆဝိကံ, မောဃပုရိသ, အနနုလောမိကံ အပ္ပတိရူပံ အဿာမဏကံ အကပ္ပိယံ အကရဏီယံ. ကထဉှိ နာမ တွံ, မောဃပုရိသ, နဂ္ဂိယံ တိတ္ထိယသမာဒါနံ သမာဒိယိဿသိ. နေတံ, မောဃပုရိသ, အပ္ပသန္နာနံ ဝါ ပသာဒါယ …ပေ…  ဝိဂရဟိတွာ …ပေ…  ဓမ္မိံ ကထံ ကတွာ ဘိက္ခူ အာမန္တေသိ—  “န, ဘိက္ခဝေ, နဂ္ဂိယံ တိတ္ထိယသမာဒါနံ သမာဒိယိတဗ္ဗံ. ယော သမာဒိယေယျ, အာပတ္တိ ထုလ္လစ္စယဿာ”တိ.
+</Paragraph>
+</Division>

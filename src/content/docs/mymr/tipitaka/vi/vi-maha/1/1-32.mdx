@@ -1,0 +1,41 @@
+---
+title: 1.32 လက္ခဏာဟတဝတ္ထု
+tableOfContents: false
+sidebar:
+  order: 32
+type: tipitaka
+basket: vi
+book: vi-maha
+review:
+  current: review
+  updated: '2025-10-20T14:00:51.633070'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:00:51.633070'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="95" book="vi-maha" e="ch" v="3" p="106">
+
+<Paragraph number="433" book="vi-maha">
+တေန ခေါ ပန သမယေန အညတရော ပုရိသော လက္ခဏာဟတော ကတဒဏ္ဍကမ္မော ဘိက္ခူသု ပဗ္ဗဇိတော ဟောတိ. မနုဿာ ဥဇ္ဈာယန္တိ ခိယျန္တိ ဝိပါစေန္တိ—  “ကထဉှိ နာမ သမဏာ သကျပုတ္တိယာ လက္ခဏာဟတံ ကတဒဏ္ဍကမ္မံ ပဗ္ဗာဇေဿန္တီ”တိ. ဘဂဝတော ဧတမတ္ထံ အာရောစေသုံ. “န, ဘိက္ခဝေ, လက္ခဏာဟတော ကတဒဏ္ဍကမ္မော ပဗ္ဗာဇေတဗ္ဗော. ယော ပဗ္ဗာဇေယျ, အာပတ္တိ ဒုက္ကဋဿာ”တိ.
+</Paragraph>
+</Division>

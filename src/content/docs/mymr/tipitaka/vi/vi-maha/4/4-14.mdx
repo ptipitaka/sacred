@@ -1,0 +1,45 @@
+---
+title: 4.14 သီမောက္ကန္တိကပေယျာလ
+tableOfContents: false
+sidebar:
+  order: 14
+type: tipitaka
+basket: vi
+book: vi-maha
+review:
+  current: review
+  updated: '2025-10-20T14:00:52.063993'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:00:52.063993'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="227" book="vi-maha" e="ch" v="3" p="244">
+
+<Paragraph number="1047" book="vi-maha">
+ဣဓ ပန, ဘိက္ခဝေ, အညတရသ္မိံ အာဝါသေ တဒဟု ပဝါရဏာယ သမ္ဗဟုလာ အာဝါသိကာ ဘိက္ခူ သန္နိပတန္တိ, ပဉ္စ ဝါ အတိရေကာ ဝါ. တေ န ဇာနန္တိ—  ‘အညေ အာဝါသိကာ ဘိက္ခူ အန္တောသီမံ ဩက္ကမန္တီ’တိ …ပေ…  တေ န ဇာနန္တိ—  ‘အညေ အာဝါသိကာ ဘိက္ခူ အန္တောသီမံ ဩက္ကန္တာ’တိ …ပေ…  တေ န ပဿန္တိ—  ‘အညေ အာဝါသိကေ ဘိက္ခူ အန္တောသီမံ ဩက္ကမန္တေ …ပေ…  တေ န ပဿန္တိ—  ‘အညေ အာဝါသိကေ ဘိက္ခူ အန္တောသီမံ ဩက္ကန္တေ …ပေ…  တေ န သုဏန္တိ ‘အညေ အာဝါသိကာ ဘိက္ခူ အန္တောသီမံ ဩက္ကမန္တီ’တိ …ပေ…  တေ န သုဏန္တိ ‘အညေ အာဝါသိကာ ဘိက္ခူ အန္တောသီမံ ဩက္ကန္တာ’တိ …ပေ… .
+</Paragraph>
+
+<Paragraph number="1048" book="vi-maha">
+အာဝါသိကေန အာဝါသိကာ ဧကသတပဉ္စသတ္တတိ တိကနယတော, အာဝါသိကေန အာဂန္တုကာ, အာဂန္တုကေန အာဝါသိကာ, အာဂန္တုကေန အာဂန္တုကာ, ပေယျာလမုခေန သတ္တ တိကသတာနိ ဟောန္တိ.
+</Paragraph>
+</Division>

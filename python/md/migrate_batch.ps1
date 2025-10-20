@@ -1,6 +1,8 @@
 $ErrorActionPreference = 'Stop'
 Set-Location 'C:\Dev\astro\tptk'
 
+$locale = 'mymr'
+
 $tasks = @(
     @{ Book='3V'; Review='vi-maha' },
     @{ Book='4V'; Review='cula' },
@@ -93,10 +95,10 @@ $tasks = @(
 foreach ($task in $tasks) {
     Write-Host "=== $($task.Book) / $($task.Review) ===" -ForegroundColor Cyan
 
-    python .\python\md\migrate_tipitaka.py --book $($task.Book) mymr
+    python .\python\md\migrate_tipitaka.py --book $($task.Book) $locale
     if ($LASTEXITCODE -ne 0) { throw "migrate_tipitaka failed for $($task.Book)" }
 
-    python .\python\md\manage_review_status.py --state review --book $($task.Review) --locale mymr
+    python .\python\md\manage_review_status.py --state review --book $($task.Review) --locale $locale --yes
     if ($LASTEXITCODE -ne 0) { throw "manage_review_status failed for $($task.Book)" }
 
     npm run build
@@ -110,7 +112,7 @@ foreach ($task in $tasks) {
         continue
     }
 
-    git commit -m "Migrate $($task.Book) mymr"
+    git commit -m "Migrate $($task.Book) $locale"
     if ($LASTEXITCODE -ne 0) { throw "git commit failed for $($task.Book)" }
 
     git push

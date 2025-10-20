@@ -1,0 +1,41 @@
+---
+title: 1.60 ဂေါတ္တေနအနုဿာဝနာနုဇာနန
+tableOfContents: false
+sidebar:
+  order: 60
+type: tipitaka
+basket: vi
+book: vi-maha
+review:
+  current: review
+  updated: '2025-10-20T14:00:51.742845'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:00:51.742845'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="122" book="vi-maha" e="ch" v="3" p="129">
+
+<Paragraph number="511" book="vi-maha">
+တေန ခေါ ပန သမယေန အာယသ္မတော မဟာကဿပဿ ဥပသမ္ပဒါပေက္ခော ဟောတိ. အထ ခေါ အာယသ္မာ မဟာကဿပေါ အာယသ္မတော အာနန္ဒဿ သန္တိကေ ဒူတံ ပါဟေသိ—  “အာဂစ္ဆတု အာနန္ဒော ဣမံ အနုဿာဝေဿတူ”တိ. အာယသ္မာ အာနန္ဒော ဧဝမာဟ—  “နာဟံ ဥဿဟာမိ ထေရဿ နာမံ ဂဟေတုံ, ဂရု မေ ထေရော”တိ. ဘဂဝတော ဧတမတ္ထံ အာရောစေသုံ. “အနုဇာနာမိ, ဘိက္ခဝေ, ဂေါတ္တေနပိ အနုဿာဝေတုန်”တိ.
+</Paragraph>
+</Division>

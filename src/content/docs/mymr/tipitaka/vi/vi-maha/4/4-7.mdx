@@ -1,0 +1,49 @@
+---
+title: 4.7 အာပတ္တိအာဝိကရဏဝိဓိ
+tableOfContents: false
+sidebar:
+  order: 7
+type: tipitaka
+basket: vi
+book: vi-maha
+review:
+  current: review
+  updated: '2025-10-20T14:00:52.155233'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-20T14:00:52.155233'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="220" book="vi-maha" e="ch" v="3" p="232">
+
+<Paragraph number="990" book="vi-maha">
+တေန ခေါ ပန သမယေန အညတရော ဘိက္ခု ပဝါရယမာနော အာပတ္တိံ သရတိ. အထ ခေါ တဿ ဘိက္ခုနော ဧတဒဟောသိ—  “ဘဂဝတာ ပညတ္တံ—  ‘န သာပတ္တိကေန ပဝါရေတဗ္ဗန်’တိ. အဟဉ္စမှိ အာပတ္တိံ အာပန္နော. ကထံ နု ခေါ မယာ ပဋိပဇ္ဇိတဗ္ဗန်”တိ? ဘဂဝတော ဧတမတ္ထံ အာရောစေသုံ.
+</Paragraph>
+
+<Paragraph number="991" book="vi-maha">
+“ဣဓ ပန, ဘိက္ခဝေ, ဘိက္ခု ပဝါရယမာနော အာပတ္တိံ သရတိ. တေန, ဘိက္ခဝေ, ဘိက္ခုနာ သာမန္တော ဘိက္ခု ဧဝမဿ ဝစနီယော—  ‘အဟံ, အာဝုသော, ဣတ္ထန္နာမံ အာပတ္တိံ အာပန္နော. ဣတော ဝုဋ္ဌဟိတွာ တံ အာပတ္တိံ ပဋိကရိဿာမီ’တိ ဝတွာ ပဝါရေတဗ္ဗံ; န တွေဝ တပ္ပစ္စယာ ပဝါရဏာယ အန္တရာယော ကာတဗ္ဗော.
+</Paragraph>
+
+<Paragraph number="992" book="vi-maha">
+ဣဓ ပန, ဘိက္ခဝေ, ဘိက္ခု ပဝါရယမာနော အာပတ္တိယာ ဝေမတိကော ဟောတိ. တေန, ဘိက္ခဝေ, ဘိက္ခုနာ သာမန္တော ဘိက္ခု ဧဝမဿ ဝစနီယော—  ‘အဟံ, အာဝုသော, ဣတ္ထန္နာမာယ အာပတ္တိယာ ဝေမတိကော; ယဒါ နိဗ္ဗေမတိကော ဘဝိဿာမိ တဒါ တံ အာပတ္တိံ ပဋိကရိဿာမီ’တိ ဝတွာ ပဝါရေတဗ္ဗံ; န တွေဝ တပ္ပစ္စယာ ပဝါရဏာယ အန္တရာယော ကာတဗ္ဗော”တိ.
+</Paragraph>
+</Division>
