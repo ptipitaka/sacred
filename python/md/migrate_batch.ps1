@@ -36,7 +36,7 @@ $tasks = @(
     # @{ Book='3V'; Review='vi-maha' },
     # @{ Book='4V'; Review='cula' },
     # @{ Book='5V'; Review='pari' },
-    @{ Book='6D'; Review='sila' },
+    # @{ Book='6D'; Review='sila' },
     @{ Book='7D'; Review='dn-maha' },
     @{ Book='8D'; Review='pthi' },
     @{ Book='9M'; Review='mula' },
@@ -150,7 +150,7 @@ foreach ($task in $tasks) {
     while ($true) {
         if (-not $promptAlertPlayed) {
             # Play audible alert before prompting for manual push approval.
-            for ($i = 0; $i -lt 5; $i++) {
+            for ($i = 0; $i -lt 3; $i++) {
                 [Console]::Beep(800, 3000)
                 if ($i -lt 4) { Start-Sleep -Seconds 5 }
             }
