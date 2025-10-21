@@ -1,0 +1,49 @@
+---
+title: 2.6 ပဋိသမ္ဘိဒါကထာ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: ps
+review:
+  current: review
+  updated: '2025-10-21T08:13:00.236881'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-21T08:13:00.236881'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ps" section="2.6">
+* [2.6.1 ဓမ္မစက္ကပဝတ္တနဝါရ](2-6/2-6-1)
+* [2.6.2 သတိပဋ္ဌာနဝါရ](2-6/2-6-2)
+* [2.6.3 ဣဒ္ဓိပါဒဝါရ](2-6/2-6-3)
+* [2.6.4 သတ္တဗောဓိသတ္တဝါရ](2-6/2-6-4)
+* [2.6.5 အဘိညာဒိဝါရ](2-6/2-6-5)
+* [2.6.6 ခန္ဓာဒိဝါရ](2-6/2-6-6)
+* [2.6.7 သစ္စဝါရ](2-6/2-6-7)
+* [2.6.8 ပဋိသမ္ဘိဒါဝါရ](2-6/2-6-8)
+* [2.6.9 ဆဗုဒ္ဓဓမ္မဝါရ](2-6/2-6-9)
+</TableOfContents>

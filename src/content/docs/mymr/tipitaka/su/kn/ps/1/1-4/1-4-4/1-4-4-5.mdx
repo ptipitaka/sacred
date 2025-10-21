@@ -1,0 +1,38 @@
+---
+title: 1.4.4.5 ပရိယာဒါနဋ္ဌနိဒ္ဒေသ
+tableOfContents: false
+sidebar:
+  order: 5
+type: tipitaka
+basket: su
+book: ps
+review:
+  current: review
+  updated: '2025-10-21T08:13:00.188609'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-21T08:13:00.188609'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Paragraph number="1084" book="ps">
+ကထံ <Emphasis>ပရိယာဒါနဋ္ဌေန ဣန္ဒြိယာနိ ဒဋ္ဌဗ္ဗာနိ?</Emphasis> အဓိမောက္ခဋ္ဌေန သဒ္ဓိန္ဒြိယံ အဿဒ္ဓိယံ ပရိယာဒိယတိ, အဿဒ္ဓိယပရိဠာဟံ ပရိယာဒိယတိ. ပဂ္ဂဟဋ္ဌေန ဝီရိယိန္ဒြိယံ ကောသဇ္ဇံ ပရိယာဒိယတိ, ကောသဇ္ဇပရိဠာဟံ ပရိယာဒိယတိ. ဥပဋ္ဌာနဋ္ဌေန သတိန္ဒြိယံ ပမာဒံ ပရိယာဒိယတိ, ပမာဒပရိဠာဟံ ပရိယာဒိယတိ. အဝိက္ခေပဋ္ဌေန သမာဓိန္ဒြိယံ ဥဒ္ဓစ္စံ ပရိယာဒိယတိ, ဥဒ္ဓစ္စပရိဠာဟံ ပရိယာဒိယတိ. ဒဿနဋ္ဌေန ပညိန္ဒြိယံ အဝိဇ္ဇံ ပရိယာဒိယတိ, အဝိဇ္ဇာပရိဠာဟံ ပရိယာဒိယတိ. နေက္ခမ္မေ ပဉ္စိန္ဒြိယာနိ ကာမစ္ဆန္ဒံ ပရိယာဒိယန္တိ. အဗျာပါဒေ ပဉ္စိန္ဒြိယာနိ ဗျာပါဒံ ပရိယာဒိယန္တိ. အာလောကသညာယ ပဉ္စိန္ဒြိယာနိ ထိနမိဒ္ဓံ ပရိယာဒိယန္တိ. အဝိက္ခေပေ ပဉ္စိန္ဒြိယာနိ ဥဒ္ဓစ္စံ ပရိယာဒိယန္တိ …ပေ…  အရဟတ္တမဂ္ဂေ ပဉ္စိန္ဒြိယာနိ သဗ္ဗကိလေသေ ပရိယာဒိယန္တိ. ဧဝံ ပရိယာဒါနဋ္ဌေန ဣန္ဒြိယာနိ ဒဋ္ဌဗ္ဗာနိ.
+</Paragraph>

@@ -76,5 +76,6 @@ export default defineConfig({
             sidebar: sidebarConfig
         }),
     ],
+    output: 'server',
     adapter: vercel(),
 });

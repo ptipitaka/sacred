@@ -1,0 +1,49 @@
+---
+title: 2.6.6 ခန္ဓာဒိဝါရ
+tableOfContents: false
+sidebar:
+  order: 6
+type: tipitaka
+basket: su
+book: ps
+review:
+  current: review
+  updated: '2025-10-21T08:13:00.336778'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-21T08:13:00.336778'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="35" book="ps" e="ch" v="26" p="39">
+
+<Paragraph number="1609" book="ps">
+“‘ယာဝတာ ခန္ဓာနံ ခန္ဓဋ္ဌော, ဉာတော ဒိဋ္ဌော ဝိဒိတော သစ္ဆိကတော ဖဿိတော ပညာယ. အဖဿိတော ပညာယ ခန္ဓဋ္ဌော နတ္ထီ’တိ—  စက္ခုံ ဥဒပါဒိ, ဉာဏံ ဥဒပါဒိ, ပညာ ဥဒပါဒိ, ဝိဇ္ဇာ ဥဒပါဒိ, အာလောကော ဥဒပါဒိ”. ခန္ဓာနံ ခန္ဓဋ္ဌေ ပဉ္စဝီသတိ ဓမ္မာ, ပဉ္စဝီသတိ အတ္ထာ, ပညာသံ နိရုတ္တိယော, သတံ ဉာဏာနိ.
+</Paragraph>
+
+<Paragraph number="1610" book="ps">
+“‘ယာဝတာ ဓာတူနံ ဓာတုဋ္ဌော …ပေ…  ယာဝတာ အာယတနာနံ အာယတနဋ္ဌော …ပေ…  ယာဝတာ သင်္ခတာနံ သင်္ခတဋ္ဌော …ပေ…  ယာဝတာ အသင်္ခတဿ အသင်္ခတဋ္ဌော ဉာတော ဒိဋ္ဌော ဝိဒိတော သစ္ဆိကတော ဖဿိတော ပညာယ. အဖဿိတော ပညာယ အသင်္ခတဋ္ဌော နတ္ထီ’တိ—  စက္ခုံ ဥဒပါဒိ …ပေ…  အာလောကော ဥဒပါဒိ”. အသင်္ခတဿ အသင်္ခတဋ္ဌေ ပဉ္စဝီသတိ ဓမ္မာ, ပဉ္စဝီသတိ အတ္ထာ, ပညာသံ နိရုတ္တိယော, သတံ ဉာဏာနိ.
+</Paragraph>
+
+<Paragraph number="1611" book="ps">
+ခန္ဓာနံ ခန္ဓဋ္ဌေ, ဓာတူနံ ဓာတုဋ္ဌေ, အာယတနာနံ အာယတနဋ္ဌေ သင်္ခတာနံ သင်္ခတဋ္ဌေ, အသင်္ခတဿ အသင်္ခတဋ္ဌေ ပဉ္စဝီသတိသတံ ဓမ္မာ, ပဉ္စဝီသတိသတံ အတ္ထာ, အဍ္ဎတေယျာနိ နိရုတ္တိသတာနိ, ပဉ္စ ဉာဏသတာနိ.
+</Paragraph>
+</Division>
