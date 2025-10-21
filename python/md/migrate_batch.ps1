@@ -4,6 +4,9 @@ Set-Location 'C:\Dev\astro\tptk'
 $env:NODE_OPTIONS = '--max-old-space-size=14336'
 
 $scriptPath = $PSCommandPath
+$vercelToken = '12u9EwNeXPAiWcfeGkEgGESA'
+$vercelProjectId = 'sacred'
+$vercelQueueCheckIntervalSeconds = 60
 
 function CommentCompletedTask {
     param(
@@ -28,6 +31,32 @@ function CommentCompletedTask {
     }
 }
 
+function Get-VercelQueuedDeploymentCount {
+    param(
+        [string]$Token,
+        [string]$ProjectId
+    )
+
+    if (-not $Token -or -not $ProjectId) {
+        throw 'Vercel token or project ID is not configured.'
+    }
+
+    $headers = @{ Authorization = "Bearer $Token" }
+    $url = "https://api.vercel.com/v6/deployments?projectId=$ProjectId&limit=100"
+
+    try {
+        $response = Invoke-RestMethod -Uri $url -Method Get -Headers $headers -ErrorAction Stop
+        if (-not $response -or -not $response.deployments) { return 0 }
+
+        $deployments = @($response.deployments)
+        $queued = @($deployments | Where-Object { $_.state -eq 'QUEUED' })
+        return $queued.Count
+    }
+    catch {
+        throw "Failed to query Vercel queue: $_"
+    }
+}
+
 $locale = 'mymr'
 
 $tasks = @(
@@ -49,7 +78,7 @@ $tasks = @(
     # @{ Book='14S5'; Review='sn-maha' },
     # @{ Book='15A1'; Review='a1' },
     # @{ Book='15A2'; Review='a2' },
-    @{ Book='15A3'; Review='a3' },
+    # @{ Book='15A3'; Review='a3' },
     @{ Book='15A4'; Review='a4' },
     @{ Book='16A5'; Review='a5' },
     @{ Book='16A6'; Review='a6' },
@@ -145,32 +174,18 @@ foreach ($task in $tasks) {
     git commit -m "Migrate $($task.Book) $locale"
     if ($LASTEXITCODE -ne 0) { throw "git commit failed for $($task.Book)" }
 
-    $promptAlertPlayed = $false
-
     while ($true) {
-        if (-not $promptAlertPlayed) {
-            # Play audible alert before prompting for manual push approval.
-            for ($i = 0; $i -lt 3; $i++) {
-                [Console]::Beep(800, 3000)
-                if ($i -lt 3) { Start-Sleep -Seconds 5 }
-            }
-            $promptAlertPlayed = $true
-        }
+        $queuedDeployments = Get-VercelQueuedDeploymentCount -Token $vercelToken -ProjectId $vercelProjectId
 
-        $pushAnswer = Read-Host "Push changes for $($task.Book) now? (y/n)"
-
-        if ($pushAnswer -match '^(?i)y(es)?$') {
+        if ($queuedDeployments -eq 0) {
+            Write-Host "Vercel queue is clear; pushing changes for $($task.Book)." -ForegroundColor Green
             git push
             if ($LASTEXITCODE -ne 0) { throw "git push failed for $($task.Book)" }
             break
         }
 
-        if ($pushAnswer -match '^(?i)n(o)?$') {
-            Write-Host "Push skipped for $($task.Book); stopping batch so you can push manually." -ForegroundColor Yellow
-            return
-        }
-
-        Write-Host "Please answer y or n." -ForegroundColor Yellow
+        Write-Host "Vercel queue has $queuedDeployments deployment(s); waiting $vercelQueueCheckIntervalSeconds seconds before rechecking." -ForegroundColor Yellow
+        Start-Sleep -Seconds $vercelQueueCheckIntervalSeconds
     }
 
     CommentCompletedTask -Book $task.Book -Review $task.Review
