@@ -2,53 +2,79 @@ $ErrorActionPreference = 'Stop'
 Set-Location 'C:\Dev\astro\tptk'
 
 $env:NODE_OPTIONS = '--max-old-space-size=14336'
-$env:ESBUILD_MAX_OPEN_FILES = '64'
+
+$scriptPath = $PSCommandPath
+
+function CommentCompletedTask {
+    param(
+        [string]$Book,
+        [string]$Review
+    )
+
+    if (-not $scriptPath) { return }
+    if (-not (Test-Path -Path $scriptPath)) { return }
+
+    $content = Get-Content -Path $scriptPath
+    $pattern = "^\s*@\{\s*Book='$Book';\s*Review='$Review'\s*\},"
+
+    for ($i = 0; $i -lt $content.Count; $i++) {
+        if ($content[$i] -match $pattern) {
+            if ($content[$i] -notmatch '^\s*#') {
+                $content[$i] = [regex]::Replace($content[$i], '@\{', '# @{', 1)
+                Set-Content -Path $scriptPath -Value $content -Encoding UTF8
+            }
+            break
+        }
+    }
+}
 
 $locale = 'mymr'
 
 $tasks = @(
-    # @{ Book='3V'; Review='vi-maha' },
-    # @{ Book='4V'; Review='cula' },
-    # @{ Book='5V'; Review='pari' },
-    # @{ Book='6D'; Review='sila' },
-    # @{ Book='7D'; Review='dn-maha' },
-    # @{ Book='8D'; Review='pthi' },
-    # @{ Book='9M'; Review='mula' },
-    # @{ Book='10M'; Review='majj' },
-    # @{ Book='11M'; Review='upar' },
-    # @{ Book='12S1'; Review='saga' },
-    # @{ Book='12S2'; Review='nida' },
-    # @{ Book='13S3'; Review='khan' },
-    # @{ Book='13S4'; Review='sala' },
-    # @{ Book='14S5'; Review='sn-maha' },
-    # @{ Book='15A1'; Review='a1' },
-    # @{ Book='15A2'; Review='a2' },
-    # @{ Book='15A3'; Review='a3' },
-    # @{ Book='15A4'; Review='a4' },
-    # @{ Book='16A5'; Review='a5' },
-    # @{ Book='16A6'; Review='a6' },
-    # @{ Book='16A7'; Review='a7' },
-    # @{ Book='17A8'; Review='a8' },
-    # @{ Book='17A9'; Review='a9' },
-    # @{ Book='17A10'; Review='a10' },
-    # @{ Book='17A11'; Review='a11' },
-    # @{ Book='18Kh'; Review='kh' },
-    # @{ Book='18Dh'; Review='dh' },
-    # @{ Book='18Ud'; Review='ud' },
-    # @{ Book='18It'; Review='it' },
-    # @{ Book='18Sn'; Review='sn' },
-    # @{ Book='19Vv'; Review='vv' },
-    # @{ Book='19Pv'; Review='pv' },
-    # @{ Book='19Th1'; Review='th1' },
-    # @{ Book='19Th2'; Review='th2' },
-    # @{ Book='20Ap1'; Review='ap1' },
-    # @{ Book='20Ap2'; Review='ap2' },
-    # @{ Book='21Bu'; Review='bu' },
-    # @{ Book='21Cp'; Review='cp' },
-    # @{ Book='22J'; Review='ja1' },
-    # @{ Book='23J'; Review='ja2' },
-    # @{ Book='24Mn'; Review='mn' },
-    # @{ Book='25Cn'; Review='cn' },
+    @{ Book='1V'; Review='para' },
+    @{ Book='2V'; Review='paci' },
+    @{ Book='3V'; Review='vi-maha' },
+    @{ Book='4V'; Review='cula' },
+    @{ Book='5V'; Review='pari' },
+    @{ Book='6D'; Review='sila' },
+    @{ Book='7D'; Review='dn-maha' },
+    @{ Book='8D'; Review='pthi' },
+    @{ Book='9M'; Review='mula' },
+    @{ Book='10M'; Review='majj' },
+    @{ Book='11M'; Review='upar' },
+    @{ Book='12S1'; Review='saga' },
+    @{ Book='12S2'; Review='nida' },
+    @{ Book='13S3'; Review='khan' },
+    @{ Book='13S4'; Review='sala' },
+    @{ Book='14S5'; Review='sn-maha' },
+    @{ Book='15A1'; Review='a1' },
+    @{ Book='15A2'; Review='a2' },
+    @{ Book='15A3'; Review='a3' },
+    @{ Book='15A4'; Review='a4' },
+    @{ Book='16A5'; Review='a5' },
+    @{ Book='16A6'; Review='a6' },
+    @{ Book='16A7'; Review='a7' },
+    @{ Book='17A8'; Review='a8' },
+    @{ Book='17A9'; Review='a9' },
+    @{ Book='17A10'; Review='a10' },
+    @{ Book='17A11'; Review='a11' },
+    @{ Book='18Kh'; Review='kh' },
+    @{ Book='18Dh'; Review='dh' },
+    @{ Book='18Ud'; Review='ud' },
+    @{ Book='18It'; Review='it' },
+    @{ Book='18Sn'; Review='sn' },
+    @{ Book='19Vv'; Review='vv' },
+    @{ Book='19Pv'; Review='pv' },
+    @{ Book='19Th1'; Review='th1' },
+    @{ Book='19Th2'; Review='th2' },
+    @{ Book='20Ap1'; Review='ap1' },
+    @{ Book='20Ap2'; Review='ap2' },
+    @{ Book='21Bu'; Review='bu' },
+    @{ Book='21Cp'; Review='cp' },
+    @{ Book='22J'; Review='ja1' },
+    @{ Book='23J'; Review='ja2' },
+    @{ Book='24Mn'; Review='mn' },
+    @{ Book='25Cn'; Review='cn' },
     @{ Book='26Ps'; Review='ps' },
     @{ Book='27Ne'; Review='ne' },
     @{ Book='27Pe'; Review='pe' },
@@ -101,17 +127,18 @@ foreach ($task in $tasks) {
     python .\python\md\migrate_tipitaka.py --book $($task.Book) $locale
     if ($LASTEXITCODE -ne 0) { throw "migrate_tipitaka failed for $($task.Book)" }
 
-    python .\python\md\manage_review_status.py --state review --book $($task.Review) --locale $locale --yes
-    if ($LASTEXITCODE -ne 0) { throw "manage_review_status failed for $($task.Book)" }
+    # python .\python\md\manage_review_status.py --state review --book $($task.Review) --locale $locale --yes
+    # if ($LASTEXITCODE -ne 0) { throw "manage_review_status failed for $($task.Book)" }
 
-    npm run build
-    if ($LASTEXITCODE -ne 0) { throw "npm run build failed for $($task.Book)" }
+    # npm run build
+    # if ($LASTEXITCODE -ne 0) { throw "npm run build failed for $($task.Book)" }
 
     git add .
     git diff --cached --quiet
     if ($LASTEXITCODE -eq 0) {
         git reset
         Write-Host "No changes for $($task.Book); skipped commit/push." -ForegroundColor Yellow
+        CommentCompletedTask -Book $task.Book -Review $task.Review
         continue
     }
 
@@ -120,4 +147,6 @@ foreach ($task in $tasks) {
 
     git push
     if ($LASTEXITCODE -ne 0) { throw "git push failed for $($task.Book)" }
+
+    CommentCompletedTask -Book $task.Book -Review $task.Review
 }

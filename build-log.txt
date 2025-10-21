@@ -1,0 +1,30 @@
+
+> sacred@0.0.1 build
+> astro build
+
+10:32:58 [content] Syncing content
+10:33:15 [content] Synced content
+10:33:15 [types] Generated 20.13s
+10:33:15 [build] output: "static"
+10:33:15 [build] mode: "static"
+10:33:15 [build] directory: C:\Dev\astro\tptk\dist\
+10:33:15 [build] adapter: @astrojs/vercel
+10:33:15 [build] Collecting build info...
+10:33:15 [build] โ“ Completed in 22.69s.
+10:33:48 [build] Building static entrypoints...
+
+<--- Last few GCs --->
+
+[21760:00000234C18BF000]   455458 ms: Scavenge (interleaved) 4059.9 (4094.5) -> 4059.2 (4115.3) MB, pooled: 0 MB, 28.02 / 0.00 ms  (average mu = 0.505, current mu = 0.278) allocation failure; 
+[21760:00000234C18BF000]   457482 ms: Mark-Compact (reduce) 4073.3 (4115.3) -> 4069.0 (4099.3) MB, pooled: 0 MB, 618.99 / 0.00 ms  (+ 1081.6 ms in 215 steps since start of marking, biggest step 5.7 ms, walltime since start of marking 1765 ms) (average mu 
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF76113E339 void __cdecl node::OnFatalError(char const * __ptr64,char const * __ptr64)+1225
+ 2: 00007FF761D7FE37 public: class v8::MaybeLocal<class v8::Object> __cdecl v8::Function::NewInstance(class v8::Local<class v8::Context>,int,class v8::Local<class v8::Value> * __ptr64 const)const __ptr64+423
+ 3: 00007FF761B806E7 private: __cdecl v8::base::AddressSpaceReservation::AddressSpaceReservation(void * __ptr64,unsigned __int64) __ptr64+322071
+ 4: 00007FF761B7E386 private: __cdecl v8::base::AddressSpaceReservation::AddressSpaceReservation(void * __ptr64,unsigned __int64) __ptr64+313014
+ 5: 00007FF761B98A3A X509_STORE_set_cleanup+5098
+ 6: 00007FF761BA4E56 uv_timer_set_repeat+20566
+ 7: 00007FF761777E77 public: __cdecl v8::String::Value::~Value(void) __ptr64+143495
+ 8: 00000234F97F733A 

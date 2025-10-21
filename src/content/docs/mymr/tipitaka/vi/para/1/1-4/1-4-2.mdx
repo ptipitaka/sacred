@@ -1,22 +1,11 @@
 ---
-title: 1.4.2 ကောသိယဝဂ္ဂ
+title: "1.4.2 ကောသိယဝဂ္ဂ"
 tableOfContents: false
 sidebar:
   order: 2
-type: tipitaka
-basket: vi
-book: para
-review:
-  current: review
-  updated: '2025-10-18T23:47:54.537921'
-  updated_by: ''
-  notes: ''
-  history:
-  - state: review
-    date: '2025-10-18T23:47:54.537921'
-    updated_by: ''
-    notes: ''
-    previous_state: draft
+type: "tipitaka"
+basket: "vi"
+book: "para"
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
@@ -24,15 +13,8 @@ import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
-import ReviewStatus from '@components/ReviewStatus.astro';
-import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
 
 <DynamicBreadcrumb />
-
-
-<ReviewStatus review={frontmatter.review} showDetails={true} />
-
-<HypothesisAnnotation frontmatter={frontmatter} />
 
 
 

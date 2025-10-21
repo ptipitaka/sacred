@@ -279,9 +279,9 @@ class ReviewStatusManager:
             # เพิ่ม imports หากมี
             if imports_to_add:
                 # หาตำแหน่ง imports
-                import_pattern = r'^(import.*?;)$'
+                import_pattern = r'^(import\s+[^;]+;)$'
                 existing_imports = re.findall(import_pattern, body, re.MULTILINE)
-                
+
                 if existing_imports:
                     # เพิ่มหลังจาก import อื่นๆ
                     last_import = existing_imports[-1]
@@ -291,34 +291,45 @@ class ReviewStatusManager:
                         last_import + new_imports,
                         1
                     )
-                    
-                    # เพิ่ม components หลังจาก imports และ components อื่นๆ
-                    if components_to_add:
-                        lines = body.split('\n')
-                        insert_pos = 0
-                        
-                        # หาตำแหน่งหลังจาก DynamicBreadcrumb หรือหลัง imports
-                        for i, line in enumerate(lines):
-                            if '<DynamicBreadcrumb' in line:
-                                insert_pos = i + 2  # หลังจาก DynamicBreadcrumb และบรรทัดว่าง
-                                break
-                            elif line.strip() == '' and i > 0 and not lines[i-1].strip().startswith('import'):
-                                insert_pos = i
-                                break
-                        
-                        if insert_pos > 0:
-                            # เพิ่ม components ทีละตัว
-                            for j, component_line in enumerate(components_to_add):
-                                lines.insert(insert_pos + j * 2, "")
-                                lines.insert(insert_pos + j * 2 + 1, component_line)
-                            
-                            lines.insert(insert_pos + len(components_to_add) * 2, "")
-                            body = '\n'.join(lines)
                 else:
-                    # ไม่มี imports เลย เพิ่มที่ด้านบน
-                    import_lines = "\n".join(imports_to_add) + "\n" if imports_to_add else ""
-                    component_lines = "\n" + "\n".join(components_to_add) + "\n\n" if components_to_add else ""
-                    body = import_lines + component_lines + body
+                    # ไม่มี imports เลย เพิ่มที่ด้านบนของ body
+                    import_lines = "\n".join(imports_to_add) + "\n"
+                    body = import_lines + body
+
+            if components_to_add:
+                lines = body.split('\n')
+
+                # หา index สำหรับแทรกหลังจากบล็อก import/คอมเมนต์ส่วนต้น
+                insert_index = None
+                for idx, line in enumerate(lines):
+                    stripped = line.strip()
+
+                    # ข้ามบรรทัดว่างช่วงต้น
+                    if stripped == "":
+                        continue
+
+                    # ข้ามคำสั่ง import และคอมเมนต์นำหน้า
+                    if stripped.startswith('import ') or stripped.startswith('//'):
+                        continue
+
+                    insert_index = idx
+                    break
+
+                if insert_index is None:
+                    insert_index = len(lines)
+
+                insertion_block: List[str] = []
+
+                # เว้นบรรทัดว่างก่อนบล็อกใหม่ หากยังไม่มีบรรทัดว่างคั่น
+                if insert_index > 0 and lines[insert_index - 1].strip() != "":
+                    insertion_block.append("")
+
+                for component_line in components_to_add:
+                    insertion_block.append(component_line)
+                    insertion_block.append("")
+
+                lines[insert_index:insert_index] = insertion_block
+                body = '\n'.join(lines)
             
             # สร้าง frontmatter ใหม่
             frontmatter_yaml = yaml.dump(
