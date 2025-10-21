@@ -32,7 +32,7 @@ $locale = 'mymr'
 
 $tasks = @(
     # @{ Book='1V'; Review='para' },
-    @{ Book='2V'; Review='paci' },
+    # @{ Book='2V'; Review='paci' },
     @{ Book='3V'; Review='vi-maha' },
     @{ Book='4V'; Review='cula' },
     @{ Book='5V'; Review='pari' },
