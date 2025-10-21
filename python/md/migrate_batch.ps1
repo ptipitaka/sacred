@@ -1,6 +1,8 @@
 $ErrorActionPreference = 'Stop'
 Set-Location 'C:\Dev\astro\tptk'
 
+$env:NODE_OPTIONS = '--max-old-space-size=14336'
+
 $locale = 'mymr'
 
 $tasks = @(
@@ -35,15 +37,15 @@ $tasks = @(
     # @{ Book='18It'; Review='it' },
     # @{ Book='18Sn'; Review='sn' },
     # @{ Book='19Vv'; Review='vv' },
-    @{ Book='19Pv'; Review='pv' },
-    @{ Book='19Th1'; Review='th1' },
-    @{ Book='19Th2'; Review='th2' },
-    @{ Book='20Ap1'; Review='ap1' },
-    @{ Book='20Ap2'; Review='ap2' },
-    @{ Book='21Bu'; Review='bu' },
-    @{ Book='21Cp'; Review='cp' },
-    @{ Book='22J'; Review='ja1' },
-    @{ Book='23J'; Review='ja2' },
+    # @{ Book='19Pv'; Review='pv' },
+    # @{ Book='19Th1'; Review='th1' },
+    # @{ Book='19Th2'; Review='th2' },
+    # @{ Book='20Ap1'; Review='ap1' },
+    # @{ Book='20Ap2'; Review='ap2' },
+    # @{ Book='21Bu'; Review='bu' },
+    # @{ Book='21Cp'; Review='cp' },
+    # @{ Book='22J'; Review='ja1' },
+    # @{ Book='23J'; Review='ja2' },
     @{ Book='24Mn'; Review='mn' },
     @{ Book='25Cn'; Review='cn' },
     @{ Book='26Ps'; Review='ps' },
