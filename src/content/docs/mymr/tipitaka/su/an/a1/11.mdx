@@ -1,0 +1,25 @@
+---
+title: "11 အဓမ္မဝဂ္ဂ"
+tableOfContents: false
+sidebar:
+  order: 12
+type: "tipitaka"
+basket: "su"
+book: "a1"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+
+
+<TableOfContents book="a1" section="11">
+* [11.1](11/11-1)
+* [11.2](11/11-2)
+* [11.3–10](11/11-3–10)
+</TableOfContents>
