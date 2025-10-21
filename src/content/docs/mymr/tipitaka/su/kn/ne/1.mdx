@@ -1,0 +1,82 @@
+---
+title: 1 သင်္ဂဟဝါရ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: ne
+review:
+  current: review
+  updated: '2025-10-21T08:37:14.208928'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-21T08:37:14.208928'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Division number="0" book="ne" e="ch" v="27">
+
+<Paragraph number="2" type="verses" book="ne">
+_ယံ လောကော ပူဇယတေ,_  
+_သလောကပါလော သဒါ နမဿတိ စ;_  
+_တဿေတ သာသနဝရံ,_  
+_ဝိဒူဟိ ဉေယျံ နရဝရဿ._  
+
+</Paragraph>
+
+<Paragraph number="3" type="verses" book="ne">
+_ဒွါဒသ ပဒါနိ သုတ္တံ,_  
+_တံ သဗ္ဗံ ဗျဉ္ဇနဉ္စ အတ္ထော စ;_  
+_တံ ဝိညေယျံ ဥဘယံ,_  
+_ကော အတ္ထော ဗျဉ္ဇနံ ကတမံ._  
+
+</Paragraph>
+
+<Paragraph number="4" type="verses" book="ne">
+_သောဠသဟာရာ နေတ္တိ,_  
+_ပဉ္စနယာ သာသနဿ ပရိယေဋ္ဌိ;_  
+_အဋ္ဌာရသမူလပဒါ,_  
+_မဟကစ္စာနေန နိဒ္ဒိဋ္ဌာ._  
+
+</Paragraph>
+
+<Paragraph number="5" type="verses" book="ne">
+_ဟာရာ ဗျဉ္ဇနဝိစယော,_  
+_သုတ္တဿ နယာ တယော စ သုတ္တတ္ထော;_  
+ဥဘယံ ပရိဂ္ဂဟီတံ,_  
+_ဝုစ္စတိ သုတ္တံ ယထာသုတ္တံ._  
+
+</Paragraph>
+
+<Paragraph number="6" type="verses" book="ne">
+_ယာ စေဝ ဒေသနာ ယဉ္စ,_  
+_ဒေသိတံ ဥဘယမေဝ ဝိညေယျံ;_  
+_တတြာယမာနုပုဗ္ဗီ,_  
+_နဝဝိဓသုတ္တန္တပရိယေဋ္ဌီတိ._  
+
+
+</Paragraph>
+</Division>
+
+<Paragraph number="7" type="center" book="ne">
+သင်္ဂဟဝါရော.
+</Paragraph>

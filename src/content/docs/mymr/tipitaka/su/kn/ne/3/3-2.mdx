@@ -1,0 +1,81 @@
+---
+title: 3.2 နယသင်္ခေပ
+tableOfContents: false
+sidebar:
+  order: 2
+type: tipitaka
+basket: su
+book: ne
+review:
+  current: review
+  updated: '2025-10-21T08:37:14.246350'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-21T08:37:14.246350'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+<Paragraph number="41" type="verses" book="ne">
+_တဏှဉ္စ အဝိဇ္ဇမ္ပိ စ,_  
+_သမထေန ဝိပဿနာယ ယော နေတိ;_  
+_သစ္စေဟိ ယောဇယိတွာ,_  
+_အယံ နယော <Emphasis>နန္ဒိယာဝဋ္ဋော</Emphasis>._  
+
+</Paragraph>
+
+<Paragraph number="42" type="verses" book="ne">
+_ယော အကုသလေ သမူလေဟိ,_  
+_နေတိ ကုသလေ စ ကုသလမူလေဟိ;_  
+_ဘူတံ တထံ အဝိတထံ,_  
+_<Emphasis>တိပုက္ခလံ</Emphasis> တံ နယံ အာဟု._  
+
+</Paragraph>
+
+<Paragraph number="43" type="verses" book="ne">
+_ယော နေတိ ဝိပလ္လာသေဟိ,_  
+_ကိလေသေ ဣန္ဒြိယေဟိ သဒ္ဓမ္မေ;_  
+_ဧတံ နယံ နယဝိဒူ,_  
+_<Emphasis>သီဟဝိက္ကီဠိတံ</Emphasis> အာဟု._  
+
+</Paragraph>
+
+<Paragraph number="44" type="verses" book="ne">
+_ဝေယျာကရဏေသု ဟိ ယေ,_  
+_ကုသလာကုသလာ တဟိံ တဟိံ ဝုတ္တာ;_  
+_မနသာ ဝေါလောကယတေ,_  
+_တံ ခု <Emphasis>ဒိသာလောစနံ</Emphasis> အာဟု._  
+
+</Paragraph>
+
+<Paragraph number="45" type="verses" book="ne">
+_ဩလောကေတွာ ဒိသလောစနေန,_  
+ဥက္ခိပိယ ယံ သမာနေတိ;_  
+_သဗ္ဗေ ကုသလာကုသလေ,_  
+_အယံ နယော <Emphasis>အင်္ကုသော</Emphasis> နာမ._  
+
+</Paragraph>
+
+<Paragraph number="46" type="verses" book="ne">
+_သောဠသ ဟာရာ ပဌမံ,_  
+_ဒိသလောစနတော ဒိသာ ဝိလောကေတွာ;_  
+_သင်္ခိပိယ အင်္ကုသေန ဟိ,_  
+_နယေဟိ တီဟိ နိဒ္ဒိသေ သုတ္တံ._
+</Paragraph>

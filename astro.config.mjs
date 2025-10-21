@@ -48,34 +48,14 @@ export default defineConfig({
                     label: 'ไทย',
                     lang: 'th',
                 },
-                sinh: {
-                    label: 'සිංහල',
-                    lang: 'si',
-                },
                 romn: {
                     label: 'Roman',
                     lang: 'en',
-                },
-                deva: {
-                    label: 'देवनागरी',
-                    lang: 'hi',
-                },
-                khmr: {
-                    label: 'ខ្មែរ',
-                    lang: 'kh',
-                },
-                laoo: {
-                    label: 'ລາວ',
-                    lang: 'lo',
-                },
-                lana: {
-                    label: 'ᩃᨶ᩠ᨶ',
-                    lang: 'ln',
                 },
             },
             sidebar: sidebarConfig
         }),
     ],
-    output: 'server',
+    output: 'static',
     adapter: vercel(),
 });

@@ -1,0 +1,56 @@
+---
+title: 4.1 ဝိဘင်္ဂ
+tableOfContents: false
+sidebar:
+  order: 1
+type: tipitaka
+basket: su
+book: ne
+review:
+  current: review
+  updated: '2025-10-21T08:37:14.254383'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-21T08:37:14.254383'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<DynamicBreadcrumb />
+
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
+
+
+
+<TableOfContents book="ne" section="4.1">
+* [4.1.1 ဒေသနာဟာရဝိဘင်္ဂ](4-1/4-1-1)
+* [4.1.2 ဝိစယဟာရဝိဘင်္ဂ](4-1/4-1-2)
+* [4.1.3 ယုတ္တိဟာရဝိဘင်္ဂ](4-1/4-1-3)
+* [4.1.4 ပဒဋ္ဌာနဟာရဝိဘင်္ဂ](4-1/4-1-4)
+* [4.1.5 လက္ခဏဟာရဝိဘင်္ဂ](4-1/4-1-5)
+* [4.1.6 စတုဗျူဟဟာရဝိဘင်္ဂ](4-1/4-1-6)
+* [4.1.7 အာဝဋ္ဋဟာရဝိဘင်္ဂ](4-1/4-1-7)
+* [4.1.8 ဝိဘတ္တိဟာရဝိဘင်္ဂ](4-1/4-1-8)
+* [4.1.9 ပရိဝတ္တနဟာရဝိဘင်္ဂ](4-1/4-1-9)
+* [4.1.10 ဝေဝစနဟာရဝိဘင်္ဂ](4-1/4-1-10)
+* [4.1.11 ပညတ္တိဟာရဝိဘင်္ဂ](4-1/4-1-11)
+* [4.1.12 ဩတရဏဟာရဝိဘင်္ဂ](4-1/4-1-12)
+* [4.1.13 သောဓနဟာရဝိဘင်္ဂ](4-1/4-1-13)
+* [4.1.14 အဓိဋ္ဌာနဟာရဝိဘင်္ဂ](4-1/4-1-14)
+* [4.1.15 ပရိက္ခာရဟာရဝိဘင်္ဂ](4-1/4-1-15)
+* [4.1.16 သမာရောပနဟာရဝိဘင်္ဂ](4-1/4-1-16)
+</TableOfContents>
