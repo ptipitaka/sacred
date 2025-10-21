@@ -37,7 +37,7 @@ $tasks = @(
     # @{ Book='4V'; Review='cula' },
     # @{ Book='5V'; Review='pari' },
     # @{ Book='6D'; Review='sila' },
-    @{ Book='7D'; Review='dn-maha' },
+    # @{ Book='7D'; Review='dn-maha' },
     @{ Book='8D'; Review='pthi' },
     @{ Book='9M'; Review='mula' },
     @{ Book='10M'; Review='majj' },
