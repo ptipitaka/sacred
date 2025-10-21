@@ -1,0 +1,25 @@
+---
+title: "2 နိဒ္ဒေသ"
+tableOfContents: false
+sidebar:
+  order: 3
+type: "tipitaka"
+basket: "ab"
+book: "y8"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+
+
+<TableOfContents book="y8" section="2">
+* [2.1 သုဒ္ဓစိတ္တသာမည](2/2-1)
+* [2.2 သုတ္တန္တစိတ္တမိဿကဝိသေသ](2/2-2)
+* [2.3 အဘိဓမ္မစိတ္တမိဿကဝိသေသ](2/2-3)
+</TableOfContents>
