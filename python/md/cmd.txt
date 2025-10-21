@@ -1,5 +1,0 @@
-SELECT
-  book_abbrv, book_id, paragraph_number, page_number
-FROM paragraphs
-WHERE
-  book_id LIKE 'mula_%';
