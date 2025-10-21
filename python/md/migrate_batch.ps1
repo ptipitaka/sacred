@@ -34,7 +34,7 @@ $tasks = @(
     # @{ Book='1V'; Review='para' },
     # @{ Book='2V'; Review='paci' },
     # @{ Book='3V'; Review='vi-maha' },
-    @{ Book='4V'; Review='cula' },
+    # @{ Book='4V'; Review='cula' },
     @{ Book='5V'; Review='pari' },
     @{ Book='6D'; Review='sila' },
     @{ Book='7D'; Review='dn-maha' },
@@ -145,8 +145,22 @@ foreach ($task in $tasks) {
     git commit -m "Migrate $($task.Book) $locale"
     if ($LASTEXITCODE -ne 0) { throw "git commit failed for $($task.Book)" }
 
-    git push
-    if ($LASTEXITCODE -ne 0) { throw "git push failed for $($task.Book)" }
+    while ($true) {
+        $pushAnswer = Read-Host "Push changes for $($task.Book) now? (y/n)"
+
+        if ($pushAnswer -match '^(?i)y(es)?$') {
+            git push
+            if ($LASTEXITCODE -ne 0) { throw "git push failed for $($task.Book)" }
+            break
+        }
+
+        if ($pushAnswer -match '^(?i)n(o)?$') {
+            Write-Host "Push skipped for $($task.Book); stopping batch so you can push manually." -ForegroundColor Yellow
+            return
+        }
+
+        Write-Host "Please answer y or n." -ForegroundColor Yellow
+    }
 
     CommentCompletedTask -Book $task.Book -Review $task.Review
 }
