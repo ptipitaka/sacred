@@ -1,0 +1,24 @@
+---
+title: "ဝိဂတ"
+tableOfContents: false
+sidebar:
+  order: 22
+type: "tipitaka"
+basket: "ab"
+book: "p1-1"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+
+
+<TableOfContents book="p1-1">
+* [ဝိဂတသဘာဂ](vigatasabhaga)
+* [ဝိဂတဃဋနာ](vigataghatana)
+</TableOfContents>

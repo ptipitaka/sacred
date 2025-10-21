@@ -1,0 +1,30 @@
+---
+title: "မဂ္ဂ"
+tableOfContents: false
+sidebar:
+  order: 13
+type: "tipitaka"
+basket: "ab"
+book: "p1-1"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+
+
+<TableOfContents book="p1-1">
+* [မဂ္ဂဒုက](maggaduka)
+* [မဂ္ဂသာမညဃဋနာ](maggasamannaghatana)
+* [သဲန္ဒြိယဃဋနာ](saindriyaghatana)
+* [သဈာနဃဋနာ](sajhanaghatana)
+* [သဲန္ဒြိယ-ဈာနဃဋနာ](saindriya-jhanaghatana)
+* [သာဓိပတိ-ဣန္ဒြိယဃဋနာ](sadhipati-indriyaghatana)
+* [သဟေတု-ဣန္ဒြိယဃဋနာ](sahetu-indriyaghatana)
+* [သဟေတာဓိပတိ-ဣန္ဒြိယဃဋနာ](sahetadhipati-indriyaghatana)
+</TableOfContents>

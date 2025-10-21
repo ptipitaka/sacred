@@ -1,0 +1,29 @@
+---
+title: "နဝိပါကဒုက"
+tableOfContents: false
+sidebar:
+  order: 7
+type: "tipitaka"
+basket: "ab"
+book: "p1-1"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Division number="252" book="p1-1" e="ch" v="36" p="72">
+
+<Paragraph number="806" book="p1-1">
+နဝိပါကပစ္စယာ ဟေတုယာ တီဏိ. (သံခိတ္တံ. ပရိပုဏ္ဏံ.) အဝိဂတေ တီဏိ.
+
+</Paragraph>
+</Division>
+
+<TableOfContents book="p1-1">
+* [ပဉ္စက](pancaka)
+</TableOfContents>

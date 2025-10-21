@@ -1,0 +1,29 @@
+---
+title: "အဓိပတိ"
+tableOfContents: false
+sidebar:
+  order: 1
+type: "tipitaka"
+basket: "ab"
+book: "p1-1"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+
+
+<TableOfContents book="p1-1">
+* [အဓိပတိသဘာဂ](adhipatisabhaga)
+* [အဓိပတိမိဿကဃဋနာ](adhipatimissakaghatana)
+* [ပကိဏ္ဏကဃဋနာ](pakinnakaghatana)
+* [သဟဇာတဆန္ဒာဓိပတိဃဋနာ](sahajatachandadhipatighatana)
+* [စိတ္တာဓိပတိဃဋနာ](cittadhipatighatana)
+* [ဝီရိယာဓိပတိဃဋနာ](viriyadhipatighatana)
+* [ဝီမံသာဓိပတိဃဋနာ](vimamsadhipatighatana)
+</TableOfContents>

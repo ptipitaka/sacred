@@ -1,0 +1,33 @@
+---
+title: "နဟေတုဒုက"
+tableOfContents: false
+sidebar:
+  order: 2
+type: "tipitaka"
+basket: "ab"
+book: "p1-1"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+<Division number="224" book="p1-1" e="ch" v="36" p="64">
+
+<Paragraph number="729" book="p1-1">
+နဟေတုပစ္စယာ နအဓိပတိယာ ဒွေ, နပုရေဇာတေ ဒွေ, နပစ္ဆာဇာတေ ဒွေ, နအာသေဝနေ ဒွေ, နကမ္မေ ဧကံ, နဝိပါကေ ဒွေ, နဈာနေ ဧကံ, နမဂ္ဂေ ဧကံ, နဝိပ္ပယုတ္တေ ဒွေ.
+
+</Paragraph>
+</Division>
+
+<TableOfContents book="p1-1">
+* [တိက](tika)
+* [စတုက္က](catukka)
+* [ဆက္က](chakka)
+* [သတ္တက](sattaka)
+* [နဝက](navaka)
+</TableOfContents>
