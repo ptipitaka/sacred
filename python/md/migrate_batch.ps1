@@ -62,7 +62,7 @@ function Get-VercelQueuedDeploymentCount {
 $locale = 'romn'
 
 $tasks = @(
-    @{ Book='1V'; Review='para' },
+    # @{ Book='1V'; Review='para' },
     @{ Book='2V'; Review='paci' },
     @{ Book='3V'; Review='vi-maha' },
     @{ Book='4V'; Review='cula' },
