@@ -128,7 +128,7 @@ $tasks = @(
     # @{ Book='38P2'; Review='p2' },
     # @{ Book='39P3'; Review='p3' },
     # @{ Book='39P4'; Review='p4' },
-    @{ Book='39P5'; Review='p5' },
+    # @{ Book='39P5'; Review='p5' },
     @{ Book='39P6'; Review='p6' },
     @{ Book='40P7'; Review='p7' },
     @{ Book='40P8'; Review='p8' },
