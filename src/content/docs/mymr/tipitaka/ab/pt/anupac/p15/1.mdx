@@ -1,0 +1,25 @@
+---
+title: "1 ဟေတုဒုက, ကုသလတ္တိက"
+tableOfContents: false
+sidebar:
+  order: 2
+type: "tipitaka"
+basket: "ab"
+book: "p15"
+---
+import Division from '@components/Division.astro';
+import Paragraph from '@components/Paragraph.astro';
+import Emphasis from '@components/Emphasis.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+
+<DynamicBreadcrumb />
+
+
+
+<TableOfContents book="p15" section="1">
+* [1.1 ကုသလပဒ](1/1-1)
+* [1.2 အကုသလပဒ](1/1-2)
+* [1.3 အဗျာကတပဒ](1/1-3)
+</TableOfContents>
