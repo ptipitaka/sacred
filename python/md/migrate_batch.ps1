@@ -6,7 +6,7 @@ $env:NODE_OPTIONS = '--max-old-space-size=14336'
 $scriptPath = $PSCommandPath
 $vercelToken = '12u9EwNeXPAiWcfeGkEgGESA'
 $vercelProjectId = 'sacred'
-$vercelQueueCheckIntervalSeconds = 600
+$vercelQueueCheckIntervalSeconds = 120
 
 function CommentCompletedTask {
     param(
