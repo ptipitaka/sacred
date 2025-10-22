@@ -1,11 +1,22 @@
 ---
-title: "2.4.16 ဓမ္မိကဝဂ္ဂ"
+title: 2.4.16 ဓမ္မိကဝဂ္ဂ
 tableOfContents: false
 sidebar:
   order: 16
-type: "tipitaka"
-basket: "vi"
-book: "paci"
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-22T11:23:25.961954'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-22T11:23:25.961954'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
@@ -13,6 +24,12 @@ import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 

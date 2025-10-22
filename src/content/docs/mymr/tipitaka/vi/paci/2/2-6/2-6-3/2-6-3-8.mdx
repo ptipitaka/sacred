@@ -1,13 +1,30 @@
 ---
-title: "2.6.3.8 ပတ္တသညီပဋိဂ္ဂဟဏသိက္ခာပဒ"
+title: 2.6.3.8 ပတ္တသညီပဋိဂ္ဂဟဏသိက္ခာပဒ
 tableOfContents: false
 sidebar:
   order: 8
-type: "tipitaka"
-basket: "vi"
-book: "paci"
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-22T11:23:31.216542'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-22T11:23:31.216542'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 

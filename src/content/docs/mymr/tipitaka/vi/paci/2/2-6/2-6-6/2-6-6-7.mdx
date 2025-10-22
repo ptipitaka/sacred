@@ -1,13 +1,30 @@
 ---
-title: "2.6.6.7 ဆတ္တပါဏိသိက္ခာပဒ"
+title: 2.6.6.7 ဆတ္တပါဏိသိက္ခာပဒ
 tableOfContents: false
 sidebar:
   order: 7
-type: "tipitaka"
-basket: "vi"
-book: "paci"
+type: tipitaka
+basket: vi
+book: paci
+review:
+  current: review
+  updated: '2025-10-22T11:23:31.849685'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-22T11:23:31.849685'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 

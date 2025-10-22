@@ -1,11 +1,22 @@
 ---
-title: "1.4 နိဿဂ္ဂိယကဏ္ဍ"
+title: 1.4 နိဿဂ္ဂိယကဏ္ဍ
 tableOfContents: false
 sidebar:
   order: 5
-type: "tipitaka"
-basket: "vi"
-book: "para"
+type: tipitaka
+basket: vi
+book: para
+review:
+  current: review
+  updated: '2025-10-22T11:23:32.347687'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-22T11:23:32.347687'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
@@ -13,6 +24,12 @@ import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 
