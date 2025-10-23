@@ -1,17 +1,34 @@
 ---
-title: "34 မဂ္ဂါရမ္မဏတ္တိက, ကုသလတ္တိက"
+title: 34 မဂ္ဂါရမ္မဏတ္တိက, ကုသလတ္တိက
 tableOfContents: false
 sidebar:
   order: 35
-type: "tipitaka"
-basket: "ab"
-book: "p23"
+type: tipitaka
+basket: ab
+book: p23
+review:
+  current: review
+  updated: '2025-10-23T09:21:30.055768'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-23T09:21:30.055768'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
 import Emphasis from '@components/Emphasis.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 

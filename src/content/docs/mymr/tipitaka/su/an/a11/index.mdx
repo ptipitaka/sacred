@@ -1,16 +1,33 @@
 ---
-title: "ဧကာဒသကနိပါတပါဠိ"
+title: ဧကာဒသကနိပါတပါဠိ
 tableOfContents: false
 sidebar:
   order: 1
-type: "tipitaka"
-basket: "su"
-book: "a11"
+type: tipitaka
+basket: su
+book: a11
+review:
+  current: review
+  updated: '2025-10-23T09:13:23.391768'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-23T09:13:23.391768'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
 import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <Paragraph number="1" type="center" book="a11">
 နမော တဿ ဘဂဝတော အရဟတော သမ္မာသမ္ဗုဒ္ဓဿ.

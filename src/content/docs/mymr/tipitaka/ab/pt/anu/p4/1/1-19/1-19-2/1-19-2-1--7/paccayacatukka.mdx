@@ -1,11 +1,22 @@
 ---
-title: "ပစ္စယစတုက္က"
+title: ပစ္စယစတုက္က
 tableOfContents: false
 sidebar:
   order: 1
-type: "tipitaka"
-basket: "ab"
-book: "p4"
+type: tipitaka
+basket: ab
+book: p4
+review:
+  current: review
+  updated: '2025-10-23T09:21:23.855920'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-23T09:21:23.855920'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
@@ -13,6 +24,12 @@ import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 

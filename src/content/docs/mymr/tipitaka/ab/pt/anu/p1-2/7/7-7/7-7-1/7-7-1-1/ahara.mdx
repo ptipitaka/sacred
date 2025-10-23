@@ -1,17 +1,34 @@
 ---
-title: "အာဟာရ"
+title: အာဟာရ
 tableOfContents: false
 sidebar:
   order: 2
-type: "tipitaka"
-basket: "ab"
-book: "p1-2"
+type: tipitaka
+basket: ab
+book: p1-2
+review:
+  current: review
+  updated: '2025-10-23T09:21:01.679264'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-23T09:21:01.679264'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
 import Emphasis from '@components/Emphasis.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 

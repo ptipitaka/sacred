@@ -1,13 +1,30 @@
 ---
-title: "1.3.1–2 ပဋိစ္စာဒိဝါရ"
+title: 1.3.1–2 ပဋိစ္စာဒိဝါရ
 tableOfContents: false
 sidebar:
   order: 1
-type: "tipitaka"
-basket: "ab"
-book: "p15"
+type: tipitaka
+basket: ab
+book: p15
+review:
+  current: review
+  updated: '2025-10-23T09:21:27.537090'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-23T09:21:27.537090'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 

@@ -1,13 +1,30 @@
 ---
-title: "3.5.1.3–4 ပစ္စယာနုလောမာဒိ"
+title: 3.5.1.3–4 ပစ္စယာနုလောမာဒိ
 tableOfContents: false
 sidebar:
   order: 3
-type: "tipitaka"
-basket: "ab"
-book: "p2"
+type: tipitaka
+basket: ab
+book: p2
+review:
+  current: review
+  updated: '2025-10-23T09:21:12.116816'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-23T09:21:12.116816'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 

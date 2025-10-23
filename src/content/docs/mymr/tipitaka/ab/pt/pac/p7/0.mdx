@@ -1,17 +1,34 @@
 ---
-title: "40ပ်7 ဓမ္မပစ္စနီယ (2), တိကပဋ္ဌာနပါဠိ (1)"
+title: 40ပ်7 ဓမ္မပစ္စနီယ (2), တိကပဋ္ဌာနပါဠိ (1)
 tableOfContents: false
 sidebar:
   order: 1
-type: "tipitaka"
-basket: "ab"
-book: "p7"
+type: tipitaka
+basket: ab
+book: p7
+review:
+  current: review
+  updated: '2025-10-23T09:21:28.570613'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-23T09:21:28.570613'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
 import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
 
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <Paragraph type="center" book="p7">
 [ဟောမေ](/)

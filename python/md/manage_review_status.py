@@ -13,6 +13,7 @@ Usage:
     python python/utils/manage_review_status.py --state draft --updated-by "admin"
     python python/utils/manage_review_status.py --state review --basket vi --updated-by "reviewer1"
     python python/utils/manage_review_status.py --state draft --basket vi --book para --locale romn --locale thai
+    python python/utils/manage_review_status.py --state draft --summary-only
 """
 
 import os
@@ -44,10 +45,11 @@ def parse_locale_args(locale_args: Optional[List[str]]) -> Optional[List[str]]:
 class ReviewStatusManager:
     """จัดการสถานะการตรวจทานเอกสาร"""
     
-    def __init__(self, content_dir: str = "src/content/docs"):
+    def __init__(self, content_dir: str = "src/content/docs", quiet: bool = False):
         self.project_root = Path(__file__).resolve().parents[2]
         self.content_dir = self._resolve_content_dir(Path(content_dir))
         self.valid_states = ["draft", "review", "revision", "approved", "published"]
+        self.quiet = quiet
         
         # ตรวจสอบว่าอยู่ใน virtual environment หรือไม่
         if not self._check_venv():
@@ -254,7 +256,8 @@ class ReviewStatusManager:
             
             # ถ้าสถานะเดิมกับใหม่เหมือนกัน ให้แจ้งเตือน
             if previous_state == new_state and not notes:
-                print(f"⚠️  สถานะเดิมกับใหม่เหมือนกัน ({new_state}) ใน {file_path.name}")
+                if not self.quiet:
+                    print(f"⚠️  สถานะเดิมกับใหม่เหมือนกัน ({new_state}) ใน {file_path.name}")
                 return True  # ถือว่าสำเร็จแต่ไม่ต้องทำอะไร
             
             # สร้างข้อมูล review ใหม่
@@ -350,7 +353,8 @@ class ReviewStatusManager:
             return True
             
         except Exception as e:
-            print(f"❌ ข้อผิดพลาดในไฟล์ {file_path}: {e}")
+            if not self.quiet:
+                print(f"❌ ข้อผิดพลาดในไฟล์ {file_path}: {e}")
             return False
     
     def batch_update(self, 
@@ -368,26 +372,30 @@ class ReviewStatusManager:
         }
         
         for file_path in files:
-            try:
-                relative_path = file_path.relative_to(Path.cwd())
-                print(f"🔄 กำลังอัปเดต: {relative_path}")
-            except ValueError:
-                # ถ้า relative path ไม่ได้ ให้ใช้ชื่อไฟล์แทน
-                print(f"🔄 กำลังอัปเดต: {file_path}")
+            if not self.quiet:
+                try:
+                    relative_path = file_path.relative_to(Path.cwd())
+                    print(f"🔄 กำลังอัปเดต: {relative_path}")
+                except ValueError:
+                    # ถ้า relative path ไม่ได้ ให้ใช้ชื่อไฟล์แทน
+                    print(f"🔄 กำลังอัปเดต: {file_path}")
             
             try:
                 if self.update_review_status(file_path, new_state, updated_by, notes):
                     results["success"] += 1
                     results["files"].append(str(file_path))
-                    print(f"✅ สำเร็จ: {file_path.name}")
+                    if not self.quiet:
+                        print(f"✅ สำเร็จ: {file_path.name}")
                 else:
                     results["failed"] += 1
                     results["errors"].append(f"ล้มเหลว: {file_path}")
-                    print(f"❌ ล้มเหลว: {file_path.name}")
+                    if not self.quiet:
+                        print(f"❌ ล้มเหลว: {file_path.name}")
             except Exception as e:
                 results["failed"] += 1
                 results["errors"].append(f"ข้อผิดพลาด {file_path}: {e}")
-                print(f"❌ ข้อผิดพลาด {file_path.name}: {e}")
+                if not self.quiet:
+                    print(f"❌ ข้อผิดพลาด {file_path.name}: {e}")
         
         return results
     
@@ -456,6 +464,9 @@ def main():
   # ทดสอบก่อนอัปเดต
   python python/utils/manage_review_status.py --state review --basket vi --dry-run
   
+    # อัปเดตโดยแสดงเฉพาะสรุปหลังจบงาน
+    python python/utils/manage_review_status.py --state draft --basket vi --summary-only
+
   # ข้ามขั้นตอน - เปลี่ยนจาก draft ไป approved ได้
   python python/utils/manage_review_status.py --state approved --file "path/to/file.mdx" --updated-by "validator"
         """
@@ -491,6 +502,9 @@ def main():
     parser.add_argument("--content-dir",
                        default="src/content/docs",
                        help="โฟลเดอร์เนื้อหา (default: src/content/docs)")
+    parser.add_argument("--summary-only",
+                       action="store_true",
+                       help="แสดงเฉพาะสรุปผลหลังจบการอัปเดต (ไม่พิมพ์ log ต่อไฟล์)")
     
     args = parser.parse_args()
     selected_locales = parse_locale_args(args.locale)
@@ -503,7 +517,7 @@ def main():
     print("   สคริปต์จัดการสถานะการตรวจทานเอกสารพระไตรปิฎก")
     print()
     
-    manager = ReviewStatusManager(args.content_dir)
+    manager = ReviewStatusManager(args.content_dir, quiet=args.summary_only)
     
     # หาไฟล์ที่ต้องทำงาน
     if args.file:

@@ -1,11 +1,22 @@
 ---
-title: "4.4 အရိယမဂ္ဂဝဂ္ဂ"
+title: 4.4 အရိယမဂ္ဂဝဂ္ဂ
 tableOfContents: false
 sidebar:
   order: 4
-type: "tipitaka"
-basket: "su"
-book: "a10"
+type: tipitaka
+basket: su
+book: a10
+review:
+  current: review
+  updated: '2025-10-23T09:13:23.121253'
+  updated_by: ''
+  notes: ''
+  history:
+  - state: review
+    date: '2025-10-23T09:13:23.121253'
+    updated_by: ''
+    notes: ''
+    previous_state: draft
 ---
 import Division from '@components/Division.astro';
 import Paragraph from '@components/Paragraph.astro';
@@ -13,6 +24,12 @@ import Emphasis from '@components/Emphasis.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 
 import DynamicBreadcrumb from '@components/DynamicBreadcrumb.astro';
+import ReviewStatus from '@components/ReviewStatus.astro';
+import HypothesisAnnotation from '@components/HypothesisAnnotation.astro';
+
+<ReviewStatus review={frontmatter.review} showDetails={true} />
+
+<HypothesisAnnotation frontmatter={frontmatter} />
 
 <DynamicBreadcrumb />
 
