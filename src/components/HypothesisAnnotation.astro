@@ -45,6 +45,7 @@ const groupId = getGroupIdForSelection(selectedGroup);
 // Get final configuration with group settings
 const hypothesisConfig = getHypothesisConfig('development', {
   group: groupId,
+  openSidebar: false,
   ...configOverrides
 });
 
