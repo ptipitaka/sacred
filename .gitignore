@@ -31,6 +31,8 @@ python/md/tipitaka/
 .venv/
 .vscode/
 
-# public
-public/tipitaka/chr/*
+# public - exclude all scanned images from git (stored on DigitalOcean Spaces)
+public/tipitaka/
 
+.vercel
+scripts/spaces-secrets.ps1

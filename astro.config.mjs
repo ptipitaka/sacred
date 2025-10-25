@@ -2,8 +2,6 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { sidebarConfig } from './python/md/navigator.js';
 
-import vercel from '@astrojs/vercel';
-
 // https://astro.build/config
 export default defineConfig({
     vite: {
@@ -57,5 +55,5 @@ export default defineConfig({
         }),
     ],
     output: 'static',
-    adapter: vercel(),
+    // Removed Vercel adapter - deploying to DigitalOcean Spaces as static site
 });

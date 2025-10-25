@@ -1,0 +1,62 @@
+name: Deploy to DigitalOcean Spaces
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro site
+        run: npm run build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=8192'
+
+      - name: Install s3cmd
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y s3cmd
+
+      - name: Configure s3cmd
+        run: |
+          cat > ~/.s3cfg << EOF
+          [default]
+          access_key = ${{ secrets.DO_SPACES_ACCESS_KEY }}
+          secret_key = ${{ secrets.DO_SPACES_SECRET_KEY }}
+          host_base = ${{ secrets.DO_SPACES_REGION }}.digitaloceanspaces.com
+          host_bucket = %(bucket)s.${{ secrets.DO_SPACES_REGION }}.digitaloceanspaces.com
+          use_https = True
+          EOF
+
+      - name: Deploy to DigitalOcean Spaces
+        run: |
+          s3cmd sync --acl-public --no-mime-magic --delete-removed \
+            --add-header="Cache-Control: public, max-age=31536000, immutable" \
+            --exclude="*.html" \
+            dist/ s3://${{ secrets.DO_SPACES_BUCKET }}/
+          
+          s3cmd sync --acl-public --no-mime-magic --delete-removed \
+            --add-header="Cache-Control: public, max-age=0, must-revalidate" \
+            --include="*.html" --exclude="*" \
+            dist/ s3://${{ secrets.DO_SPACES_BUCKET }}/
+
+      - name: Deployment complete
+        run: |
+          echo "🚀 Site deployed successfully!"
+          echo "Visit: https://${{ secrets.DO_SPACES_BUCKET }}.${{ secrets.DO_SPACES_REGION }}.cdn.digitaloceanspaces.com"
