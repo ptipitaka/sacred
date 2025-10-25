@@ -11,6 +11,12 @@ class BookViewer {
         
         /** @type {string|null} */
         this.currentEdition = null; // Required parameter, no default
+
+        /** @type {Array<string>} */
+        this.validEditions = [];
+
+        /** @type {string|null} */
+        this.defaultEdition = null;
         
         /** @type {number} */
         this.totalPages = 0;
@@ -41,6 +47,12 @@ class BookViewer {
         
         /** @type {number} */
         this.maxCacheSize = 20; // จำกัดจำนวนรูปใน cache
+
+        /** @type {Set<number>} */
+        this.preloadedPages = new Set();
+
+        /** @type {boolean} */
+        this.hashListenerRegistered = false;
         
         // เรียกใช้ init แบบ async
         this.init().catch(error => {
@@ -155,27 +167,53 @@ class BookViewer {
         return null;
     }
 
+    getVolumeCacheKey(volumeFolder, edition = null) {
+        const editionKey = edition || this.currentEdition || '';
+        return `${editionKey}::${volumeFolder}`;
+    }
+
     // ฟังก์ชันสำหรับทำให้ edition เป็นมาตรฐาน
     normalizeEdition(edition) {
-        if (!edition) return null; // ไม่มี default, ต้องใส่
-        
+        if (!edition) return null;
+
         const ed = edition.toLowerCase().trim();
-        
-        // รองรับ editions ที่มีอยู่
-        const validEditions = ['ch', 'mc'];
-        
-        if (validEditions.includes(ed)) {
+        if (!ed) return null;
+
+        if (this.bookViewerMetadata?.editions?.[ed]) {
             return ed;
         }
-        
-        // ถ้าไม่ใช่ edition ที่รองรับ ให้คืน null
+
+        if (this.validEditions?.length && this.validEditions.includes(ed)) {
+            return ed;
+        }
+
         console.warn(`Invalid edition: ${edition}`);
         return null;
+    }
+
+    getEditionTitleText(editionKey) {
+        if (!editionKey) return '';
+        const rawTitle = this.bookViewerMetadata?.editions?.[editionKey]?.title;
+        if (typeof rawTitle === 'string') {
+            const trimmed = rawTitle.trim();
+            if (trimmed) {
+                return trimmed;
+            }
+        }
+        return '';
+    }
+
+    getEditionDisplayLabel(editionKey) {
+        const title = this.getEditionTitleText(editionKey);
+        return title ? `${editionKey.toUpperCase()} - ${title}` : editionKey.toUpperCase();
     }
 
     // แสดงข้อความเตือนเมื่อไม่มี edition
     showEditionRequired() {
         const container = document.querySelector('.container');
+        const availableEditionsText = this.validEditions?.length
+            ? this.validEditions.map(ed => this.getEditionDisplayLabel(ed)).join(', ')
+            : 'Unavailable';
         if (container) {
             container.innerHTML = `
                 <div class="header">
@@ -192,7 +230,7 @@ class BookViewer {
                             <h4 style="color: #1565c0; margin-bottom: 10px;">📝 Parameters ที่ต้องใส่:</h4>
                             <div style="margin: 10px 0; padding-left: 20px;">
                                 <p><strong>edition/e</strong> = เลือกฉบับ (<span style="color:red;">*</span>)</p>
-                                <p><strong>volume/v</strong> = เลขเล่ม</p>
+                                <p><strong>volume/v</strong> = เลขเล่ม (ตามฉบับ)</p>
                                 <p><strong>page/p</strong> = เลขหน้า</p>
                             </div>
                         </div>
@@ -206,6 +244,7 @@ class BookViewer {
                         <div style="font-family: monospace; background: #f5f5f5; padding: 10px; border-radius: 4px; margin: 10px 0;">
                             <span style="color: #1976d2;">?e=[ฉบับ]&v=[เล่ม]&p=[หน้า]</span>
                         </div>
+                        <p style="margin-top: 20px;">Available editions: ${availableEditionsText}</p>
                     </div>
                     
 
@@ -219,10 +258,12 @@ class BookViewer {
         if (flipbookContainer) flipbookContainer.style.display = 'none';
         if (controls) controls.style.display = 'none';
         
-        console.error('Edition parameter is required. Please add &ed=ch or &ed=mc to URL');
+        console.error(`Edition parameter is required. Available editions: ${availableEditionsText}`);
     }
 
     async init() {
+        await this.loadBookViewerMetadata();
+        this.setupEditionList();
         await this.setupVolumeSelector();
         this.setupEventListeners();
         this.setupKeyboardShortcuts();
@@ -256,61 +297,78 @@ class BookViewer {
         // รองรับเฉพาะ 2 รูปแบบ: แบบย่อ และ แบบเต็ม
         const rawVolume = params.get('volume') || params.get('v');
         const page = params.get('page') || params.get('p');
-        const rawEdition = params.get('edition') || params.get('e');
-        
-        // ทำให้ volume ID และ edition เป็นมาตรฐาน
-        const volume = this.normalizeVolumeId(rawVolume);
-        const edition = this.normalizeEdition(rawEdition);
-        
-        console.log('URL Parameters detected:', { rawVolume, volume, page, rawEdition, edition });
-        
-        // ตรวจสอบว่ามี edition หรือไม่
+        const rawEdition = params.get('edition') || params.get('e') || params.get('ed');
+
+        const editionFromParams = this.normalizeEdition(rawEdition);
+        let edition = editionFromParams || this.defaultEdition;
+
+        console.log('URL Parameters detected:', { rawVolume, page, rawEdition, edition });
+
         if (!edition) {
             this.showEditionRequired();
             return;
         }
-        
-        // ตั้งค่า edition ปัจจุบัน
+
+        if (rawEdition && !editionFromParams) {
+            console.warn(`Edition ${rawEdition} not found. Falling back to ${edition}.`);
+        }
+
         this.currentEdition = edition;
-        
-        // อัปเดต UI เพื่อแสดง edition
+
         await this.updateEditionDisplay();
-        
-        // ตรวจสอบว่า volume ที่ระบุใน URL มีอยู่หรือไม่
+
+        if (!editionFromParams) {
+            this.updateURL(null, null, this.currentEdition);
+        }
+
+        const volume = this.normalizeVolumeId(rawVolume);
         if (rawVolume && !volume) {
-            alert(`Volume ${rawVolume} not found in ${edition.toUpperCase()} edition\nPlease select an available volume from dropdown`);
-            // เคลียร์ URL parameters ที่ไม่ถูกต้อง
-            history.pushState(null, null, window.location.pathname + `?edition=${edition}`);
+            alert(`Volume ${rawVolume} not found in ${this.currentEdition.toUpperCase()} edition\nPlease select an available volume from the dropdown.`);
+            const volumeSelect = document.getElementById('volumeSelect');
+            if (volumeSelect) {
+                volumeSelect.value = '';
+            }
+            this.hideFlipbook();
+            this.updateURL(null, null, this.currentEdition);
             return;
         }
-        
+
         if (volume) {
-            // ตั้งค่า flag เพื่อป้องกัน URL update ซ้ำ
             this.isLoadingFromURL = true;
-            
-            // ตั้งค่า volume selector
+
             const volumeSelect = document.getElementById('volumeSelect');
             if (volumeSelect) {
                 volumeSelect.value = volume;
-                
-                // โหลด volume แล้วไปหน้าที่ระบุ
-                this.loadVolume(volume).then(() => {
-                    if (page) {
-                        const pageNum = parseInt(page);
-                        if (pageNum > 0 && pageNum <= this.totalPages) {
-                            this.goToPage(pageNum - 1); // Convert to 0-based index
-                        }
-                    }
-                    // รีเซ็ต flag หลังจากโหลดเสร็จ
-                    this.isLoadingFromURL = false;
-                });
             }
+
+            try {
+                await this.loadVolume(volume);
+            } finally {
+                this.isLoadingFromURL = false;
+            }
+
+            if (page) {
+                const pageNum = parseInt(page, 10);
+                if (!Number.isNaN(pageNum) && pageNum > 0 && pageNum <= this.totalPages) {
+                    await this.goToPage(pageNum - 1); // Convert to 0-based index
+                }
+            } else {
+                this.updateURL(volume, null, this.currentEdition);
+            }
+        } else {
+            const volumeSelect = document.getElementById('volumeSelect');
+            if (volumeSelect) {
+                volumeSelect.value = '';
+            }
+            this.hideFlipbook();
         }
-        
-        // Listen for hash changes (สำหรับ single page app navigation)
-        window.addEventListener('hashchange', () => {
-            this.handleURLParameters();
-        });
+
+        if (!this.hashListenerRegistered) {
+            window.addEventListener('hashchange', () => {
+                this.handleURLParameters();
+            });
+            this.hashListenerRegistered = true;
+        }
     }
 
     /**
@@ -322,30 +380,26 @@ class BookViewer {
             await this.loadBookViewerMetadata();
         }
 
+        if (!this.currentEdition) {
+            return;
+        }
+
         // อัปเดต header title เพื่อแสดง edition
         const headerTitle = document.querySelector('.header h1');
         if (headerTitle) {
-            let displayTitle = this.currentEdition.toUpperCase();
-            
-            // ใช้ชื่อเต็มจาก metadata ถ้ามี
-            if (this.bookViewerMetadata && 
-                this.bookViewerMetadata.editions && 
-                this.bookViewerMetadata.editions[this.currentEdition]) {
-                displayTitle = this.bookViewerMetadata.editions[this.currentEdition].title;
-            }
-            
+            const displayTitle = this.getEditionTitleText(this.currentEdition) || this.currentEdition.toUpperCase();
             headerTitle.textContent = displayTitle;
         }
         
         // อัปเดต document title
-        let docTitle = this.currentEdition.toUpperCase();
-        if (this.bookViewerMetadata && 
-            this.bookViewerMetadata.editions && 
-            this.bookViewerMetadata.editions[this.currentEdition]) {
-            docTitle = this.bookViewerMetadata.editions[this.currentEdition].title;
-        }
+        const docTitle = this.getEditionTitleText(this.currentEdition) || this.currentEdition.toUpperCase();
         document.title = `${docTitle} - Book Viewer`;
-        
+
+        const editionSelect = document.getElementById('editionSelect');
+        if (editionSelect && this.currentEdition) {
+            editionSelect.value = this.currentEdition;
+        }
+
         // อัปเดต volume selector สำหรับ edition นี้
         await this.updateVolumeSelector(this.currentEdition);
     }
@@ -532,7 +586,6 @@ class BookViewer {
                 // สร้าง text สำหรับ option โดยใช้ title และ desc ถ้ามี
                 let optionText = `Volume ${volume.name}`;
                 if (volume.volumeName && volume.volumeName !== `เล่ม ${volume.id}`) {
-                    // ถ้ามี volumeName (title) ที่ไม่ใช่ค่า default
                     optionText = `Volume ${volume.name} - ${volume.volumeName}`;
                 }
                 
@@ -556,13 +609,110 @@ class BookViewer {
         }
     }
 
+    setupEditionList() {
+        const editionSelect = document.getElementById('editionSelect');
+        const container = document.querySelector('.container');
+        const datasetEdition = container?.dataset?.defaultEdition || null;
+
+        if (this.bookViewerMetadata?.editions) {
+            this.validEditions = Object.keys(this.bookViewerMetadata.editions);
+        } else if (editionSelect) {
+            this.validEditions = Array.from(editionSelect.options)
+                .map(option => option.value)
+                .filter(Boolean);
+        } else {
+            this.validEditions = [];
+        }
+
+        const preferred = this.normalizeEdition(datasetEdition) || this.normalizeEdition('ch') || this.validEditions[0] || null;
+        this.defaultEdition = preferred;
+
+        if (!editionSelect) {
+            return;
+        }
+
+        editionSelect.innerHTML = '';
+
+        if (this.validEditions.length > 1) {
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = '-- Select Edition --';
+            placeholder.disabled = true;
+            placeholder.selected = !this.defaultEdition;
+            editionSelect.appendChild(placeholder);
+        }
+
+        if (!this.validEditions.length) {
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = 'No editions available';
+            option.disabled = true;
+            option.selected = true;
+            editionSelect.appendChild(option);
+            return;
+        }
+
+        this.validEditions.forEach(editionKey => {
+            const option = document.createElement('option');
+            option.value = editionKey;
+            const displayLabel = this.getEditionDisplayLabel(editionKey);
+            const titleText = this.getEditionTitleText(editionKey) || displayLabel;
+            option.textContent = displayLabel;
+            option.title = titleText;
+            if (this.defaultEdition === editionKey) {
+                option.selected = true;
+            }
+            editionSelect.appendChild(option);
+        });
+
+        if (this.defaultEdition) {
+            editionSelect.value = this.defaultEdition;
+        }
+    }
+
+    async onEditionChange(edition) {
+        if (!edition || edition === this.currentEdition) {
+            return;
+        }
+
+        this.currentEdition = edition;
+        this.currentVolume = null;
+        this.totalPages = 0;
+        this.currentPageIndex = 0;
+        this.pages = [];
+        this.preloadedPages = new Set();
+        this.clearImageCache();
+
+        await this.updateEditionDisplay();
+
+        const volumeSelect = document.getElementById('volumeSelect');
+        if (volumeSelect) {
+            volumeSelect.value = '';
+        }
+
+        this.hideFlipbook();
+        this.updateURL(null, null, this.currentEdition);
+    }
+
     setupEventListeners() {
+        const editionSelect = document.getElementById('editionSelect');
         const volumeSelect = document.getElementById('volumeSelect');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const firstBtn = document.getElementById('firstBtn');
         const lastBtn = document.getElementById('lastBtn');
         const helpBtn = document.getElementById('helpBtn');
+
+        if (editionSelect) {
+            editionSelect.addEventListener('change', (event) => {
+                const selectedEdition = this.normalizeEdition(event.target.value);
+                if (!selectedEdition) {
+                    event.target.value = this.currentEdition || '';
+                    return;
+                }
+                this.onEditionChange(selectedEdition).catch(console.error);
+            });
+        }
 
         if (volumeSelect) {
             volumeSelect.addEventListener('change', (e) => {
@@ -577,9 +727,13 @@ class BookViewer {
                         alert('Invalid volume selected');
                     }
                 } else {
+                    this.currentVolume = null;
+                    this.totalPages = 0;
+                    this.currentPageIndex = 0;
+                    this.pages = [];
+                    this.preloadedPages = new Set();
                     this.hideFlipbook();
-                    // Clear URL parameters
-                    history.pushState(null, null, window.location.pathname);
+                    this.updateURL(null, null, this.currentEdition);
                 }
             });
         }
@@ -670,10 +824,12 @@ class BookViewer {
     }
 
     async getTotalPages(volumeFolder) {
+        const cacheKey = this.getVolumeCacheKey(volumeFolder, this.currentEdition);
+
         // ตรวจสอบ cache ก่อน
-        if (this.pageCounts.has(volumeFolder)) {
-            console.log(`Using cached page count for volume ${volumeFolder}: ${this.pageCounts.get(volumeFolder)}`);
-            return this.pageCounts.get(volumeFolder);
+        if (this.pageCounts.has(cacheKey)) {
+            console.log(`Using cached page count for ${cacheKey}: ${this.pageCounts.get(cacheKey)}`);
+            return this.pageCounts.get(cacheKey);
         }
         
         // โหลดข้อมูล book viewer metadata ถ้ายังไม่มี
@@ -699,7 +855,7 @@ class BookViewer {
             
             const volumeData = this.bookViewerMetadata.editions[this.currentEdition].volumes[volumeFolder];
             const pageCount = volumeData.pages;
-            this.pageCounts.set(volumeFolder, pageCount);
+            this.pageCounts.set(cacheKey, pageCount);
             console.log(`✅ Volume ${volumeFolder} (${this.currentEdition.toUpperCase()}): ${pageCount} pages (from metadata)`);
             return pageCount;
         } else {
@@ -720,9 +876,13 @@ class BookViewer {
 
     async loadBookViewerMetadata() {
         try {
+            const isDev = typeof window !== 'undefined' && (
+                window.location.hostname === 'localhost' ||
+                window.location.hostname === '127.0.0.1'
+            );
             // ตรวจสอบ cache ใน localStorage
-            const cachedData = localStorage.getItem('tipitaka-book-viewer');
-            const cachedTimestamp = localStorage.getItem('tipitaka-book-viewer-timestamp');
+            const cachedData = isDev ? null : localStorage.getItem('tipitaka-book-viewer');
+            const cachedTimestamp = isDev ? null : localStorage.getItem('tipitaka-book-viewer-timestamp');
             
             // ถ้ามี cache และอายุไม่เกิน 24 ชั่วโมง
             if (cachedData && cachedTimestamp) {
@@ -748,7 +908,7 @@ class BookViewer {
             // โหลดจากไฟล์ JSON
             console.log('Fetching book viewer metadata from server...');
             const response = await fetch('/tipitaka/book-viewer.json', {
-                cache: 'force-cache'
+                cache: isDev ? 'no-cache' : 'default'
             });
             
             if (!response.ok) {
@@ -756,10 +916,26 @@ class BookViewer {
             }
             
             this.bookViewerMetadata = await response.json();
+
+            // ปรับแต่งข้อมูลที่โหลดมา (trim titles)
+            try {
+                if (this.bookViewerMetadata?.editions) {
+                    Object.keys(this.bookViewerMetadata.editions).forEach(edKey => {
+                        const ed = this.bookViewerMetadata.editions[edKey];
+                        if (typeof ed?.title === 'string') {
+                            ed.title = ed.title.trim();
+                        }
+                    });
+                }
+            } catch (e) {
+                console.warn('Post-process metadata failed:', e);
+            }
             
-            // เก็บไว้ใน localStorage
-            localStorage.setItem('tipitaka-book-viewer', JSON.stringify(this.bookViewerMetadata));
-            localStorage.setItem('tipitaka-book-viewer-timestamp', Date.now().toString());
+            // เก็บไว้ใน localStorage (เฉพาะ production)
+            if (!isDev) {
+                localStorage.setItem('tipitaka-book-viewer', JSON.stringify(this.bookViewerMetadata));
+                localStorage.setItem('tipitaka-book-viewer-timestamp', Date.now().toString());
+            }
             
             console.log('Book viewer metadata loaded successfully');
             
@@ -1148,6 +1324,9 @@ class BookViewer {
     }
 
     showHelp() {
+        const availableEditions = this.validEditions?.length
+            ? this.validEditions.map(ed => this.getEditionDisplayLabel(ed)).join(', ')
+            : '—';
         const helpText = `การใช้งาน Flipbook Viewer:
 
 ⌨️ แป้นพิมพ์:
@@ -1167,7 +1346,7 @@ class BookViewer {
 🔗 URL Parameters (Required):
 📝 Parameters ที่ต้องมี:
 • edition/e = เลือกฉบับ (จำเป็น)
-• volume/v = เลขเล่ม (CH:1-40, MC:1-45)  
+• volume/v = เลขเล่ม (ขึ้นอยู่กับฉบับ)  
 • page/p = เลขหน้า
 
 📄 แบบเต็ม:
@@ -1177,7 +1356,8 @@ class BookViewer {
 • ?e=[ฉบับ]&v=[เล่ม]&p=[หน้า]
 
 💡 เคล็ดลับ:
-• Edition parameter เป็นสิ่งจำเป็น ต้องระบุทุกครั้ง
+• Edition parameter สามารถเลือกจากเมนูหรือกำหนดใน URL
+• ฉบับที่มี: ${availableEditions}
 • ใช้รูปแบบเดียวกัน (เต็ม หรือ ย่อ) เพื่อความสอดคล้อง
 • แชร์ URL เพื่อให้ผู้อื่นเปิดหน้าเดียวกัน
 • ใช้แป้นพิมพ์สำหรับความเร็วในการเปลี่ยนหน้า`;

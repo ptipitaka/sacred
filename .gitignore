@@ -31,3 +31,6 @@ python/md/tipitaka/
 .venv/
 .vscode/
 
+# public
+public/tipitaka/chr/*
+

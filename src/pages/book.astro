@@ -1,8 +1,24 @@
 ---
 import MinimalLayout from '@layouts/MinimalLayout.astro';
+import bookViewerData from '../../public/tipitaka/book-viewer.json';
+
+const editions = (bookViewerData?.editions ?? {}) as Record<string, { title?: string }>;
+const editionKeys = Object.keys(editions);
+const searchParams = Astro.url.searchParams;
+const requestedEdition = (searchParams.get('edition') ?? searchParams.get('e') ?? searchParams.get('ed') ?? '').toLowerCase();
+const initialEdition = editionKeys.includes(requestedEdition)
+    ? requestedEdition
+    : (editionKeys.includes('ch') ? 'ch' : editionKeys[0] ?? '');
+const initialTitle = (editions[initialEdition]?.title ?? '').trim() || (initialEdition ? initialEdition.toUpperCase() : 'Book Viewer');
+const layoutTitle = `${initialTitle} - Book viewer`;
+const getEditionLabel = (key: string) => {
+    const rawTitle = editions[key]?.title ?? '';
+    const trimmedTitle = rawTitle.trim();
+    return trimmedTitle ? `${key.toUpperCase()} - ${trimmedTitle}` : key.toUpperCase();
+};
 ---
 
-<MinimalLayout title="CH - Book viewer">
+<MinimalLayout title={layoutTitle}>
     <div class="tipitaka-viewer-container">
         
     <!-- No external dependencies needed -->
@@ -17,18 +33,19 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
         
         .container {
             width: 100%;
-            min-height: 100vh;
+            /* min-height: 100vh; */
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            justify-content: flex-start;
+            padding: 15px 20px 15px 20px;
+            /* gap: 12px; tighter vertical rhythm */
             box-sizing: border-box;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 8px; /* reduce extra spacing */
         }
         
         .header h1 {
@@ -37,42 +54,46 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
             font-size: 1.4rem;
         }
         
-        .header h2.volume-title {
+        .volume-title {
             color: #654321;
-            margin: 0 0 15px 0;
+            margin: 6px 0 12px 0; /* closer to volume select, small space below */
             font-size: 1rem;
             font-weight: normal;
             font-style: italic;
             cursor: help;
         }
         
-        .volume-selector {
-            margin-bottom: 20px;
+        .volume-selector,
+        .edition-selector {
+            margin-bottom: 8px; /* tighter */
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
         
-        .volume-selector label {
+        .volume-selector label,
+        .edition-selector label {
             font-weight: bold;
             color: #654321;
         }
         
-        .volume-selector select {
+        .volume-selector select,
+        .edition-selector select {
             padding: 8px 15px;
             border: 2px solid #D2B48C;
             border-radius: 5px;
             background: white;
             font-size: 1rem;
-            min-width: 150px;
+            min-width: 240px;
+            max-width: 100%;
         }
         
         .flipbook-container {
             position: relative;
             width: 900px;
             height: 600px;
-            margin: 0 auto;
+            margin: 8px auto 0; /* small top margin under meta */
             background: white;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             border-radius: 8px;
@@ -120,7 +141,7 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
         }
         
         .controls {
-            margin-top: 20px;
+            margin-top: 12px; /* reduce spacing */
             text-align: center;
             display: none;
         }
@@ -193,16 +214,29 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" data-default-edition={initialEdition}>
         <div class="header">
-            <h1>CH</h1>
-            <h2 class="volume-title" style="display: none;">Select Volume</h2>
-            <div class="volume-selector" style="text-align: center;">
-                <label for="volumeSelect">Select Volume:</label>
-                <select id="volumeSelect">
-                    <option value="">-- Select Volume --</option>
+            <div class="edition-selector" style="text-align: center;">
+                <label for="editionSelect">Select Edition:</label>
+                <select id="editionSelect">
+                    {editionKeys.length > 1 && (
+                        <option value="" disabled selected={!initialEdition}>-- Select Edition --</option>
+                    )}
+                    {editionKeys.map((key) => (
+                        <option value={key} selected={key === initialEdition}>
+                            {getEditionLabel(key)}
+                        </option>
+                    ))}
                 </select>
             </div>
+        </div>
+        <div class="volume-selector" style="text-align: center;">
+            <label for="volumeSelect">Select Volume:</label>
+            <select id="volumeSelect">
+                <option value="">-- Select Volume --</option>
+            </select>
+        </div>
+        <h2 class="volume-title" style="display: none;"></h2>
         </div>
         
         <div class="flipbook-container" id="flipbook-container">
