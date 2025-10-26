@@ -1,62 +1,40 @@
-name: Deploy to DigitalOcean Spaces
+name: Deploy Astro
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
-  build-and-deploy:
+  build-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Astro site
+      - name: Build
         run: npm run build
-        env:
-          NODE_OPTIONS: '--max-old-space-size=8192'
 
-      - name: Install s3cmd
+      - name: Prepare SSH
         run: |
-          sudo apt-get update
-          sudo apt-get install -y s3cmd
+          set -e
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "${{ secrets.DROPLET_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.DROPLET_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Configure s3cmd
+      - name: Deploy via rsync
         run: |
-          cat > ~/.s3cfg << EOF
-          [default]
-          access_key = ${{ secrets.DO_SPACES_ACCESS_KEY }}
-          secret_key = ${{ secrets.DO_SPACES_SECRET_KEY }}
-          host_base = ${{ secrets.DO_SPACES_REGION }}.digitaloceanspaces.com
-          host_bucket = %(bucket)s.${{ secrets.DO_SPACES_REGION }}.digitaloceanspaces.com
-          use_https = True
-          EOF
+          rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes" dist/ ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }}:${{ secrets.DEPLOY_PATH }}/
 
-      - name: Deploy to DigitalOcean Spaces
+      - name: Reload nginx
         run: |
-          s3cmd sync --acl-public --no-mime-magic --delete-removed \
-            --add-header="Cache-Control: public, max-age=31536000, immutable" \
-            --exclude="*.html" \
-            dist/ s3://${{ secrets.DO_SPACES_BUCKET }}/
-          
-          s3cmd sync --acl-public --no-mime-magic --delete-removed \
-            --add-header="Cache-Control: public, max-age=0, must-revalidate" \
-            --include="*.html" --exclude="*" \
-            dist/ s3://${{ secrets.DO_SPACES_BUCKET }}/
-
-      - name: Deployment complete
-        run: |
-          echo "🚀 Site deployed successfully!"
-          echo "Visit: https://${{ secrets.DO_SPACES_BUCKET }}.${{ secrets.DO_SPACES_REGION }}.cdn.digitaloceanspaces.com"
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} 'sudo systemctl reload nginx'

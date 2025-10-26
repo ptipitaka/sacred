@@ -2,8 +2,6 @@
 dist/
 # generated types
 .astro/
-# vercel output
-.vercel/
 
 # dependencies
 node_modules/
@@ -34,5 +32,3 @@ python/md/tipitaka/
 # public - exclude all scanned images from git (stored on DigitalOcean Spaces)
 public/tipitaka/
 
-.vercel
-scripts/spaces-secrets.ps1
