@@ -25,8 +25,9 @@ export interface HypothesisConfig {
   enableExperimentalNewNoteButton?: boolean;
   usernameUrl?: string;
   services?: Array<{
-    apiUrl: string;
-    authority: string;
+    apiUrl?: string;
+    authority?: string;
+    groups?: string[];
   }>;
 }
 

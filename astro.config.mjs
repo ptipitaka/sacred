@@ -54,6 +54,6 @@ export default defineConfig({
             sidebar: sidebarConfig
         }),
     ],
+    trailingSlash: 'always',
     output: 'static',
-    // Removed Vercel adapter - deploying to DigitalOcean Spaces as static site
 });

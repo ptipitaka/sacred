@@ -45,7 +45,7 @@ if (pageRef) {
 const tooltip = tooltipParts.length ? tooltipParts.join(' · ') : undefined;
 const hasLink = Boolean(tooltip && volume && pageRef);
 const linkHref = hasLink
-  ? `/book?e=${encodeURIComponent(edition)}&v=${encodeURIComponent(volume)}&p=${encodeURIComponent(pageRef)}`
+  ? `/book/?e=${encodeURIComponent(edition)}&v=${encodeURIComponent(volume)}&p=${encodeURIComponent(pageRef)}`
   : undefined;
 ---
 

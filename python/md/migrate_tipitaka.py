@@ -261,6 +261,14 @@ class TipitakaMigrator:
                 normalized = (ref or '').strip().lower()
                 if normalized:
                     self._book_reference_lookup[normalized] = code
+        self._book_prefix_slugs: Set[str] = set()
+        for code, info in self.book_mappings.items():
+            candidates = {code, info.get('abbrev', '')}
+            candidates.update(info.get('references', []) or [])
+            for candidate in candidates:
+                slug = self._slugify_link_segment(candidate)
+                if slug:
+                    self._book_prefix_slugs.add(slug)
         self._division_page_map: Dict[str, Dict[str, List[int]]] = {}
         self._division_page_state: Dict[str, Dict[str, int]] = {}
         self._page_map_loaded = False
@@ -349,6 +357,90 @@ class TipitakaMigrator:
             return None
         match = re.match(r'(\d+)', division_number)
         return match.group(1) if match else None
+
+    @staticmethod
+    def _slugify_link_segment(segment: str) -> str:
+        """Normalize a single path segment for internal links"""
+        if not segment:
+            return ''
+        value = segment.strip()
+        if not value:
+            return ''
+        if value.lower().endswith('.md'):
+            value = value[:-3]
+        value = value.replace(' ', '-')
+        value = value.replace('.', '-')
+        value = value.replace('_', '-')
+        value = re.sub(r'-{2,}', '-', value)
+        value = value.strip('-')
+        return value.lower()
+
+    def _normalize_internal_link(self, link: str, current_slug: str) -> str:
+        """Convert legacy markdown links to Astro-friendly relative paths"""
+        if not link:
+            return link
+
+        link = link.strip()
+        if not link:
+            return link
+
+        lowered = link.lower()
+        if lowered.startswith(('http://', 'https://', 'mailto:', 'tel:')):
+            return link
+        if link.startswith('#'):
+            return link
+
+        anchor = ''
+        if '#' in link:
+            link, anchor = link.split('#', 1)
+            anchor = '#' + anchor
+
+        if not link:
+            return anchor or link
+
+        is_absolute = link.startswith('/')
+        raw_parts = link.split('/')
+        normalized_parts: List[str] = []
+
+        for part in raw_parts:
+            part = part.strip()
+            if not part or part == '.':
+                continue
+            if part == '..':
+                normalized_parts.append('..')
+                continue
+
+            slug = self._slugify_link_segment(part)
+            if not slug:
+                continue
+
+            has_content = any(p not in ('..',) for p in normalized_parts)
+            if not has_content:
+                if slug == current_slug:
+                    continue
+                if slug in self._book_prefix_slugs:
+                    continue
+
+            normalized_parts.append(slug)
+
+        if not normalized_parts:
+            normalized_path = '/' if is_absolute else './'
+        else:
+            normalized_path = '/'.join(normalized_parts)
+
+            if is_absolute:
+                normalized_path = '/' + normalized_path.lstrip('/')
+                if normalized_path != '/' and not normalized_path.endswith('/'):
+                    normalized_path += '/'
+            elif normalized_path.startswith('..'):
+                if not normalized_path.endswith('/'):
+                    normalized_path += '/'
+            else:
+                normalized_path = './' + normalized_path.lstrip('./')
+                if not normalized_path.endswith('/'):
+                    normalized_path += '/'
+
+        return normalized_path + anchor
 
     def _ensure_paragraph_page_map(self):
         """Load paragraph -> page mappings from SQLite once per process"""
@@ -599,6 +691,8 @@ class TipitakaMigrator:
             # Pattern สำหรับตรวจสอบ
             link_pattern = re.compile(r'(\[.*?\]\()(.+?)(\))')
             title_list_pattern = re.compile(r'^[ \t]*\*[ \t]+[A-Za-zāīūēōṅñṭḍṇḷṃṅḍṭṇḷṃāīūēōĀĪŪĒŌ, ]+[ \t]*$')
+
+            current_slug = self._slugify_link_segment(file_path.stem)
             
             for line in lines:
                 # 3. Skip breadcrumb lines
@@ -616,28 +710,8 @@ class TipitakaMigrator:
                 # 6. Fix internal links (remove .md, lowercase, dots to dashes, remove book_code prefix)
                 def fix_link(match):
                     pre, link, post = match.groups()
-                    # For internal links, remove .md extension, convert to lowercase, and replace dots with dashes
-                    if not link.startswith('http'):
-                        link = link.removesuffix('.md').lower().replace('.', '-')
-                        
-                        # Remove book_code prefix from internal links
-                        # Pattern: bookcode/path -> path
-                        # Examples: 29Dhs/1 -> 1, 6D/1 -> 1, 12S1/2-3 -> 2-3
-                        book_code_patterns = [
-                            r'^(\d+[A-Za-z]+\d*)\/',  # Matches: 29Dhs/, 12S1/, 15A1/, 40P7/, etc.
-                            r'^(\d+[A-Za-z]+)\/',     # Matches: 6D/, 7D/, 9M/, 10M/, etc.
-                            r'^([A-Za-z]+\d*)\/',     # Matches: Para/, Paci/, Dhs/, etc.
-                        ]
-                        
-                        for pattern in book_code_patterns:
-                            if re.match(pattern, link):
-                                # Remove the book_code prefix (everything before first slash)
-                                parts = link.split('/', 1)
-                                if len(parts) > 1:
-                                    link = parts[1]
-                                break
-                                
-                    return f"{pre}{link}{post}"
+                    normalized_link = self._normalize_internal_link(link, current_slug)
+                    return f"{pre}{normalized_link}{post}"
                 
                 line = link_pattern.sub(fix_link, line)
                 

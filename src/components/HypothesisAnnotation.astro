@@ -25,6 +25,7 @@ type Props = HypothesisAnnotationProps;
 const {
   frontmatter = {},
   enabled,
+  environment = 'development',
   configOverrides = {}
 } = Astro.props;
 
@@ -40,21 +41,56 @@ const shouldLoadHypothesis = enabled !== false && isTipitakaPage && isTipitakaPa
 
 // Simplified: Use default group selection
 const selectedGroup = selectGroupForContent(frontmatter);
-const groupId = getGroupIdForSelection(selectedGroup);
+const defaultGroupId = getGroupIdForSelection(selectedGroup);
 
-// Get final configuration with group settings
-const hypothesisConfig = getHypothesisConfig('development', {
-  group: groupId,
+const { group: overrideGroup, ...restOverrides } = configOverrides;
+
+const baseHypothesisConfig = getHypothesisConfig(environment, {
   openSidebar: false,
-  ...configOverrides
+  ...restOverrides
 });
+
+const resolvedGroupId = overrideGroup ?? defaultGroupId ?? baseHypothesisConfig.group;
+const isReviewEnvironment = environment === 'tptk_review';
+
+const DEFAULT_SERVICE_CONFIG = {
+  apiUrl: 'https://hypothes.is/api',
+  authority: 'hypothes.is'
+};
+
+const baseServices = baseHypothesisConfig.services?.length
+  ? baseHypothesisConfig.services.map(service => ({ ...service }))
+  : undefined;
+
+let services = baseServices;
+
+if (resolvedGroupId && isReviewEnvironment) {
+  if (services?.length) {
+    const [firstService, ...otherServices] = services;
+    services = [
+      { ...DEFAULT_SERVICE_CONFIG, ...firstService, groups: [resolvedGroupId] },
+      ...otherServices
+    ];
+  } else {
+    services = [{ ...DEFAULT_SERVICE_CONFIG, groups: [resolvedGroupId] }];
+  }
+}
+
+const configWithServices = {
+  ...baseHypothesisConfig,
+  ...(services ? { services } : {}),
+  openSidebar: false
+};
+
+const { group: _ignoredGroup, ...hypothesisConfig } = configWithServices;
 
 // Additional context for debugging and UI
 const annotationContext = {
   selectedGroup,
-  groupId,
+  groupId: resolvedGroupId && isReviewEnvironment ? resolvedGroupId : undefined,
   reviewStatus: frontmatter.review?.current,
-  basket: frontmatter.basket
+  basket: frontmatter.basket,
+  environment
 };
 ---
 
@@ -76,7 +112,7 @@ const annotationContext = {
       shouldLoadHypothesis, 
       currentUrl, 
       selectedGroup, 
-      groupId,
+      resolvedGroupId,
       hypothesisConfig 
     }}>
       console.log('[HypothesisAnnotation] Clean Integration Status:', {
@@ -85,7 +121,7 @@ const annotationContext = {
         shouldLoad: shouldLoadHypothesis,
         currentUrl: currentUrl,
         selectedGroup: selectedGroup,
-        groupId: groupId
+        groupId: resolvedGroupId
       });
 
       // Enhanced Starlight integration
@@ -175,7 +211,7 @@ const annotationContext = {
       
       statusDiv.setAttribute('data-enabled', 'true');
       statusDiv.setAttribute('data-environment', annotationContext.environment);
-      statusDiv.setAttribute('data-group', hypothesisConfig.group || 'public');
+      statusDiv.setAttribute('data-group', annotationContext.groupId || 'public');
       statusDiv.setAttribute('data-selected-group', annotationContext.selectedGroup || '');
       
       // Store config globally for potential use by other scripts

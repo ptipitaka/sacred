@@ -145,8 +145,8 @@ export async function buildBreadcrumb(currentPath, collection = 'docs') {
     const sectionName = pathParts[i];
     
     // For root level (has index.mdx), add trailing slash
-    const isRootLevel = (i === rootLevel);
-    const link = isRootLevel ? `/${sectionPath}/` : `/${sectionPath}`;
+  const normalizedPath = `/${sectionPath}`;
+  const link = normalizedPath.endsWith('/') ? normalizedPath : `${normalizedPath}/`;
     
     // Try to get title from frontmatter, fallback to section name
     const title = await getTitleFromFrontmatter(sectionPath, sectionName, collection);
