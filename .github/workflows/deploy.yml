@@ -31,24 +31,38 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.DROPLET_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Create backup and prepare deployment
+      - name: Validate and prepare deployment
         run: |
           ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} '
             set -e
             DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
             
-            # Create backup directory if it doesn't exist
+            # Validate DEPLOY_PATH is not empty and is absolute path
+            if [ -z "$DEPLOY_PATH" ] || [ "${DEPLOY_PATH:0:1}" != "/" ]; then
+              echo "Error: DEPLOY_PATH is invalid or not set properly"
+              echo "DEPLOY_PATH should be an absolute path like /usr/local/lsws/Example/html/astro-site"
+              exit 1
+            fi
+            
+            # Ensure deploy directory exists
+            mkdir -p "$DEPLOY_PATH"
+            
+            # Create backup directory safely
             mkdir -p "$DEPLOY_PATH/backup"
             
-            # Create backup of current deployment (if exists)
-            if [ -d "$DEPLOY_PATH" ] && [ "$(ls -A "$DEPLOY_PATH" 2>/dev/null | grep -v backup)" ]; then
+            # Create backup of current deployment (if exists and has content)
+            if [ -d "$DEPLOY_PATH" ] && [ "$(ls -A "$DEPLOY_PATH" 2>/dev/null | grep -v backup | head -1)" ]; then
               echo "Creating backup..."
-              rsync -av --exclude="backup/" "$DEPLOY_PATH/" "$DEPLOY_PATH/backup/" || true
+              # Clear old backup first
+              rm -rf "$DEPLOY_PATH/backup"/*
+              # Copy current files to backup (exclude backup directory itself)
+              find "$DEPLOY_PATH" -maxdepth 1 -type f -exec cp {} "$DEPLOY_PATH/backup/" \; 2>/dev/null || true
+              find "$DEPLOY_PATH" -maxdepth 1 -type d ! -name "$(basename "$DEPLOY_PATH")" ! -name "backup" -exec cp -r {} "$DEPLOY_PATH/backup/" \; 2>/dev/null || true
             fi
             
             # Clear current deployment (except backup and .htaccess)
-            find "$DEPLOY_PATH" -type f ! -name ".htaccess" ! -path "*/backup/*" -delete 2>/dev/null || true
-            find "$DEPLOY_PATH" -type d ! -name "$(basename "$DEPLOY_PATH")" ! -name "backup" ! -path "*/backup/*" -exec rm -rf {} + 2>/dev/null || true
+            find "$DEPLOY_PATH" -maxdepth 1 -type f ! -name ".htaccess" ! -path "*/backup/*" -delete 2>/dev/null || true
+            find "$DEPLOY_PATH" -maxdepth 1 -type d ! -name "$(basename "$DEPLOY_PATH")" ! -name "backup" -exec rm -rf {} + 2>/dev/null || true
           '
 
       - name: Deploy via rsync
@@ -82,4 +96,4 @@ jobs:
         run: |
           echo "🚀 Deployment completed!"
           echo "📁 Deployed to: ${{ secrets.DEPLOY_PATH }}"
-          echo "🌐 Access your site at your domain/astro-site/"
+          echo "🌐 Access your site at: https://www.tipitakahall.org/"
