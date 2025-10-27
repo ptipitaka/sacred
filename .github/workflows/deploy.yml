@@ -31,10 +31,55 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.DROPLET_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Create backup and prepare deployment
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} '
+            set -e
+            DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+            
+            # Create backup directory if it doesn't exist
+            mkdir -p "$DEPLOY_PATH/backup"
+            
+            # Create backup of current deployment (if exists)
+            if [ -d "$DEPLOY_PATH" ] && [ "$(ls -A "$DEPLOY_PATH" 2>/dev/null | grep -v backup)" ]; then
+              echo "Creating backup..."
+              rsync -av --exclude="backup/" "$DEPLOY_PATH/" "$DEPLOY_PATH/backup/" || true
+            fi
+            
+            # Clear current deployment (except backup and .htaccess)
+            find "$DEPLOY_PATH" -type f ! -name ".htaccess" ! -path "*/backup/*" -delete 2>/dev/null || true
+            find "$DEPLOY_PATH" -type d ! -name "$(basename "$DEPLOY_PATH")" ! -name "backup" ! -path "*/backup/*" -exec rm -rf {} + 2>/dev/null || true
+          '
+
       - name: Deploy via rsync
         run: |
-          rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes" dist/ ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }}:${{ secrets.DEPLOY_PATH }}/
+          rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes" dist/ ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }}:${{ secrets.DEPLOY_PATH }}/
 
-      - name: Reload nginx
+      - name: Set permissions and reload OpenLiteSpeed
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} 'sudo systemctl reload nginx'
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} '
+            set -e
+            DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+            
+            # Set correct ownership and permissions for OpenLiteSpeed
+            sudo chown -R nobody:nogroup "$DEPLOY_PATH"
+            sudo find "$DEPLOY_PATH" -type f -exec chmod 644 {} \;
+            sudo find "$DEPLOY_PATH" -type d -exec chmod 755 {} \;
+            
+            # Ensure .htaccess is readable
+            if [ -f "$DEPLOY_PATH/.htaccess" ]; then
+              sudo chmod 644 "$DEPLOY_PATH/.htaccess"
+            fi
+            
+            # Reload OpenLiteSpeed
+            sudo systemctl reload lsws || sudo /usr/local/lsws/bin/lswsctrl reload
+            
+            echo "Deployment completed successfully!"
+            echo "Site deployed to: $DEPLOY_PATH"
+          '
+
+      - name: Deployment notification
+        run: |
+          echo "🚀 Deployment completed!"
+          echo "📁 Deployed to: ${{ secrets.DEPLOY_PATH }}"
+          echo "🌐 Access your site at your domain/astro-site/"
