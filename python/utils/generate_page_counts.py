@@ -24,7 +24,7 @@ def scan_tipitaka_pages(base_path: str) -> dict:
     result = {}
     
     # รายการฉบับที่รองรับ
-    editions = ['ch', 'mc']
+    editions = ['tr']
     
     for edition in editions:
         print(f"\n📖 สแกนฉบับ {edition.upper()}...")
