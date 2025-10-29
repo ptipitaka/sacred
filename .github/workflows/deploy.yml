@@ -71,23 +71,48 @@ jobs:
 
       - name: Set permissions and reload OpenLiteSpeed
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} '
-            set -e
+          ssh -tt -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} '
+            set -eu
             DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
-            
-            # Set correct ownership and permissions for OpenLiteSpeed
-            sudo chown -R nobody:nogroup "$DEPLOY_PATH"
-            sudo find "$DEPLOY_PATH" -type f -exec chmod 644 {} \;
-            sudo find "$DEPLOY_PATH" -type d -exec chmod 755 {} \;
-            
-            # Ensure .htaccess is readable
-            if [ -f "$DEPLOY_PATH/.htaccess" ]; then
-              sudo chmod 644 "$DEPLOY_PATH/.htaccess"
+
+            if [ -z "$DEPLOY_PATH" ] || [ "${DEPLOY_PATH#/}" = "$DEPLOY_PATH" ]; then
+              echo "Error: DEPLOY_PATH must be an absolute path." >&2
+              exit 1
             fi
-            
-            # Reload OpenLiteSpeed
-            sudo systemctl reload lsws || sudo /usr/local/lsws/bin/lswsctrl reload
-            
+
+            if [ "$(id -u)" -ne 0 ] && ! command -v sudo >/dev/null 2>&1; then
+              echo "Error: sudo is required when deploying as a non-root user." >&2
+              exit 1
+            fi
+
+            # Helper to elevate commands when sudo is available
+            run_priv() {
+              if [ "$(id -u)" -eq 0 ]; then
+                "$@"
+              elif command -v sudo >/dev/null 2>&1; then
+                sudo -n "$@"
+              else
+                "$@"
+              fi
+            }
+
+            if ! run_priv true 2>/dev/null; then
+              echo "Error: passwordless sudo (or root access) is required for deployment tasks." >&2
+              exit 1
+            fi
+
+            run_priv chown -R nobody:nogroup "$DEPLOY_PATH"
+            run_priv find "$DEPLOY_PATH" -type f -exec chmod 644 {} \;
+            run_priv find "$DEPLOY_PATH" -type d -exec chmod 755 {} \;
+
+            if [ -f "$DEPLOY_PATH/.htaccess" ]; then
+              run_priv chmod 644 "$DEPLOY_PATH/.htaccess"
+            fi
+
+            if ! run_priv systemctl reload lsws; then
+              run_priv /usr/local/lsws/bin/lswsctrl reload
+            fi
+
             echo "Deployment completed successfully!"
             echo "Site deployed to: $DEPLOY_PATH"
           '
